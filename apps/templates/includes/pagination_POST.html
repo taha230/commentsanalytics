@@ -1,0 +1,230 @@
+
+<!-- Pagination Section -->
+<div id = "pagination" class="card-footer py-4">
+  <nav aria-label="...">
+    <ul class="pagination justify-content-end mb-0">
+
+      <!-- FIRST -->
+      <li class="page-item">
+        <button class="page-link" id= "custom_first" tabindex="+2" onclick="return first_button_click()" >
+          <i class="fas fa-angle-double-left"></i>
+          <span class="sr-only">First</span>
+        </button>
+      </li>
+      
+      <!-- PREV -->
+      {% if current_pagination > 1 %}
+        <li class="page-item">
+          <button class="page-link" id="custom_prev" tabindex="-1" onclick="return prev_button_click()">
+            <i class="fas fa-angle-left"></i>
+            <span class="sr-only">Previous</span>
+          </button>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" tabindex="-1">
+            <i class="fas fa-angle-left"></i>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+      {% endif %}
+      
+      <li class="page-item" id ="first_li">
+        <button class="page-link" id="first_a" onclick="return first_a_button_click()">1</button>
+      </li>
+      <li class="page-item" id="second_li">
+        <button class="page-link" id="second_a" onclick="return second_a_button_click()">2</button>
+      </li>
+      <li class="page-item" id="third_li">
+        <button class="page-link" id="third_a" onclick="return third_a_button_click()">3</button>
+      </li>
+
+      <!-- NEXT -->
+      {% if current_pagination < last_pagination %}
+      <li class="page-item">
+        <button class="page-link" id= "custom_next" tabindex="-1" onclick="return next_button_click()">
+          <i class="fas fa-angle-right"></i>
+          <span class="sr-only">Next</span>
+        </button>
+      </li>
+      {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" tabindex="-1">
+            <i class="fas fa-angle-right"></i>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      {% endif %}
+
+      <!-- LAST -->
+      <li class="page-item">
+        <button class="page-link" id= "custom_last" tabindex="-2" onclick="return last_button_click()">
+          <i class="fas fa-angle-double-right"></i>
+          <span class="sr-only">Last</span>
+        </button>
+      </li>
+
+    </ul>
+  </nav>
+  <br>
+  <div class="fw-normal small mt-4 mt-lg-0" align="right">Showing <b>{{ page_limit }}</b> out of <b>{{ total_items }}</b> entries</div>
+
+</div>
+
+
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+<script >
+
+  var $current_pagination = {{ current_pagination }};
+  var $last_pagination = {{ last_pagination }};
+
+  var $current_href = "P" + ($current_pagination);
+  var $prev_href = "P" + ($current_pagination -1);
+  var $nexthref = "P" + ($current_pagination +1);
+
+  var $prev_prev_href = "P" + ($current_pagination -2);
+  var $next_next_href = "P" + ($current_pagination +2);
+
+///// last and first href assign
+  // document.getElementById('custom_first').formaction="/requests_new_bulk_data_confirm/P1";
+  // document.getElementById('custom_last').href = "P" + ($last_pagination);
+
+//// next and prev href modify
+  // if (document.getElementById('custom_next'))
+  // {
+  //   document.getElementById('custom_next').href = $nexthref;
+  // }
+  // if (document.getElementById('custom_prev'))
+  // {
+  //   document.getElementById('custom_prev').href = $prev_href;
+  // }
+///// activation on page number
+  if ($current_pagination == 1)
+  {
+    document.getElementById('first_li').classList.add('active');
+  }
+  else if ($current_pagination == $last_pagination && $current_pagination != 2)
+  {
+    document.getElementById('third_li').classList.add('active');
+  }
+  else
+  {
+    document.getElementById('second_li').classList.add('active');
+  }
+
+///// disabled on last page limit
+  if ($last_pagination == 1)
+  {
+    document.getElementById('second_li').classList.add('disabled');
+    document.getElementById('third_li').classList.add('disabled');
+  }
+  else if ($last_pagination == 2)
+  {
+    document.getElementById('third_li').classList.add('disabled');
+  }
+
+  ///// href and text shown
+  if ($current_pagination == 1)
+  {
+    // document.getElementById('first_a').href = $current_href;
+    // document.getElementById('second_a').href = $nexthref;
+    // document.getElementById('third_a').href = $next_next_href;
+
+    document.getElementById('first_a').textContent = $current_pagination;
+    document.getElementById('second_a').textContent = $current_pagination + 1;
+    document.getElementById('third_a').textContent = $current_pagination + 2;
+  }
+  else if ($current_pagination == $last_pagination && $current_pagination != 2)
+  {
+    // document.getElementById('first_a').href = $prev_prev_href;
+    // document.getElementById('second_a').href = $prev_href;
+    // document.getElementById('third_a').href = $current_href;
+
+    document.getElementById('first_a').textContent = $current_pagination -2;
+    document.getElementById('second_a').textContent = $current_pagination - 1;
+    document.getElementById('third_a').textContent = $current_pagination;
+  }
+  else
+  {
+    // document.getElementById('first_a').href = $prev_href;
+    // document.getElementById('second_a').href = $current_href;
+    // document.getElementById('third_a').href = $nexthref;
+
+    document.getElementById('first_a').textContent = $current_pagination -1;
+    document.getElementById('second_a').textContent = $current_pagination;
+    document.getElementById('third_a').textContent = $current_pagination + 1;
+  }
+
+ 
+  function first_button_click() {
+    document.getElementById('form_parent').action = 'P1';
+  }
+  function last_button_click() {
+    document.getElementById('form_parent').action =  "P" + ($last_pagination);
+  }
+  function next_button_click() {
+    if (document.getElementById('custom_next'))
+    {
+      document.getElementById('form_parent').action =  ($nexthref);
+    }
+  }
+  function prev_button_click() {
+    if (document.getElementById('custom_prev'))
+    {
+      document.getElementById('form_parent').action = ($prev_href);
+    }
+  }
+  function first_a_button_click() {
+
+    if ($current_pagination == 1)
+    {
+      document.getElementById('form_parent').action = $current_href;
+    }
+    else if ($current_pagination == $last_pagination && $current_pagination != 2)
+    {
+      document.getElementById('form_parent').action = $prev_prev_href;
+    }
+    else
+    {
+      document.getElementById('form_parent').action = $prev_href;
+    }
+  }
+
+  function second_a_button_click() {
+    if ($current_pagination == 1)
+    {
+      document.getElementById('form_parent').action = $nexthref;
+    }
+    else if ($current_pagination == $last_pagination && $current_pagination != 2)
+    {
+      document.getElementById('form_parent').action = $prev_href;
+    }
+    else
+    {
+      document.getElementById('form_parent').action =  $current_href;
+    }
+  }
+
+  function third_a_button_click() {
+    if ($current_pagination == 1)
+    {
+      document.getElementById('form_parent').action = $next_next_href;
+    }
+    else if ($current_pagination == $last_pagination && $current_pagination != 2)
+    {
+      document.getElementById('form_parent').action = $current_href;
+    }
+    else
+    {
+      document.getElementById('form_parent').action =  $nexthref;
+    }
+  }
+
+
+
+</script>
+
+
+{% endblock javascripts %}

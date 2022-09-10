@@ -1,0 +1,53 @@
+ <!-- Homepage Header -->
+ <header class="header-global">
+    <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-1 me-4 navbar-dark">
+        <div class="container position-relative">
+            <div class="navbar-collapse collapse me-auto" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-close">
+                            <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                    <li>
+                        <a href="/" class="nav-link">
+                            <img class="navbar-brand-dark  me-5" height="80" src="/static/assets/img/icons/logo_back_removal_zoom1_bright.png" alt="Logo light">
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="{% url 'services' %}" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="{% url 'pricing' %}" class="nav-link">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'blog' %}" class="nav-link">Blog</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if request.user.username == '' %} 
+                <!-- for logout user -->
+                <div class="d-flex align-items-center ms-auto">
+                    <a href="{% url 'login' %}" 
+                    class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
+                        Login
+                    </a>
+                </div>
+                <div class="d-flex align-items-center ms-auto">
+                    <a href="{% url 'register' %}" 
+                    class="btn btn-outline-success d-inline-flex align-items-center me-md-3">
+                        Try it free
+                    </a>
+                </div>
+            {% else %}
+                <!-- for login user -->
+                {% include 'includes/navigation_client_black.html' %}
+
+
+            {% endif %}
+        </div>
+    </nav>
+</header>

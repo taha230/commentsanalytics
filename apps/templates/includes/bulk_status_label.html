@@ -1,0 +1,10 @@
+ <!-- Bulk_Status Label -->
+ {% if row.status == 'In Queue' %}
+ <span style="color:black; background-color:#f88df3;"> {{ row.status }} </span>
+{% elif row.status == 'Failed' %}
+ <span style="color:black; background-color:#f5787e;"> {{ row.status }} </span>
+{% elif row.status == 'In Progress' %}
+ <span style="color:black; background-color:#f5e944;"> {{ row.status }} </span>
+{% elif row.status == 'Completed' %}
+ <span style="color:black; background-color:#8cff66;"> {{ row.status }} </span>
+{% endif %}

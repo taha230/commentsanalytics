@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Main links -->
+  <url>
+    <loc>https://profilebrowse.com/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_profile_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_social_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_wikipedia_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_facebook_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_pinterest_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_amazon_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_twitter_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/services_spotify_category/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/pricing/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/blog/</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/login/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://profilebrowse.com/register/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+</urlset>

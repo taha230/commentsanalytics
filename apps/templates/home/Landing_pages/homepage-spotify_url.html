@@ -1,0 +1,74 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head_title_description_variable.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+
+                   
+                    <div class="col-lg-6">
+                        <img src="/static/assets/img/icons/category_spotify_banner.png" alt="category_spotify_banner">
+                    </div>
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h1 class="h1 d-flex align-items-center">Spotify Profile URLs</h1>
+                        <p class="mb-4 mt-5">Spotify is a non-free Swedish audio streaming and media services provider founded in 2006. Spotify is one of the largest music streaming service providers with over 406 million monthly active users, including 180 million paying subscribers.</p>
+                        <p >This service will bring the most relevant profile URL of singers, sound producers, audiobooks, podcasts, and so on for large files imported. If you are concerned about finding the URL of your desired content URLs in Spotify, you should upload a list of your queries as one of our input methods including text files and excel records. After processing the list to find the most relevant and valid URLs for your queries in this platform, We will bring an export file to the dashboard to access them. </p>
+                        <p >By this service, you can access the spotify artist profile, any verified singer page or podcast URLs. By the way, regarding spotify artist page finder, the profile browse service is the best solution.</p>
+
+                        <a href="{% url 'register' %}" target="" class="btn btn-secondary d-inline-flex align-items-center me-3">
+                            Try it free
+                        </a>
+                    </div>
+                </div>
+ 
+                
+                <div class="row justify-content-center">
+                    {% include "includes/most_frequent_questions_services.html" %}                
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            <div class="container">
+                {% include 'includes/footer_related_posts.html' %}
+            </div>
+        </section>
+
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

@@ -1,0 +1,7 @@
+client ID : 605264265488-pune2vds53munlsjdl8o6ddi35vfvjks.apps.googleusercontent.com
+client Secrete : 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
+
+
+# profile browse 
+client ID : 1026141448640-gfb28lhaqptkv0t8ciej91kglvcpvn65.apps.googleusercontent.com
+client Secrete : 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

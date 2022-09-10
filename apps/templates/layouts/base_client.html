@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include 'includes/dashboard_head.html' %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include 'includes/sidebar_client.html' %}
+    
+    <main class="content">
+
+      {% include 'includes/navigation_client.html' %}
+
+      {% block content %}{% endblock content %} 
+
+      <!-- {% include 'includes/settings-box.html' %} -->
+
+      {% include 'includes/footer.html' %}
+
+    </main>
+
+  {% include 'includes/scripts.html' %}
+    
+  <!-- Specific Page JS goes HERE  -->
+  {% block javascripts %}{% endblock javascripts %}  
+      
+</body>
+</html>

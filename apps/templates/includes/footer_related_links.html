@@ -1,0 +1,7 @@
+<ul>
+    <h3 class='mb-4'>Related Links</h3>
+
+    {% for link in related_links %}
+        <li> <a href= {{ link.url }}  style="color: orange"> {{ link.text }} </a> </li>
+    {% endfor%}
+</ul>

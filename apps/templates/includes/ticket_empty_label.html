@@ -1,0 +1,6 @@
+ <!-- Ticket_Empty Label -->
+ {% if row.empty_status == 'Empty' %}
+ <span class="badge bg-danger font-small px-2 py-1 text-white ms-2 fw-bold">{{ row.empty_status }}</span>
+{% elif row.empty_status == 'Not Empty' %}
+ <span class="badge bg-warning font-small px-2 py-1 text-gray-800 ms-2 fw-bold"></span>
+{% endif %}

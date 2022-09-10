@@ -1,0 +1,19 @@
+<!-- Progress Bar Percent -->
+<div class="row d-flex align-items-center">
+    <div class="col-12 col-xl-2 px-0">
+        <div class="small fw-bold"> {{ row.percent }}%</div>
+    </div>
+    <div class="col-12 col-xl-10 px-0 px-xl-1">
+        <div class="progress progress-lg mb-0">
+          {% if row.percent < 25 %}
+              <div class="progress-bar-red bg-dark" role="progressbar" aria-valuenow="{{ row.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.percent }}%;"></div>
+          {% elif row.percent < 50 %}
+              <div class="progress-bar-yellow bg-dark" role="progressbar" aria-valuenow="{{ row.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.percent }}%;"></div>
+          {% elif row.percent < 75 %}
+              <div class="progress-bar-blue bg-dark" role="progressbar" aria-valuenow="{{ row.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.percent }}%;"></div>
+          {% elif row.percent <= 100 %}
+              <div class="progress-bar-green bg-dark" role="progressbar" aria-valuenow="{{ row.percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ row.percent }}%;"></div>
+          {% endif %}
+        </div>
+    </div>
+</div>

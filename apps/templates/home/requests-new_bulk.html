@@ -1,0 +1,320 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Settings {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div>
+        </div>
+        
+    </div>
+    <div class="">
+        <div class="col-12 col-xl-12">
+            <div class="card card-body border-0 shadow mb-4">
+                <h2 class="h5 mb-4">Add New Bulk Request</h2>
+                <form id='submit_form' method= "POST">
+                    
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-sm-3 mb-5">
+                            <div class="form-group">
+                                <label for="address">Title (<B style="color:red">*</B>)</label>
+                                <input class="form-control" name="input_bulk_title" type="text" placeholder="Enter Title of Your Bulk here ..." required> <!-- required -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 mb-3">
+                            <label for="type">Type (<B style="color:red">*</B>)</label>
+                            <select class="form-select mb-0 " name="input_request_type" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
+                                <option value="" selected disabled hidden>Choose ...</option>
+                                {% for row in requests_types %}
+                                    <option value="{{ row }}" >{{ row }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label >Choose one of our input data methods :</label>
+                    </div>
+                    
+                    <div class="row">
+
+                        <!-- Copy and Paste -->
+                        <div class="col-8 col-xxl-6 mb-6">
+                            <div class="card_blue border-5">
+                                <div class="mt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="blue" class="bi bi-stickies" viewBox="0 0 16 16">
+                                        <path d="M1.5 0A1.5 1.5 0 0 0 0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5z"/>
+                                        <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z"/>
+                                      </svg>
+                                    <h2 class="fs-5 fw-bold mb-0" style="color:blue" data-bs-toggle="tooltip" data-bs-placement="top" title="It is recommended to copy your data from Excel or Google SpreadSheet column and paste them in the following text area. Request data in seperated by newline (\n) character.">Copy and Paste</h2>
+                                </div>
+                                <div class="card-body">
+                                    <div class="col-sm-20 mb-3">
+                                        <div class="form-group">
+                                            <label for="city">Names (<B style="color:red">*</B>)</label>
+                                            <div class="my-4 col-sm-20 mb-5">
+                                                <textarea class="form-control" id="input_business_names" placeholder="Paste your business names here ... " name="input_business_names" rows="4" required></textarea> <!-- required -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-1 mb-2 text-xxl-center">
+                                    <button class="btn btn-blue-800" type="submit" onclick="submit_copy_paste()" >Preview the pasted data 
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                     </button>
+                                </div>
+
+                            </div>
+                        </div>
+                         
+                        <!-- Google SpreadSheet -->
+                        <div class="col-8 col-xxl-6 mb-6">
+                            <div class="card_orange border-5">
+                                <div class="mt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" fill="orange" class="bi bi-file-spreadsheet" viewBox="0 0 16 16">
+                                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v4h10V2a1 1 0 0 0-1-1H4zm9 6h-3v2h3V7zm0 3h-3v2h3v-2zm0 3h-3v2h2a1 1 0 0 0 1-1v-1zm-4 2v-2H6v2h3zm-4 0v-2H3v1a1 1 0 0 0 1 1h1zm-2-3h2v-2H3v2zm0-3h2V7H3v2zm3-2v2h3V7H6zm3 3H6v2h3v-2z"/>
+                                    </svg>
+                                    <h2 class="fs-5 fw-bold mb-0 " style="color:orange">Google SpreadSheet</h2>
+                                  </div>
+                                <div class="card-body">
+                                    <div class="row mb-5">
+                                        <div class="col">
+                                            
+                                            <div class="col-sm-6 mb-2 ">
+                                                <div class="form-group">
+                                                    <label for="address" data-bs-toggle="tooltip" data-bs-placement="top" title="copy and paste your first row  of your desired column in spreadsheet here (Not A,B,...)" >Column Name (<B style="color:red">*</B>)</label>
+                                                    <input class="form-control" name="column_name_spreadsheet" id="column_name_spreadsheet" type="text" placeholder="Enter Column Name of Your data here" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-20 mb-2">
+                                                <div class="form-group">
+                                                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="In order to share your google doc as spreadsheet, you should make it public on the web by clicking green top right share button and copy the sharing link on this field." for="address">SpreadSheet URL (<B style="color:red">*</B>)</label>
+                                                    <input class="form-control" name="url_spreadsheet" id="url_spreadsheet" type="text" placeholder="Example : https://docs.google.com/spreadsheets/d/1UnfcyBQ...yl/edit?usp=sharing" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="mt-1 mb-2 text-xxl-center">
+                                    <button class="btn btn-orange-800" type="submit" onclick="submit_google_spreadsheet()"  >Preview the spreadsheet data 
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Excel Upload .xlsx  -->
+                        <div class="col-8 col-xxl-6 mb-6">
+                            <div class="card_green_light border-5">
+                                <div class="mt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="green" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+                                        <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+                                      </svg>
+                                      
+                                    <h2 class="fs-5 fw-bold mb-0 " style="color:rgb(2, 102, 19)">Excel Upload (.xlsx)</h2>
+                                  </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            
+                                            <div class="col-sm-6 mb-2 ">
+                                                <div class="form-group">
+                                                    <label data-bs-toggle="tooltip" data-bs-placement="top" title="First row of input .xlsx file is considered as title row and you should enter the name of your desired column in the first row" for="address">Column Name (<B style="color:red">*</B>)</label>
+                                                    <input class="form-control" name="column_name_excel_xlsx" id="column_name_excel_xlsx" type="text" placeholder="Enter Column Name of Your Excel data here" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="file-field col-sm-4 mb-1">
+                            
+                                                <div class="d-flex">
+                                                    <svg class="icon text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path></svg>
+                                
+                                                    <input type="file"
+                                                        name="excel_file_xlsx"
+                                                        id="excel_file_xlsx"
+                                                        style="border: 1px solid black; padding: 5px;"
+                                                        required="required">
+
+                                                    <div class="d-md-block">
+                                                        <div class="fw-normal text-dark mb-1">Browse your Excel .xlsx file (<B style="color:red">*</B>)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>        
+                                    </div>
+
+                                </div>
+                                <div class="mt-1 mb-2 text-xxl-center">
+                                    <button class="btn btn-green-800" type="submit" onclick="submit_upload_excel_xlsx()" >Preview the excel data 
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Excel Upload .csv  -->
+                        <div class="col-8 col-xxl-6 mb-6">
+                            <div class="card_magenta border-5">
+                                <div class="mt-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="green" class="bi bi-file-earmark-excel-fill" viewBox="0 0 16 16">
+                                        <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+                                      </svg>
+                                      
+                                    <h2 class="fs-5 fw-bold mb-0 " style="color:rgb(2, 102, 19)">Excel Upload (.csv)</h2>
+                                  </div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            
+                                            <div class="row">
+                                                <div class="col-sm-6 mb-2 ">
+                                                    <div class="form-group">
+                                                        <label data-bs-toggle="tooltip" data-bs-placement="top" title="First row of input .csv file is considered as title row and you should enter the name of your desired column in the first row" for="address">Column Name (<B style="color:red">*</B>)</label>
+                                                        <input class="form-control" name="column_name_excel_csv" id="column_name_excel_csv" type="text" placeholder="Enter Column Name of Your Excel data here" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6 mb-2 ">
+                                                    <div class="form-group">
+                                                        <label data-bs-toggle="tooltip" data-bs-placement="top" title="Delimiter of .csv file is usually comma(,), but for variant types of delimiters it is mandatory to enter your delimiter in your excel file." for="address">Delimiter (<B style="color:red">*</B>)</label>
+                                                        <input class="form-control" name="delimiter_excel_csv" id="delimiter_excel_csv" type="text" placeholder="Delimiter of Your Excel file. Example , ; : " required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="file-field col-sm-4 mb-1">
+                            
+                                                <div class="d-flex">
+                                                    <svg class="icon text-gray-500 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path></svg>
+                                
+                                                    <input type="file"
+                                                        name="excel_file_csv"
+                                                        id="excel_file_csv"
+                                                        style="border: 1px solid black; padding: 5px;"
+                                                        required="required">
+
+                                                    <div class="d-md-block">
+                                                        <div class="fw-normal text-dark mb-1">Browse your Excel .csv file (<B style="color:red">*</B>)</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>        
+                                    </div>
+
+                                </div>
+                                <div class="mt-1 mb-2 text-xxl-center">
+                                    <button class="btn btn-green-800" type="submit" onclick="submit_upload_excel_csv()" >Preview the excel data 
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                        <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                      </svg>
+                                     </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                       
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+
+  function submit_google_spreadsheet() {
+    
+    document.getElementById('column_name_spreadsheet').required = true;
+    document.getElementById('url_spreadsheet').required = true;
+    document.getElementById('input_business_names').required = false;
+    document.getElementById('column_name_excel_xlsx').required = false;
+    document.getElementById('excel_file_xlsx').required = false;
+    document.getElementById('column_name_excel_csv').required = false;
+    document.getElementById('excel_file_csv').required = false;
+    document.getElementById('delimiter_excel_csv').required = false;
+
+    document.getElementById('submit_form').enctype="";
+    document.getElementById('submit_form').action = "/requests_new_bulk_data_confirm/method_google_spreadsheet";
+
+  }
+
+  function submit_copy_paste() {
+    
+    document.getElementById('input_business_names').required = true;
+    document.getElementById('column_name_spreadsheet').required = false;
+    document.getElementById('url_spreadsheet').required = false;
+    document.getElementById('column_name_excel_xlsx').required = false;
+    document.getElementById('excel_file_xlsx').required = false;
+    document.getElementById('column_name_excel_csv').required = false;
+    document.getElementById('excel_file_csv').required = false;
+    document.getElementById('delimiter_excel_csv').required = false;
+
+    document.getElementById('submit_form').enctype="";
+    document.getElementById('submit_form').action = "/requests_new_bulk_data_confirm/method_copy_paste";
+
+  }
+
+
+  function submit_upload_excel_xlsx() {
+    
+    document.getElementById('column_name_excel_xlsx').required = true;
+    document.getElementById('excel_file_xlsx').required = true;
+    document.getElementById('input_business_names').required = false;
+    document.getElementById('column_name_spreadsheet').required = false;
+    document.getElementById('url_spreadsheet').required = false;
+    document.getElementById('column_name_excel_csv').required = false;
+    document.getElementById('excel_file_csv').required = false;
+    document.getElementById('delimiter_excel_csv').required = false;
+
+    document.getElementById('submit_form').enctype="multipart/form-data"; // added for uploading file and get in requests.FILES[]
+    document.getElementById('submit_form').action = "/requests_new_bulk_data_confirm/method_excel";
+
+  }
+
+  function submit_upload_excel_csv() {
+    
+    document.getElementById('column_name_excel_csv').required = true;
+    document.getElementById('excel_file_csv').required = true;
+    document.getElementById('delimiter_excel_csv').required = true;
+    document.getElementById('input_business_names').required = false;
+    document.getElementById('column_name_spreadsheet').required = false;
+    document.getElementById('url_spreadsheet').required = false;
+    document.getElementById('column_name_excel_xlsx').required = false;
+    document.getElementById('excel_file_xlsx').required = false;
+
+    document.getElementById('submit_form').enctype="multipart/form-data"; // added for uploading file and get in requests.FILES[]
+    document.getElementById('submit_form').action = "/requests_new_bulk_data_confirm/method_excel";
+
+  }
+
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,114 @@
+{% extends "layouts/base_admin.html" %}
+
+{% block title %} Settings {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div>
+        </div>
+        
+    </div>
+    <div class="">
+        <div class="col-12 col-xl-12">
+            <div class="card card-body border-0 shadow mb-4">
+                <h2 class="h5 mb-4">Add New Plan</h2>
+                <form action="/plans_admin/" method= "POST">
+                    
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-sm-3 mb-5">
+                            <div class="form-group">
+                                <label for="address">Title (<B style="color:red">*</B>)</label>
+                                <input class="form-control" name="input_plan_title" type="text" placeholder="Enter Title of Your Plan here ..." value="{{ plan_title_selected }}" required> <!-- required -->
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 mb-3">
+                            <label for="type">Status (<B style="color:red">*</B>)</label>
+                            <select class="form-select mb-0 " name="input_plan_status" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
+                                <option value="" selected disabled hidden>Choose ... </option>
+
+                                {% for row in plan_status %}
+                                    <option value="{{ row }}" >{{ row }}</option>
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mb-1">
+                      <div class="form-group">
+                          <label for="address">Description</label>
+                          <input class="form-control" name="input_plan_description" type="text" placeholder="Enter Description json of Your Plan here ..." value="{{ plan_description_selected }}">
+                      </div>
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                      <div class="form-group">
+                          <label for="address">Count (<B style="color:red">*</B>)</label>
+                          <input class="form-control" name="input_plan_count" type="text" placeholder="Enter Count of Your Plan here ..." value="{{ plan_count_selected }}" required> <!-- required -->
+                      </div>
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                      <div class="form-group">
+                          <label for="address">Price (<B style="color:red">*</B>)</label>
+                          <input class="form-control" name="input_plan_price" type="text" placeholder="Enter Price of Your Plan here ..." value="{{ plan_price_selected }}" required> <!-- required -->
+                          
+                        </div>
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                      <div class="form-group">
+                          <label for="address">Discount</label>
+                          <input class="form-control" name="input_plan_discount" type="text" placeholder="Enter Discount of Your Plan here ..." value="{{ plan_discount_selected }}"> <!-- required -->
+                          
+                      </div>
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                      <div class="form-group">
+                          <label for="address">Order</label>
+                          <input class="form-control" name="input_plan_order" type="text" placeholder="Enter Order of Your Plan here ..." value="{{ plan_order_selected }}"> <!-- required -->
+                      </div>
+                    </div>
+                    <div class="col-sm-3 mb-1">
+                      <div class="form-group">
+                          <label for="address">Tag</label>
+                          <input class="form-control" name="input_plan_tag" type="text" placeholder="Enter Tag of Your Plan here ..." value="{{ plan_tag_selected }}"> <!-- required -->
+                      </div>
+                    </div>
+
+                     <!-- pass hidden variable to Edit Plan to /plans-admin/ -->
+                     <textarea name="input_form_type" hidden> {{ form_type }}</textarea>
+                     <textarea name="input_plan_id_selected" hidden> {{ plan_id_selected }}</textarea>
+
+
+                    <div class="mt-3 text-xxl-center">
+                        <button class="btn btn-green-800" type="submit">
+                          {% if form_type == 'New' %}
+                            Insert
+                          {% elif form_type == 'Edit' %}
+                            Edit
+                          {% endif %}   
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                          </svg>
+                        </button>
+                    </div>
+
+                  </div>
+
+                       
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+{% endblock javascripts %}

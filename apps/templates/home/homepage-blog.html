@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head.html" %}
+
+<body>
+    {% include "includes/googletagmanager.html" %}
+    
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+        <div class="section section-sm mt-8 pt-3 pt-lg-5 pb-7">
+            <div class="container">
+              <div class="row justify-content-center">
+                <article class="col-12 col-lg-8">
+
+                  {% for row in post_list %}
+
+                    <section class="blog-card mb-4 mb-lg-5">
+                      <div class="card shadow-sm border-light px-0 py-3 p-md-4">
+                        <div class="card-body py-2">
+                          <div class="font-small mb-3 ">
+                            <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-minus" viewBox="0 0 16 16">
+                              <path d="M5.5 10.5A.5.5 0 0 1 6 10h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5z"/>
+                              <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                              <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+                            </svg>
+                            
+                            <time class="d-inline" pubdate="" datetime="{{ row.time_slot }}">{{ row.time_slot }}</time>
+                            </span>
+                          </div>
+                          <h2 class="h2 mt-0 mt-md-2 mb-0">{{ row.title | safe }}</h2>
+                          <div class="d-block mb-0 mb-lg-4 mt-1">
+                            <img src="/static/assets/img/blog/{{ row.image_name }}" class=" card-img" alt="{{ row.title }}" data-ll-status="loaded">
+                          </div>
+
+                          {% for paragraph in row.paragraph_list %}
+                            <div class=" mb-3">
+                              {% if forloop.last == True %}
+                                <div class="truncate-text justify-paragraph_center mb-6" > {{ paragraph.body | safe }} </div>
+                              {% else %}
+                                <div class="justify-paragraph_center" > {{ paragraph.body | safe }} </div>
+                              {% endif %}
+                            </div>
+                          {% endfor%}
+                          <a type="button " class="btn btn-secondary d-inline-flex align-items-center mb-2" href="/Post/{{ row.title }}/">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt  mt-1 me-2" viewBox="0 0 16 16">
+                              <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                              <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                            </svg>
+                              Read more
+                          </a>
+                        </div> 
+                    </section>
+                  {% endfor %}
+
+                  {% include "includes/pagination_GET.html" %}
+
+                </article>
+                
+
+
+                <aside class="col-12 col-lg-4 mt-3 mt-lg-0 pl-lg-4">
+                  <div class="card shadow-sm border-light rounded-md p-3 pt-4">
+                    <h1 class="mb-3 text-center h6">Join our profile browse blog</h1>
+
+                    <form action="" class="seva-form formkit-form" method="post" data-sv-form="1881096" data-uid="62926e41f0" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;Success! Now check your email to confirm your subscription.&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:false,&quot;url&quot;:&quot;https://convertkit.com?utm_source=dynamic&amp;utm_medium=referral&amp;utm_campaign=poweredby&amp;utm_content=form&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="">
+
+                      {% csrf_token %}
+
+                      <div data-style="clean">
+                        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+                        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+                          <div class="formkit-field mb-2">
+                            <input class="form-control" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;">
+                          </div>
+
+                          <button data-element="submit"  class="btn btn-orange-800" >
+                            <div class="formkit-spinner">
+                              
+                            </div>
+                            <span class="">Subscribe</span>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                  <div class="card shadow-sm border-light rounded-md p-3 pt-4 mt-4">
+                    <p class="mb-3 text-center h6">Get your eligible Plan </p>
+                    <a href="/pricing/" class="btn btn-info"  rel="nofollow">Purchase Plans <i class="fad fa-external-link ml-2"></i>
+                    </a>
+                  </div>
+                  
+                  
+                  <div id="freebies" class=" shadow-sm border-light rounded-md mt-4 px-3 pb-0 pt-4">
+                    <h2 class="h6 mb-4 text-center">Popular Tags <i class="fas fa-heart ml-1 text-danger"></i>
+                    </h2>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#social_network</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#socialaccounts</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#instagram</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#twitterbusiness</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#influence</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#digital_marketing</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#SOCIAL_NETWORKING</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#digital_advertising</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#twitter</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#pinterst</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#FOLLOWERS</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#developers_code</button>
+                    <button class="btn btn-outline-gray-700 mt-1" type="button">#Youtube_Channel</button>
+
+                        
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+
+          <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            
+        </section>
+
+       
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

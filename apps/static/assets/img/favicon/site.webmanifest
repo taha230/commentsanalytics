@@ -1,0 +1,19 @@
+{
+    "name": "social browse",
+    "short_name": "SB",
+    "icons": [
+        {
+            "src": "/favicon_120x120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon_512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}

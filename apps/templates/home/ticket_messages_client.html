@@ -1,0 +1,151 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+      
+<div class="row justify-content-center mt-3 ">
+
+  <div>
+    <button class="btn btn-danger d-inline-flex align-items-center text-white">
+      <a href="{% url 'tickets_client' %}" type="" class="btn-danger text-white">
+        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+        </svg> 
+        Back to Tickets
+      </a>
+  </button>
+  </div>
+  
+
+  <div class="row justify-content-center mt-3 mb-5">
+      <h2 class="h4">title : {{ title }}</h2>
+  </div>
+
+
+  <div class="col-12">
+
+    {% for row in ticket_message_list %}
+
+      {% if row.user_type == 'Client' %}
+
+        <div class="bg-message-question card border-0 shadow p-4 mb-4 me-lg-6">
+          <div class="d-flex justify-content-between align-items-center mb-2"><span class="font-small"><a > <span class="fw-bold">You</span> </a><span class="badge bg-secondary fw-normal ms-2 ">{{ row.time_slot }}</span></span>
+          
+
+            <div class="d-none d-sm-block">
+              <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-default" type="submit" onclick="delete_button_clicked('{{ row.message_id }}')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 20 20">
+                  <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p name="modal_title", id="modal_title">Are you sure to remove this message?</p>
+                          
+                      </div>
+                      <div class="modal-footer">
+                          <a name = 'modal_a' id = 'modal_a' class="btn btn-secondary"  >Yes</a>
+                          <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Close</button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <!-- End of Modal Content -->
+
+
+
+          </div>
+          {% for body in row.body_list %}
+            <p class="m-0">{{ body }}</p>
+          {% endfor %}
+
+          <div class="d-flex justify-content-between align-items-center mb-2"><span class="font-small"><a > <span class="fw-bold"></span> </a></span>
+            <div class="d-none d-sm-block small-seen-message ">
+              {% if row.seen_status == 'Seen' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                  <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+                  <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
+                </svg>
+                Seen
+              {% endif %}
+
+            </div>
+          </div>
+          
+        </div>
+
+      {% elif row.user_type == 'Administrator' %}
+
+        <div class="bg-message-answer card border-0 shadow p-4 ms-md-5 ms-lg-6 mb-4">
+          <div class="d-flex justify-content-between align-items-center mb-2"><span class="font-small"><span class="fw-bold">Admin Answer</span> <span class="badge bg-secondary fw-normal  ms-2">{{ row.time_slot }}</span></span>
+          </div>
+          {% for body in row.body_list %}
+            <p class="m-0">{{ body }}</p>
+          {% endfor %}          
+        </div>
+        
+      {% endif %}
+
+    {% endfor %}
+
+
+    
+    
+    <form action="/new_message_client/ticket_{{ ticket_id }}" class="mt-4 mb-5 mt-md-8" method="POST" >
+
+      {% csrf_token %}
+
+      <textarea class=" bg-message-text form-control border-0 shadow mb-4" id="message_body" name="message_body" placeholder="Your Message" rows="6" maxlength="1000" required></textarea>
+      <div class="d-flex justify-content-between align-items-right mt-3">
+        
+        <div class="file-field">
+          <div class="d-flex justify-content-center">
+            <!-- <div class="d-flex align-items-center">
+              <svg class="icon icon-md text-gray-400 me-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path>
+              </svg>
+              <input type="file">
+              <div class="d-block text-left d-sm-block">
+                <div class="fw-normal text-dark mb-lg-1">Attach File</div>
+                <div class="text-gray small pe-3 pe-lg-11 d-none d-md-inline">Supported files are: jpg, jpeg, png, doc, pdf, gif, zip, rare, tar, txt, xls, docx, xlsx, odt</div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-secondary d-inline-flex align-items-center text-dark">
+            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg> Send</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>  
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script type="text/javascript">
+
+  function delete_button_clicked(message_id_input) {
+    document.getElementById('modal_a').href="/delete_message_client/message_" + message_id_input;
+  }
+
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,23 @@
+<div class="row">
+    {% for row in latest_posts %} 
+
+        <div class="col-lg-4">
+            <div class="card h-100">
+            <div class="overflow-hidden position-relative border-radius-xl bg-cover h-100" style="background-image: url('/static/assets/img/blog/{{ row.image_name }}');">
+                <span class="mask bg-gradient-dark"></span>
+                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                <h5 class="text-white font-weight-bolder mb-6 pt-2">{{ row.title | safe }}</h5>
+                
+                <a class="text-white mb-0 icon-move-right mt-auto" href="/Post/{{ row.title }}/">
+                    <h6 class="text-white font-weight-bolder-small mb-0">Read More
+                        <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                    </h6>
+
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    {% endfor %}
+  </div>

@@ -1,0 +1,227 @@
+        <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+            <a class="navbar-brand me-lg-5" href="/">
+                <img class="navbar-brand-dark" src="/static/assets/img/brand/light.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="/static/assets/img/brand/dark.svg" alt="Volt logo" />
+            </a>
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+          <div class="sidebar-inner px-4 pt-3">
+            
+            <ul class="nav flex-column pt-3 pt-md-0">
+              <li class="nav-item">
+                <a  class="nav-link d-flex align-items-center">
+                  <span class="sidebar-icon">
+                    <img width="45" height="30" src = "/static/assets/img/icons/logo_only_zoom2.png"/>
+                  </span>
+                  <span class="mt-1 ms-1 sidebar-text">
+                    <img width="120" height="20" src = "/static/assets/img/icons/text_only_zoom2_white.png"/>
+
+                  </span>
+                </a>
+              </li>
+              
+              <!-- # Dashboard -->
+              <li class="nav-item {% if 'dashboard' in segment %} active {% endif %}">
+                <a href="{% url 'dashboard_client' %}" class="nav-link">
+                  <span class="sidebar-icon">
+                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M17.237,3.056H2.93c-0.694,0-1.263,0.568-1.263,1.263v8.837c0,0.694,0.568,1.263,1.263,1.263h4.629v0.879c-0.015,0.086-0.183,0.306-0.273,0.423c-0.223,0.293-0.455,0.592-0.293,0.92c0.07,0.139,0.226,0.303,0.577,0.303h4.819c0.208,0,0.696,0,0.862-0.379c0.162-0.37-0.124-0.682-0.374-0.955c-0.089-0.097-0.231-0.252-0.268-0.328v-0.862h4.629c0.694,0,1.263-0.568,1.263-1.263V4.319C18.5,3.625,17.932,3.056,17.237,3.056 M8.053,16.102C8.232,15.862,8.4,15.597,8.4,15.309v-0.89h3.366v0.89c0,0.303,0.211,0.562,0.419,0.793H8.053z M17.658,13.156c0,0.228-0.193,0.421-0.421,0.421H2.93c-0.228,0-0.421-0.193-0.421-0.421v-1.263h15.149V13.156z M17.658,11.052H2.509V4.319c0-0.228,0.193-0.421,0.421-0.421h14.308c0.228,0,0.421,0.193,0.421,0.421V11.052z"></path>                    
+                    </svg>
+                  </span> 
+                  <span class="sidebar-text">Dashboard</span>
+                </a>
+              </li>
+
+              <!-- # Purchase -->
+              <li class="nav-item {% if 'purchase-' in segment %} active {% endif %}">
+                <span
+                  class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                  data-bs-toggle="collapse" data-bs-target="#submenu-purchase">
+                  <span>
+                    <span class="sidebar-icon">
+                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                      </svg>
+                    </span> 
+                    <span class="sidebar-text">Purchase</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                  </span>
+                </span>
+                <!-- <div class="multi-level collapse {% if 'purchase-' in segment %} show {% endif %} " role="list" -->
+                <div class="multi-level collapse  show " role="list"
+                  id="submenu-purchase" aria-expanded="false">
+                  <ul class="flex-column nav">
+                    <li class="nav-item {% if 'purchase-plans' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'plans_preview_client' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                          <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                        </svg>
+                        <span class="sidebar-text">Plans</span>
+                      </a>
+                    </li>
+                    <li class="nav-item {% if 'purchase-transactions' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'transactions_client' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M11 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm5-4a5 5 0 1 1-10 0 5 5 0 0 1 10 0z"/>
+                          <path d="M9.438 11.944c.047.596.518 1.06 1.363 1.116v.44h.375v-.443c.875-.061 1.386-.529 1.386-1.207 0-.618-.39-.936-1.09-1.1l-.296-.07v-1.2c.376.043.614.248.671.532h.658c-.047-.575-.54-1.024-1.329-1.073V8.5h-.375v.45c-.747.073-1.255.522-1.255 1.158 0 .562.378.92 1.007 1.066l.248.061v1.272c-.384-.058-.639-.27-.696-.563h-.668zm1.36-1.354c-.369-.085-.569-.26-.569-.522 0-.294.216-.514.572-.578v1.1h-.003zm.432.746c.449.104.655.272.655.569 0 .339-.257.571-.709.614v-1.195l.054.012z"/>
+                          <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083c.058-.344.145-.678.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1H1z"/>
+                          <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 5.982 5.982 0 0 1 3.13-1.567z"/>
+                        </svg>
+                        <span class="sidebar-text">Transactions</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- # Requests -->
+              <li class="nav-item {% if 'requests-' in segment %} active {% endif %}">
+                <span
+                  class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                  data-bs-toggle="collapse" data-bs-target="#submenu-requests">
+                  <span>
+                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+                    </svg> 
+                    <span class="sidebar-text">Requests</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                  </span>
+                </span>
+                <!-- <div class="multi-level collapse {% if 'requests-' in segment %} show {% endif %}" -->
+                <div class="multi-level collapse show"
+                  role="list" id="submenu-requests" aria-expanded="false">
+                  <ul class="flex-column nav">
+                    <li class="nav-item {% if 'requests-new' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'requests_new_bulk' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M8 0c-.176 0-.35.006-.523.017l.064.998a7.117 7.117 0 0 1 .918 0l.064-.998A8.113 8.113 0 0 0 8 0zM6.44.152c-.346.069-.684.16-1.012.27l.321.948c.287-.098.582-.177.884-.237L6.44.153zm4.132.271a7.946 7.946 0 0 0-1.011-.27l-.194.98c.302.06.597.14.884.237l.321-.947zm1.873.925a8 8 0 0 0-.906-.524l-.443.896c.275.136.54.29.793.459l.556-.831zM4.46.824c-.314.155-.616.33-.905.524l.556.83a7.07 7.07 0 0 1 .793-.458L4.46.824zM2.725 1.985c-.262.23-.51.478-.74.74l.752.66c.202-.23.418-.446.648-.648l-.66-.752zm11.29.74a8.058 8.058 0 0 0-.74-.74l-.66.752c.23.202.447.418.648.648l.752-.66zm1.161 1.735a7.98 7.98 0 0 0-.524-.905l-.83.556c.169.253.322.518.458.793l.896-.443zM1.348 3.555c-.194.289-.37.591-.524.906l.896.443c.136-.275.29-.54.459-.793l-.831-.556zM.423 5.428a7.945 7.945 0 0 0-.27 1.011l.98.194c.06-.302.14-.597.237-.884l-.947-.321zM15.848 6.44a7.943 7.943 0 0 0-.27-1.012l-.948.321c.098.287.177.582.237.884l.98-.194zM.017 7.477a8.113 8.113 0 0 0 0 1.046l.998-.064a7.117 7.117 0 0 1 0-.918l-.998-.064zM16 8a8.1 8.1 0 0 0-.017-.523l-.998.064a7.11 7.11 0 0 1 0 .918l.998.064A8.1 8.1 0 0 0 16 8zM.152 9.56c.069.346.16.684.27 1.012l.948-.321a6.944 6.944 0 0 1-.237-.884l-.98.194zm15.425 1.012c.112-.328.202-.666.27-1.011l-.98-.194c-.06.302-.14.597-.237.884l.947.321zM.824 11.54a8 8 0 0 0 .524.905l.83-.556a6.999 6.999 0 0 1-.458-.793l-.896.443zm13.828.905c.194-.289.37-.591.524-.906l-.896-.443c-.136.275-.29.54-.459.793l.831.556zm-12.667.83c.23.262.478.51.74.74l.66-.752a7.047 7.047 0 0 1-.648-.648l-.752.66zm11.29.74c.262-.23.51-.478.74-.74l-.752-.66c-.201.23-.418.447-.648.648l.66.752zm-1.735 1.161c.314-.155.616-.33.905-.524l-.556-.83a7.07 7.07 0 0 1-.793.458l.443.896zm-7.985-.524c.289.194.591.37.906.524l.443-.896a6.998 6.998 0 0 1-.793-.459l-.556.831zm1.873.925c.328.112.666.202 1.011.27l.194-.98a6.953 6.953 0 0 1-.884-.237l-.321.947zm4.132.271a7.944 7.944 0 0 0 1.012-.27l-.321-.948a6.954 6.954 0 0 1-.884.237l.194.98zm-2.083.135a8.1 8.1 0 0 0 1.046 0l-.064-.998a7.11 7.11 0 0 1-.918 0l-.064.998zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                        <span class="sidebar-text">Add New Bulk</span>
+                      </a>
+                    </li>
+                    <li class="nav-item {% if 'requests-bulk_status' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'requests_bulk_status_client' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path d="m14.12 10.163 1.715.858c.22.11.22.424 0 .534L8.267 15.34a.598.598 0 0 1-.534 0L.165 11.555a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.66zM7.733.063a.598.598 0 0 1 .534 0l7.568 3.784a.3.3 0 0 1 0 .535L8.267 8.165a.598.598 0 0 1-.534 0L.165 4.382a.299.299 0 0 1 0-.535L7.733.063z"/>
+                          <path d="m14.12 6.576 1.715.858c.22.11.22.424 0 .534l-7.568 3.784a.598.598 0 0 1-.534 0L.165 7.968a.299.299 0 0 1 0-.534l1.716-.858 5.317 2.659c.505.252 1.1.252 1.604 0l5.317-2.659z"/>
+                        </svg>
+                        <span class="sidebar-text">Bulk Status</span>
+                      </a>
+                    </li>
+                    <li class="nav-item {% if 'requests-bulk_client' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'requests_bulk_client' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        <span class="sidebar-text">Bulk Requests</span>
+                      </a>
+                    </li>
+                    <li class="nav-item {% if 'requests-single' in segment %} active {% endif %}">
+                      <a class="nav-link" href="{% url 'requests_single_client' %}">
+                        <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                        </svg>
+                        <span class="sidebar-text">Single Requests</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <!-- # Tickets -->
+              <li class="nav-item {% if 'tickets' in segment %} active {% endif %}">
+                <a href="{% url 'tickets_client' %}" class="nav-link d-flex align-items-center justify-content-between">
+                  <span>
+                    <span class="sidebar-icon">
+                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                      </svg>
+                     </span>
+                     <span class="sidebar-text">Tickets</span> 
+                  </span>
+                    <!-- <span class="badge badge-sm bg-danger badge-pill notification-count">4</span> -->
+                    {% if unread_count_ticket == 0 %}
+                      <span class="badge bg-secondary"></span> </span>
+                    {% elif unread_count_ticket > 0 %}
+                      <span class="badge badge-sm bg-danger badge-pill notification-count ">{{ unread_count_ticket }}</span> </span>
+                    {% endif %}
+                </a>
+              </li>
+
+              <!-- # APIs -->
+              <li class="nav-item {% if 'api-' in segment %} active {% endif %}">
+                <span
+                  class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                  data-bs-toggle="collapse" data-bs-target="#submenu-api">
+                  <span>
+                    <span class="sidebar-icon">
+                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                      </svg>
+                    </span> 
+                    <span class="sidebar-text">APIs</span>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                  </span>
+                </span>
+                <!-- <div class="multi-level collapse show " role="list" id="submenu-api" aria-expanded="false"> -->
+                <div class="multi-level collapse {% if 'api-' in segment %} show {% endif %}" role="list" id="submenu-api" aria-expanded="false">
+                    <ul class="flex-column nav">
+                    <li class="nav-item {% if 'api-python' in segment %} active {% endif %}">
+                      <!-- <a class="nav-link" href="/api-python_client.html"> -->
+                      <a class="nav-link" href="">
+                        <img width="20" height="20" src = "/static/assets/img/icons/python-icon.svg"/>
+                        <span class="sidebar-text"> Python</span>
+                        <span class="badge bg-plan-8 font-super-small px-2 py-1 text-gray-800 ms-2 fw-bold">Comming Soon</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if 'api-nodejs' in segment %} active {% endif %}">
+                      <a class="nav-link" href="">
+                      <!-- <a class="nav-link" href="/api-nodejs_client.html"> -->
+                        <img width="20" height="20" src = "/static/assets/img/icons/nodejs-icon.svg"/>
+                        <span class="sidebar-text"> Nodejs</span>
+                        <span class="badge bg-plan-8 font-super-small px-2 py-1 text-gray-800 ms-2 fw-bold">Comming Soon</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              
+              <!-- # Profile -->
+              <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+              <li class="nav-item {% if 'profile' in segment %} active {% endif %}">
+                <a href="/profile_client.html" class="nav-link">
+                  <span class="sidebar-icon">
+                    <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                  </span>
+                  <span class="sidebar-text">Profile</span>
+                </a>
+              </li>
+
+              <!-- # Logout -->
+              <li class="nav-item {% if 'logout' in segment %} active {% endif %}">
+                <a href="{% url 'logout' %}" class="nav-link">
+                <!-- <a href="{% url 'login' %}" class="nav-link"> -->
+                  <span class="sidebar-icon">
+                    <svg class="icon icon-xs text-danger me-2" fill="none" stroke="currentColor" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>                
+                  </span>
+                  <span class="sidebar-text">Logout</span>
+                </a>
+              </li>
+          
+            </ul>
+          </div>
+        </nav>

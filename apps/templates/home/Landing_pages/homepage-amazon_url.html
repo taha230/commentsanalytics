@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head_title_description_variable.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+
+                   
+                    <div class="col-lg-6">
+                        <img src="/static/assets/img/icons/category_amazon_banner.jpg" alt="category_amazon_banner">
+                    </div>
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h1 class="h1 d-flex align-items-center">Amazon Products URLs</h1>
+                        <span class="badge bg-info mb-5">Comming Soon</span>
+                        <p class="mb-4 mt-5">Amazon is the biggest e-commerce website and the world's largest online retailer and marketplace that provides a selling platform for both seller and buyer. Amazon has earned a reputation as a brand of well-established industries through technological innovation and mass-scale commercial.</p>
+                        <p>There are several product pages of sellers that provide the product detail and the price of their productions. If you want to analyze your competitor products' details and costs, you should have a list of valid URLs that refer to the relevant page on Amazon. If the list of your queries is so large, the finding process is so frustrating. So, an automated service that gets the list of input and finds the valid Amazon URLs is crucial. The profile browse service is developed to do this job for large files upload.</p>
+                        <a href="{% url 'register' %}" target="" class="btn btn-secondary d-inline-flex align-items-center me-3">
+                            Try it free
+                        </a>
+                    </div>
+                </div>
+ 
+                
+                <div class="row justify-content-center">
+                    {% include "includes/most_frequent_questions_services.html" %}                
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            <div class="container">
+                {% include 'includes/footer_related_posts.html' %}
+            </div>
+        </section>
+
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

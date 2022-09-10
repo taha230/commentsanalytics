@@ -1,0 +1,158 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Settings {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+        <div>
+        </div>
+        
+    </div>
+    <div class="">
+        <div class="col-12 col-xl-12">
+            <div class="card card-body border-0 shadow mb-4">
+                <h2 class="h5 mb-4">Confirm Bulk Request data</h2>
+                <form method="POST" id="form_parent" name="form_parent" >
+                    
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-sm-3 mb-6">
+                            <div class="form-group">
+                                <label for="address">Title</label>
+                                <input class="form-control" id="input_bulk_title" name="input_bulk_title" type="text" placeholder="Enter Title of Your Bulk here" value="{{ bulk_title }}" disabled required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2 mb-3">
+                            <label for="type">Type</label>
+                            <select class="form-select mb-0 " id="input_request_type" name="input_request_type" aria-label="Request Type" placeholder="Request Type" disabled>
+                                <option value="{{ request_type }}" > {{ request_type }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label >Number of Bulk Requests : </label> <span class="text-success fw-bold"> {{ total_items }} </span>
+
+
+                    <div class="mb-4">
+                        <!-- <label >Your input Business Names :</label> -->
+                    </div>
+                    
+                    <div class="row">
+                        
+                        <div class="col-8 col-xxl-12 mb-6">
+                            <div class="card_green border-5">
+                                
+                                <div class="card-body">
+                                    <div class="col-sm-30 mb-3">
+                                        <!-- <div class="form-group">
+                                            <div class="my-4 col-sm-30 mb-4">
+                                                <textarea class="form-control" placeholder="Paste your business names here ... " id="textarea" name="input_business_names" rows="12" > {{ business_names }}</textarea>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-sm-30 mb-3">
+                                            <table class="table table-centered rounded">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th class="border-0 col-xxl-1">#</th>
+                                                        <th class="border-0">Name</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                    {% for row in business_names_list_page %}
+                                                        <tr>
+                                                            <td><a href="#" class="text-primary fw-bold"> {{ row.index }} </a> </td>
+                                                            <td class="fw-bold d-flex align-items-center">
+                                                                {{ row.name }}
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    {% endfor %}
+                                                    
+                                                    <!-- pass hidden variable to POST pagination -->
+                                                    <textarea name="input_business_names" hidden> {{ business_names_raw }}</textarea>
+                                                    <textarea name="input_request_type" hidden> {{ request_type }}</textarea>
+                                                    <textarea name="input_bulk_title" hidden> {{ bulk_title }}</textarea>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if total_items != 0 %}
+                            {% include "includes/pagination_POST2.html" %}
+                        {% endif %}
+
+                        <div class="mt-3 text-xxl-center ">
+                            
+                            <button class="btn btn-red-800 me-8" type="submit" formaction="/requests_new_bulk/" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                    <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                </svg>
+                                Back 
+                                <div class = "me-6"></div>
+                                
+                            </button>
+
+                            
+
+                            {% if valid_to_submit %}
+                                {% if total_items > 0 %}
+                                    <button class="btn btn-green-800" type="submit" formaction="/requests_bulk_status_client/" id='confirm_button' onclick="show_spinner()" >Confirm 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                        </svg>
+                                    </button>
+                                {% else %}
+                                    <button class="btn btn-green-800" type="submit" formaction="/requests_bulk_status_client/" disabled id='confirm_button' onclick="show_spinner()">Confirm 
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                            <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                        </svg>
+                                    </button>
+                                {% endif %}    
+                            {% else %}
+                                <button type="button" id='confirm_button' onclick="show_spinner()" class="btn btn-green-800" data-bs-toggle="modal" data-bs-target="#modalNotification">Confirm
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                                    </svg>
+                                </button>
+                            {% endif %}
+
+                            {% include "includes/modal_remain_exceeded.html" %}
+
+                        </div>
+
+                    </div>
+
+                       
+                </form>
+            </div>
+
+        </div>
+        
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block javascripts %}
+<script>
+    function show_spinner() {
+ 
+        document.getElementById("confirm_button").textContent='';
+        document.getElementById("confirm_button").className='spinner-border';
+    }
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head_title_description_variable.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+
+                   
+                    <div class="col-lg-6">
+                        <img src="/static/assets/img/icons/category_profile_banner.jpg" alt="category_profile_banner">
+                    </div>
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h1 class="h1 d-flex align-items-center">Profile URLs</h1>
+                        <p class="mb-4 mt-5">Nowadays, there are huge numbers of profile searches to find the URLs of people, companies, places, ... on data-driven platforms. This platform provides general and detailed information on different categories used by clients. Sometimes, finding an accurate profile of entities in various sources of data is a complex task.</p>
+                        <p>Moreover, if the size of data to search is huge, the time of searching and finding their valid profiles on these platforms is a serious issue. As time and accuracy are two main factors of our clients, we developed an automated service to do this task.</p>
+                        <p>The profile browse service used its searching in search engines and valid databases to perform this task with high accuracy and optimal processing speed. It only needs to upload your file including your queries and determine your website to search. The process will start in dedicated servers and return the excel output file for use on your side. It's time to start your request.</p>
+                        <a href="{% url 'register' %}" target="" class="btn btn-secondary d-inline-flex align-items-center me-3">
+                            Try it free
+                        </a>
+                    </div>
+                </div>
+ 
+                
+                <div class="row justify-content-center">
+                    {% include "includes/most_frequent_questions_services.html" %}                
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            <div class="container">
+                {% include 'includes/footer_related_posts.html' %}
+            </div>
+        </section>
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

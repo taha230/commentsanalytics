@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head_title_description_variable.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+
+                   
+                    <div class="col-lg-6">
+                        <img src="/static/assets/img/icons/category_wikipedia_banner.jpg" alt="category_wikipedia_banner">
+                    </div>
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h1 class="h1 d-flex align-items-center">Wikipedia Profile URLs</h1>
+                        <p class="mb-4 mt-5">Wikipedia is a free Internet-based encyclopedia text database that contains general information about any entities around the world. It covers 326 languages that gonna be the first choice for general information about any content. This platform has about 330 active users that update the information of queries in any language periodically.</p>
+                        <p>Finding the URL profile of queries in large sizes can be a time-consuming issue for users. The profile browse service is developed to solve this need by running an automated procedure. This service uses different search engines results and verified databased records to find the Wikipedia URLs for every query confidently. Start your free test use and enjoy the fast and accurate process.</p>
+                        <a href="{% url 'register' %}" target="" class="btn btn-secondary d-inline-flex align-items-center me-3">
+                            Try it free
+                        </a>
+                    </div>
+                </div>
+ 
+                
+                <div class="row justify-content-center">
+                    {% include "includes/most_frequent_questions_services.html" %}                
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            <div class="container">
+                {% include 'includes/footer_related_posts.html' %}
+            </div>
+        </section>
+
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

@@ -1,0 +1,156 @@
+{% extends "layouts/base_admin.html" %}
+
+{% block title %} UserList {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+  <div class="d-block mb-4 mb-md-3 mt-md-3">          
+      <h2 class="h4">All Users History </h2>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mb-4">
+        <div class="card bg-yellow-100 border-0 shadow">
+           
+            <div class="card-body p-2">
+                <div class="ct-chart-transactions-monthly ct-double-octave ct-series-b"></div>
+                <div id = "transaction_table" hidden> {{ monthly_users_list }} </div>
+
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h4">All Users</h2>
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group ms-2 ms-lg-3">
+            
+              <button type="button" class="btn btn-sm btn-outline-gray-600">
+                  <svg class="icon icon-xs me-2" fill="red" viewBox="0 0 20 20">
+                      <path d="M5.523 12.424c.14-.082.293-.162.459-.238a7.878 7.878 0 0 1-.45.606c-.28.337-.498.516-.635.572a.266.266 0 0 1-.035.012.282.282 0 0 1-.026-.044c-.056-.11-.054-.216.04-.36.106-.165.319-.354.647-.548zm2.455-1.647c-.119.025-.237.05-.356.078a21.148 21.148 0 0 0 .5-1.05 12.045 12.045 0 0 0 .51.858c-.217.032-.436.07-.654.114zm2.525.939a3.881 3.881 0 0 1-.435-.41c.228.005.434.022.612.054.317.057.466.147.518.209a.095.095 0 0 1 .026.064.436.436 0 0 1-.06.2.307.307 0 0 1-.094.124.107.107 0 0 1-.069.015c-.09-.003-.258-.066-.498-.256zM8.278 6.97c-.04.244-.108.524-.2.829a4.86 4.86 0 0 1-.089-.346c-.076-.353-.087-.63-.046-.822.038-.177.11-.248.196-.283a.517.517 0 0 1 .145-.04c.013.03.028.092.032.198.005.122-.007.277-.038.465z"/>
+                      <path fill-rule="evenodd" d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3zM4.165 13.668c.09.18.23.343.438.419.207.075.412.04.58-.03.318-.13.635-.436.926-.786.333-.401.683-.927 1.021-1.51a11.651 11.651 0 0 1 1.997-.406c.3.383.61.713.91.95.28.22.603.403.934.417a.856.856 0 0 0 .51-.138c.155-.101.27-.247.354-.416.09-.181.145-.37.138-.563a.844.844 0 0 0-.2-.518c-.226-.27-.596-.4-.96-.465a5.76 5.76 0 0 0-1.335-.05 10.954 10.954 0 0 1-.98-1.686c.25-.66.437-1.284.52-1.794.036-.218.055-.426.048-.614a1.238 1.238 0 0 0-.127-.538.7.7 0 0 0-.477-.365c-.202-.043-.41 0-.601.077-.377.15-.576.47-.651.823-.073.34-.04.736.046 1.136.088.406.238.848.43 1.295a19.697 19.697 0 0 1-1.062 2.227 7.662 7.662 0 0 0-1.482.645c-.37.22-.699.48-.897.787-.21.326-.275.714-.08 1.103z"/>
+                  </svg>
+              Export PDF
+              </button>
+              <button type="button" class="btn btn-sm btn-outline-gray-600">
+                  <svg class="icon icon-xs me-2" fill="green" viewBox="0 0 20 20">
+                      <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM5.884 6.68 8 9.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 10l2.233 2.68a.5.5 0 0 1-.768.64L8 10.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 10 5.116 7.32a.5.5 0 1 1 .768-.64z"/>
+                  </svg>
+                Export CSV
+              </button>
+        </div>
+    </div>
+ </div>
+  
+  <div class="table-settings mb-4">
+      <div class="row align-items-center justify-content-between">
+          <div class="col col-md-6 col-lg-3 col-xl-4">
+              <div class="input-group me-2 me-lg-3 fmxw-400">
+                  <span class="input-group-text">
+                      <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                      </svg>
+                  </span>
+                  <input type="text" class="form-control" placeholder="Search Username or Email">
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="card card-body border-0 shadow table-wrapper table-responsive">
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th class="border-gray-200">#</th>
+                  <th class="border-gray-200">Email</th>						
+                  <th class="border-gray-200">Username</th>
+                  <th class="border-gray-200">Date Joined</th>
+                  <th class="border-gray-200">Last Login</th>
+                  <th class="border-gray-200">Verify</th>                  
+                  <th class="border-gray-200">Plan</th>
+                  <th class="border-gray-200">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for row in users_list %}
+
+                <tr>
+                    <td>
+                            {{ row.index }}
+                    </td>
+                    <td>
+                        <span class="fw-bold">{{ row.email }} </span>
+                    </td>
+                    <td><span class="fw-normal">{{ row.username }}</span></td>                        
+                    <td><span class="fw-normal">{{ row.date_joined }}</span></td>
+
+
+                    {% if row.last_login == None %}
+                        <td><span class="fw-normal"> </span></td>
+                    {% else %}
+                        <td><span class="fw-normal">{{ row.last_login }}</span></td>
+                    {% endif %}
+                    
+                    {% if row.is_active %}
+                        <td><span style="color:#3385ff;">
+                            <svg class="" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                            Email
+                            </span>
+                        </td>
+                    {% else %}
+                        <td><span style="color:#afabab;">
+                            <svg class="" width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                            Email
+                            </span>
+                        </td>
+                    {% endif %}
+
+
+                    <td>
+                        {% include "includes/plan_text_show.html" %}
+                    </td>
+                    <td>
+                        <!-- <div class="btn-group">
+                            <button class="btn btn-link text-dark dropdown-toggle dropdown-toggle-split m-0 p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon icon-sm">
+                                    <span class="fas fa-ellipsis-h icon-dark"></span>
+                                </span>
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu py-0">
+                                <a class="dropdown-item rounded-top" href="#"><span class="fas fa-eye me-2"></span>View Details</a>
+                                <a class="dropdown-item" href="#"><span class="fas fa-edit me-2"></span>Edit</a>
+                                <a class="dropdown-item text-danger rounded-bottom" href="#"><span class="fas fa-trash-alt me-2"></span>Remove</a>
+                            </div>
+                        </div> -->
+                        
+                            <a href="#">
+                                <svg class="icon icon-xxs" stroke="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                </svg>
+                            </a>
+                    </td>
+                </tr>
+              {% endfor %}
+
+                                           
+          </tbody>
+      </table>
+      {% if total_items != 0 %}
+        {% include "includes/pagination_GET.html" %}
+      {% endif %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

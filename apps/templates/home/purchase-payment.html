@@ -1,0 +1,127 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div hidden=true id="amount">{{amount}}</div>
+<div hidden=true id="return_url">{{return_url}}</div>
+
+
+<div class="row my-4">
+	<div class="col-12 col-lg-6">
+		<div class="card border-0 shadow py-4 mb-4 mb-lg-0">
+			<div class="card-body">
+        <div class="card-header border-bottom p-3 mb-4">
+          <h3 class="h5">Payment Methods</h3>
+          <p class="mb-0"></p>
+        </div>
+        
+        <div id="smart-button-container">
+          <div style="text-align: center;">
+            <div id="paypal-button-container"></div>
+          </div>
+        </div>
+        				<p class="text-dark my-4"></div>
+		</div>
+	</div>
+	<div class="col-12 col-lg-6">
+		<div class="card border-0 card-body shadow p-0 p-md-4">
+			<div class="card-header border-bottom p-3">
+				<h3 class="h5">Payment Summary</h3>
+				<p class="mb-0">profile browse Extraction Service</p>
+			</div>
+			<div class="card-body px-0 py-0">
+				<ul class="list-group">
+					<li class="list-group-item border-bottom py-3">
+						<div class="row align-items-center">
+          <div class="d-flex mb-3"> 
+            <span class="h5 mb-0 currency">$</span> 
+            <span class="price display-2 text-dark mb-0 enterprise_price">{{amount}}</span> 
+             
+            </div>
+            </div>
+          </li>
+
+          <li class="list-group-item border-bottom py-3">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="h6 mb-1"><a >Plan : </a></h3> 
+                <div class=" my-3"> 
+                  {% include "includes/plan_text_show.html" %}
+                </div>
+              </div>
+							<div class="col-auto">
+							</div>
+						</div>
+					</li>
+					<li class="list-group-item py-3">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="h6 mb-1"><a>Requests Nums : </a></h3> <small class="text-gray-700"> {{ plan.count }}</small></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+	<script src="https://www.paypal.com/sdk/js?client-id=Adg-3yuE98S7ROPd2h1HY8Ke7codoLtsazU6MnW69btR25-Vok0yl0u8OPmfXKWYO_0wEoB___8brLbf&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+	<!-- <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script> -->
+	<script>
+
+	var amount = parseInt(document.getElementById("amount").innerText);
+	var return_url = document.getElementById("return_url").innerText;
+
+    function initPayPalButton() {
+      paypal.Buttons({
+        style: {
+          shape: 'pill',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'buynow',
+          
+        },
+
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{"description":"profilebrowse","amount":{"currency_code":"USD","value":amount}}]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(orderData) {
+            
+            // Full available details
+            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+            // Show a success message within this page, e.g.
+            // const element = document.getElementById('paypal-button-container');
+            // element.innerHTML = '';
+            // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+			actions.redirect(return_url);
+            // Or go to another URL:  actions.redirect('thank_you.html');
+            
+          });
+        },
+
+        onError: function(err) {
+          console.log(err);
+        }
+      }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+  </script>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

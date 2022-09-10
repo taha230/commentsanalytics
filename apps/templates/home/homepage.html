@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header.html" %}
+
+    <main>
+
+
+        <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
+
+
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <!-- <div class="bootstrap-big-icon d-none d-lg-block">
+                            <img width="700" height="500" class="d-block my-1 me-custom-homepage mt-12"  src = "/static/assets/img/illustrations/social_logo_1.png"/>
+                        </div> -->
+                        <!-- <div class="bootstrap-big-icon d-none d-lg-block">
+                            <img width="700" height="500" class="d-block my-1 "  src = "/static/assets/img/icons/logo_only_zoom0.png" alt= "Logo"/>
+                        </div> -->
+                        <h1 class="fw-bolder">Browse Your Profile URLs</h1>
+                        <h2 class="lead fw-normal text-muted mb-5">
+                            (Try People, Business, Artist, Film, Hotel, ...) 
+                        </h2>
+
+
+                        <form action="/requests_demo/" method= "POST">
+
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="col-sm-10 mb-5">
+                                    <div class="form-group">
+                                        <input class="form-control" id="business_name"  name="input_business_name" type="text" placeholder="Enter your Name here ... (Example : Microsoft)" required> <!-- required -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-2 mb-1">
+                                    <select class="form-select mb-0 " id="request_type" name="input_request_type" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
+                                        <option value="" selected disabled hidden>Choose ...</option>
+                                        {% for row in requests_types %}
+                                            <option value="{{ row }}" >{{ row }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+
+                            <!-- Button Modal -->
+                            <div class="d-flex align-items-center justify-content-center mb-5">
+                                <button  class="btn btn-secondary d-inline-flex align-items-center me-4" onclick="show_spinner()" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                    <span class='mx-sm' > Browse </span>
+                                </button>                            
+                            </div>
+
+                            <div class="mb-4 text-xxl-center">
+                                <div id="spinner" class="" ></div> 
+                                {% if request_result != 'not exists' %}
+                                    <label id="result"><B style="color:rgb(20, 143, 3)">{{ request_result }}</B></label>
+                                {% else %}
+                                    <label id="result"><B style="color:rgb(212, 38, 25)">{{ request_result }}</B></label>
+                                {% endif %}
+                            </div>
+
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+            <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2"><svg class="home-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4"><path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path></svg></figure>       
+        </section>
+        
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-6">
+                    <div class="col-12 text-center">
+                        <h2 class="h1 px-lg-5">Here's How It Works?</h2>
+                    </div>
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5">
+                            
+                        <div class="" >
+                            <div class="d-flex align-items-center justify-content-center">
+                            <img class="justify-content-sm-center" width="120" height="120" src="/static/assets/img/illustrations/automation-illustration.jpg" alt="Front pages overview">
+                        </div>
+                            <h3 class="h3 mt-3">Automate Social Accounts Browser</h3>
+                        </div>
+                            <p class="mb-4">Extracting social accounts of people, business, influence and etc is a time-consuming task. Helping to automate them with high accuracy and speed is a demanding service for people who need the social accounts and content of the market. </p>
+                        </div>
+                        <div class="col-lg-5 ">
+                            <div class="d-flex align-items-center justify-content-center">
+                            <img class="justify-content-sm-center" width="220" height="150" src="/static/assets/img/illustrations/SERP_illustration.jpg" alt="Front pages overview">
+                            </div>
+                            <h3 class="h3 mt-3">Extract Data from the Search Engines</h3>
+                            <p class="mb-4">Search Engines Data are valuable source of social network accounts. Using different Results of the Search Engines and combining them helps to accurate the output result. </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img class="" width="140" height="120" src="/static/assets/img/illustrations/databases_illustration.jpg" alt="Front pages overview">
+                            </div>
+                            <h3 class="h3 mt-3">Using Social Accounts Databases</h3>
+                            <p class="mb-4">Databases of social network accounts that extracted from different purpose of the marketing are the most valuable source of data that ensure our customers for verified data. </p>
+                        </div>
+                        <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img class="" width="180" height="140" src="/static/assets/img/illustrations/bulk_illustration.jpg" alt="Front pages overview">
+                            </div>
+                            <h3 class="h3 mt-3">Building Simple Bulk Browse Requests</h3>
+                            <p class="mb-4">Uploading a large file of data via a bulk request is the most convenient way to speed up your browse task. Exporting your result file in a compatible format enables th customers to compare the results and reuse them on the other workflow steps. </p>
+                        </div>
+                    </div>
+                    
+                        
+                    <div class="d-flex align-items-center justify-content-center mt-5">
+                        <a analyticsid="homeLearnMoreBlogLink" class="icon-move-right text-teal-2 font-black f4 inline-flex align-center hover:text-teal hover:fill-teal transition" href="{% url 'blog' %}">
+                            <span class="fw-bold text-plan-6"> Read more details in the Blog </span>
+                            <i class="fas fa-arrow-right text-sm ms-1 text-plan-6" aria-hidden="true"></i>
+                        </a>                            
+                    </div>
+                </div>   
+
+            </div>
+            
+        </section>
+
+        <section class="section section-lg bg-gray-800 text-white">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-6">
+                    <div class="col-12 text-center">
+                        <h2 class="h1 px-lg-5">Awesome Services</h2>
+                        <p class="lead px-lg-8">You can Browse the most popular social network accounts by simply submitting a Browse request.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" >
+                                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                                </svg>
+                                <h5 class="fw-bold text-primary">Youtube</h5>
+                                <p class="mb-0 text-gray-600">Online video sharing and social media Channels</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <svg aria-hidden="true" class="icon icon-xs me-2" focusable="false" data-prefix="fab" data-icon="pinterest-p" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" > <path fill="currentColor" d="M204 6.5C101.4 6.5 0 74.9 0 185.6 0 256 39.6 296 63.6 296c9.9 0 15.6-27.6 15.6-35.4 0-9.3-23.7-29.1-23.7-67.8 0-80.4 61.2-137.4 140.4-137.4 68.1 0 118.5 38.7 118.5 109.8 0 53.1-21.3 152.7-90.3 152.7-24.9 0-46.2-18-46.2-43.8 0-37.8 26.4-74.4 26.4-113.4 0-66.2-93.9-54.2-93.9 25.8 0 16.8 2.1 35.4 9.6 50.7-13.8 59.4-42 147.9-42 209.1 0 18.9 2.7 37.5 4.5 56.4 3.4 3.8 1.7 3.4 6.9 1.5 50.4-69 48.6-82.5 71.4-172.8 12.3 23.4 44.1 36 69.3 36 106.2 0 153.9-103.5 153.9-196.8C384 71.3 298.2 6.5 204 6.5z"></path></svg>
+                                <h5 class="fw-bold text-primary">Pinterest</h5>
+                                <p class="mb-0 text-gray-600">Online Image sharing Users</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" >
+                                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+                                </svg>
+                                <h5 class="fw-bold text-primary">Instagram</h5>
+                                <p class="mb-0 text-gray-600">Influencer Images, Videos, Post and Live contets</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" >
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                                <h5 class="fw-bold text-primary">Facebook</h5>
+                                <p class="mb-0 text-gray-600">Verified page of people, businesses, ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="28" height="25" src = "/static/assets/img/icons/wikipedia.svg" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt= "Wikipedia"/> 
+                                <h5 class="fw-bold text-primary">Wikipedia</h5>
+                                <p class="mb-0 text-gray-600">Wiki page url of topics.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="28" height="25" src = "/static/assets/img/icons/scholar.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt= "Google Scholar"/> 
+                                <h5 class="fw-bold text-primary">Google Scholar</h5>
+                                <p class="mb-0 text-gray-600">Professors page including publications and citations</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="28" height="25" src = "/static/assets/img/icons/booking.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="Booking" /> 
+                                <h5 class="fw-bold text-primary">Booking</h5>
+                                <p class="mb-0 text-gray-600">Official information page of Hotel, ... </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="28" height="25" src = "/static/assets/img/icons/github.svg" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="Github"/> 
+                                <h5 class="fw-bold text-primary">Github</h5>
+                                <p class="mb-0 text-gray-600">URL of public repositories and activities of developers.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="48" height="25" src = "/static/assets/img/icons/imdb.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="IMDB" /> 
+                                <h5 class="fw-bold text-primary">IMDb</h5>
+                                <p class="mb-0 text-gray-600">Verified page of Films, Actors, Producers and ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="23" height="25" src = "/static/assets/img/icons/reddit.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="Reddit" /> 
+                                <h5 class="fw-bold text-primary">Reddit</h5>
+                                <p class="mb-0 text-gray-600">URL of Reddit page including posts, comments, ...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="20" height="20" src = "/static/assets/img/icons/tiktok.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="Tiktok" /> 
+                                <h5 class="fw-bold text-primary">TikTok</h5>
+                                <p class="mb-0 text-gray-600">Official content of TikTok users.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="card bg-white shadow-soft text-primary rounded mb-4">
+                            <div class="px-3 px-lg-4 py-5 text-center">
+                                <img width="22" height="22" src = "/static/assets/img/icons/twitch.png" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ row.request_type }}" alt="Twitch" />  
+                                <h5 class="fw-bold text-primary">Twitch</h5>
+                                <p class="mb-0 text-gray-600">Official page of video game players.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-center mt-5">
+                    <a analyticsid="homeLearnMoreServiceLink" class="icon-move-right text-teal-2 font-black f4 inline-flex align-center hover:text-teal hover:fill-teal transition" href="{% url 'services' %}">
+                        <span class="fw-bold text-plan-6"> Learn more about the Services </span>
+                        <i class="fas fa-arrow-right text-sm ms-1 text-plan-6" aria-hidden="true"></i>
+                    </a>                            
+                </div>
+            </div>
+        </section>
+
+     
+        <section class="section section-lg bg-soft pt-0 mt-6">
+            <div class="container">
+   
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
+                            <h2 class="h1">Bulk Requests <span class="ms-3 mb-0 fs-6 badge badge-lg rounded-pill text-gray-800 bg-secondary">Pro</span></h2>
+                            <p class="mb-4 lead fw-bold">Compare Single and Bulk Requests </p>
+                            <p class="mb-4">You can submit your large number of requests by Bulk option to benefit our speed and export facilities.</p>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <img src="/static/assets/img/illustrations/illustration_bulk.svg" alt="Front pages overview">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <h2 class="h1 d-flex align-items-center">Import Bulk Data</h2>
+                        <p class="mb-4 lead fw-bold">Excle files (.csv, .xlsx), google spreadsheet and manual insert data are available.</p>
+                        <p class="mb-4">We created a fully editable calendar where you can add, edit and delete events for your admin dashboard.</p>
+                        <a href="{% url 'register' %}" target="" class="btn btn-secondary d-inline-flex align-items-center me-3 icon-move-right mt-auto">
+                            <h6 class=" font-weight-bolder-small mb-0">
+                                Try it free
+                                <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                            </h6>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/static/assets/img/illustrations/bulk_import_illustration.png" alt="bulk_preview">
+                    </div>
+                </div>
+                <div class="row justify-content-between align-items-center mb-5 mb-lg-7">
+                    <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
+                        <h2 class="h1 d-flex align-items-center">Export Bulk Results</h2>
+                        <p class="mb-4 lead fw-bold">Export entire bulk results in a Excel file. You can preview your result output and if your output is desired, The excel format export is available for other applications</p>
+                        
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <img src="/static/assets/img/illustrations/social_netowrk_logo.png" alt="MapBox Leaflet.js Custom Integration Mockup">
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Latest Posts -->
+        <section class="pt-5 pb-5 mb-7">
+            <div class="container">
+              <div class="row py-md-5">
+                <div class="col-md-6 ms-auto me-auto text-center">
+                  <h2> Latest Posts </h2>
+                  <p> Read the latest posts in the blog page. </p>
+                </div>
+              </div>
+              {% include 'includes/latest_post_homepage.html' %}
+
+            </div>
+          </section>
+          
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+<script>
+function show_spinner() {
+    var $text_business_name = document.getElementById("business_name").value;
+    var $text_request_type = document.getElementById("request_type").value
+    
+    if ($text_business_name != '' && $text_request_type != '')
+    {
+        document.getElementById("result").textContent='';
+        document.getElementById("spinner").className='spinner-border';
+    }
+}
+</script>
+{% endblock javascripts %}
+

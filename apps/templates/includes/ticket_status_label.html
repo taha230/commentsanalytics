@@ -1,0 +1,10 @@
+ <!-- Ticket_Status Label -->
+ {% if row.status == 'User Answered' %}
+ <span class="badge bg-plan-2 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% elif row.status == 'Admin Answered' %}
+ <span class="badge bg-plan-1 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% elif row.status == 'User Created' %}
+ <span class="badge bg-plan-4 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% elif row.status == 'Admin Notification' %}
+ <span class="badge bg-plan-5 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% endif %}

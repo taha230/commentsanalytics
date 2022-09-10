@@ -1,0 +1,6 @@
+ <!-- Post_Status Label -->
+{% if row.status == 'Published' %}
+    <span class="badge bg-plan-1 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% elif row.status == 'Unpublished' %}
+    <span class="badge bg-plan-6 font-small px-2 py-1 text-gray-800 ms-2 fw-bold">{{ row.status }}</span>
+{% endif %}

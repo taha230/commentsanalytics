@@ -1,0 +1,95 @@
+{% extends "layouts/base_admin.html" %}
+
+{% block title %} Transactions {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<form method= "POST">
+
+  {% csrf_token %}
+
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+     
+      <div class="btn-toolbar mb-2 mb-md-0">
+          <button  class="btn btn-sm btn-green-800 d-inline-flex align-items-center" type="submit" formaction="/plans_admin_new_plan/">
+              <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              New Plan
+          </button>
+          
+      </div>
+  </div>
+  
+
+  
+  <div class="card card-body border-0 shadow table-wrapper table-responsive">
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th class="border-gray-200">#</th>
+                  <th class="border-gray-200">Title</th>						
+                  <th class="border-gray-200">order</th>						
+                  <th class="border-gray-200">Tag</th>
+                  <th class="border-gray-200">count</th>
+                  <th class="border-gray-200">price</th>
+                  <th class="border-gray-200">discount</th>
+                  <th class="border-gray-200">status</th>
+                  <th class="border-gray-200">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+            {% for row in plan_list %}
+              <!-- Item -->
+              <tr>
+                  <td>
+                     {{ row.index }}
+                  </td>
+                  <td>
+                    <B>
+                        {{ row.name }}
+                    </B>
+                  </td>
+                  <td>
+                    {{ row.order }}
+                  </td>                        
+                  <td>
+                    {{ row.tag }}
+                  </td>                        
+                  <td>
+                    <B>{{ row.count}}</B>
+                  </td>
+                  <td><span class="fw-bold">$ {{ row.price }} </span></td>
+                  <td><span class="">% {{ row.discount}}</span></td>
+                  <td>
+                    {% if row.status == 'Enable' %}
+                        <span  style="color:black; background-color:#8cff66;"> {{ row.status }} </span>
+                    {% elif row.status == 'Disable' %}
+                        <span style="color:black; background-color:#ff9999;"> {{ row.status }} </div>
+                    {% endif %}
+                  </td>
+                  <td>
+                    <button  class="btn btn-sm-2x btn-orange-800 d-inline-flex align-items-center" type="submit" formaction="/plans_admin_edit_plan/plan{{ row.plan_id }}">
+                        Edit
+                    </button>
+                  </td>
+              </tr>
+            {% endfor %}
+
+                                              
+          </tbody>
+      </table>
+      
+      {% if total_items != 0 %}
+        {% include "includes/pagination_GET.html" %}
+      {% endif %}
+  </div>
+
+</form>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
