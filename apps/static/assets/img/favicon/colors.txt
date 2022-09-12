@@ -1,0 +1,3 @@
+blue dark   # 00154b
+blue light  # 5c5eda
+white       # f2f3fc
