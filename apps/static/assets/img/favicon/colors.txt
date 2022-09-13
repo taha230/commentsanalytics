@@ -1,3 +1,3 @@
-blue dark   # 00154b
-blue light  # 5c5eda
-white       # f2f3fc
+blue dark   #00154b rgb(0, 21, 75)
+blue light  #5c5eda rgb(92, 94, 218)
+white       #f2f3fc rgb(242, 243, 252)

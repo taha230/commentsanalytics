@@ -1,27 +1,17 @@
-        <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-            <a class="navbar-brand me-lg-5" href="/">
-                <img class="navbar-brand-dark" src="/static/assets/img/brand/light.svg" alt="Volt logo" /> <img class="navbar-brand-light" src="/static/assets/img/brand/dark.svg" alt="Volt logo" />
-            </a>
-            <div class="d-flex align-items-center">
-                <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
 
-        <nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+        <nav id="sidebarMenu" class="sidebar d-lg-block bg-theme-blue-dark text-white collapse" data-simplebar>
           <div class="sidebar-inner px-4 pt-3">
             
             <ul class="nav flex-column pt-3 pt-md-0">
               <li class="nav-item">
                 <a  class="nav-link d-flex align-items-center">
                   <span class="sidebar-icon">
-                    <img width="45" height="30" src = "/static/assets/img/icons/logo_only_zoom2.png"/>
+                    <img width="70" height="70" src = "/static/assets/img/favicon/logo_143_without_text.png"/>
                   </span>
-                  <span class="mt-1 ms-1 sidebar-text">
+                  <!-- <span class="mt-1 ms-1 sidebar-text">
                     <img width="120" height="20" src = "/static/assets/img/icons/text_only_zoom2_white.png"/>
 
-                  </span>
+                  </span> -->
                 </a>
               </li>
               
@@ -158,45 +148,6 @@
                 </a>
               </li>
 
-              <!-- # APIs -->
-              <li class="nav-item {% if 'api-' in segment %} active {% endif %}">
-                <span
-                  class="nav-link  collapsed  d-flex justify-content-between align-items-center"
-                  data-bs-toggle="collapse" data-bs-target="#submenu-api">
-                  <span>
-                    <span class="sidebar-icon">
-                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-                      </svg>
-                    </span> 
-                    <span class="sidebar-text">APIs</span>
-                  </span>
-                  <span class="link-arrow">
-                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                  </span>
-                </span>
-                <!-- <div class="multi-level collapse show " role="list" id="submenu-api" aria-expanded="false"> -->
-                <div class="multi-level collapse {% if 'api-' in segment %} show {% endif %}" role="list" id="submenu-api" aria-expanded="false">
-                    <ul class="flex-column nav">
-                    <li class="nav-item {% if 'api-python' in segment %} active {% endif %}">
-                      <!-- <a class="nav-link" href="/api-python_client.html"> -->
-                      <a class="nav-link" href="">
-                        <img width="20" height="20" src = "/static/assets/img/icons/python-icon.svg"/>
-                        <span class="sidebar-text"> Python</span>
-                        <span class="badge bg-plan-8 font-super-small px-2 py-1 text-gray-800 ms-2 fw-bold">Comming Soon</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {% if 'api-nodejs' in segment %} active {% endif %}">
-                      <a class="nav-link" href="">
-                      <!-- <a class="nav-link" href="/api-nodejs_client.html"> -->
-                        <img width="20" height="20" src = "/static/assets/img/icons/nodejs-icon.svg"/>
-                        <span class="sidebar-text"> Nodejs</span>
-                        <span class="badge bg-plan-8 font-super-small px-2 py-1 text-gray-800 ms-2 fw-bold">Comming Soon</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
               
               <!-- # Profile -->
               <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
