@@ -34014,7 +34014,7 @@ textarea[resize="horizontal"] {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-image: url("../assets/img/patterns/wave.svg");
+    background-image: url("/static/assets/vendor/patterns/wave.svg");
     background-repeat: repeat-x;
     background-position: bottom;
     background-size: 1450px 160px;
@@ -34043,7 +34043,7 @@ textarea[resize="horizontal"] {
 }
 
 .pattern-soft {
-    background-image: url("../assets/img/patterns/wave-soft.svg");
+    background-image: url("/static/assets/vendor/patterns/wave-soft.svg");
 }
 
 .organic-shape:not(.position-relative) {
