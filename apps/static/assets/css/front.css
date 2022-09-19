@@ -34043,7 +34043,7 @@ textarea[resize="horizontal"] {
 }
 
 .pattern-soft {
-    background-image: url("/static/assets/vendor/patterns/wave-soft.svg");
+    background-image: url("/static/assets/vendor/patterns/wave.svg");
 }
 
 .organic-shape:not(.position-relative) {
