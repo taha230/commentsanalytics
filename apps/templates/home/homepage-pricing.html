@@ -7,49 +7,228 @@
 
     {% include "includes/googletagmanager.html" %}
 
-    {% include "includes/homepage_header_light.html" %}
+    {% include "includes/homepage_header.html" %}
 
     <main>
 
-        <section class="section section-lg line-bottom-soft">
+                <section class="section-header bg-primary text-white pb-7 pb-lg-11">
             <div class="container">
-                <div class="row justify-content-center mb-6 mb-lg-10">
-                    
-                    <div class="d-flex align-items-center justify-content-center mt-6 mb-4">
-                        <h1 class="fw-bolder" >profile browse Pricing</h1>
+                <div class="row justify-content-center mb-6">
+                    <div class="col-12 col-md-10 text-center">
+                        <h1 class="display-2 mb-3">pricing plans</h1>
+                        <p class="lead px-5">Get access to <span class="font-weight-bold">Comments Analytics</span> services, with your desired <span class="font-weight-bold">needs</span>
                     </div>
+                </div>
 
-                    <div class="d-flex align-items-center justify-content-center">
-                        <p class="mb-4"> Plans tailored for all businesses, built to scale with your needs </p>
-                    </div>
+                {% include "includes/plans_preview.html" %}
 
-                    <div class="d-flex align-items-center justify-content-center mb-6">
-                        <!-- <p class="mb-4"> Life Time Credit </p> -->
-                        <h2 class="glow">Life Time Credit</h2>
-
-                    </div>
-
-                    {% include "includes/plans_preview_2.html" %}
-
-                </div>   
-                
                 <div class="row justify-content-center">
-
-                    {% include "includes/most_frequent_questions_pricing.html" %}
-                
+                    <div class="col col-md-10 text-center">
+                        <h2 class="mb-3">Still not convinced? Start with a FREE trial!</h2>
+                        <p class="lead mb-5 px-5">You will get full access to your Dashboard with all the features with Free plan.</p>
+                        <!-- Button -->
+                        <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
+                            Start a free plan<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            
+            <div class="pattern bottom"></div>
         </section>
-
-        <section class="section section-lg line-bottom-soft">
+        <section class="section section-lg pt-6 line-bottom-light">
             <div class="container">
-                {% include 'includes/footer_related_links.html' %}
-            </div>
-            <div class="container">
-                {% include 'includes/footer_related_posts.html' %}
+                <div class="row justify-content-center mb-6">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4">All subscriptions plan include these powerfull features</h1>
+                        <p class="lead">We add new tools and features regularly.</p>
+                    </div>
+                </div>
+                <div class="row mt-6">
+                    <div class="col-12 col-md-6">
+                        <!-- Icon Box -->
+                        <div class="card shadow-soft border-light mb-4">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-lg-row p-3">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="icon icon-primary"><i class="far fa-life-ring"></i></div>
+                                    </div>
+                                    <div class="pl-lg-4">
+                                        <h5 class="mb-3">24/5 customer support</h5>
+                                        <p>Have a question, concern or feedback for us? Our support team is just a quick chat or email away — 24 hours a day, Monday to Friday.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Icon Box -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- Icon Box -->
+                        <div class="card shadow-soft border-light mb-4">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-lg-row p-3">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="icon icon-primary"><i class="fas fa-street-view"></i></div>
+                                    </div>
+                                    <div class="pl-lg-4">
+                                        <h5 class="mb-3">Private Facebook community</h5>
+                                        <p>Take full advantage of insights from the highly accomplished SEOs and digital marketers in our customers-only community.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Icon Box -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- Icon Box -->
+                        <div class="card shadow-soft border-light mb-4">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-lg-row p-3">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="icon icon-primary"><i class="fas fa-street-view"></i></div>
+                                    </div>
+                                    <div class="pl-lg-4">
+                                        <h5 class="mb-3">Tailored learning materials</h5>
+                                        <p>Ever notice that the marketing tutorials on our blog and YouTube channel, and in the Ahrefs Academy, often feature our tools?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Icon Box -->
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <!-- Icon Box -->
+                        <div class="card shadow-soft border-light mb-4">
+                            <div class="card-body">
+                                <div class="d-flex flex-column flex-lg-row p-3">
+                                    <div class="mb-3 mb-lg-0">
+                                        <div class="icon icon-primary"><i class="fas fa-street-view"></i></div>
+                                    </div>
+                                    <div class="pl-lg-4">
+                                        <h5 class="mb-3">New features released regularly</h5>
+                                        <p>Our development cycle is fast. We frequently update existing tools and release updates — heavily influenced by requests from our customers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Icon Box -->
+                    </div>
+                </div>
             </div>
         </section>
+        <section class="section section-lg bg-white line-bottom-light">
+                <div class="container">
+                    <div class="row justify-content-center mb-4 mb-lg-6">
+                        <div class="col-12 col-lg-8 text-center">
+                            <h1 class="display-3 mb-4">Frequently asked questions</h1>
+                            <p class="lead text-gray">Here’s what you need to know about your Impact license, based on the questions we get asked the most.</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <!--Accordion-->
+                            <div class="accordion">
+                                <div class="card card-sm card-body border border-light rounded mb-3">
+                                    <div data-target="#panel-1" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                                        <span class="h6 mb-0">Does my subscription automatically renew?</span>
+                                        <span class="icon"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                    <div class="collapse" id="panel-1">
+                                        <div class="pt-3">
+                                            <p class="mb-0">
+                                                At Themesberg, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-sm card-body border border-light rounded mb-3">
+                                    <div data-target="#panel-2" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-2">
+                                        <span class="h6 mb-0">What happens if I don’t renew my license?</span>
+                                        <span class="icon"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                    <div class="collapse" id="panel-2">
+                                        <div class="pt-3">
+                                            <p class="mb-0">
+                                                At Themesberg, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision.                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-sm card-body border border-light rounded mb-3">
+                                    <div data-target="#panel-3" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-3">
+                                        <span class="h6 mb-0">Can I cancel my subscription?</span>
+                                        <span class="icon"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                    <div class="collapse" id="panel-3">
+                                        <div class="pt-3">
+                                            <p class="mb-0">
+                                                At Themesberg, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision.                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-sm card-body border border-light rounded mb-3">
+                                    <div data-target="#panel-4" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-4">
+                                        <span class="h6 mb-0">Do I need to renew my license to receive fixes?</span>
+                                        <span class="icon"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                    <div class="collapse" id="panel-4">
+                                        <div class="pt-3">
+                                            <p class="mb-0">
+                                                At Themesberg, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision.                                        </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-sm card-body border border-light rounded mb-3">
+                                    <div data-target="#panel-5" class="accordion-panel-header" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-5">
+                                        <span class="h6 mb-0">Where can I find the End User License Agreement (EULA)?</span>
+                                        <span class="icon"><i class="fas fa-angle-down"></i></span>
+                                    </div>
+                                    <div class="collapse" id="panel-5">
+                                        <div class="pt-3">
+                                            <p class="mb-0">
+                                                At Themesberg, our mission has always been focused on bringing openness and transparency to the design process. We've always believed that by providing a space where designers can share ongoing work not only empowers them to make better products, it also helps them grow. We're proud to be a part of creating a more open culture and to continue building a product that supports this vision.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5 mt-lg-6">
+                                    <div class="col text-center">
+                                        <a href="#" class="btn btn-primary animate-up-2"><span class="mr-2"><i class="fas fa-question-circle"></i></span> See all FAQ</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End of Accordion-->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-lg bg-soft pb-5 mb-6">
+                <div class="container">
+                    <div class="row justify-content-center"> 
+                        <div class="col-12">
+                            <h3 class="mb-5 text-center">We accept PayPal and all major credit cards.</h3>
+                        </div>
+                        <div class="col-12 text-black text-center mb-5">
+                            <div class="icon icon-lg mr-2 mr-sm-3">
+                                <i class="fab fa-cc-visa"></i>
+                            </div>
+                            <div class="icon icon-lg mr-2 mr-sm-3">
+                                <i class="fab fa-cc-mastercard"></i>
+                            </div>
+                            <div class="icon icon-lg mr-2 mr-sm-3">
+                                <i class="fab fa-cc-stripe"></i>
+                            </div>
+                            <div class="icon icon-lg mr-2 mr-sm-3">
+                                <i class="fab fa-cc-amazon-pay"></i>
+                            </div>
+                            <div class="icon icon-lg mr-2 mr-sm-3">
+                                <i class="fab fa-cc-paypal"></i>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <a href="./contact.html"><strong>Chat with us</strong></a><span class="border-right border-gray mx-2"></span>Send us an email to <a href="mailto:info@commentsanalytics.com"><strong>info@commentsanalytics.com</strong></a>
+                        </div>
+                    </div> 
+                </div>    
+            </section>
 
 
     </main>
