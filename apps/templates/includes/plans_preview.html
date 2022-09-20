@@ -1,6 +1,9 @@
 <!-- Plans Preview Content -->
 <form  method="post">
 
+    {% csrf_token %}
+
+
     <div class="row text-gray">
         
         {% for row in plan_list %}
@@ -12,66 +15,48 @@
                         <!-- Price -->
                         <div class="d-flex mb-3">
                             <span class="h5 mb-0">$</span>
-                            <span class="price display-2 mb-0" data-annual="0" data-monthly="0"> {{ row.price }}</span>
-                            <span class="h6 font-weight-normal align-self-end">/month</span>
+                            {% if row.price == 0 %}
+                                <span class="price display-2 mb-0" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                            {% elif row.tag == 'Selected' %}
+                                <span class="price display-2 mb-0 text-secondary" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                            {% else %}
+                                <span class="price display-2 mb-0 text-primary" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                            {% endif %}
+                                <span class="h6 font-weight-normal align-self-end">/month</span>
                         </div>
                         <h4 class="mb-3 text-black">
                             {% include "includes/plan_text_show.html" %}
-
                         </h4>
+                        {% if row.tag == 'Selected' %}
+                            <p class="font-weight-normal mb-0"> The ideal plan for businesses and agencies that are serious about search.</p>
+                        {% else %}
+                            <p class="font-weight-normal mb-0"> {{ row.tag }}</p>
+                            {% endif %}
                     </div>
                     <div class="card-body pt-5">
                         <ul class="list-group simple-list">
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Users<span class="font-weight-bolder"> 1</span></li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Full access to design tool</li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Publish with <span class="font-weight-bolder">Impact</span> &reg; label</li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Sub-domain publish</li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>1 User</li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Public Share & Comments</li>
-                            <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>Chat Support</li>
+                            {% for row_has in row.has_list %}
+                                {% if row.tag == 'Selected' %}
+                                    <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>
+                                        {{ row_has }}
+                                    </li>
+                                {% else %}
+                                    <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>
+                                        {{ row_has }}
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
                         </ul> 
                     </div>
-                    <div class="card-footer px-4 pb-4">
-                        <!-- Button -->
-                        <a href="../../dashboard/pages/dashboards/dashboard.html" class="btn btn-block btn-outline-gray animate-up-2">
-                            Start for Free <span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
-                        </a>
-                    </div>
+                    {% if row.price > 0 %}
+                        <button type="submit" formaction="/transaction_submit/plan{{ row.plan_id }}" class="btn w-100 btn-secondary animate-up-2 paddle-button mt-3 mb-4">
+                            Pay Now
+                        </button>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
-        <div class="col-12 col-lg-4">
-            <!-- Card -->
-            <div class="card shadow-soft border-light mb-5 mb-lg-6">
-                <div class="card-header border-light py-5 px-4">
-                    <!-- Price -->
-                    <div class="d-flex mb-3">
-                        <span class="h5 mb-0">$</span>
-                        <span class="price display-2 text-secondary mb-0" data-annual="299" data-monthly="199">299</span>
-                        <span class="h6 font-weight-normal align-self-end">/month</span>
-                    </div>
-                    <h4 class="mb-3 text-black">Premium</h4>
-                    <p class="font-weight-normal mb-0">The ideal plan for businesses and agencies that are serious about search.</p>
-                </div>
-                <div class="card-body pt-5">
-                    <ul class="list-group simple-list">
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Users<span class="font-weight-bolder"> 5</span></li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>All features on <span class="font-weight-bolder">BASIC</span> plan</li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Content Management System</li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Premium Analytics</li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Version Control</li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Single Sign-On (SSO)</li>
-                        <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>Co-conception program</li>
-                    </ul> 
-                </div>
-                <div class="card-footer px-4 pb-4">
-                    <!-- Button -->
-                    <a href="#" class="btn btn-block btn-outline-secondary">
-                        Start with Pro<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
     
