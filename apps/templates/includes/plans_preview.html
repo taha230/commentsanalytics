@@ -16,14 +16,22 @@
                         <div class="d-flex mb-3">
                             <span class="h5 mb-0">$</span>
                             {% if row.price == 0 %}
-                                <span class="price display-2 mb-0" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                                <span class="price display-2 mb-0" data-annual="0" data-monthly="0"> {{ row.price_discounted }}</span>
                             {% elif row.tag == 'Selected' %}
-                                <span class="price display-2 mb-0 text-secondary" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                                <span class="price display-2 mb-0 text-secondary" data-annual="0" data-monthly="0"> {{ row.price_discounted }}</span>
                             {% else %}
-                                <span class="price display-2 mb-0 text-primary" data-annual="0" data-monthly="0"> {{ row.price }}</span>
+                                <span class="price display-2 mb-0 text-primary" data-annual="0" data-monthly="0"> {{ row.price_discounted }}</span>
                             {% endif %}
                                 <span class="h6 font-weight-normal align-self-end">/month</span>
                         </div>
+
+                        {% if row.discount != 0 %}
+                            <div class="ml-2 mb-4">
+                                <del>${{ row.price }}</del> 
+                                <span class="text-danger  small ">Save up to {{row.discount}}%</span>
+                            </div>
+                        {% endif %}
+                                    
                         <h4 class="mb-3 text-black">
                             {% include "includes/plan_text_show.html" %}
                         </h4>
@@ -49,6 +57,13 @@
                         </ul> 
                     </div>
                     {% if row.price > 0 %}
+                        <div class=" btn w-100 mb-3">
+                            <div class="row">
+                                <label  class="">Discount Code:</label>
+                                <input class="form-control" name="discount_code_input_{{row.name}}" >
+                            </div>
+                        </div>
+
                         <button type="submit" formaction="/transaction_submit/plan{{ row.plan_id }}" class="btn w-100 btn-secondary animate-up-2 paddle-button mt-3 mb-4">
                             Pay Now
                         </button>

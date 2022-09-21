@@ -20,6 +20,7 @@ urlpatterns = [
     re_path(r'^Post/', views.homepage_blog_post_name, name="blog_post_name"), # use regular expression for handle all posts /Post_*
     path('services/', views.homepage_services, name='services'),
     path('pricing/', views.homepage_pricing, name='pricing'),
+    path('contact/', views.homepage_contact, name='contact'),
     
     # sitemap and robots
     path('sitemap.xml', views.sitemap, name='sitemap'),

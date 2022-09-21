@@ -192,6 +192,32 @@ def homepage_pricing(request):
 
     return HttpResponse(html_template.render(context, request))
 
+def homepage_contact(request):
+
+    html_template = loader.get_template('home/homepage-contact.html')
+
+    context = {'segment': 'index'
+               ,'related_links' : [
+                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+               ]
+               ,'related_posts' : [
+                    {'url': '/Post/Free%20plan:%20Best%20approach%20to%20attract%20customers%20to%20purchase/', 'text': 'Free plan: Best approach to attract customers to purchase'}
+                    ,{'url': '/Post/Bulk%20Requests%20needs%20for%20saving%20your%20time%20for%20large%20files/', 'text': 'Bulk Requests needs for saving your time for large files'}
+                    ,{'url': '/Post/Single%20Request%20option%20to%20validate%20the%20quality%20of%20URL%20finding%20services/', 'text': 'Single Request option to validate the quality of URL finding services'}
+                    ,{'url': '/Post/Bulk%20Requests%20Size%20Limit%20set%20to%2015%20K/', 'text': 'Bulk Requests Size Limit set to 15 K'}
+                    ,{'url': '/Post/No%20expiration%20date%20for%20profile%20browse%20services/', 'text': 'No expiration date for profile browse services'}
+               ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
 def homepage_blog(request):
 
     html_template = loader.get_template('home/homepage-blog.html')

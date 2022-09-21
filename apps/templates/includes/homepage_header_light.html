@@ -1,5 +1,3 @@
-
-    
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg headroom py-lg-3 px-lg-6 navbar-light navbar-theme-primary">
         <div class="container">
@@ -55,19 +53,26 @@
                         <a href="{% url 'pricing' %}" class="nav-link">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link">Blog</a>
+                        <a href="{% url 'blog' %}" class="nav-link">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{% url 'login' %}" class="nav-link">Contact</a>
+                        <a href="{% url 'contact' %}" class="nav-link">Contact</a>
                     </li>
                     
                    
                 </ul>
             </div>
-            <div class="d-none d-lg-block @@cta_button_classes">
-                <a href="{% url 'login' %}"  class="btn btn-md btn-docs btn-outline-white animate-up-2 mr-3"><i class="fas "></i> Login</a>
-                <a href="{% url 'register' %}"   class="btn btn-md btn-secondary animate-up-2"><i class="fas fa-paper-plane mr-2"></i> Sing Up</a>
-            </div>
+
+            {% if request.user.username == '' %} 
+                <div class="d-none d-lg-block @@cta_button_classes">
+                    <a href="{% url 'login' %}"  class="btn btn-md btn-docs btn-outline-white animate-up-2 mr-3"><i class="fas "></i> Login</a>
+                    <a href="{% url 'register' %}"   class="btn btn-md btn-secondary animate-up-2"><i class="fas fa-paper-plane mr-2"></i> Sing Up</a>
+                </div>
+            {% else %}
+                <!-- for login user -->
+                {% include 'includes/navigation_client.html' %}
+            {% endif %}
+
             <div class="d-flex d-lg-none align-items-center">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
                     aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"><span
