@@ -36,7 +36,7 @@
                             {% include "includes/plan_text_show.html" %}
                         </h4>
                         {% if row.tag == 'Selected' %}
-                            <p class="font-weight-normal mb-0"> The ideal plan for businesses and agencies that are serious about search.</p>
+                            <p class="font-weight-normal mb-0"> The ideal plan for People and businesses that are serious about customers.</p>
                         {% else %}
                             <p class="font-weight-normal mb-0"> {{ row.tag }}</p>
                             {% endif %}
@@ -44,15 +44,14 @@
                     <div class="card-body pt-5">
                         <ul class="list-group simple-list">
                             {% for row_has in row.has_list %}
-                                {% if row.tag == 'Selected' %}
-                                    <li class="list-group-item font-weight-normal"><span class="icon-secondary"><i class="fas fa-check"></i></span>
-                                        {{ row_has }}
-                                    </li>
-                                {% else %}
-                                    <li class="list-group-item font-weight-normal"><span class="icon-gray"><i class="fas fa-check"></i></span>
-                                        {{ row_has }}
-                                    </li>
-                                {% endif %}
+                                <li class="list-group-item font-weight-normal"><span class="icon-success"><i class="fas fa-check"></i></span>
+                                    {{ row_has }}
+                                </li>
+                            {% endfor %}
+                            {% for row_hasnot in row.hasnot_list %}
+                                <li class="list-group-item font-weight-normal"><span class="icon-danger"><i class="fas fa-times"></i></span>
+                                    {{ row_hasnot }}
+                                </li>
                             {% endfor %}
                         </ul> 
                     </div>

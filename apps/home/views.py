@@ -218,6 +218,16 @@ def homepage_contact(request):
 
     return HttpResponse(html_template.render(context, request))
 
+def homepage_overview(request):
+    html_template = loader.get_template('home/homepage-overview.html')
+
+    context = {'segment': 'index'
+               ,'related_links' : []
+               ,'related_posts' : []
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
 def homepage_blog(request):
 
     html_template = loader.get_template('home/homepage-blog.html')
@@ -254,16 +264,7 @@ def homepage_blog(request):
                 "page_limit": min(total_count_post, POST_BLOG_COUNT_REPORT),
                 "total_items": total_count_post,
                 "post_list": row_list_post
-                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
-               ]
+                ,'related_links' : []
                ,'related_posts' : [
                     ]
               }

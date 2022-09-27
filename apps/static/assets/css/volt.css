@@ -9842,6 +9842,85 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 
 .bg-gradient {
   background-image: var(--bs-gradient) !important; }
 
+  .icon-shape-primary {
+    color: #0648B3;
+    background-color: rgba(6, 72, 179, 0.2);
+}
+
+.icon-primary {
+    color: #0648B3;
+}
+
+.icon-shape-secondary {
+    color: #EE5050;
+    background-color: rgba(238, 80, 80, 0.2);
+}
+
+.icon-secondary {
+    color: #EE5050;
+}
+
+.icon-shape-success {
+    color: #05A677;
+    background-color: rgba(5, 166, 119, 0.2);
+}
+
+.icon-success {
+    color: #05A677;
+}
+
+.icon-shape-info {
+    color: #1E90FF;
+    background-color: rgba(30, 144, 255, 0.2);
+}
+
+.icon-info {
+    color: #1E90FF;
+}
+
+.icon-shape-warning {
+    color: #f5b759;
+    background-color: rgba(245, 183, 89, 0.2);
+}
+
+.icon-warning {
+    color: #f5b759;
+}
+
+.icon-shape-danger {
+    color: #FA5252;
+    background-color: rgba(250, 82, 82, 0.2);
+}
+
+.icon-danger {
+    color: #FA5252;
+}
+
+.list-group-space .list-group-item {
+  margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.list-group-item {
+  border: 0;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #EE5050;
+  border-color: #EE5050;
+}
+
+.list-group-item i {
+  width: 1rem;
+}
+
+
+.font-weight-normal {
+  font-weight: 400 !important;
+}
+
 .user-select-all {
   -webkit-user-select: all !important;
           user-select: all !important; }

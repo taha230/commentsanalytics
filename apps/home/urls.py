@@ -21,6 +21,7 @@ urlpatterns = [
     path('services/', views.homepage_services, name='services'),
     path('pricing/', views.homepage_pricing, name='pricing'),
     path('contact/', views.homepage_contact, name='contact'),
+    path('overview/', views.homepage_overview, name='overview'),
     
     # sitemap and robots
     path('sitemap.xml', views.sitemap, name='sitemap'),
