@@ -23,7 +23,7 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # load production server from .env
-ALLOWED_HOSTS = ['profilebrowse.com', '138.201.111.134', 'localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
+ALLOWED_HOSTS = ['commentsanalytics.com', '0.0.0.0', '138.201.111.134', 'localhost', '127.0.0.1', config('SERVER', default='127.0.0.1')]
 PAYPAL_TEST = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
