@@ -74,15 +74,15 @@ collection_User_Log = db[COLLECTION_NAME_User_Log]
 
 ########################################### MongoDB Indexes #################################################
 
-collection_Bulks.create_index([ ("bulk_start_time_slot", -1) ])
-collection_Bulks.create_index([ ("user", -1) ])
-collection_Bulks.create_index([ ("status", -1) ])
-collection_Requests.create_index([ ("request_time_slot", -1) ])
-collection_Requests.create_index([ ("run_type", -1) ])
-collection_Requests.create_index([ ("status", -1) ])
-collection_Requests.create_index([ ("bulk", -1) ])
-collection_Requests.create_index([ ("user", -1) ])
-collection_User_Log.create_index([ ("time_slot", -1) ])
+# collection_Bulks.create_index([ ("bulk_start_time_slot", -1) ])
+# collection_Bulks.create_index([ ("user", -1) ])
+# collection_Bulks.create_index([ ("status", -1) ])
+# collection_Requests.create_index([ ("request_time_slot", -1) ])
+# collection_Requests.create_index([ ("run_type", -1) ])
+# collection_Requests.create_index([ ("status", -1) ])
+# collection_Requests.create_index([ ("bulk", -1) ])
+# collection_Requests.create_index([ ("user", -1) ])
+# collection_User_Log.create_index([ ("time_slot", -1) ])
 
 ############################################# Pages ###########################################################
 
