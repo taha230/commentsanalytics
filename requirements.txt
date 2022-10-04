@@ -17,4 +17,12 @@ XlsxWriter==1.4.3
 openpyxl==3.0.7
 reportlab==3.4.0
 pandas==1.1.1
+pymongo
+gevent
+pdandas
+django-allauth
+
+
+####################################
+pip install --upgrade pip
 
