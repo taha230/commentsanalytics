@@ -7,52 +7,7 @@
 
   <!-- Main links -->
   <url>
-    <loc>https://profilebrowse.com/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_profile_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_social_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_wikipedia_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_facebook_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_pinterest_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_amazon_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_twitter_category/</loc>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://profilebrowse.com/services_spotify_category/</loc>
+    <loc>https://commentsanalytics.com/</loc>
     <changefreq>monthly</changefreq>
   </url>
 
@@ -62,17 +17,27 @@
   </url>
 
   <url>
-    <loc>https://profilebrowse.com/blog/</loc>
+    <loc>https://commentsanalytics.com/blog/</loc>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://profilebrowse.com/login/</loc>
+    <loc>https://commentsanalytics.com/login/</loc>
     <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://profilebrowse.com/register/</loc>
+    <loc>https://commentsanalytics.com/register/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/overview/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/contact/</loc>
     <changefreq>monthly</changefreq>
   </url>
 
