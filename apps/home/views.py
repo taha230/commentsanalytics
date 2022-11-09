@@ -2503,8 +2503,8 @@ def transaction_submit(request):
             plan_discount_selected = plan_selected.discount
             plan_price_selected = str(float (plan_selected.price) * float(100.0 - plan_discount_selected)/100.0) # price * discount
             # return_url = 'http://127.0.0.1:8000/transaction_success/?plan=' + plan_id_string
-            return_url = 'https://profilebrowse.com/transaction_success/?plan=' + plan_id_string
-            cancel_return = 'https://profilebrowse.com/transaction_fail/'
+            return_url = 'https://commentsanalytics.com/transaction_success/?plan=' + plan_id_string
+            cancel_return = 'https://commentsanalytics.com/transaction_fail/'
             # plan_price_selected = str((plan_selected.price))
 
             discount_code = str(request.POST.get('discount_code_input_'+ plan_selected.name).strip())
@@ -2520,8 +2520,8 @@ def transaction_submit(request):
     else:
         return redirect('/dashboard_client/')
 
-    #return redirect('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mahamedani.freelancer@gmail.com&currency=USD&item_name=' + plan_title_selected + '&quantity=1&amount=' + plan_price_selected + '&return=https://profilebrowse.com/transaction_success/?plan=' + plan_id_string +'&cancel_return=https://profilebrowse.com/transaction_fail/')
-    # return redirect('https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mahamedani.freelancer@gmail.com&currency=USD&item_name=' + plan_title_selected + '&quantity=1&amount=' + plan_price_selected + '&return=https://profilebrowse.com/transaction_success/?plan=' + plan_id_string +'&cancel_return=https://profilebrowse.com/transaction_fail/')
+    #return redirect('https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mahamedani.freelancer@gmail.com&currency=USD&item_name=' + plan_title_selected + '&quantity=1&amount=' + plan_price_selected + '&return=https://commentsanalytics.com/transaction_success/?plan=' + plan_id_string +'&cancel_return=https://commentsanalytics.com/transaction_fail/')
+    # return redirect('https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_xclick&business=mahamedani.freelancer@gmail.com&currency=USD&item_name=' + plan_title_selected + '&quantity=1&amount=' + plan_price_selected + '&return=https://commentsanalytics.com/transaction_success/?plan=' + plan_id_string +'&cancel_return=https://commentsanalytics.com/transaction_fail/')
 
 @login_required(login_url="/login/")
 def transaction_success(request):
@@ -2832,12 +2832,12 @@ def download_pdf_invoice(request):
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
     p.setFont('Helvetica-Bold', 12)
-    p.drawString(412, 700, "profile browse.")
+    p.drawString(412, 700, "Comments Analytics.")
     p.setFont('Helvetica', 10)
-    p.drawString(412, 670, "136 Tui Vale Road, Somerville")
-    p.drawString(412, 650, "Manukau, New Zealand")
+    p.drawString(412, 670, "Lentersweg 36")
+    p.drawString(412, 650, "Hamburg, Germany")
     p.setFont('Helvetica-Bold', 10)
-    p.drawString(412, 630, "support@profilebrowse.com")
+    p.drawString(412, 630, "info@commentsanalytics.com")
 
 
     p.line(50, 600, 560, 600)
@@ -2896,7 +2896,7 @@ def download_pdf_invoice(request):
     p.setFont('Helvetica-Bold', 9)
     p.drawString(50, 375, "Plan : " + plan_title)
     p.setFont('Helvetica', 8)
-    p.drawString(162, 375, "Using profile browse services for " + str(count) + " Requests")
+    p.drawString(162, 375, "Using Comments Analytics services for " + str(count) + " words.")
     p.setFont('Helvetica', 9)
     p.drawString(380, 375, "$ "+ str(price))
     p.drawString(430, 375, "1")
