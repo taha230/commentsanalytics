@@ -3,3 +3,7 @@ Kurt.ns.cloudflare.com
 
 kay.ns.webpouyan.net
 kurt.ns.webpouyan.net
+
+
+art.ns.cloudflare.com
+christina.ns.cloudflare.com
