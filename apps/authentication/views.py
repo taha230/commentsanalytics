@@ -379,3 +379,30 @@ def logout(request):
     """Logs out user"""
     auth_logout(request)
     return redirect ('/login/')
+
+def resend_email_user_admin(request):
+    user_id = 0
+    try:
+
+        user_id = 0
+        user_id_string = '0'
+        try:
+            user_id_string = request.path.split('/user_')[-1]
+        except Exception as e:
+            pass
+
+        user_id = int(user_id_string)
+        user_selected = User.objects.get(id= user_id)
+
+         # select user_key
+        user_key = User_Other_Fields.objects.get(user_id= user_id).user_key
+        print(colored(user_key, 'blue'))
+
+        # send activation email to user
+        send_status = send_activation_user_email(user_selected, user_key)
+    
+    except Exception as e:
+        print(colored('Exception in sendin verification email ' + str(e), 'red'))
+
+    return redirect ('/userslist_admin/')
+
