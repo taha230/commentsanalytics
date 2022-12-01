@@ -172,14 +172,14 @@ def homepage_pricing(request):
     context = {'segment': 'index',
                "plan_list": plan_list_active
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Free%20plan:%20Best%20approach%20to%20attract%20customers%20to%20purchase/', 'text': 'Free plan: Best approach to attract customers to purchase'}
@@ -198,14 +198,14 @@ def homepage_contact(request):
 
     context = {'segment': 'index'
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Free%20plan:%20Best%20approach%20to%20attract%20customers%20to%20purchase/', 'text': 'Free plan: Best approach to attract customers to purchase'}
@@ -293,14 +293,14 @@ def homepage_blog_post_id(request):
                           "title" : "profile browse | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
               }
 
@@ -327,14 +327,14 @@ def homepage_blog_post_name(request):
                           "title" : "profile browse | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
               }
 
@@ -345,14 +345,14 @@ def homepage_services(request):
 
     context = {'segment': 'index'
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Business%20Profiles%20monitoring%20as%20a%20need%20for%20companies/', 'text': 'Business Profiles monitoring as a need for companies'}
