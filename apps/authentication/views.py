@@ -43,7 +43,7 @@ def send_email_from_admin_to_client(user, message_ticket):
             return requests.post(
             "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
             auth=("api", mailgun_API_key),
-            data={"from": "profilebrowse Support <support@" + mailgun_domain +">",
+            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
                 "to": [receiver],
                 "subject": "Ticket From Admin",
                 "template": "ticket_admin",
@@ -76,7 +76,7 @@ def send_email_from_client_to_admin(user, message_ticket):
             return requests.post(
             "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
             auth=("api", mailgun_API_key),
-            data={"from": "profilebrowse Support <support@" + mailgun_domain +">",
+            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
                 "to": ["taha_hamedani@yahoo.com"],
                 "subject": "New Ticket",
                 "template": "ticket_client",
@@ -104,14 +104,14 @@ def send_activation_user_email(user, usre_key):
             try_count += 1
             "curl -s --user 'api:9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744' https://api.mailgun.net/v3/profilebrowse.com/messages -F from='Taha Hamedani <taha_hamedani@profilebrowse.com>' -F to=taha.hamedani8@gmail.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!'"
             
-            activation_url = 'https://profilebrowse.com/activate_user_' + str(usre_key)
+            activation_url = 'https://commentsanalytics.com/activate_user_' + str(usre_key)
             # activation_url = 'http://127.0.0.1:8000/activate_user_' + str(usre_key)
 
             # mailgun configuration
             return requests.post(
             "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
             auth=("api", mailgun_API_key),
-            data={"from": "profilebrowse Support <support@" + mailgun_domain +">",
+            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
                 "to": [receiver],
                 "subject": "Email Verification",
                 "template": "email_verify",
@@ -142,7 +142,7 @@ def send_new_user_notification_email(user_email):
             return requests.post(
             "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
             auth=("api", mailgun_API_key),
-            data={"from": "profilebrowse Support <support@" + mailgun_domain +">",
+            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
                 "to": [receiver],
                 "subject": "New User Registered",
                 "template": "newuser",
