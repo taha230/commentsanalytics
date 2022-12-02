@@ -23,6 +23,8 @@ sender = 'taha.hamedani8@gmail.com'
 password = '61416867'
 
 mailgun_API_key = '9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744'
+smtp2go_API_key = 'api-82F480AA71A711ED821AF23C91BBF4A0'
+
 mailgun_domain = 'profilebrowse.com'
 
 ############################################# Emails ##########################################################
@@ -34,20 +36,30 @@ def send_email_from_admin_to_client(user, message_ticket):
 
     try_count = 1
 
-    while try_count < 10:
+    while try_count < 5:
         try:
+            print('try send email : ' + str(try_count) )
             try_count += 1
-            "curl -s --user 'api:9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744' https://api.mailgun.net/v3/profilebrowse.com/messages -F from='Taha Hamedani <taha_hamedani@profilebrowse.com>' -F to=taha.hamedani8@gmail.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!'"
-            
-            # mailgun configuration
-            return requests.post(
-            "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
-            auth=("api", mailgun_API_key),
-            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
-                "to": [receiver],
-                "subject": "Ticket From Admin",
-                "template": "ticket_admin",
-                "h:X-Mailgun-Variables": "{\"body\": \"" + message_ticket + "\"}"})
+
+            # smtp2go configuration
+
+            smtp2go_client = Smtp2goClient(api_key=smtp2go_API_key)
+            payload = {
+                    "sender": "info@commentsanalytics.com",
+                    "recipients": [receiver],
+                    "template_id": "2229340",
+                    "template_data": {
+                        "username": 'Admin',
+                        "message_body": message_ticket
+                        },
+                    "custom_headers": {"Your-Custom-Headers": "Custom Values"}
+            }
+            response = smtp2go_client.send(**payload)
+            if response.success:
+                return True
+            else:
+                continue
+
 
 
         except Exception as e:
@@ -67,21 +79,29 @@ def send_email_from_client_to_admin(user, message_ticket):
 
     try_count = 1
 
-    while try_count < 10:
+    while try_count < 5:
         try:
+            print('try send email : ' + str(try_count) )
             try_count += 1
-            "curl -s --user 'api:9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744' https://api.mailgun.net/v3/profilebrowse.com/messages -F from='Taha Hamedani <taha_hamedani@profilebrowse.com>' -F to=taha.hamedani8@gmail.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!'"
-            
-            # mailgun configuration
-            return requests.post(
-            "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
-            auth=("api", mailgun_API_key),
-            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
-                "to": ["taha_hamedani@yahoo.com"],
-                "subject": "New Ticket",
-                "template": "ticket_client",
-                "h:X-Mailgun-Variables": "{\"client_name\": \"" + user_email + "\", \"body\": \"" + message_ticket + "\"}"})
 
+            # smtp2go configuration
+
+            smtp2go_client = Smtp2goClient(api_key=smtp2go_API_key)
+            payload = {
+                    "sender": "info@commentsanalytics.com",
+                    "recipients": [receiver],
+                    "template_id": "2229340",
+                    "template_data": {
+                        "username": user_email,
+                        "message_body": message_ticket
+                        },
+                    "custom_headers": {"Your-Custom-Headers": "Custom Values"}
+            }
+            response = smtp2go_client.send(**payload)
+            if response.success:
+                return True
+            else:
+                continue
 
         except Exception as e:
             print(colored(e,'red'))
@@ -93,30 +113,36 @@ def send_email_from_client_to_admin(user, message_ticket):
 
 def send_activation_user_email(user, usre_key):
 
-    # receiver = 'taha_hamedani@yahoo.com'
     receiver = user.email
     user_name = user.username
 
     try_count = 1
 
-    while try_count < 10:
+    while try_count < 5:
         try:
+            print('try send email : ' + str(try_count) )
             try_count += 1
-            "curl -s --user 'api:9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744' https://api.mailgun.net/v3/profilebrowse.com/messages -F from='Taha Hamedani <taha_hamedani@profilebrowse.com>' -F to=taha.hamedani8@gmail.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!'"
             
             activation_url = 'https://commentsanalytics.com/activate_user_' + str(usre_key)
             # activation_url = 'http://127.0.0.1:8000/activate_user_' + str(usre_key)
 
-            # mailgun configuration
-            return requests.post(
-            "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
-            auth=("api", mailgun_API_key),
-            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
-                "to": [receiver],
-                "subject": "Email Verification",
-                "template": "email_verify",
-                "h:X-Mailgun-Variables": "{\"client_name\": \"" + user_name + "\", \"activation_url\": \"" + activation_url + "\"}"})
+            # smtp2go configuration
 
+            smtp2go_client = Smtp2goClient(api_key=smtp2go_API_key)
+            payload = {
+                    "sender": "info@commentsanalytics.com",
+                    "recipients": [user.email],
+                    "template_id": "8123875",
+                    "template_data": {
+                        "confirm_url": activation_url
+                        },
+                    "custom_headers": {"Your-Custom-Headers": "Custom Values"}
+            }
+            response = smtp2go_client.send(**payload)
+            if response.success:
+                return True
+            else:
+                continue
 
         except Exception as e:
             print(colored(e,'red'))
@@ -133,30 +159,39 @@ def send_new_user_notification_email(user_email):
 
     try_count = 1
 
-    while try_count < 10:
+    while try_count < 5:
         try:
+            print('try send email : ' + str(try_count) )
             try_count += 1
-            "curl -s --user 'api:9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744' https://api.mailgun.net/v3/profilebrowse.com/messages -F from='Taha Hamedani <taha_hamedani@profilebrowse.com>' -F to=taha.hamedani8@gmail.com -F subject='Hello' -F text='Testing some Mailgun awesomeness!'"
+
             
-            # mailgun configuration
-            return requests.post(
-            "https://api.mailgun.net/v3/" + mailgun_domain + "/messages",
-            auth=("api", mailgun_API_key),
-            data={"from": "Comments Analytics Support <info@" + mailgun_domain +">",
-                "to": [receiver],
-                "subject": "New User Registered",
-                "template": "newuser",
-                "h:X-Mailgun-Variables": "{\"client_email\": \"" + user_email + "\"}"})
+            # smtp2go configuration
+
+            smtp2go_client = Smtp2goClient(api_key=smtp2go_API_key)
+            payload = {
+                    "sender": "info@commentsanalytics.com",
+                    "recipients": [receiver],
+                    "template_id": "9957059",
+                    "template_data": {
+                        "email": user_email
+                        },
+                    "custom_headers": {"Your-Custom-Headers": "Custom Values"}
+            }
+            response = smtp2go_client.send(**payload)
+            if response.success:
+                return True
+            else:
+                continue
+
 
 
         except Exception as e:
             print(colored(e,'red'))
             print (colored("Error: unable to send email",'red'))
-            # return False
-
+    
     print (colored("Error: unable to send email",'red'))
     return False
-        
+     
 ############################################# User Models ##########################################################
 
 def login_view(request):
