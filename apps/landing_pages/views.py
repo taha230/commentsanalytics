@@ -49,6 +49,10 @@ from bson.objectid import ObjectId
 
 ############################################# Services Pages ###########################################################
 
+def email_banners(request):
+     image_data = open('apps/static/assets/img/upload_images/email_banner.png', mode='rb').read()
+     return HttpResponse(image_data, content_type="image/png")
+     
 def services_profile(request):
     html_template = loader.get_template('home/Landing_pages/services_profile.html')
 

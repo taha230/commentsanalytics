@@ -10,6 +10,9 @@ from apps.landing_pages import views
 
 urlpatterns = [
 
+    # upload images URLs
+    path('email_banners.png', views.email_banners, name='email_banners'),
+
     # services pages (level 3)
     path('services_profile/', views.services_profile, name='services_profile'),
     path('services_social_network/', views.services_social_network, name='services_social_network'),
