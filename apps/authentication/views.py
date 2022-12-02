@@ -17,6 +17,8 @@ import smtplib
 import ssl
 from django.contrib.auth import logout as auth_logout
 import requests
+from smtp2go.core import Smtp2goClient
+
 
 
 sender = 'taha.hamedani8@gmail.com'
