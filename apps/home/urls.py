@@ -88,6 +88,7 @@ urlpatterns = [
     re_path(r'^toggle_publish_status_discount/', views.toggle_publish_status_discount, name="toggle_publish_status_discount"), # use regular expression for handle all pages /discount_*
     re_path(r'^delete_discount/', views.delete_discount, name="delete_discount"), # use regular expression for handle all pages /discount_*
     path('new_discount_admin/', views.new_discount_admin, name="new_discount_admin"),
+    re_path(r'^delete_user_admin/user_', views.delete_user_admin, name="delete_user_admin"), # use regular expression for handle all pages /user_*
 
 
     ############################################## Match any html files ###################################

@@ -172,14 +172,14 @@ def homepage_pricing(request):
     context = {'segment': 'index',
                "plan_list": plan_list_active
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Free%20plan:%20Best%20approach%20to%20attract%20customers%20to%20purchase/', 'text': 'Free plan: Best approach to attract customers to purchase'}
@@ -198,14 +198,14 @@ def homepage_contact(request):
 
     context = {'segment': 'index'
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Free%20plan:%20Best%20approach%20to%20attract%20customers%20to%20purchase/', 'text': 'Free plan: Best approach to attract customers to purchase'}
@@ -293,14 +293,14 @@ def homepage_blog_post_id(request):
                           "title" : "profile browse | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
               }
 
@@ -327,14 +327,14 @@ def homepage_blog_post_name(request):
                           "title" : "profile browse | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
               }
 
@@ -345,14 +345,14 @@ def homepage_services(request):
 
     context = {'segment': 'index'
                ,'related_links' : [
-                     {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
-                    ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
-                    ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
-                    ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
-                    ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
+                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
+                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
+                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
+                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                    # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
+                    # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
+                    # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
+                    # ,{'url': '/services_spotify_category/', 'text': 'Spotify URLs finder Services'}
                ]
                ,'related_posts' : [
                     {'url': '/Post/Business%20Profiles%20monitoring%20as%20a%20need%20for%20companies/', 'text': 'Business Profiles monitoring as a need for companies'}
@@ -4397,3 +4397,85 @@ def discounts_admin(request):
                                                                 "page_limit": len(row_list_discount),
                                                                 "total_items": total_count_discount,
                                                                 "discount_list": row_list_discount})
+
+
+@staff_member_required(login_url="/login/")
+@login_required(login_url="/login/")
+def delete_user_admin(request):
+
+    user_id = 0
+    try:
+
+        user_id = 0
+        user_id_string = '0'
+        try:
+            user_id_string = request.path.split('/user_')[-1]
+        except Exception as e:
+            pass
+
+        user_id = int(user_id_string)
+        user_selected = User.objects.get(id= user_id)
+        
+        # deleting user from Ticket_Message
+        try:
+            Ticket_Message_selected = Ticket_Message.objects.all().filter(user_id= user_id)
+            for item in Ticket_Message_selected:
+                item.delete()
+        except Exception as e:
+            print(colored('Exception in deleting Ticket_Message : ' + str(e), 'red'))
+
+
+        # deleting user from User_Log
+        try:
+            query_log = {'user': user_id_string}
+            collection_User_Log.delete_many(query_log)
+            
+        except Exception as e:
+            print(colored('Exception in deleting User_Log : ' + str(e), 'red'))
+
+        # deleting user from Ticket
+        try:
+            Ticket_selected = Ticket.objects.all().filter(user_id= user_id)
+            for item in Ticket_selected:
+                
+                Ticket_message_selected = Ticket_Message.objects.all().filter(ticket_id= item.id)
+                for message in Ticket_message_selected:
+                    message.delete()
+
+                item.delete()
+        except Exception as e:
+            print(colored('Exception in deleting Ticket : ' + str(e), 'red'))
+
+        # deleting user from Payment
+        try:
+            Payment_selected = Payment.objects.all().filter(user_id= user_id)
+            for item in Payment_selected:
+                item.delete()
+        except Exception as e:
+            print(colored('Exception in deleting Payment : ' + str(e), 'red'))
+
+
+        # deleting user from Bulk and Requests mongo
+        try:
+            query_request = {'user': user_id_string}
+            collection_Requests.delete_many(query_request)
+            collection_Bulks.delete_many(query_request)
+
+        except Exception as e:
+            print(colored('Exception in Bulk and Requests mongo : ' + str(e), 'red'))
+
+        # Finally deleting user from User and User_Other_Fields
+        try:
+            user_selected.delete()
+            User_Other_Fields_selected = User_Other_Fields.objects.all().filter(user_id= user_id)
+            for item in User_Other_Fields_selected:
+                item.delete()
+        except Exception as e:
+            print(colored('Exception in deleting User : ' + str(e), 'red'))
+
+
+    except Exception as e:
+        print(e)
+        pass
+
+    return redirect ('/userslist_admin/')
