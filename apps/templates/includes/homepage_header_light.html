@@ -19,59 +19,65 @@
                     <li class="nav-item">
                         <a href="{% url 'overview' %}" class="nav-link">Overview</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" aria-expanded="false" data-toggle="dropdown">
-                            <span class="nav-link-inner-text mr-1">Services</span>
-                            <i class="fas fa-angle-down nav-link-arrow"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg">
-                            <div class="col-auto px-0" data-dropdown-content>
-                                <div class="list-group list-group-flush">
-                                    <a href="{% url 'login' %}"
-                                        class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                        <span class="icon icon-sm icon-secondary"><i class="fa fa-smile-o"></i></span>
-                                        <div class="ml-4">
-                                            <span class="text-dark d-block">Sentiment Analysis</span>
-                                            <span class="small">Identify, extract, quantify, and study affective states information of comments</span>
-                                        </div>
-                                    </a>
-                                    <a href="{% url 'login' %}"
-                                        class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                        <span class="icon icon-sm icon-primary"><i
-                                                class="fa fa-tags "></i></span>
-                                        <div class="ml-4">
-                                            <span class="text-dark d-block">Named Entity Recognition</span>
-                                            <span class="small">Locate and classify named entities mentioned in unstructured text</span>
-                                        </div>
-                                    </a>
 
-                                    <a href="{% url 'login' %}"
-                                        class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                        <span class="icon icon-sm icon-success"><i
-                                                class="fa fa-key "></i></span>
-                                        <div class="ml-4">
-                                            <span class="text-dark d-block">Key Phrases Extraction</span>
-                                            <span class="small">Extract the most important words and expressions</span>
-                                        </div>
-                                    </a>
-
-                                    <a href="{% url 'login' %}"
-                                        class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
-                                        <span class="icon icon-sm icon-warning"><i
-                                                class="fa fa-random  "></i></span>
-                                        <div class="ml-4">
-                                            <span class="text-dark d-block">Predict Customers' Needs</span>
-                                            <span class="small">Predict future needs of customers or subscribers</span>
-                                        </div>
-                                    </a>
-
+                    <li class="nav-item dropdown"><a href="#" class="nav-link dropdown-toggle" id="dashboardPagesDropdown" aria-expanded="false" data-toggle="dropdown"><span class="nav-link-inner-text mr-1">Services</span> <i class="fas fa-angle-down nav-link-arrow"></i></a>
+                        <div class="dropdown-menu dropdown-megamenu dropdown-megamenu-sm pl-3 py-3 p-lg-4" aria-labelledby="dashboardPagesDropdown">
+                            <div class="row no-gutters">
+                                <div class="col-6">
+                                    <ul class="list-style-none">
+                                        <li class="mb-2 megamenu-item">
+                                            <a href="{% url 'login' %}"
+                                                class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
+                                                <span class="icon icon-sm icon-secondary"><i class="fa fa-smile-o"></i></span>
+                                                <div class="ml-4">
+                                                    <span class="text-dark d-table-row">Sentiment Analysis </span>
+                                                    <span class="small">Identify, extract, quantify, and study affective states information of comments</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 megamenu-item">
+                                            <a href="{% url 'login' %}"
+                                                class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
+                                                <span class="icon icon-sm icon-primary"><i
+                                                        class="fa fa-tags "></i></span>
+                                                <div class="ml-4">
+                                                    <span class="text-dark d-table-row">Named Entity Recognition</span>
+                                                    <span class="small">Locate and classify named entities mentioned in unstructured text</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                
+                                <div class="col-6">
+                                    <ul class="list-style-none">
+                                        <li class="mb-2 megamenu-item">
+                                            <a href="{% url 'login' %}"
+                                                class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
+                                                <span class="icon icon-sm icon-success"><i
+                                                        class="fa fa-key "></i></span>
+                                                <div class="ml-4">
+                                                    <span class="text-dark d-table-row">Key Phrases Extraction</span>
+                                                    <span class="small">Extract the most important words and expressions</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="mb-2 megamenu-item">
+                                            <a href="{% url 'login' %}"
+                                                class="list-group-item list-group-item-action d-flex align-items-center p-0 py-3 px-lg-4">
+                                                <span class="icon icon-sm icon-warning"><i
+                                                        class="fa fa-random  "></i></span>
+                                                <div class="ml-4">
+                                                    <span class="text-dark d-table-row">Predict Customers' Needs</span>
+                                                    <span class="small">Predict future needs of customers or subscribers</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            
                         </div>
-                        
-                    </li>
+                    </li>        
+
                     <li class="nav-item">
                         <a href="{% url 'pricing' %}" class="nav-link">Pricing</a>
                     </li>

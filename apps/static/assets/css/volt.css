@@ -7769,6 +7769,9 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 
 .d-block {
   display: block !important; }
 
+.d-block-menu {
+  display: inline }  
+  
 .d-grid {
   display: grid !important; }
 
@@ -19193,7 +19196,7 @@ a, .text-action {
         font-size: 1.25rem; } }
 
 .font-super-small {
-  font-size: 0.475rem;
+  font-size: 0.600rem;
   font-weight: 300; }
 
 .font-small {
