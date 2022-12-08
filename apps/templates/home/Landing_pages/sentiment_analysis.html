@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head_title_description_variable.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header_light.html" %}
+
+    <main>
+
+
+
+        <section class="section section-lg line-bottom-soft mt-6">
+            <div class="container">
+
+                <h1 class="h1 d-flex align-items-center text-center">Sentiment analysis software that's as easy to understand as it is to use</h1>
+                
+                <div class="d-flex justify-content-between align-items-center">
+                    <a data-toggle="tooltip" data-placement="bottom" title="" rel="author" class="text-dark d-flex align-items-center mt-3 mb-2" >
+                        <img class="avatar-md avatar-lg-lg rounded-circle m-0" src="/static/assets/img/team/5.png" alt="Samuel Throside">
+                        <div class="font-small mx-sm-3">
+                            <address class="mb-0">
+                                <span class="font-weight-medium">Samuel Throside</span>
+                            </address>
+                            <time class="font-xsmall" pubdate="" datetime="Apr 20 2022">2 months ago</time>
+                        </div>
+                    </a>
+
+                </div>
+                
+                <p style="text-align:center;">
+                    <img class="mt-6  article-img" src="/static/assets/img/services_profile/lookup.svg" alt="profile_banner">
+                </p>
+
+
+                <h2 class="h2 d-flex mt-6">Table of content</h2>
+
+                
+            </div>
+            
+        </section>
+
+        <section class="section section-lg line-bottom-soft">
+            <div class="container">
+                {% include 'includes/footer_related_links.html' %}
+            </div>
+            <div class="container">
+                {% include 'includes/footer_related_posts.html' %}
+            </div>
+        </section>
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+
