@@ -4,55 +4,366 @@
 <html lang="en">
 
 {% include "includes/homepage_head_title_description_variable.html" %}
-
 <body>
 
     {% include "includes/googletagmanager.html" %}
 
-    {% include "includes/homepage_header_light.html" %}
+    {% include "includes/homepage_header.html" %}
 
     <main>
 
-
-
-        <section class="section section-lg line-bottom-soft mt-6">
+        <section class="section-header pb-8 pb-lg-13 mb-4 mb-lg-6 bg-primary text-white">
             <div class="container">
-
-                <h1 class="h1 d-flex align-items-center text-center">Sentiment analysis software that's as easy to understand as it is to use</h1>
-                
-                <div class="d-flex justify-content-between align-items-center">
-                    <a data-toggle="tooltip" data-placement="bottom" title="" rel="author" class="text-dark d-flex align-items-center mt-3 mb-2" >
-                        <img class="avatar-md avatar-lg-lg rounded-circle m-0" src="/static/assets/img/team/5.png" alt="Samuel Throside">
-                        <div class="font-small mx-sm-3">
-                            <address class="mb-0">
-                                <span class="font-weight-medium">Samuel Throside</span>
-                            </address>
-                            <time class="font-xsmall" pubdate="" datetime="Apr 20 2022">2 months ago</time>
-                        </div>
-                    </a>
-
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-2 mb-3">Sentiment analysis tools to explore the customers' emotions within the texts</h1>
+                        <p class="lead">Sentiment Analysis aims at obtaining meaningful information and semantics from a text, by using natural processing techniques and determining the writer's attitude, whether positive, negative, or neutral.</p>
+                    </div>
                 </div>
-                
-                <p style="text-align:center;">
-                    <img class="mt-6  article-img" src="/static/assets/img/services_profile/lookup.svg" alt="profile_banner">
-                </p>
-
-
-                <h2 class="h2 d-flex mt-6">Table of content</h2>
-
-                
             </div>
-            
+            <div class="pattern bottom"></div>
         </section>
-
-        <section class="section section-lg line-bottom-soft">
-            <div class="container">
-                {% include 'includes/footer_related_links.html' %}
-            </div>
-            <div class="container">
-                {% include 'includes/footer_related_posts.html' %}
+        <section class="section section-lg pt-0">
+            <div class="container mt-n7 mt-lg-n13 z-2">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-4">
+                        <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+                            <div class="card-header text-center pb-0">
+                                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3">
+                                    <i class="fa fa-smile-o"></i>
+                                </div>
+                                <h4 class="text-black">Positive</h4>
+                                <p>
+                                    If you are positive about things, you are hopeful and confident.                                
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex px-0 pt-0 pb-2">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Think of the good aspects of a situation rather than the bad ones</div>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 pb-1">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Showing satisfaction level of experience by positive adjectives</div>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 pb-1">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Indicating good feeling about the process and service</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+                            <div class="card-header text-center pb-0">
+                                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3">
+                                    <i class="fa fa-frown-o"></i>
+                                </div>
+                                <h4 class="text-black">Negative</h4>
+                                <p>
+                                    expressing or meaning a refusal or denial.                                
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex px-0 pt-0 pb-2">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Detecting sadness, hate, violence and inadequacy about a new product</div>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 pb-1">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Showing emptiness and usefulness about the service or process</div>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 pb-1">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Drastic changes need to be made</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+                            <div class="card-header text-center pb-0">
+                                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3">
+                                    <i class="fa fa-meh-o"></i>
+                                </div>
+                                <h4 class="text-black">Neutral</h4>
+                                <p>
+                                    Neither good nor bad, neutral comments aren't helping your reputation, but they aren't hurting it either.                              
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item d-flex px-0 pt-0 pb-2">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Sign of concern since the customer can quickly turn to the positive or negative</div>
+                                    </li>
+                                    <li class="list-group-item d-flex px-0 pb-1">
+                                        <div class="icon icon-sm icon-success mr-4">
+                                            <i class="far fa-check-circle"></i>
+                                        </div>
+                                        <div>Not containing any definitive sentiment</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+        <section class="section section-lg pt-0 line-bottom-light">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-6">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4">What Is Sentiment Analysis?</h1>
+                        <p class="lead">Sentiment analysis is an automated tool capable of understanding the feelings or emotions that underlie texts such as comments. It is one of the most interesting subfields of NLP, a branch of Artificial Intelligence (AI) that focuses on how machines process human language. By digging deeper into these elements, the tool uncovers more context from your conversations and helps your customer service team accurately analyze feedback. This is particularly useful for brands that actively engage with their customers on social media, live chat, and email where it can be difficult to determine the sentiment behind a message.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row justify-content-center mt-5 mb-lg-3">
+
+                        <div class="col-12 col-md-8 text-center">
+                            <h1 class="display-3 mb-4">Applications of Adopting a Sentiment Analysis Tool for businesses</h1>
+                        </div>
+                    </div>
+
+                    <div class="timeline timeline-six px-3 px-lg-0">
+                        
+                        <!-- Timeline Item 1 -->
+                        <div class="row no-gutters">
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                            <!-- timeline item 1 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="d-none d-lg-block m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">1.</span> Social media monitoring</h4>
+                                        <p class="my-2">Once you're approved, you can then explore our platform functionalities and make your first Free Requests.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 2 -->
+                        <div class="row no-gutters">
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card left-timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">2.</span> Brand monitoring</h4>
+                                        <p class="my-2">To start processing comments you’ll need to extract the comments from websites and get an assessment of your credit value. You can extract the comments with Google Chrome plugin or paste it directly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- timeline item 2 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>                                
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                        </div>
+                        <!-- Timeline Item 3 -->
+                        <div class="row no-gutters">
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                            <!-- timeline item 3 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">3.</span> Customer support analysis</h4>
+                                        <p class="my-2">You can now send your request to start comments processing with our services. We’ll review the requests, just to make sure we can run your requests in the best way.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 4 -->
+                        <div class="row no-gutters">
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card left-timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">4.</span> Customer feedback analysis</h4>
+                                        <p class="my-2">Find out more about Comments Analytics dashboard and discover the opportunities of this Platform.</p>
+                                        <p>We recommend you to start using the Free plan and getting familiar with the different endpoints of the services with the documentation. After validating our services results, you can purchase your desired plan according to your business needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- timeline item 4 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>
+                                <div class="row h-50">
+                                    <div class="col">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                        </div>
+                        <!-- Timeline Item 5 -->
+                        <div class="row no-gutters">
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                            <!-- timeline item 5 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary"><i class="fa fa-dot-circle-o" aria-hidden="true"></i></span>
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">5.</span> Market research </h4>
+                                        <p class="my-2">You can now send your request to start comments processing with our services. We’ll review the requests, just to make sure we can run your requests in the best way.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <section class="section">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-7">
+                    <div class="col-12 text-center">
+                        <h1 class="h1 font-weight-bolder mb-4 px-lg-8">Recommended by leading experts in marketing and sale</h1>
+                        <p class="lead">Our products are loved by users worldwide</p>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-12 col-lg-6">
+                        <div class="customer-testimonial d-flex mb-5">
+                            <img src="../assets/img/team/profile-picture-1.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
+                            <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
+                                <div class="d-flex mb-4">
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                </div>
+                                <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                                <h6>- James Curran <small class="ml-0 ml-md-2">Designer Apple</small></h6>
+                            </div>
+                        </div>
+                        <div class="customer-testimonial d-flex mb-5">
+                            <img src="../assets/img/team/profile-picture-2.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
+                            <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
+                                <div class="d-flex mb-4">
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                </div>
+                                <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                                <h6>- Richard Thomas <small class="ml-0 ml-md-2">Engineer Google</small></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 pt-lg-6">
+                        <div class="customer-testimonial d-flex mb-5">
+                            <img src="../assets/img/team/profile-picture-4.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
+                            <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
+                                <div class="d-flex mb-4">
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                </div>
+                                <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                                <h6>- Jose Evans <small class="ml-0 ml-md-2">Engineer Google</small></h6>
+                            </div>
+                        </div>
+                        <div class="customer-testimonial d-flex mb-lg-5">
+                            <img src="../assets/img/team/profile-picture-6.jpg" class="image image-sm mr-3 rounded-circle shadow" alt="">
+                            <div class="content bg-soft shadow-soft border border-light rounded position-relative p-4">
+                                <div class="d-flex mb-4">
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                    <span class="text-warning mr-2"><i class="star fas fa-star"></i></span>
+                                </div>
+                                <p class="mt-2">"We use Impact mainly for its site explorer, and it’s immensely improved how we find link targets. We use it both for getting quick analysis of a site, as well as utilizing its extensive index when we want to dive deep."</p>
+                                <h6>- Charles Moody <small class="ml-0 ml-md-2">Manager IBM</small></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="./testimonials.html" class="btn btn-primary"><span class="mr-2"><i class="fas fa-book-open"></i></span> See all stories</a>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
 
     </main>
 
@@ -61,6 +372,7 @@
     {% include 'includes/scripts.html' %}
 
 </body>
+
 </html>
 
 {% block javascripts %}
