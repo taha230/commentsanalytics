@@ -15,5 +15,8 @@ urlpatterns = [
 
     # services pages (level 2)
     path('sentiment-analysis/', views.sentiment_analysis, name='sentiment_analysis'),
+    path('key-phrases-extraction/', views.key_phrases_extraction, name='key_phrases_extraction'),
+    path('named-entity-recognition/', views.named_entity_recognition, name='named_entity_recognition'),
+    path('predict-customers-needs/', views.predict_customers_needs, name='predict_customers_needs'),
    
 ]

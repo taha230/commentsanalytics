@@ -47,14 +47,61 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 
-############################################# Services Pages ###########################################################
+############################################# Uploaded Images ###########################################################
 
 def email_banners(request):
      image_data = open('apps/static/assets/img/upload_images/email_banner.png', mode='rb').read()
      return HttpResponse(image_data, content_type="image/png")
-     
+
+############################################# Services Pages ###########################################################
+
 def sentiment_analysis(request):
     html_template = loader.get_template('home/Landing_pages/sentiment_analysis.html')
+
+    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+              ,'related_links' : [
+                    {'url': '', 'text': ''}
+               ]
+               ,'related_posts' : 
+               [
+                    {'url': '', 'text': ''}
+               ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
+def key_phrases_extraction(request):
+    html_template = loader.get_template('home/Landing_pages/key_phrases_extraction.html')
+
+    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+              ,'related_links' : [
+                    {'url': '', 'text': ''}
+               ]
+               ,'related_posts' : 
+               [
+                    {'url': '', 'text': ''}
+               ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
+def named_entity_recognition(request):
+    html_template = loader.get_template('home/Landing_pages/named_entity_recognition.html')
+
+    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+              ,'related_links' : [
+                    {'url': '', 'text': ''}
+               ]
+               ,'related_posts' : 
+               [
+                    {'url': '', 'text': ''}
+               ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
+def predict_customers_needs(request):
+    html_template = loader.get_template('home/Landing_pages/predict_customers_needs.html')
 
     context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
               ,'related_links' : [
