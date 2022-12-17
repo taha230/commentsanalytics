@@ -58,7 +58,7 @@ def email_banners(request):
 def sentiment_analysis(request):
     html_template = loader.get_template('home/Landing_pages/sentiment_analysis.html')
 
-    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API.'
               ,'related_links' : [
                     {'url': '', 'text': ''}
                ]
@@ -73,7 +73,7 @@ def sentiment_analysis(request):
 def key_phrases_extraction(request):
     html_template = loader.get_template('home/Landing_pages/key_phrases_extraction.html')
 
-    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+    context = {'title' : 'Keyword Extraction: A Guide to Finding Keywords in Text | NLP Keyword Extraction', 'description': 'Key Phrases Extraction is used to automatically pull out single keywords, or groups of two or more words to detect key phrases in unstructured text data.'
               ,'related_links' : [
                     {'url': '', 'text': ''}
                ]
@@ -88,7 +88,7 @@ def key_phrases_extraction(request):
 def named_entity_recognition(request):
     html_template = loader.get_template('home/Landing_pages/named_entity_recognition.html')
 
-    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+    context = {'title' : 'Named Entity Recognition & Extraction API | NLP NER', 'description': 'Extract the most important business insights by segmenting and tagging the text using Comments Analytics NLP driven named entity recognition & extraction API.'
               ,'related_links' : [
                     {'url': '', 'text': ''}
                ]
