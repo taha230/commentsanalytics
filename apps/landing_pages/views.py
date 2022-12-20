@@ -88,7 +88,7 @@ def key_phrases_extraction(request):
 def named_entity_recognition(request):
     html_template = loader.get_template('home/Landing_pages/named_entity_recognition.html')
 
-    context = {'title' : 'Named Entity Recognition & Extraction API | NLP NER', 'description': 'Extract the most important business insights by segmenting and tagging the text using Comments Analytics NLP driven named entity recognition & extraction API.'
+    context = {'title' : 'Named Entity Recognition & Extraction API | NLP NER', 'description': 'Named entity recognition (NER) is an AI technique that automatically identifies key information in a text, like names of people, places, companies, and more.'
               ,'related_links' : [
                     {'url': '', 'text': ''}
                ]
