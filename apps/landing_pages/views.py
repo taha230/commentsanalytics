@@ -103,7 +103,7 @@ def named_entity_recognition(request):
 def predict_customers_needs(request):
     html_template = loader.get_template('home/Landing_pages/predict_customers_needs.html')
 
-    context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API from Repustate.'
+    context = {'title' : 'Predict Customers Needs | AI tool', 'description': 'Predicting customer needs involves providing a service or product that customers haven\'t expressed a demand yet'
               ,'related_links' : [
                     {'url': '', 'text': ''}
                ]
