@@ -8,9 +8,9 @@
         
         {% for row in plan_list %}
 
-            <div class="col-12 col-lg-4">
+            <div class="col-12 col-lg-4" >
                 <!-- Card -->
-                <div class="card shadow-soft mb-5 mb-lg-6 px-2">
+                <div class="card shadow-soft mb-5 mb-lg-6 px-2" id="topbar-fix-height-pricing" >
                     <div class="card-header border-light py-5 px-4">
                         <!-- Price -->
                         <div class="d-flex mb-3">
@@ -41,7 +41,7 @@
                             <p class="font-weight-normal mb-0"> {{ row.tag }}</p>
                             {% endif %}
                     </div>
-                    <div class="card-body pt-5">
+                    <div class="card-body pt-2">
                         <ul class="list-group simple-list">
                             {% for row_has in row.has_list %}
                                 <li class="list-group-item font-weight-normal"><span class="icon-success"><i class="fas fa-check"></i></span>
@@ -56,16 +56,18 @@
                         </ul> 
                     </div>
                     {% if row.price > 0 %}
-                        <div class=" btn w-100 mb-3">
+                        <div class=" btn w-100 mb-1">
                             <div class="row">
-                                <label  class="">Discount Code:</label>
+                                <label class="">Discount Code:</label>
                                 <input class="form-control" name="discount_code_input_{{row.name}}" >
                             </div>
                         </div>
 
-                        <button type="submit" formaction="/transaction_submit/plan{{ row.plan_id }}" class="btn w-100 btn-secondary animate-up-2 paddle-button mt-3 mb-4">
+                        <button type="submit" formaction="/transaction_submit/plan{{ row.plan_id }}" class="btn w-100 btn-secondary animate-up-2 paddle-button mt-2 mb-3">
                             Pay Now
+
                         </button>
+                    
                     {% endif %}
                 </div>
             </div>
