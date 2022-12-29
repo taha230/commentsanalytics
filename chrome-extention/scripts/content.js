@@ -1,6 +1,7 @@
 
-const youtube_title = document.querySelector("h1.ytd-watch-metadata");
+alert(document.title)
+const youtube_title = document.querySelector("h1");
 
 if (article) {
-  alert('Youtube Title: ' + youtube_title.textContent)
+  alert('Youtube Title: ' + youtube_title.innerHTML)
 }
