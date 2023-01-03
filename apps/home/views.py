@@ -267,7 +267,7 @@ def homepage_blog(request):
                 ,'related_links' : [
                     {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
                     ,{'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
-                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in tex'}
+                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in comments'}
                     ,{'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
                 ]
                ,'related_posts' : [
@@ -329,12 +329,12 @@ def homepage_blog_post_name(request):
         pass
     context = {'segment': 'index',
                           "post_json": post_json,
-                          "title" : "profile browse | " + post_json['title'],
+                          "title" : "CommentsAnalytics | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
                      {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
                     ,{'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
-                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in tex'}
+                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in comments'}
                     ,{'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
                     # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
                     # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
