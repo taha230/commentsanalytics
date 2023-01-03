@@ -264,7 +264,12 @@ def homepage_blog(request):
                 "page_limit": min(total_count_post, POST_BLOG_COUNT_REPORT),
                 "total_items": total_count_post,
                 "post_list": row_list_post
-                ,'related_links' : []
+                ,'related_links' : [
+                    {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
+                    ,{'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
+                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in tex'}
+                    ,{'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
+                ]
                ,'related_posts' : [
                     ]
               }
@@ -327,10 +332,10 @@ def homepage_blog_post_name(request):
                           "title" : "profile browse | " + post_json['title'],
                           "description": post_json['title']
                 ,'related_links' : [
-                    #  {'url': '/services_profile/', 'text': 'Profile URLs finder Services '}
-                    # ,{'url': '/services_social_category/', 'text': 'Social Network URLs finder Services'}
-                    # ,{'url': '/services_wikipedia_category/', 'text': 'Wikipedia URLs finder Services'}
-                    # ,{'url': '/services_facebook_category/', 'text': 'Facebook URLs finder Services'}
+                     {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
+                    ,{'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
+                    ,{'url': '/named-entity-recognition/', 'text': 'Named Entity Recognition: identifying key information (entities) in tex'}
+                    ,{'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
                     # ,{'url': '/services_pinterest_category/', 'text': 'Pinterest URLs finder Services'}
                     # ,{'url': '/services_amazon_category/', 'text': 'Amazon URLs finder Services'}
                     # ,{'url': '/services_twitter_category/', 'text': 'Twitter URLs finder Services'}
