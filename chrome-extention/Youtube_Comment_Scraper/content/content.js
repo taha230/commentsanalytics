@@ -13051,7 +13051,7 @@
                         scrollTop: e
                     }, n, function() {
                         t()
-                        $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>3</p>\n      </div>\n      \n    ');
+                        $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>34</p>\n      </div>\n      \n    ');
 
                     })
                 })
