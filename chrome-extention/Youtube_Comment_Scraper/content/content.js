@@ -13028,10 +13028,13 @@
                         t.scrollDown()
                     }, 5e3)
                 }
+
             }
         }, {
             key: "wait",
             value: function(t) {
+                $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>!!! Wait !!!</p>\n      </div>\n      \n    ');
+                    
                 return new Promise(function(e) {
                     return setTimeout(e, t)
                 })
@@ -13039,6 +13042,7 @@
         }, {
             key: "scrollDown",
             value: function(t) {
+
                 var e = document.body.scrollHeight;
                 e = $("ytd-app").height();
                 var n = t || "slow";
@@ -13047,6 +13051,8 @@
                         scrollTop: e
                     }, n, function() {
                         t()
+                        $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>3</p>\n      </div>\n      \n    ');
+
                     })
                 })
             }
@@ -13054,6 +13060,8 @@
             key: "scrollUp",
             value: function(t) {
                 document.body.scrollHeight;
+                $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>!!! UP !!!</p>\n      </div>\n      \n    ');
+
                 $("ytd-app").height();
                 var e = t || "slow";
                 return new Promise(function(t) {
