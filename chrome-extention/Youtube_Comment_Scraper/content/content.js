@@ -1778,8 +1778,8 @@
             MINUTES: 6e4,
             REQUEST_INTERVALS: [5, 6, 8, 9, 10],
             NEW_WINS: [0, 1],
-            FREE_MAX_NUM: 20,
-            PRO_MAX_NUM: 1200
+            FREE_MAX_NUM: 12000,
+            PRO_MAX_NUM: 12000
         };
     r.AUTH = "auth", r.LOGIN = "login", r.LOGIN_DONE = "login_done", r.LOGIN_FAIL = "login_fail", r.LOGOUT = "logout", r.TOKEN_EXP = "token_exp", r.GET_CURRENT_USER = "get_current_user", r.GET_PRO_STATE = "get_pro_state", r.PAGE_LOAD_COMPLETE = "complete", r.PAGE_LOADING = "loading", r.GO_PRO = "go_pro", r.LOAD_COMMENTS_COMPLETE = "load_comments_complete", r.OPEN_SCRAPE_WIN = "open_scrape_win";
     var o, a, u = {};
@@ -13043,16 +13043,18 @@
             key: "scrollDown",
             value: function(t) {
 
+
                 var e = document.body.scrollHeight;
                 e = $("ytd-app").height();
                 var n = t || "slow";
+                // $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>Down </p>\n      </div>\n      \n    ');
+                $("#masthead-container").append(e);
+
                 return new Promise(function(t) {
                     $("html,body").animate({
                         scrollTop: e
                     }, n, function() {
                         t()
-                        $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>34</p>\n      </div>\n      \n    ');
-
                     })
                 })
             }
@@ -13126,6 +13128,8 @@
     }, 1e3), window.addEventListener(i.a.EVENT.LOAD_COMMENTS_COMPLETE, function() {
         var t = s(regeneratorRuntime.mark(function t(e) {
             var n;
+            $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>END </p>\n      </div>\n      \n    ');
+
             return regeneratorRuntime.wrap(function(t) {
                 for (;;) switch (t.prev = t.next) {
                     case 0:
@@ -13173,6 +13177,8 @@
         }));
         return function(e) {
             return t.apply(this, arguments)
+            $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>APPLY</p>\n      </div>\n      \n    ');
+
         }
     }(), !1)
 }]);
