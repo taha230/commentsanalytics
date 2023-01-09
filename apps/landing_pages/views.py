@@ -60,7 +60,7 @@ def sentiment_analysis(request):
 
     context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API.'
               ,'related_links' : [
-                    {'url': '', 'text': ''}
+                    {'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
                ]
                ,'related_posts' : 
                [
