@@ -64,7 +64,7 @@ def sentiment_analysis(request):
                ]
                ,'related_posts' : 
                [
-                    {'url': '', 'text': ''}
+                    {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'}
                ]
               }
 
