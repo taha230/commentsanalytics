@@ -13023,12 +13023,14 @@
                 if (l) {
                     $("#player").remove(), $("#secondary-inner").remove(), $("#related").remove();
                     $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>COMMENTS ANALYTICS SCRAPER IS WORKING, PLEASE DO NOT CLOSE THE WINDOW.</p>\n      </div>\n      <div style="text-align: center; padding: 10px; background: white; font-size: 14px;">\n        <p>\n          <button id="dl_btn" style="color: white; padding: 5px; background: #6977ae; font-size: 14px; border: none;">DOWNLOAD COMMENTS <span id="c_count"></span></button>\n        </p>\n      </div>\n    ');
+
+                    $("#c_count").text("( " + g.comments.length + " )")
+                
                     var t = this;
                     this.scrollInterval = setInterval(function() {
                         t.scrollDown()
                     }, 5e3)
                 }
-
             }
         }, {
             key: "wait",
@@ -13049,6 +13051,7 @@
                 var n = t || "slow";
                 // $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>Down </p>\n      </div>\n      \n    ');
                 // $("#masthead-container").append(e);
+                // g.comments.length
                 $("#c_count").text("( " + g.comments.length + " )")
                 
                 return new Promise(function(t) {
@@ -13111,12 +13114,17 @@
     }());
     $(s(regeneratorRuntime.mark(function t() {
         return regeneratorRuntime.wrap(function(t) {
-            for (;;) switch (t.prev = t.next) {
-                case 0:
-                    g.init();
-                case 1:
-                case "end":
-                    return t.stop()
+            // $("#masthead-container").append('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
+                switch (t.prev = t.next) {
+                    case 0:
+                        g.init();
+               
+                    case 1:
+
+                    case "end":
+
+                        return t.stop()
             }
         }, t)
     }))), setTimeout(function() {
@@ -13132,6 +13140,7 @@
             $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>END </p>\n      </div>\n      \n    ');
 
             return regeneratorRuntime.wrap(function(t) {
+                
                 for (;;) switch (t.prev = t.next) {
                     case 0:
                         if ($("#player").remove(), $("#secondary-inner").remove(), $("#related").remove(), n = e.detail, g.pushComments(n), $("#c_count").text("( " + g.comments.length + " )"), $("#dl_btn").off("click"), $("#dl_btn").click(function(t) {
@@ -13151,6 +13160,7 @@
                         t.next = 23;
                         break;
                     case 17:
+
                         if (!(g.comments.length <= i.a.APP.FREE_MAX_NUM)) {
                             t.next = 23;
                             break
