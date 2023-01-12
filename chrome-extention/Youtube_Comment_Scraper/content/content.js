@@ -13022,9 +13022,9 @@
             value: function() {
                 if (l) {
                     $("#player").remove(), $("#secondary-inner").remove(), $("#related").remove();
-                    $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>COMMENTS ANALYTICS SCRAPER IS WORKING, PLEASE DO NOT CLOSE THE WINDOW.</p>\n      </div>\n      <div style="text-align: center; padding: 10px; background: white; font-size: 14px;">\n        <p>\n          <button id="dl_btn" style="color: white; padding: 5px; background: #6977ae; font-size: 14px; border: none;">DOWNLOAD COMMENTS <span id="c_count"></span></button>\n        </p>\n      </div>\n    ');
+                    $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>COMMENTS ANALYTICS SCRAPER IS WORKING, PLEASE DO NOT CLOSE THE WINDOW.</p>\n      </div>\n      <div style="text-align: center; padding: 10px; background: white; font-size: 14px;">\n        <p>\n          <button id="dl_btn" style="color: white; padding: 5px; background: #6977ae; font-size: 14px; border: none;">DOWNLOAD COMMENTS WITH RIGHT CLICK MENU<span id="c_count"></span></button>\n        </p>\n      </div>\n    ');
 
-                    $("#c_count").text("( " + g.comments.length + " )")
+                    // $("#c_count").text("( " + g.comments.length + " )")
                 
                     var t = this;
                     this.scrollInterval = setInterval(function() {
@@ -13052,7 +13052,7 @@
                 // $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>Down </p>\n      </div>\n      \n    ');
                 // $("#masthead-container").append(e);
                 // g.comments.length
-                $("#c_count").text("( " + g.comments.length + " )")
+                // $("#c_count").text("( " + g.comments.length + " )")
                 
                 return new Promise(function(t) {
                     $("html,body").animate({
@@ -13114,8 +13114,6 @@
     }());
     $(s(regeneratorRuntime.mark(function t() {
         return regeneratorRuntime.wrap(function(t) {
-            // $("#masthead-container").append('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-
                 switch (t.prev = t.next) {
                     case 0:
                         g.init();

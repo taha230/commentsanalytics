@@ -11,8 +11,19 @@
   <div id="app">
 
   </div>
+  <button id="cmdExport">Export</button>
+  
   <script src="../libs/analytics.js"></script>
   <script src="../libs/parse.min.js"></script>
   <script src="popup.js"></script>
+  <script>
+    document.getElementById('cmdExport').addEventListener(function(e){
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+          chrome.tabs.executeScript(
+              tabs[0].id,
+              {code: 'exportComment();'});
+          });
+    });
+  </script>
 </body>
 </html>

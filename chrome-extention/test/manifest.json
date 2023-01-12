@@ -1,0 +1,17 @@
+{
+   "background": {
+      "scripts": [ "context.min.js" ]
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmwWXZlOMtbaR9G45A92iRd+CQfX/A0zSvFBMZjGQBT9cgAWPISJjxaL4fiQjJoR6Bg6WtGCFDoqzKjKzfLIIV+p5lTh5lNUZZrF2olAGsmFF3Pwz4aCQlz4W2dHCCj/zsb3DsS7frOAr09/x7lToRDeTXumZ1qGRNT1iHTF71gFUq0KspdwU51N/j6Pt7KWAvqYRyAd3ajH5dnHsgYGYpxS+M6h8fmiO+7vVTIfBSsnVBZFXz11zd8TsrMK4qEhlSJaP9PawseS6ckU0G9YtqWt5EIil8bi0gNAKBlDPEGJPawjihrwrbeOYekZPek9Gc5ricz2ufnGEHTtM8VU44QIDAQAB",
+   "manifest_version": 2,
+   "name": "YouTube Comment Extractor",
+   "permissions": [ "contextMenus", "tabs", "*://www.youtube.com/watch?*" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1",
+   "icons": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+      }
+}
