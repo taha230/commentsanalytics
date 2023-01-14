@@ -60,7 +60,9 @@ def sentiment_analysis(request):
 
     context = {'title' : 'Sentiment Analysis API & Emotion Mining Tool | NLP API', 'description': 'Analyze, detect, and monitor the sentiment hidden in your unstructured data with the best NLP-based sentiment analysis API.'
               ,'related_links' : [
-                    {'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
+                    {'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'},
+                    {'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
+
                ]
                ,'related_posts' : 
                [
@@ -75,11 +77,12 @@ def key_phrases_extraction(request):
 
     context = {'title' : 'Keyword Extraction: A Guide to Finding Keywords in Text | NLP Keyword Extraction', 'description': 'Key Phrases Extraction is used to automatically pull out single keywords, or groups of two or more words to detect key phrases in unstructured text data.'
               ,'related_links' : [
-                    {'url': '', 'text': ''}
+                    {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'},
+                    {'url': '/predict-customers-needs/', 'text': 'How to predict customers\' needs in their reviews'}
                ]
                ,'related_posts' : 
                [
-                    {'url': '', 'text': ''}
+                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'}
                ]
               }
 
@@ -90,7 +93,7 @@ def named_entity_recognition(request):
 
     context = {'title' : 'Named Entity Recognition & Extraction API | NLP NER', 'description': 'Named entity recognition (NER) is an AI technique that automatically identifies key information in a text, like names of people, places, companies, and more.'
               ,'related_links' : [
-                    {'url': '', 'text': ''}
+                    {'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'}
                ]
                ,'related_posts' : 
                [
@@ -105,11 +108,13 @@ def predict_customers_needs(request):
 
     context = {'title' : 'Predict Customers Needs | AI tool', 'description': 'Predicting customer needs involves providing a service or product that customers haven\'t expressed a demand yet'
               ,'related_links' : [
-                    {'url': '', 'text': ''}
+                    {'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'},
+                    {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
                ]
                ,'related_posts' : 
                [
-                    {'url': '', 'text': ''}
+                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'}
+
                ]
               }
 
