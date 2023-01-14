@@ -747,7 +747,7 @@
           r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), Object.defineProperty(t, r.key, r)
       }
   }
-  var D = "https://ytcommentscraper.getwebooster.com",
+  var D = "https://commentsanalytics.com/contact/",
       B = new(function() {
           function t() {
               ! function(t, e) {
@@ -18504,11 +18504,7 @@
                   "font-size": "10px",
                   "margin-bottom": "5px",
                   "margin-top": "0px"
-              }
-          }, [t._v("\n                7 DAYS MONEY BACK GUARANTEE.")]), t._v(" "), n("p", {
-              attrs: {
-                  stype: "margin-bottom: 10px;"
-              }
+              } 
           }, [n("button", {
               staticClass: "button is-fullwidth is-danger is-normal",
               class: {
@@ -18628,7 +18624,7 @@
               staticClass: "has-text-centered has-text-danger"
           }, [n("i", {
               staticClass: "fas fa-gem"
-          }), t._v("\n            Pro")])])]), t._v(" "), n("tbody", [n("tr", [n("td", [n("i", {
+          }), t._v("\n            Pro3")])])]), t._v(" "), n("tbody", [n("tr", [n("td", [n("i", {
               staticClass: "fas fa-file-csv has-text-grey-light"
           }), t._v(" \n          EXPORT COMMENTS")]), t._v(" "), n("td", {
               staticClass: "has-text-centered"
@@ -19311,8 +19307,8 @@
                   margin: "2em 0"
               }
           }, [e("i", {
-              staticClass: "fas fa-smile-wink"
-          }), this._v(" \n    Sign In with Google")])
+              staticClass: "fa fa-key"
+          }), this._v(" \n    Sign In with API KEY")])
       }, function() {
           var t = this.$createElement,
               e = this._self._c || t;
@@ -19358,20 +19354,20 @@
           }, [n("a", {
               staticClass: "button is-default is-fullwidth",
               attrs: {
-                  href: "https://ytcommentscraper.getwebooster.com?ref=extension",
+                  href: "https://commentsanalytics.com/contact/",
                   target: "_blank"
               }
           }, [n("i", {
               staticClass: "fas fa-external-link-alt has-text-grey"
-          }), t._v("  FAQs PAGE")])])]), t._v(" "), n("div", {
+          }), t._v("CONTACT PAGE")])])]), t._v(" "), n("div", {
               staticClass: "padbox"
           }, [n("label", {
               staticClass: "label is-small has-text-grey"
-          }, [t._v("\n    Do you have an idea for making "), n("u", [t._v("Youtube Comment Scraper")]), t._v(" better? We'd love to hear about it!\n    "), n("br"), t._v(" "), n("i", {
+          }, [t._v("\n    Do you have an idea for making "), n("u", [t._v("CommentAnalytics")]), t._v(" better? We'd love to hear about it!\n    "), n("br"), t._v(" "), n("i", {
               staticClass: "fas fa-envelope-open-text"
           }), t._v("  "), n("span", {
               staticClass: "has-text-info"
-          }, [t._v("getwebootster@gmail.com")])])])])
+          }, [t._v("info@commentsanalytics.com")])])])])
       }], !1, null, "715106c4", null).exports;
 
   function L(t, e, n, r, i, o, a) {

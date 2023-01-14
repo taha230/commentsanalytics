@@ -10,9 +10,16 @@
       </style>
     </head>
     <body>
-      <button id="cmdExport">Export</button>
+      <button id="cmdExport">Export3</button>
       <script>
           document.getElementById('cmdExport').addEventListener(function(e){
+            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+                chrome.tabs.executeScript(
+                    tabs[0].id,
+                    {code: 'exportComment();'});
+                });
+          });
+          document.getElementById('dl_btn').addEventListener(function(e){
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 chrome.tabs.executeScript(
                     tabs[0].id,

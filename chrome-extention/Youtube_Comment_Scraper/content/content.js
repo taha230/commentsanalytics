@@ -13022,7 +13022,7 @@
             value: function() {
                 if (l) {
                     $("#player").remove(), $("#secondary-inner").remove(), $("#related").remove();
-                    $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>COMMENTS ANALYTICS SCRAPER IS WORKING, PLEASE DO NOT CLOSE THE WINDOW.</p>\n      </div>\n      <div style="text-align: center; padding: 10px; background: white; font-size: 14px;">\n        <p>\n          <button id="dl_btn" style="color: white; padding: 5px; background: #6977ae; font-size: 14px; border: none;">DOWNLOAD COMMENTS WITH RIGHT CLICK MENU<span id="c_count"></span></button>\n        </p>\n      </div>\n    ');
+                    $("#masthead-container").append('\n      <div style="text-align: center; color: white; padding: 10px; background: #5c5eda; font-size: 14px;">\n        <p>COMMENTS ANALYTICS SCRAPER IS WORKING, PLEASE DO NOT CLOSE THE WINDOW.</p>\n      </div>\n      <div style="text-align: center; padding: 10px; background: white; font-size: 14px;">\n        <p>\n          <button id="dl_btn" style="color: white; padding: 5px; background: #6977ae; font-size: 14px; border: none;">DOWNLOAD COMMENTS VIA RIGHT CLICK MENU<span id="c_count"></span></button>\n        </p>\n      </div>\n    ');
 
                     // $("#c_count").text("( " + g.comments.length + " )")
                 
