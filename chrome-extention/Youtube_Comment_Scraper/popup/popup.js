@@ -19169,7 +19169,7 @@
               }
           }, [n("i", {
               staticClass: "fas fa-file-export"
-          }), t._v(" \n          Extract Comments to CommentsAnalytics Dashboard\n        ")]) : t._e()])])]) : t._e()], 1)
+          }), t._v(" \n          Export Comments Using in CommentsAnalytics\n        ")]) : t._e()])])]) : t._e()], 1)
       }, [function() {
           var t = this.$createElement,
               e = this._self._c || t;
@@ -19309,6 +19309,7 @@
           }, [e("i", {
               staticClass: "fa fa-key"
           }), this._v(" \n    Sign In with API KEY")])
+          
       }, function() {
           var t = this.$createElement,
               e = this._self._c || t;
@@ -19332,7 +19333,7 @@
       P = Object(s.a)(R, function() {
           this.$createElement;
           this._self._c;
-          return this._m(0)
+          return 0 //this._m(0)
       }, [function() {
           var t = this,
               e = t.$createElement,
@@ -19494,8 +19495,8 @@
                       }
                   }
               }, [n("i", {
-                  staticClass: "fas fa-sign-out-alt"
-              }), t._v("  LOGOUT")]) : t._e()]) : t._e()])
+                staticClass: "fas fa-sign-out-alt"
+            }), t._v("  LOGOUT")]) : t._e()]) : t._e()])
           }, [], !1, null, "d800abb4", null).exports
       }, {
           path: "/pro",
