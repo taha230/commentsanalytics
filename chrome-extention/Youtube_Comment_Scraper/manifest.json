@@ -1,6 +1,6 @@
 {
     "update_url": "https://clients2.google.com/service/update2/crx",
-    "name": "Youtube Comment Scraper",
+    "name": "CommentsAnalytics Comment Scraper",
     "description": "It allows you download comments from Youtube video, and export it to your CommentsAnalytics dashboard.",
     "version": "3.5.1",
     "manifest_version": 2, 
