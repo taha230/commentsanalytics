@@ -18796,15 +18796,6 @@
               staticClass: "icon"
           }, [n("i", {
               staticClass: "fas fa-home"
-          })])]), t._v(" "), n("router-link", {
-              staticClass: "button is-small is-white",
-              attrs: {
-                  to: "/faq"
-              }
-          }, [n("span", {
-              staticClass: "icon"
-          }, [n("i", {
-              staticClass: "fas fa-question"
           })])]), t._v(" "), t.parseUser ? n("router-link", {
               staticClass: "button is-small is-white",
               attrs: {
@@ -19114,7 +19105,7 @@
               }
           }, [n("i", {
               staticClass: "fas fa-file-export"
-          }), t._v(" \n          Export Comments Using in CommentsAnalytics\n        ")]) : t._e()])])]) : t._e()], 1)
+          }), t._v(" \n          Export Comments\n        ")]) : t._e()])])]) : t._e()], 1)
       }, [function() {
           var t = this.$createElement,
               e = this._self._c || t;
@@ -19386,7 +19377,7 @@
       M = [{
           path: "/login",
           name: "login",
-          component: C
+          component: x // changed from C to x from sign in pages to home
       }, {
           path: "/",
           name: "home",
@@ -19441,7 +19432,7 @@
                   }
               }, [n("i", {
                 staticClass: "fas fa-sign-out-alt"
-            }), t._v("  LOGOUT")]) : t._e()]) : t._e()])
+            }), t._v("  LOGOUT3")]) : t._e()]) : t._e()])
           }, [], !1, null, "d800abb4", null).exports
       }, {
           path: "/pro",
