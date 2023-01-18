@@ -19421,18 +19421,7 @@
                   staticClass: "has-text-centered padbox"
               }, [n("label", {
                   staticClass: "label is-small has-text-grey"
-              }, [n("i", {
-                  staticClass: "fas fa-user"
-              }), t._v(" \n      "), n("span", [t._v(t._s(t.parseUser.username))])]), t._v(" "), t.parseUser ? n("button", {
-                  staticClass: "button is-danger is-light is-fullwidth has-text-weight-bold",
-                  on: {
-                      click: function(e) {
-                          return t.logout()
-                      }
-                  }
-              }, [n("i", {
-                staticClass: "fas fa-sign-out-alt"
-            }), t._v("  LOGOUT3")]) : t._e()]) : t._e()])
+              })]) : t._e()])
           }, [], !1, null, "d800abb4", null).exports
       }, {
           path: "/pro",
