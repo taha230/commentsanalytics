@@ -18498,7 +18498,7 @@
               }
           }), t._v("  I accept "), n("a", {
               attrs: {
-                  href: "https://commentsanalytics.com/terms",
+                  href: "https://commentsanalytics.com/terms/",
                   target: "_blank"
               }
           }, [t._v("Terms of Service")])])]), t._v(" "), t._m(1)])])]), t._v(" "), n("div", {

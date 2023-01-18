@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header.html" %}
+
+    <main>
+
+                <section class="section-header bg-primary text-white pb-7 pb-lg-11">
+            <div class="container">
+                <div class="row justify-content-center mb-6">
+                    <div class="col-12 col-md-10 text-center">
+                        <h1 class="display-2 mb-3">Terms of Services</h1>
+                        <p class="lead px-5">Effective as of: August, 2020</p>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col col-md-10">
+                        <p class="lead mb-5 px-5">The terms of service for CommentsAnalytics, an comments extractor and analytics service, outlines the legal agreement between the company and its users. These terms govern the use of the service and the rights and responsibilities of both parties.</p>
+                        <p class="lead mb-5 px-5">One important aspect of the terms of service is the use of data. CommentsAnalytics collects and stores data from users' comments, such as text and metadata. The company may use this data to improve its service and for internal analytics. Users should review the company's privacy policy to understand how their data is used and protected.</p>
+                        <p class="lead mb-5 px-5">Another aspect of the terms of service is the ownership of content. By using the service, users agree that any comments or data that they upload to the service belong to CommentsAnalytics, and the company has the right to use and share this content as it sees fit.</p>
+                        <p class="lead mb-5 px-5">Users also agree to indemnify and hold CommentsAnalytics harmless from any claims, damages, or losses arising from their use of the service. This means that if a user uses the service in a way that causes harm to another party, the user is responsible for covering any legal costs or damages that result.</p>
+                        <p class="lead mb-5 px-5">The terms of service may be updated from time to time and it is the user's responsibility to keep themselves updated with the changes. If a user continues to use the service after changes have been made to the terms of service, it is considered as an acceptance of the new terms.</p>
+                        
+                    </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                    <div class="col col-md-10 text-center">
+                        <h2 class="mb-3">Still not convinced? Start with a FREE trial!</h2>
+                        <p class="lead mb-5 px-5">You will get full access to your Dashboard with all the features with Free plan.</p>
+                        <!-- Button -->
+                        <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
+                            Start a free plan<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pattern bottom"></div>
+        </section>
+
+
+        <section class="section section-lg bg-white line-bottom-light">
+            {% include 'includes/most_frequent_questions_pricing.html' %}  
+        </section>
+        
+        <section class="section section-lg bg-soft pb-5 mb-6">
+            <div class="container">
+                <div class="row justify-content-center"> 
+                    <div class="col-12">
+                        <h3 class="mb-5 text-center">We accept PayPal and all major credit cards.</h3>
+                    </div>
+                    <div class="col-12 text-black text-center mb-5">
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-mastercard"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-stripe"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-amazon-pay"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        </span>Send us an email to <a href="mailto:info@commentsanalytics.com"><strong>info@commentsanalytics.com</strong></a>
+                    </div>
+                </div> 
+            </div>    
+        </section>
+
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

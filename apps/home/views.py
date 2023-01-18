@@ -357,6 +357,18 @@ def homepage_privacy(request):
 
     return HttpResponse(html_template.render(context, request))
 
+def homepage_chrome_extension(request):
+    html_template = loader.get_template('home/homepage-chrome-extension.html')
+
+    context = {'segment': 'index'
+               ,'related_links' : [
+               ]
+               ,'related_posts' : [
+                    ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
 ############################################# Modules #########################################################
 
 @login_required(login_url="/login/")
