@@ -22,6 +22,8 @@ urlpatterns = [
     path('pricing/', views.homepage_pricing, name='pricing'),
     path('contact/', views.homepage_contact, name='contact'),
     path('overview/', views.homepage_overview, name='overview'),
+    path('terms/', views.homepage_terms, name='terms'),
+    path('privacy/', views.homepage_privacy, name='privacy'),
     
     # sitemap and robots
     path('sitemap.xml', views.sitemap, name='sitemap'),

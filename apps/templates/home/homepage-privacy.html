@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "includes/homepage_head.html" %}
+
+<body>
+
+    {% include "includes/googletagmanager.html" %}
+
+    {% include "includes/homepage_header.html" %}
+
+    <main>
+
+                <section class="section-header bg-primary text-white pb-7 pb-lg-11">
+            <div class="container">
+                <div class="row justify-content-center mb-6">
+                    <div class="col-12 col-md-10 text-center">
+                        <h1 class="display-2 mb-3">Privacy Policy</h1>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col col-md-10">
+                        <p class="lead mb-5 px-5">The privacy policy for CommentsAnalytics, a comments extractor and analytics service, outlines how the company collects, uses, and protects personal information from its users. It is important for users to review the privacy policy before using the service to understand how their data will be used and protected.</p>
+                        <p class="lead mb-5 px-5">One important aspect of the privacy policy is the collection of personal information. CommentsAnalytics collects personal information from users, such as their name and email address, when they create an account. The company may also collect other information, such as comments data, IP addresses, and browser information, through the use of cookies, extensions and other tracking technologies.</p>
+                        <p class="lead mb-5 px-5">CommentsAnalytics uses personal information to provide its services, such as to identify users and provide them with access to their account, as well as to improve its service and for internal comments analytics. The company may also share personal information with third parties, such as advertisers and partners, but only if it is necessary to provide the service or if the user has given consent. Users have control over their personal information and can request to access, correct or delete their data. CommentsAnalytics will comply with the user's request within a reasonable time and subject to legal and regulatory requirements.</p>
+                        <p class="lead mb-5 px-5">The privacy policy also outlines the security measures taken by CommentsAnalytics to protect personal information from unauthorized access, use, or disclosure. The company uses industry-standard security technologies and practices to protect personal information and regularly monitors for potential vulnerabilities.</p>
+                        <p class="lead mb-5 px-5">In addition, the privacy policy explains that the company may store personal information in servers located in different countries, which may have different data protection laws. By using the service, users consent to the transfer of their personal information to these countries.</p>
+                        
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center">
+                    <div class="col col-md-10 text-center">
+                        <h2 class="mb-3">Still not convinced? Start with a FREE trial!</h2>
+                        <p class="lead mb-5 px-5">You will get full access to your Dashboard with all the features with Free plan.</p>
+                        <!-- Button -->
+                        <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
+                            Start a free plan<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="pattern bottom"></div>
+        </section>
+
+
+        <section class="section section-lg bg-white line-bottom-light">
+            {% include 'includes/most_frequent_questions_pricing.html' %}  
+        </section>
+        
+        <section class="section section-lg bg-soft pb-5 mb-6">
+            <div class="container">
+                <div class="row justify-content-center"> 
+                    <div class="col-12">
+                        <h3 class="mb-5 text-center">We accept PayPal and all major credit cards.</h3>
+                    </div>
+                    <div class="col-12 text-black text-center mb-5">
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-mastercard"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-stripe"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-amazon-pay"></i>
+                        </div>
+                        <div class="icon icon-lg mr-2 mr-sm-3">
+                            <i class="fab fa-cc-paypal"></i>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        </span>Send us an email to <a href="mailto:info@commentsanalytics.com"><strong>info@commentsanalytics.com</strong></a>
+                    </div>
+                </div> 
+            </div>    
+        </section>
+
+
+    </main>
+
+    {% include 'includes/homepage_footer.html' %}
+
+    {% include 'includes/scripts.html' %}
+
+</body>
+</html>
+
+{% block javascripts %}
+
+{% endblock javascripts %}
+
+
+
+
+     
+
+

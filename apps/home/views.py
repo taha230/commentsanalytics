@@ -333,6 +333,30 @@ def homepage_services(request):
 
     return HttpResponse(html_template.render(context, request))
 
+def homepage_terms(request):
+    html_template = loader.get_template('home/homepage-terms.html')
+
+    context = {'segment': 'index'
+               ,'related_links' : [
+               ]
+               ,'related_posts' : [
+                    ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
+def homepage_privacy(request):
+    html_template = loader.get_template('home/homepage-privacy.html')
+
+    context = {'segment': 'index'
+               ,'related_links' : [
+               ]
+               ,'related_posts' : [
+                    ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
 ############################################# Modules #########################################################
 
 @login_required(login_url="/login/")
