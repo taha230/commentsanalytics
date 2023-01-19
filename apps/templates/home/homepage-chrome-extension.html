@@ -1,8 +1,9 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-{% include "includes/homepage_head.html" %}
-
+{% include "includes/homepage_head_title_description_variable.html" %}
 <body>
 
     {% include "includes/googletagmanager.html" %}
@@ -11,75 +12,193 @@
 
     <main>
 
-                <section class="section-header bg-primary text-white pb-7 pb-lg-11">
+        <section class="section-header pb-8 pb-lg-7 mb-4 mb-lg-6 bg-primary text-white">
             <div class="container">
-                <div class="row justify-content-center mb-6">
-                    <div class="col-12 col-md-10 text-center">
-                        <h1 class="display-2 mb-3">Terms of Services</h1>
-                        <p class="lead px-5">Effective as of: August, 2020</p>
-                    </div>
-                </div>
-
-
                 <div class="row justify-content-center">
-                    <div class="col col-md-10">
-                        <p class="lead mb-5 px-5">The terms of service for CommentsAnalytics, an comments extractor and analytics service, outlines the legal agreement between the company and its users. These terms govern the use of the service and the rights and responsibilities of both parties.</p>
-                        <p class="lead mb-5 px-5">One important aspect of the terms of service is the use of data. CommentsAnalytics collects and stores data from users' comments, such as text and metadata. The company may use this data to improve its service and for internal analytics. Users should review the company's privacy policy to understand how their data is used and protected.</p>
-                        <p class="lead mb-5 px-5">Another aspect of the terms of service is the ownership of content. By using the service, users agree that any comments or data that they upload to the service belong to CommentsAnalytics, and the company has the right to use and share this content as it sees fit.</p>
-                        <p class="lead mb-5 px-5">Users also agree to indemnify and hold CommentsAnalytics harmless from any claims, damages, or losses arising from their use of the service. This means that if a user uses the service in a way that causes harm to another party, the user is responsible for covering any legal costs or damages that result.</p>
-                        <p class="lead mb-5 px-5">The terms of service may be updated from time to time and it is the user's responsibility to keep themselves updated with the changes. If a user continues to use the service after changes have been made to the terms of service, it is considered as an acceptance of the new terms.</p>
-                        
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-2 mb-3">Chrome Extension</h1>
+                        <p class="lead">Chrome extension tool can be a useful way to extract comments from various websites easily. This type of tool can be installed as an extension to the Chrome browser, and once installed, it allows users to easily select and extract comments from a webpage with a simple click of a button.</p>
+                        <p style="text-align:center;">
+                            <img class="mt-6 article-img-meidum" height="150" src="/static/assets/img/illustrations/chrome_extension1.png" alt="key_phrases_extraction">
+                        </p>
                     </div>
+                    
                 </div>
-                
-                <div class="row justify-content-center">
-                    <div class="col col-md-10 text-center">
-                        <h2 class="mb-3">Still not convinced? Start with a FREE trial!</h2>
-                        <p class="lead mb-5 px-5">You will get full access to your Dashboard with all the features with Free plan.</p>
-                        <!-- Button -->
-                        <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
-                            Start a free plan<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
-                        </a>
-                    </div>
-                </div>
+               
             </div>
             <div class="pattern bottom"></div>
         </section>
 
-
-        <section class="section section-lg bg-white line-bottom-light">
-            {% include 'includes/most_frequent_questions_pricing.html' %}  
-        </section>
-        
-        <section class="section section-lg bg-soft pb-5 mb-6">
+        <section class="section section-lg pt-0 line-bottom-light">
             <div class="container">
-                <div class="row justify-content-center"> 
-                    <div class="col-12">
-                        <h3 class="mb-5 text-center">We accept PayPal and all major credit cards.</h3>
+                
+                <div class="row justify-content-center mb-5 mb-lg-6">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4 mt-3">What is CommentsAnalytics Chrome Extension?</h1>
+                        
                     </div>
-                    <div class="col-12 text-black text-center mb-5">
-                        <div class="icon icon-lg mr-2 mr-sm-3">
-                            <i class="fab fa-cc-visa"></i>
-                        </div>
-                        <div class="icon icon-lg mr-2 mr-sm-3">
-                            <i class="fab fa-cc-mastercard"></i>
-                        </div>
-                        <div class="icon icon-lg mr-2 mr-sm-3">
-                            <i class="fab fa-cc-stripe"></i>
-                        </div>
-                        <div class="icon icon-lg mr-2 mr-sm-3">
-                            <i class="fab fa-cc-amazon-pay"></i>
-                        </div>
-                        <div class="icon icon-lg mr-2 mr-sm-3">
-                            <i class="fab fa-cc-paypal"></i>
+                    <p class="lead">CommentsAnalytics chrome extension tool can be a useful way to extract comments from platforms such as YouTube videos. This tool can be installed as an extension to the Chrome browser, and once installed, it allows users to easily select video URL and export comments from a YouTube video with a simple click of a button. </p>
+                    <p class="lead mt-2">These comments can make it easier for businesses to extract and analyze customer feedback from their YouTube videos in order to gain insights and improve their content, marketing strategy and overall customer experience.</p>
+                    <p class="lead mt-2">Furthermore, this can also help businesses to track their brand reputation by monitoring the comments on their videos and general perception of their brand.</p>
+                    
+                    <div class="row justify-content-center mt-6">
+                        <div class="col col-md-10 text-center">
+                            
+                            <!-- Button -->
+                            <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
+                                <div class="fab fa-chrome"></div>
+                                    Add to Chrome
+                                <span class="cta-precision">(It's free)</span>
+                                <span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
+                            </a>
+
+                            
                         </div>
                     </div>
-                    <div class="col-12 text-center">
-                        </span>Send us an email to <a href="mailto:info@commentsanalytics.com"><strong>info@commentsanalytics.com</strong></a>
+                    <div class="row justify-content-center mt-2">
+                        <div class="col col-md-10 text-center">
+                            
+                            <div class="fas fa-star"></div>
+                            <div class="fas fa-star"></div>
+                            <div class="fas fa-star"></div>
+                            <div class="fas fa-star"></div>
+                            <div class="fas fa-star"></div>
+                            <div class="light-grey">(1,000+ <a target="_blank" href="">reviews</a>)</div>
+
+                        </div>
                     </div>
-                </div> 
-            </div>    
+
+
+                </div>
+               
+            </div>
         </section>
+
+        <section class="section section-lg pt-0 line-bottom-light">
+            <div class="container">
+                <div class="row justify-content-center mb-5 mb-lg-6">
+                    <div class="col-12 col-md-8 text-center">
+                        <h1 class="display-3 mb-4">Get Comments in 30 seconds</h1>
+                        <p class="lead">Install CommentsAnalytics chrome extension to extract comments of Youtube video page and store the JSON file in your storage. You can use this JSON file in your CommentsAnalytics dashboard to create a new Bulk analysis request.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="timeline timeline-six px-3 px-lg-0">
+                        <!-- Timeline Item 1 -->
+                        <div class="row no-gutters">
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                            <!-- timeline item 1 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="d-none d-lg-block m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary">1</span>
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">1.</span> Create an account</h4>
+                                        <p class="my-2">Once you're approved, you can then explore our platform functionalities and make your first Free Requests.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 2 -->
+                        <div class="row no-gutters">
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card left-timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">2.</span> Get Comments</h4>
+                                        <p class="my-2">To start processing comments you’ll need to extract the comments from websites and get an assessment of your credit value. You can extract the comments with Google Chrome plugin or paste it directly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- timeline item 2 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary">2</span>                                
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                        </div>
+                        <!-- Timeline Item 3 -->
+                        <div class="row no-gutters">
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                            <!-- timeline item 3 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary">3</span>
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">3.</span> Apply</h4>
+                                        <p class="my-2">You can now send your request to start comments processing with our services. We’ll review the requests, just to make sure we can run your requests in the best way.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Timeline Item 4 -->
+                        <div class="row no-gutters">
+                            <!-- timeline profile card -->
+                            <div class="col-lg py-2">
+                                <div class="card left-timeline-card bg-soft shadow-soft border-light p-3">
+                                    <div class="card-body p-4">
+                                        <h4 class="mb-3"><span class="d-lg-none">4.</span> Use</h4>
+                                        <p class="my-2">Find out more about Comments Analytics dashboard and discover the opportunities of this Platform.</p>
+                                        <p>We recommend you to start using the Free plan and getting familiar with the different endpoints of the services with the documentation. After validating our services results, you can purchase your desired plan according to your business needs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- timeline item 4 center image & middle line -->
+                            <div class="col-lg-1 text-center flex-column d-none d-lg-flex">
+                                <div class="row h-50">
+                                    <div class="col middle-line">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                                <span class="m-4 h4 lh-200 dot-separator bg-soft shadow-soft border border-light text-primary">4</span>
+                                <div class="row h-50">
+                                    <div class="col">&nbsp;</div>
+                                    <div class="col">&nbsp;</div>
+                                </div>
+                            </div>
+                            <div class="col-lg">
+                                <!--spacer-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
 
 
     </main>
@@ -89,6 +208,7 @@
     {% include 'includes/scripts.html' %}
 
 </body>
+
 </html>
 
 {% block javascripts %}
