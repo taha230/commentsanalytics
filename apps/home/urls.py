@@ -24,7 +24,8 @@ urlpatterns = [
     path('overview/', views.homepage_overview, name='overview'),
     path('terms/', views.homepage_terms, name='terms'),
     path('privacy/', views.homepage_privacy, name='privacy'),
-    path('chrome-extension/', views.homepage_chrome_extension, name='homepage_chrome_extension'),
+    path('chrome_extension/', views.homepage_chrome_extension, name='chrome_extension'),
+
 
     
     # sitemap and robots
