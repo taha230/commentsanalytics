@@ -19377,7 +19377,7 @@
       M = [{
           path: "/login",
           name: "login",
-          component: x // changed from C to x from sign in pages to home
+          component: C // changed from C to x from sign in pages to home
       }, {
           path: "/",
           name: "home",
