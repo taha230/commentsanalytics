@@ -67,6 +67,7 @@ def sentiment_analysis(request):
                ,'related_posts' : 
                [
                     {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'}
+                    ,{'url': '/Post/Sentiment%20Analysis%20on%20YouTube%20Comments%20With%20Comments%20Analytics/', 'text': 'Sentiment Analysis on YouTube Comments With Comments Analytics'}
                ]
               }
 
@@ -98,8 +99,7 @@ def named_entity_recognition(request):
                ,'related_posts' : 
                [
                     {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'}
-                    ,{'url': '/Post/Sentiment%20Analysis%20on%20YouTube%20Comments%20With%20Comments%20Analytics/', 'text': 'Sentiment Analysis on YouTube Comments With Comments Analytics'}
-               ]
+                   ]
               }
 
     return HttpResponse(html_template.render(context, request))
