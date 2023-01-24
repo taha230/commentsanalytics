@@ -39,7 +39,7 @@
 
                           {% for paragraph in row.paragraph_list %}
                             <div class=" mb-3">
-                              {% if forloop.first == True %}
+                              {% if forloop.second == True %}
                                 <div class="truncate-text justify-paragraph_center mb-6" > {{ paragraph.body | safe }} </div>
                              
                               {% endif %}
