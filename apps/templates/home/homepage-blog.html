@@ -39,9 +39,14 @@
 
                           {% for paragraph in row.paragraph_list %}
                             <div class=" mb-3">
-                              {% if forloop.second == True %}
+                              {% if forloop.first == True %}
+                                <div class="justify-paragraph_center" > {{ paragraph.body | safe }} </div>
+                              {% elif forloop.counter0 == 1 %}
+                                <div class="justify-paragraph_center" > {{ paragraph.body | safe }} </div>
+
+                              {% elif forloop.counter0 == 2 %}
                                 <div class="truncate-text justify-paragraph_center mb-6" > {{ paragraph.body | safe }} </div>
-                             
+
                               {% endif %}
                             </div>
                           {% endfor%}
