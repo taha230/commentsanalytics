@@ -1,0 +1,27 @@
+<a href="/key-phrases-extraction/" style="color: blue">Keyword extraction</a>
+<a href="/key-phrases-extraction/" style="color: blue" rel="nofollow" >Keyword extraction</a>
+
+#####################################################################################################################
+
+<p style="text-align:center;">
+<img class="mt-6 mb-6 card-img" src="/static/assets/img/blog/4-1.png" alt="real-time insight from customers">
+</p>
+
+#####################################################################################################################
+
+<div class="row justify-content-center">
+    <div class="col col-md-10 text-center">
+        <h2 class="mb-3">Still not convinced? Start with a FREE trial!</h2>
+        <p class="lead mb-5 px-5">You will get full access to your Dashboard with all the features with Free plan.</p>
+        <!-- Button -->
+        <a href="{% url 'login' %}"  class="btn btn-secondary animate-up-2">
+            Start a free plan<span class="icon icon-xs ml-3"><i class="fas fa-arrow-right"></i></span>
+        </a>
+    </div>
+</div>
+
+#####################################################################################################################
+<ul class="mt-4">
+    <li class = "font-base" data-placement="left" >Follow your favorite artists on Spotify </li>
+ </ul>
+
