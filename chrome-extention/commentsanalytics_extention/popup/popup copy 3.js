@@ -18360,7 +18360,7 @@
                                 }
                                 return alert("You must accept Terms of Service"), t.abrupt("return");
                             case 3:
-                                e = this, this.loading = !0, n = r.a.ext.PADDLE_URL + "?sub=" + this.plan + "&uid=" + G.parseUser.objectId + "&app=" + r.a.ext.APP.NAME, e.$browser.tabs.create({
+                                e = this, this.loading = !0, n = 'https://commentsanalytics.com/pricing/', e.$browser.tabs.create({
                                     url: n
                                 }), this.loading = !1;
                             case 8:
@@ -18407,55 +18407,7 @@
                     "margin-bottom": "0",
                     "padding-bottom": "0px"
                 }
-            }, [n("span", {
-                staticClass: "button is-small",
-                class: {
-                    "is-danger": 0 === t.subType,
-                    "has-text-weight-bold": 0 === t.subType
-                },
-                staticStyle: {
-                    "margin-bottom": "0px"
-                },
-                on: {
-                    click: function(e) {
-                        return t.selectSubType(0)
-                    }
-                }
-            }, [0 == t.subType ? n("i", {
-                staticClass: "fas fa-check-circle"
-            }) : t._e(), t._v(" \n                  Monthly")]), t._v(" "), n("span", {
-                staticClass: "button is-small",
-                class: {
-                    "is-danger": 1 === t.subType,
-                    "has-text-weight-bold": 1 === t.subType
-                },
-                staticStyle: {
-                    "margin-bottom": "0px"
-                },
-                on: {
-                    click: function(e) {
-                        return t.selectSubType(1)
-                    }
-                }
-            }, [1 == t.subType ? n("i", {
-                staticClass: "fas fa-check-circle"
-            }) : t._e(), t._v(" \n                  Quarterly")]), t._v(" "), n("span", {
-                staticClass: "button is-small",
-                class: {
-                    "is-danger": 2 === t.subType,
-                    "has-text-weight-bold": 2 === t.subType
-                },
-                staticStyle: {
-                    "margin-bottom": "0px"
-                },
-                on: {
-                    click: function(e) {
-                        return t.selectSubType(2)
-                    }
-                }
-            }, [2 == t.subType ? n("i", {
-                staticClass: "fas fa-check-circle"
-            }) : t._e(), t._v(" \n                Yearly")])]), t._v(" "), n("div", {
+            }), t._v(" "), n("div", {
                 staticClass: "content",
                 staticStyle: {
                     "margin-bottom": "0"
@@ -18474,12 +18426,7 @@
                 }
             }, [t._v("/Daily")])]) : t._e(), t._v(" "), 0 === t.subType ? n("span", {
                 staticClass: "has-text-danger has-text-weight-bold"
-            }, [t._v("$9.99"), n("small", {
-                staticClass: "has-text-grey",
-                staticStyle: {
-                    "font-size": "14px"
-                }
-            }, [t._v("/Monthly")])]) : t._e(), t._v(" "), 1 === t.subType ? n("span", {
+            }) : t._e(), t._v(" "), 1 === t.subType ? n("span", {
                 staticClass: "has-text-danger has-text-weight-bold"
             }, [t._v("$18.99"), n("small", {
                 staticClass: "has-text-grey",
@@ -18517,7 +18464,7 @@
                 }
             }, [n("i", {
                 staticClass: "fas fa-gem"
-            }), t._v("  \n                  "), n("strong", [t._v("Subscribe")])])]), t._v(" "), n("p", {
+            }), t._v("  \n                  "), n("strong", [t._v("Purhcase Premium Plans")])])]), t._v(" "), n("p", {
                 staticStyle: {
                     "margin-top": "10px",
                     "font-size": "14px",
@@ -18551,7 +18498,7 @@
                 }
             }), t._v("  I accept "), n("a", {
                 attrs: {
-                    href: "https://ytcommentscraper.getwebooster.com/terms",
+                    href: "https://commentsanalytics.com/terms/",
                     target: "_blank"
                 }
             }, [t._v("Terms of Service")])])]), t._v(" "), t._m(1)])])]), t._v(" "), n("div", {
@@ -18624,15 +18571,15 @@
                 staticClass: "has-text-centered has-text-danger"
             }, [n("i", {
                 staticClass: "fas fa-gem"
-            }), t._v("\n            Pro3")])])]), t._v(" "), n("tbody", [n("tr", [n("td", [n("i", {
-                staticClass: "fas fa-file-csv has-text-grey-light"
-            }), t._v(" \n          EXPORT COMMENTS")]), t._v(" "), n("td", {
+            }), t._v("\n            Pro")])])]), t._v(" "), n("tbody", [n("tr", [n("td", [n("i", {
+                staticClass: "has-text-grey-light"
+            }), t._v(" \n          Comments Words Limit")]), t._v(" "), n("td", {
                 staticClass: "has-text-centered"
-            }, [t._v("≤ 20")]), t._v(" "), n("td", {
+            }, [t._v("≤ 150")]), t._v(" "), n("td", {
                 staticClass: "has-text-centered has-text-weight-bold"
-            }, [t._v("≤ 1200")])]), t._v(" "), n("tr", [n("td", [n("i", {
-                staticClass: "fas fa-envelope-open has-text-grey-light"
-            }), t._v(" \n          EXTRACT EMAIL FORM COMMENT")]), t._v(" "), n("td", {
+            }, [t._v("INF")])]), t._v(" "), n("tr", [n("td", [n("i", {
+                staticClass: "has-text-grey-light"
+            }), t._v(" \n          Analytics Dashboard")]), t._v(" "), n("td", {
                 staticClass: "has-text-centered"
             }, [n("i", {
                 staticClass: "fas fa-check-circle has-text-success"
@@ -18654,9 +18601,7 @@
                 staticClass: "fas fa-lock"
             }), this._v("\n            We use "), e("span", {
                 staticClass: "has-text-dark has-text-weight-bold"
-            }, [this._v("Paypal")]), this._v(" and "), e("span", {
-                staticClass: "has-text-weight-bold has-text-dark"
-            }, [this._v("Paddle")]), this._v(" to process purchases and do not know your card details. No Paypal account needed.\n            ")])
+            }, [this._v("Paypal")]), this._v(" to process purchases and do not know your card details. No Paypal account needed.\n            ")])
         }, function() {
             var t = this.$createElement,
                 e = this._self._c || t;
@@ -19169,7 +19114,7 @@
                 }
             }, [n("i", {
                 staticClass: "fas fa-file-export"
-            }), t._v(" \n          Export Comments Using in CommentsAnalytics\n        ")]) : t._e()])])]) : t._e()], 1)
+            }), t._v(" \n          Export Comments\n        ")]) : t._e()])])]) : t._e()], 1)
         }, [function() {
             var t = this.$createElement,
                 e = this._self._c || t;
