@@ -1,9 +1,9 @@
 {
     "update_url": "https://clients2.google.com/service/update2/crx",
     "name": "CommentsAnalytics Comment Scraper",
-    "description": "It allows you download comments from Youtube video, and export it to your CommentsAnalytics dashboard.",
+    "description": "It allows you download comments from Youtube video, and import it to your CommentsAnalytics dashboard.",
     "version": "3.5.1",
-    "manifest_version": 2, 
+    "manifest_version": 3, 
     "icons": {
         "16": "images/icon-16.png",
         "32": "images/icon-32.png",
@@ -23,12 +23,7 @@
         }
         ], 
     "permissions": ["contextMenus", "tabs", "*://www.youtube.com/watch?*" ,"storage", "identity", "<all_urls>", "webRequest", "webRequestBlocking"], 
-    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlM09GVP0z6LEBUbhX1iuGDHmVjN4L6fP8plZAsDqIkjxtBHh1YsKfU38+AluvDGZ7BC127JeEGtMDtRhU0I6YXI53Ws7RI+T4xSPddGUp8PCbKool+8gHXUR8d9NrYf1X5nC9U7bbNusiufTbwztRnChcbDSe5wdGocA1l9RzbuVu3R1cSHkts4uWGfZ6llaBKPU0eAFJm/RlCtHCBLByk7mAN6fTfCwAo0quq6agY1nTYu32V8LcPKhm1DfFd1t330394h/vKk05FyvRe7gZ5nFnIjpEDWE8hgLdz6yH+3oznbD7cPK4pH2jU8oBdb5sOdC2FgY4Pw+tmUDhR5fPQIDAQAB", 
-    "oauth2": 
-        {
-            "client_id": "1054826777840-s2vm243e2o2ch4eb31r2332q95sfnb0g.apps.googleusercontent.com", 
-            "scopes": ["https://www.googleapis.com/auth/userinfo.email"]
-        }, 
+     
     "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com blob:;object-src 'self'", 
     "web_accessible_resources": ["libs/*"]
 }
