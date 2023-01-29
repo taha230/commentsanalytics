@@ -1,11 +1,15 @@
 <a href="/key-phrases-extraction/" style="color: blue">Keyword extraction</a>
-<a href="/key-phrases-extraction/" style="color: blue" rel="nofollow" >Keyword extraction</a>
+<a href="/key-phrases-extraction/" style="color: blue" rel="nofollow noreferrer noopener" >Keyword extraction</a>
 
 #####################################################################################################################
 
 <p style="text-align:center;">
 <img class="mt-6 mb-6 card-img" src="/static/assets/img/blog/4-1.png" alt="real-time insight from customers">
 </p>
+
+#####################################################################################################################
+
+<p class="justify-paragraph_center " > </p>
 
 #####################################################################################################################
 
