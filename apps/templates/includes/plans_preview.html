@@ -39,13 +39,16 @@
                             <p class="font-weight-normal mb-0"> The ideal plan for People and businesses that are serious about customers.</p>
                         {% else %}
                             <p class="font-weight-normal mb-0"> {{ row.tag }}</p>
-                            {% endif %}
+                        {% endif %}
                     </div>
                     <div class="card-body pt-2">
                         <ul class="list-group simple-list">
                             {% for row_has in row.has_list %}
                                 <li class="list-group-item font-weight-normal"><span class="icon-success"><i class="fas fa-check"></i></span>
                                     {{ row_has }}
+                                    {% if 'Queries' in row_has %}
+                                        <span class=" font-super-small fw-bold text-gray-800 ms-2" data-bs-toggle="tooltip" data-bs-placement="right" title="A Query is used each time a text is analyzed by our model. E.g: Get Sentiment Analysis of a comment.">?</span>
+                                    {% endif %}
                                 </li>
                             {% endfor %}
                             {% for row_hasnot in row.hasnot_list %}
