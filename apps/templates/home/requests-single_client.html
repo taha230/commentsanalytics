@@ -42,8 +42,8 @@
                         <div class="row">
                             <div class="col-sm-10 mb-5">
                                 <div class="form-group">
-                                    <label for="address">Name (<B style="color:red">*</B>)</label>
-                                    <input class="form-control" id="business_name"  name="input_business_name" type="text" placeholder="Enter your Name here ... (Example : Microsoft)" required> <!-- required -->
+                                    <label for="address">Text (<B style="color:red">*</B>)</label>
+                                    <input class="form-control" id="business_name"  name="input_business_name" type="text" placeholder="Enter your Text here ... (Example : A comment of Youtube Video)" required> <!-- required -->
                                 </div>
                             </div>
 
@@ -68,13 +68,13 @@
                     <div class="mt-3 text-xxl-center">
                         
                         {% if valid_to_submit %}
-                            <button  id='search_button' onclick="show_spinner()" class="btn btn-green-800" >Browse
+                            <button  id='analysis_button' onclick="show_spinner()" class="btn btn-green-800" >Analysis
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                 </svg>
                             </button>
                         {% else %}
-                            <button type="button" id='search_button' class="btn btn-green-800" data-bs-toggle="modal" data-bs-target="#modalNotification">Browse
+                            <button type="button" id='analysis_button' class="btn btn-green-800" data-bs-toggle="modal" data-bs-target="#modalNotification">Analysis
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                 </svg>
@@ -115,7 +115,7 @@
                   <thead class="thead-light">
                       <tr>
                           <th class="border-0 rounded-start">#</th>
-                          <th class="border-0">Name</th>
+                          <th class="border-0">Text</th>
                           <th class="border-0">request time</th>
                           <th class="border-0">request type</th>
                           <th class="border-0">result</th>
@@ -173,10 +173,10 @@
 {% block javascripts %}
 <script>
 function show_spinner() {
-    var $text_business_name = document.getElementById("business_name").value;
+    var $text_query = document.getElementById("business_name").value;
     var $text_request_type = document.getElementById("request_type").value
     
-    if ($text_business_name != '' && $text_request_type != '')
+    if ($text_query != '' && $text_request_type != '')
     {
         document.getElementById("result").textContent='';
         document.getElementById("spinner").className='spinner-border';

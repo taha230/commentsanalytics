@@ -20,51 +20,10 @@ class Payment_Type(Enum):
 
 class Request_Type(Enum):
 
-    FACEBOOK = "Facebook"
-    TWITTER = "Twitter"
-    INSTAGRAM = "Instagram"
-    YOUTUBE = "Youtube"
-    WIKIPEDIA = "Wikipedia"
-    REDDIT = "Reddit"
-    IMDB = "IMDb"
-    BOOKING = "Booking"
-    GITHUB = "Github"
-    GOOGLESCHOLAR = "GoogleScholar"
-    CRUNCHBASE = "Crunchbase"
-    ZOOMINFO = "Zoominfo"
-    STACKOVERFLOW = "StackOverflow"
-    AMAZON = "Amazon"
+    SENTIMENT_ANALYSIS = "Sentiment Analysis"
+    KEYWORD_EXTRACTION = "Keyword Extraction"
+    NAMED_ENTITY_RECOGNITION = "Named-Entity Recognition"
 
-
-    PINTEREST = "Pinterest"
-    VIMEO = "Vimeo"
-    SPOTIFY = "Spotify"
-    TWITCH = "Twitch"
-    TELEGRAM = "Telegram"
-    WHATSAPP = "WhatsApp"
-    WECHAT = "WeChat"
-    TIKTOK = "TikTok"
-    SNAPCHAT = "Snapchat"
-    FLICKR = "Flickr"
-
-    MYSPACE = "Myspace"
-    PLAXO = "Plaxo"
-    TUMBLR = "Tumblr"
-    LIVEJOURNAL = "Livejournal"
-    
-    
-
-    # ANGElLIST = "AngelList"
-    # ABOUT.ME = "About.me"
-    # MEETUP = "Meetup"
-    # INDEED = "Indeed"
-    # WEIBO = "Weibo"
-    # CRAIGSLIST = "Craigslist"
-    # TRIPADVISOR = "Tripadvisor"
-    # WALMART = "Walmart"
-    # WEBSITE = "Website"
-    # KNOWLEDGEPANEL = "KnowledgePanel"
-    # LINKEDIN = "Linkedin"
 
 
     @classmethod
