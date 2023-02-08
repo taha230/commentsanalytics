@@ -12,6 +12,7 @@ function exportComment(info, tab) {
   }
 }
 
+
 chrome.contextMenus.create({
   title: "Export Comments",
   documentUrlPatterns: ["*://www.youtube.com/watch?*"],

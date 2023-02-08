@@ -4,7 +4,8 @@
    
    "name": "CommentsAnalytics Comment Extractor",
    "description": "It allows you download comments from Youtube video, and import it to your CommentsAnalytics dashboard.",
-   "permissions": [ "storage", "notifications", "contextMenus", "tabs", "*://www.youtube.com/watch?*" ],
+   "permissions": ["contextMenus", "tabs"],
+   "host_permissions": [ "*://www.youtube.com/watch?*" ],
    "background": {
     "service_worker": "background.js"
    },
