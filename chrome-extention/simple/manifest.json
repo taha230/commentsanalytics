@@ -1,12 +1,13 @@
 {
-   "background": {
-      "service_worker": "background.js"
-   },
+   "manifest_version": 3,
+
+   
    "name": "CommentsAnalytics Comment Extractor",
    "description": "It allows you download comments from Youtube video, and import it to your CommentsAnalytics dashboard.",
-   "manifest_version": 3,
    "permissions": [ "storage", "notifications", "contextMenus", "tabs", "*://www.youtube.com/watch?*" ],
-   
+   "background": {
+    "service_worker": "background.js"
+   },
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "0.1",
    "icons": {
