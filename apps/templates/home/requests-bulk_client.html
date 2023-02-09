@@ -33,7 +33,7 @@
                   <thead class="thead-light">
                       <tr>
                           <th class="border-0 rounded-start">#</th>
-                          <th class="border-0">Business Name</th>
+                          <th class="border-0">Text</th>
                           <th class="border-0">request time</th>
                           <th class="border-0">request type</th>
                           <th class="border-0">result</th>
@@ -45,8 +45,8 @@
                     {% for row in request_list %}
                       <tr>
                           <td><a href="#" class="text-primary fw-bold">{{ row.index }}</a> </td>
-                          <td class="fw-bold d-flex align-items-center">
-                            {{ row.business_name }}
+                          <td class="fw-bold align-items-center">
+                            {{ row.text_query }}
                           </td>
                           <td>
                             {{ row.request_time }}

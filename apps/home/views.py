@@ -58,11 +58,12 @@ WEEK_COUNT_REPORT = 7
 POST_BLOG_COUNT_REPORT = 5
 POST_HOMEPAGE_COUNT_REPORT = 3
 BULK_SIZE_LIMIT = 15000
+SPLIT_TOKEN = '###COMMENTSANALYTICS###'
 
 ########################################### MongoDB Init ####################################################
 
 mongo_address = 'localhost'
-DB_NAME = 'Profile_Browse'
+DB_NAME = 'CommentsAnalytics'
 COLLECTION_NAME_BULKS = 'Bulks'
 COLLECTION_NAME_REQUESTS = 'Requests'
 COLLECTION_NAME_User_Log= 'User_Log'
@@ -679,7 +680,7 @@ def get_request_list_page_mongodb(request, start, limit, user, run_type):
                 except Exception as e:
                     pass
                 
-                row_json['business_name'] = row['query']
+                row_json['text_query'] = row['query']
                 row_json['request_type'] = row['request_type']
                 row_json['request_time'] = row['request_time_slot']
                 row_json['result_time'] = row['result_time_slot']
@@ -1830,18 +1831,18 @@ def insert_single_request_db (request, business_name, request_type):
         print(e)
         return ''
 
-def insert_single_request_db_mongodb (request, business_name, request_type):
+def insert_single_request_db_mongodb (request, text_query, request_type):
     
     while True:
         try:
             request_time = datetime.datetime.now()
-            result, status = get_API_response(business_name, request_type)
+            result, status = get_API_response(text_query, request_type)
             result_time = datetime.datetime.now()
 
             request_insert_json= {}
             request_insert_json['request_time_slot'] = request_time
             request_insert_json['result_time_slot'] = result_time
-            request_insert_json['query'] = business_name
+            request_insert_json['query'] = text_query
             request_insert_json['result'] = result
             request_insert_json['status'] = status.value
             request_insert_json['request_type'] = request_type
@@ -2091,27 +2092,29 @@ def requests_single_client(request):
 
     insert_user_log_db (request.user, 'Single_Requests')
 
+    current_pagination = 1    
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    
     requests_types_tuple = list(Request_Type.choices())
     requests_types = list((i[1]) for i in requests_types_tuple)
     request_result = ''
     try:
         if request.method == "POST": 
-            business_name = request.POST.get('input_business_name').strip()
+            text_query = request.POST.get('input_text_query').strip()
             request_type = request.POST.get('input_request_type').strip()
 
             # insert single request sqlite
             valid_to_submit, remain_count = check_remain_count_user(request, 1)
             if (valid_to_submit):
-                # request_result = insert_single_request_db(request, business_name, request_type)
-                request_result = insert_single_request_db_mongodb(request, business_name, request_type)
+                # request_result = insert_single_request_db(request, text_query, request_type)
+                request_result = insert_single_request_db_mongodb(request, text_query, request_type)
         else:
             valid_to_submit, remain_count = check_remain_count_user(request, 1)
 
-        current_pagination = 1    
-        try:
-            current_pagination = int (request.path.split('/P')[-1])
-        except Exception as e:
-            pass
+ 
         
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
 
@@ -2194,12 +2197,32 @@ def requests_new_bulk_data_confirm(request):
             business_names_raw = ''
 
             input_method = request.path.split('/method_')[-1]
-            if ('copy_paste' in input_method):
+            if ('json' in input_method):
                 try:
-                    business_names_raw = request.POST.get('input_business_names').strip()
-                    business_names_list = business_names_raw.strip().split('\n')
-                    business_names_list = clean_data_input(business_names_list)
+                    json_file_name = None
+                    try:
+                        json_file_name = request.FILES["json_file"]
+                        json_file = json_file_name.read()
+                        for comment in json.loads(json_file):
+                            try:
+                                business_names_list.append(comment['Msg'])
+                            except Exception as e:
+                                print(e)
+                        
+                        for item in business_names_list:
+                            if (business_names_raw == ''):
+                                business_names_raw += item.replace(SPLIT_TOKEN, '').strip()
+                            else:
+                                business_names_raw += SPLIT_TOKEN + item.replace(SPLIT_TOKEN, '').strip()
 
+                    except Exception as e:
+                        print(e)
+                        pass
+
+                    
+                    if (json_file_name == None):
+                        business_names_raw = request.POST.get('input_business_names').strip()
+                        business_names_list = business_names_raw.split(SPLIT_TOKEN)
                 except Exception as e:
                     print(e)
 
@@ -2332,7 +2355,7 @@ def requests_new_bulk_data_confirm(request):
                 business_names_list = business_names_list[0:BULK_SIZE_LIMIT]
                 business_names_raw = ''
                 for item in business_names_list:
-                    business_names_raw += '\n' + item.replace('\n',' ').strip()
+                    business_names_raw += SPLIT_TOKEN + item.replace(SPLIT_TOKEN,' ').strip()
 
             valid_to_submit, remain_count = check_remain_count_user(request, len(business_names_list))
             
@@ -2414,7 +2437,7 @@ def requests_bulk_status_client(request):
             request_type = request.POST.get('input_request_type').strip()
 
             business_names_raw = request.POST.get('input_business_names').strip()
-            business_names_list = business_names_raw.strip().split('\n')
+            business_names_list = business_names_raw.strip().split(SPLIT_TOKEN)
             business_names_list = clean_data_input(business_names_list)
             # insert bulk request sqlite
             # gevent.spawn(insert_bulk_request_db(request, bulk_title, request_type, business_names_list))
