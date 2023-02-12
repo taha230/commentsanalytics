@@ -1,0 +1,53 @@
+python-3.9
+
+
+######################################### server Host (138) #############################################
+(social_net_API) -- >> single request from google results
+cd /home/services_files/
+uwsgi --socket 0.0.0.0:8932 --protocol=http -w wsgi_social_net_finder --enable-thread --workers 10
+
+(google_spreadsheet)
+cd /home/services_files/
+uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
+
+(fetch_in_queue) -- (has ip server config)
+cd /home/Business_info_archive/BusinessInfo/jobs_server/
+python3 fetch_IN_QUEUE_.py
+
+(update_passed_count_bulk) (has ip server config)
+cd /home/Business_info_archive/BusinessInfo/jobs_server/
+python3 update_passed_count_bulk.py
+
+
+(crontab jobs)
+0 8 * * * /usr/bin/python3 /home/Business_info_archive/BusinessInfo/jobs_server/delete_user_log.py
+0 9 * * * /usr/bin/python3 /home/Business_info_archive/BusinessInfo/jobs_server/backup_db_sqlite3.py
+
+######################################### server Bulk (176) ################################################
+
+(insert_requests_bulk)
+cd /home/services_files
+uwsgi --socket 0.0.0.0:8933 --protocol=http -w wsgi_insert_request_bulk --workers 20
+
+(processed_count_update_list)
+cd /home/services_files
+uwsgi --socket 0.0.0.0:8934 --protocol=http -w wsgi_processed_count_update_list --workers 10
+
+(CUF_Project_Social)
+cd /home/services_files
+python3 find_sb_tor.py
+
+######################################## Django Gunicorn #########################################
+(django)
+cd /home/Business_info_archive/BusinessInfo/
+sudo kill -9 $(sudo lsof -t -i:80)
+sudo service mongod restart
+
+gunicorn --bind=0.0.0.0:80 core.wsgi:application --workers=4 --worker-class gevent --timeout 10000
+
+
+
+# change server ip
+change /home/Business_info_archive/BusinessInfo/jobs_server/fetch_IN_QUEUE_.py >>> ip_server
+change /home/Business_info_archive/BusinessInfo/jobs_server/update_passed_count_bulk.py >>> ip_server
+

@@ -41,7 +41,7 @@ PASSED_DAYS = 30
 
 
 mongo_address = 'localhost'
-DB_NAME = 'Profile_Browse'
+DB_NAME = 'CommentsAnalytics'
 COLLECTION_NAME_BULKS = 'Bulks'
 COLLECTION_NAME_REQUESTS = 'Requests'
 COLLECTION_NAME_User_Log= 'User_Log'
@@ -73,7 +73,7 @@ def dump(collections, conn, db_name, path):
     db = conn[db_name]
     for coll in collections:
         timeStamp = datetime.datetime.now().strftime("%b-%d-%y-%H:%M:%S")
-        file_name = os.path.join(path, f'mongo_profilebrowse_{timeStamp}_{coll}.bson')
+        file_name = os.path.join(path, f'mongo_CommentsAnalytics_{timeStamp}_{coll}.bson')
         with open(file_name, 'wb+') as f:
             for doc in db[coll].find():
                 f.write(bson.BSON.encode(doc))
@@ -82,7 +82,7 @@ def backup_db_sqlite():
     try:
     
         timeStamp = datetime.datetime.now().strftime("%b-%d-%y-%H:%M:%S")
-        file_name = 'sqlite_profilebrowse_' + timeStamp + '.zip'
+        file_name = 'sqlite_CommentsAnalytics_' + timeStamp + '.zip'
         file_path = BACKUP_DIR_SQLITE + file_name
         # create a ZipFile object
 
@@ -114,14 +114,14 @@ def delete_passed_archive():
     
         zip_list = glob.glob(BACKUP_DIR_SQLITE + "*.zip")
         for zip_file in zip_list:
-            file_time_slot = datetime.datetime.strptime(zip_file.split('/')[-1].replace('.zip', '').replace('sqlite_profilebrowse_', ''), "%b-%d-%y-%H:%M:%S")
+            file_time_slot = datetime.datetime.strptime(zip_file.split('/')[-1].replace('.zip', '').replace('sqlite_CommentsAnalytics_', ''), "%b-%d-%y-%H:%M:%S")
             diff_day_value = diff_day(datetime.datetime.now(), file_time_slot)
             if (diff_day_value > PASSED_DAYS):
                 os.remove(zip_file)
 
         bson_list = glob.glob(BACKUP_DIR_MONGO + "*.bson")
         for bson_file in bson_list:
-            file_time_slot = datetime.datetime.strptime(bson_file.split('/')[-1].replace('mongo_profilebrowse_', '').split('_')[0], "%b-%d-%y-%H:%M:%S")
+            file_time_slot = datetime.datetime.strptime(bson_file.split('/')[-1].replace('mongo_CommentsAnalytics_', '').split('_')[0], "%b-%d-%y-%H:%M:%S")
             diff_day_value = diff_day(datetime.datetime.now(), file_time_slot)
             if (diff_day_value > PASSED_DAYS):
                 os.remove(bson_file)
