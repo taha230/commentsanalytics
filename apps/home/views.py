@@ -2231,17 +2231,22 @@ def requests_new_bulk_data_confirm(request):
                     
                     if (request.POST.get('url_spreadsheet') == None and request.POST.get('column_name_spreadsheet')==None):
                         business_names_raw = request.POST.get('input_business_names').strip()
-                        business_names_list = business_names_raw.split('\n')
+                        business_names_list = business_names_raw.split(SPLIT_TOKEN)
                     else:
                         url_spreadsheet = request.POST.get('url_spreadsheet').strip() 
                         column_name = request.POST.get('column_name_spreadsheet').strip()
                         response_text , response_status = get_google_spreadsheet_response(column_name, url_spreadsheet)
 
-                        business_names_list = list(response_text[5:-4].split('", \n  "'))
+                        business_names_list = list(response_text[5:-4].split('",\n  "'))
+                        if (len ( business_names_list ) == 1):
+                            business_names_list = list(business_names_list[0].split('", "'))
+
                         business_names_list = clean_data_input(business_names_list)
-                        business_names_raw = ''
                         for item in business_names_list:
-                            business_names_raw += '\n' + item.replace('\n',' ').strip()
+                            if (business_names_raw == ''):
+                                business_names_raw += item.replace(SPLIT_TOKEN, '').strip()
+                            else:
+                                business_names_raw += SPLIT_TOKEN + item.replace(SPLIT_TOKEN, '').strip()
 
                 except Exception as e:
                     print(e)
@@ -2267,7 +2272,7 @@ def requests_new_bulk_data_confirm(request):
 
                     if (excel_file_name_xlsx == None and excel_file_name_csv == None):
                         business_names_raw = request.POST.get('input_business_names').strip()
-                        business_names_list = business_names_raw.split('\n')
+                        business_names_list = business_names_raw.split(SPLIT_TOKEN)
 
                     # excel .xlsx
                     elif (excel_file_name and str(excel_file_name).endswith('.xlsx')):
@@ -2306,7 +2311,10 @@ def requests_new_bulk_data_confirm(request):
                         business_names_list = clean_data_input(business_names_list)
                         business_names_raw = ''
                         for item in business_names_list:
-                            business_names_raw += '\n' + item.replace('\n',' ').strip()
+                            if (business_names_raw == ''):
+                                business_names_raw += item.replace(SPLIT_TOKEN, '').strip()
+                            else:
+                                business_names_raw += SPLIT_TOKEN + item.replace(SPLIT_TOKEN, '').strip()
 
                        
 
@@ -2341,7 +2349,10 @@ def requests_new_bulk_data_confirm(request):
                             business_names_list = clean_data_input(business_names_list)
                             business_names_raw = ''
                             for item in business_names_list:
-                                business_names_raw += '\n' + item.replace('\n',' ').strip()
+                                if (business_names_raw == ''):
+                                    business_names_raw += item.replace(SPLIT_TOKEN, '').strip()
+                                else:
+                                    business_names_raw += SPLIT_TOKEN + item.replace(SPLIT_TOKEN, '').strip()
                                 
  
                             pass

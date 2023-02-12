@@ -8,7 +8,10 @@ uwsgi --socket 0.0.0.0:8932 --protocol=http -w wsgi_social_net_finder --enable-t
 
 (google_spreadsheet)
 cd /home/services_files/
-uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
+apt-get install build-essential python3-dev
+pip3 install uwsgi
+uwsgi --http-socket :8887 --plugin python3 --wsgi-file wsgi_googleSpreadSheet.py --enable-thread --workers 10
+
 
 (fetch_in_queue) -- (has ip server config)
 cd /home/Business_info_archive/BusinessInfo/jobs_server/
