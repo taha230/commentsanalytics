@@ -1671,8 +1671,6 @@ def get_API_response(input_text, request_type):
 
         url = "http://138.201.111.134:8942/CA_single?request_type=" + request_type +"&text=" + input_text
 
-        querystring = {"business_name": business_name}
-
         payload = ""
         headers = {
             'content-type': "application/json"
