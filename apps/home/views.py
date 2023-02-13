@@ -2697,7 +2697,7 @@ def export_bulk_xlsx(request):
     book = Workbook(response, {'in_memory': True})
     sheet = book.add_worksheet('Sheet1')
 
-    sheet.write(0,0, 'title')
+    sheet.write(0,0, 'text')
     sheet.write(0,1, 'request_type')
     sheet.write(0,2, 'result')
 
@@ -2746,7 +2746,7 @@ def export_bulk_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="' + excel_file_name + '.csv"' 
     writer = csv.writer(response)
-    writer.writerow(['title','request_type', 'result'])
+    writer.writerow(['text','request_type', 'result'])
 
     for request in all_requests:
         writer.writerow([request['business_name'], request['request_type'], request['result']])

@@ -34,7 +34,7 @@ def get_update_json(bulk_id):
 
     try:
         client = MongoClient('localhost', 27017)
-        db = client['Social_Browse']
+        db = client['CommentsAnalytics']
         collection = db['Requests']
 
         processed_count = collection.find({'bulk_id': bulk_id, 'status': True}).count()
