@@ -1,6 +1,4 @@
 from termcolor import colored
-from SB.social_network_finder import cuf_tor, linkedin_tor
-from SB.social_network_finder import maps_tor
 import requests
 from bson.objectid import ObjectId
 import pandas as pd
@@ -38,7 +36,7 @@ port_insert = '8933'
 port_delete = '8933'
 
 mongo_address = 'localhost'
-DB_NAME = 'Profile_Browse'
+DB_NAME = 'CommentsAnalytics'
 COLLECTION_NAME_BULKS = 'Bulks'
 COLLECTION_NAME_REQUESTS = 'Requests'
 client = MongoClient(mongo_address, 27017)

@@ -1,17 +1,12 @@
 python-3.9
 
 
-######################################### server Host (138) #############################################
-(CA_single_API) -- >> single request from CA Dashboard
-cd /home/services_files/CA
-uwsgi --socket 0.0.0.0:8942 --protocol=http -w wsgi_CA_single --enable-thread --workers 10
+######################################### server Host (cloud) #############################################
 
-(google_spreadsheet)
-cd /home/services_files/
-uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
+
 
 (fetch_in_queue) -- (has ip server config)
-cd /home/Business_info_archive/BusinessInfo/jobs_server/
+cd /home/CommentsAnalytics/commentsanalytics/jobs_server
 python3 fetch_IN_QUEUE_.py
 
 (update_passed_count_bulk) (has ip server config)
@@ -23,10 +18,18 @@ python3 update_passed_count_bulk.py
 0 8 * * * /usr/bin/python3 /home/Business_info_archive/BusinessInfo/jobs_server/delete_user_log.py
 0 9 * * * /usr/bin/python3 /home/Business_info_archive/BusinessInfo/jobs_server/backup_db_sqlite3.py
 
-######################################### server Bulk (176) ################################################
+######################################### server Bulk (138) ################################################
+(google_spreadsheet)
+cd /home/services_files/
+uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
+
+
+(CA_single_API) -- >> single request from CA Dashboard
+cd /home/services_files/CA
+uwsgi --socket 0.0.0.0:8942 --protocol=http -w wsgi_CA_single --enable-thread --workers 10
 
 (insert_requests_bulk)
-cd /home/services_files
+cd /home/services_files/CA
 uwsgi --socket 0.0.0.0:8933 --protocol=http -w wsgi_insert_request_bulk --workers 20
 
 (processed_count_update_list)

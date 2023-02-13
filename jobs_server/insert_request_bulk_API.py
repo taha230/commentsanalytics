@@ -32,7 +32,7 @@ def delete_db(bulk_id):
 
     try:
         client = MongoClient('localhost', 27017)
-        db = client['Social_Browse']
+        db = client['CommentsAnalytics']
         collection = db['Requests']
 
 
@@ -52,7 +52,7 @@ def insert_db(query, request_type, bulk_id, request_id):
 
     try:
         client = MongoClient('localhost', 27017)
-        db = client['Social_Browse']
+        db = client['CommentsAnalytics']
         collection = db['Requests']
 
 
