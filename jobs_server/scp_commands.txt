@@ -1,1 +1,2 @@
 scp find_sb_tor.py  root@138.201.111.134:/home/Business_info_archive/BusinessInfo/jobs
+scp -r CA root@138.201.111.134:/home/services_files

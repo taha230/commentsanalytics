@@ -2,9 +2,9 @@ python-3.9
 
 
 ######################################### server Host (138) #############################################
-(social_net_API) -- >> single request from google results
-cd /home/services_files/
-uwsgi --socket 0.0.0.0:8932 --protocol=http -w wsgi_social_net_finder --enable-thread --workers 10
+(CA_single_API) -- >> single request from CA Dashboard
+cd /home/services_files/CA
+uwsgi --socket 0.0.0.0:8942 --protocol=http -w wsgi_CA_single --enable-thread --workers 10
 
 (google_spreadsheet)
 cd /home/services_files/

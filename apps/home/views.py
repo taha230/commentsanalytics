@@ -1665,11 +1665,11 @@ def insert_bulk_request_db_mongodb (request, bulk_title, request_type, business_
         print(e)
         pass
 
-def get_API_response(business_name, request_type):
+def get_API_response(input_text, request_type):
 
     try:
 
-        url = "http://138.201.111.134:8932/company_social_network_finder?companyName=" + business_name + '&social_network=' + request_type
+        url = "http://138.201.111.134:8942/CA_single?request_type=" + request_type +"&text=" + input_text
 
         querystring = {"business_name": business_name}
 
@@ -1679,8 +1679,8 @@ def get_API_response(business_name, request_type):
         }
 
         response = requests.request("GET", url, data=payload, headers=headers)
-        if ('url' in response.json()):
-            return response.json()['url'], Request_Status.SUCCESS
+        if ('result' in response.json()):
+            return response.json()['result'], Request_Status.SUCCESS
         
     except Exception as e:
         print(e)
