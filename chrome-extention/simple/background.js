@@ -2,22 +2,25 @@ const CONTEXT_MENU_ID = "EXPORT_COMMENT";
 
 function exportComment(info, tab) {
   if (info.menuItemId === CONTEXT_MENU_ID) {
-    chrome.tabs.executeScript({
-      file: "jquery-3.4.1.js"
+    chrome.scripting.executeScript({
+      target: {tabId: tab.id, allFrames: false},
+      files: [ "jquery-3.4.1.js" ]
     }, function() {
-      chrome.tabs.executeScript({
-        file: "content.js"
+      chrome.scripting.executeScript({
+        target: {tabId: tab.id, allFrames: false},
+        files: [ "content.js" ]
       });
     });
   }
 }
 
-
-chrome.contextMenus.create({
-  title: "Export Comments",
-  documentUrlPatterns: ["*://www.youtube.com/watch?*"],
-  contexts: ["all"],
-  id: CONTEXT_MENU_ID
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.contextMenus.create({
+    title: "Export Comments",
+    documentUrlPatterns: ["*://www.youtube.com/watch?*"],
+    contexts: ["all"],
+    id: CONTEXT_MENU_ID
+  });
 });
 
 chrome.contextMenus.onClicked.addListener(exportComment);
