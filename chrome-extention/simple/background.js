@@ -4,7 +4,7 @@ function exportComment(info, tab) {
   if (info.menuItemId === CONTEXT_MENU_ID) {
     chrome.scripting.executeScript({
       target: {tabId: tab.id, allFrames: false},
-      files: [ "jquery-3.4.1.js" ]
+      files: [ "jquery-3.6.1.js" ]
     }, function() {
       chrome.scripting.executeScript({
         target: {tabId: tab.id, allFrames: false},
