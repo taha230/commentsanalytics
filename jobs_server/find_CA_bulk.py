@@ -20,6 +20,12 @@ import random
 import sqlite3
 import uuid
 import datetime
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from transformers import pipeline
+
+# sentiment_pipeline = pipeline("sentiment-analysis")
+# sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
+# sentiment_pipeline = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
 
 
 
@@ -70,6 +76,44 @@ def update_mongo_url(id, result):
 def get_sentiment_result (input_text):
     return 'Neutral'
 
+def sentiment_analysis_vader(input_text):
+
+    sentiment = SentimentIntensityAnalyzer()
+    sentiment_value = 'Neutral'
+    try:
+        sentiment_json = sentiment.polarity_scores(input_text)
+        # print(sentiment_json)
+        if ('neg' in sentiment_json and 'neu' in sentiment_json and 'pos' in sentiment_json ):
+            if (sentiment_json['neg'] > sentiment_json['neu'] and sentiment_json['neg'] > sentiment_json['pos']):
+                sentiment_value = 'Negative'
+            elif (sentiment_json['neu'] > sentiment_json['neg'] and sentiment_json['neu'] > sentiment_json['pos']):
+                sentiment_value = 'Neutral'
+            elif (sentiment_json['pos'] > sentiment_json['neg'] and sentiment_json['pos'] > sentiment_json['neu']):
+                sentiment_value = 'Positive'
+        else:
+            print('no valid sentiment json')
+    except Exception as e:
+        print(e)
+
+    return sentiment_value
+
+def sentiment_analysis_twitter_roberta_base_sentiment(input_text):
+
+    sentiment_value = 'Neutral'
+    try:
+        sentiment_list = sentiment_pipeline([input_text])
+        if (len(sentiment_list) == 1 and 'label' in sentiment_list[0]):
+            if (sentiment_list[0]['label'] == 'LABEL_0'):
+                return 'Negative'
+            elif (sentiment_list[0]['label'] == 'LABEL_1'):
+                return 'Neutral'
+            elif (sentiment_list[0]['label'] == 'LABEL_2'):
+                return 'Positive'
+    except Exception as e:
+        print(e)
+
+    return sentiment_value
+
 def find_CA(index):
 
     item = get_from_mongo_url()
@@ -106,7 +150,7 @@ def find_CA(index):
             print(cname)
 
             if (request_type == 'Sentiment Analysis'):
-                sentiment_result = get_sentiment_result(cname)
+                sentiment_result = sentiment_analysis_vader(cname)
                 result = sentiment_result
 
             if (request_type == 'Keyword Extraction'):
