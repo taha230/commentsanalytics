@@ -27,7 +27,7 @@ uwsgi --socket 0.0.0.0:8942 --protocol=http -w wsgi_CA_single --enable-thread --
 
 (insert_requests_bulk_CA)
 cd /home/services_files/CA
-uwsgi --socket 0.0.0.0:8933 --protocol=http -w wsgi_insert_request_bulk --workers 20
+uwsgi --socket 0.0.0.0:8933 --protocol=http -w wsgi_insert_request_bulk --workers 20 -b 32768
 
 (processed_count_update_list_CA)
 cd /home/services_files/CA
