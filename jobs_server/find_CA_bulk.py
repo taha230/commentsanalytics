@@ -41,6 +41,9 @@ COLLECTION_Linkedin = 'Linkedin'
 
 CUF_WEBSITE_FIELD_NAME = 'result'
 sleep_time = 10
+# IP_SINGLE_API = '95.217.33.222'
+IP_SINGLE_API = '138.201.111.134'
+
 ##############################################################################################
 
 
@@ -111,7 +114,7 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
 
         response = requests.request("GET", url, data=payload, headers=headers)
         if ('result' in response.json()):
-            return response.json()['result'], Request_Status.SUCCESS
+            return response.json()['result']
     except Exception as e:
         print(e)
 

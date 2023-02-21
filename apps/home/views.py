@@ -59,7 +59,9 @@ POST_BLOG_COUNT_REPORT = 5
 POST_HOMEPAGE_COUNT_REPORT = 3
 BULK_SIZE_LIMIT = 15000
 SPLIT_TOKEN = '###COMMENTSANALYTICS###'
-IP_SINGLE_API = '95.217.33.222'
+# IP_SINGLE_API = '95.217.33.222'
+IP_SINGLE_API = '138.201.111.134'
+
 ########################################### MongoDB Init ####################################################
 
 mongo_address = 'localhost'

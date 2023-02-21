@@ -36,13 +36,14 @@ uwsgi --socket 0.0.0.0:8933 --protocol=http -w wsgi_insert_request_bulk --worker
 cd /home/services_files/CA
 uwsgi --socket 0.0.0.0:8934 --protocol=http -w wsgi_processed_count_update_list --workers 10
 
-(CA_Bulk)
+(CA_Bulk) (has ip server config)
 cd /home/services_files/CA
 python3 find_CA_bulk.py
 
 ######################################## Django Gunicorn #########################################
 (django)
 cd /home/CommentsAnalytics/commentsanalytics
+(view.py (has ip server config))
 sudo kill -9 $(sudo lsof -t -i:80)
 gunicorn --bind=0.0.0.0:80 core.wsgi:application --workers=4 --worker-class gevent --timeout 1000
   
