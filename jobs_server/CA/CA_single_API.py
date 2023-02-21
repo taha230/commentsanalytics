@@ -24,7 +24,7 @@ from transformers import pipeline
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
-# sentiment_pipeline = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
+sentiment_pipeline = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
 
 
 application = flask.Flask(__name__)
@@ -106,7 +106,7 @@ def start_CA_single():
     sentiment_result = 'Neutral'
 
     if (request_type == 'Sentiment Analysis'):
-        sentiment_result = sentiment_analysis_vader(text)
+        sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment(text)
         json_out['result'] = sentiment_result
 
    

@@ -97,18 +97,21 @@ def sentiment_analysis_vader(input_text):
 
     return sentiment_value
 
-def sentiment_analysis_twitter_roberta_base_sentiment(input_text):
+def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
 
     sentiment_value = 'Neutral'
     try:
-        sentiment_list = sentiment_pipeline([input_text])
-        if (len(sentiment_list) == 1 and 'label' in sentiment_list[0]):
-            if (sentiment_list[0]['label'] == 'LABEL_0'):
-                return 'Negative'
-            elif (sentiment_list[0]['label'] == 'LABEL_1'):
-                return 'Neutral'
-            elif (sentiment_list[0]['label'] == 'LABEL_2'):
-                return 'Positive'
+        request_type = 'Sentiment Analysis'
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+
+        payload = ""
+        headers = {
+            'content-type': "application/json"
+        }
+
+        response = requests.request("GET", url, data=payload, headers=headers)
+        if ('result' in response.json()):
+            return response.json()['result'], Request_Status.SUCCESS
     except Exception as e:
         print(e)
 
@@ -150,7 +153,7 @@ def find_CA(index):
             print(cname)
 
             if (request_type == 'Sentiment Analysis'):
-                sentiment_result = sentiment_analysis_vader(cname)
+                sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
                 result = sentiment_result
 
             if (request_type == 'Keyword Extraction'):
