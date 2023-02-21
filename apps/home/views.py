@@ -59,7 +59,7 @@ POST_BLOG_COUNT_REPORT = 5
 POST_HOMEPAGE_COUNT_REPORT = 3
 BULK_SIZE_LIMIT = 15000
 SPLIT_TOKEN = '###COMMENTSANALYTICS###'
-
+IP_SINGLE_API = '95.217.33.222'
 ########################################### MongoDB Init ####################################################
 
 mongo_address = 'localhost'
@@ -1669,7 +1669,7 @@ def get_API_response(input_text, request_type):
 
     try:
 
-        url = "http://138.201.111.134:8942/CA_single?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
