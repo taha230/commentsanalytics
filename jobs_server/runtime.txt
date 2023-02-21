@@ -21,9 +21,12 @@ cd /home/services_files/
 uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
 # uwsgi --http-socket :8887 --plugin python3 --wsgi-file wsgi_googleSpreadSheet.py --enable-thread --workers 10
 
+
+####################################### server GPU (95.217.33.222) ##########################################
+
 (CA_single_API) -- >> single request from CA Dashboard
 cd /home/services_files/CA
-uwsgi --socket 0.0.0.0:8942 --protocol=http -w wsgi_CA_single --enable-thread --workers 10
+uwsgi --socket 0.0.0.0:8942 --plugin python3 --protocol=http -w wsgi_CA_single --enable-thread --workers 10
 
 (insert_requests_bulk_CA)
 cd /home/services_files/CA

@@ -29,7 +29,9 @@ import uuid
 sleep_time = 10
 
 # ip_server = '176.9.22.248'
-ip_server = '138.201.111.134'
+# ip_server = '138.201.111.134'
+ip_server= '95.217.33.222'
+
 
 port_get_update = '8934'
 
