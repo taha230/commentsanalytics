@@ -1,6 +1,5 @@
 from termcolor import colored
-from SB.social_network_finder import cuf_tor, linkedin_tor
-from SB.social_network_finder import maps_tor
+
 import requests
 from bson.objectid import ObjectId
 import pandas as pd
@@ -31,11 +30,12 @@ from bson.objectid import ObjectId
 
 #################################### Variables ##############################################
 
-PASSED_DAYS = 7
+PASSED_DAYS = 10
 
 mongo_address = 'localhost'
-DB_NAME = 'Profile_Browse'
+DB_NAME = 'CommentsAnalytics'
 COLLECTION_NAME_User_Log= 'User_Log'
+
 client = MongoClient(mongo_address, 27017)
 db = client[DB_NAME]
 collection_User_Log = db[COLLECTION_NAME_User_Log]
