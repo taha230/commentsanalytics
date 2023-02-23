@@ -128,7 +128,7 @@
                       <tr>
                           <td><a href="#" class="text-primary fw-bold">{{ row.index }}</a> </td>
                           <td class="fw-bold align-items-center">
-                            {{ row.text_query }}
+                            {% include "includes/request_single_text.html" %}
                           </td>
                           <td>
                             {{ row.request_time }}
@@ -138,7 +138,7 @@
                           </td>
                           <td>
                             {% if row.result != None %}
-                                {{ row.result }}
+                                {% include "includes/request_single_result.html" %}
                             {% endif %}
                           </td>
                           <td>

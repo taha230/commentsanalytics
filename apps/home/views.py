@@ -538,7 +538,7 @@ def get_bulk_list_page(request, start, limit, user):
         print(e)
         return [], 0
 
-def get_bulk_list_page_mongodb(request, start, limit, user):
+def get_bulk_list_page_mongodb(request, start, limit, user, status=None):
     try:
         ################################ Select from home_Bulk Table #################################
 
@@ -547,11 +547,15 @@ def get_bulk_list_page_mongodb(request, start, limit, user):
         # sorted by bulk_start_time_slot
         if (user == None): # return all bulks (Admin)
             query_bulk = {}
+            if (status != None):
+                query_bulk['status'] = status.name
             row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
             total_count = collection_Bulks.find(query_bulk).count()
 
         else: # filtered by user (Client)
             query_bulk = {'user': str(request.user.id)}
+            if (status != None):
+                query_bulk['status'] = status.name
             row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
             total_count = collection_Bulks.find(query_bulk).count()
 
@@ -2135,7 +2139,7 @@ def requests_single_client(request):
     return render(request, "home/requests-single_client.html", {"msg": 'SUCCESS',
                                                                 "valid_to_submit" : valid_to_submit,
                                                                 "remain_count" : remain_count,
-                                                                "segment": 'requests-single', 
+                                                                "segment": 'sentiment-single', 
                                                                 "requests_types": requests_types,
                                                                 "current_pagination": current_pagination,
                                                                 "last_pagination": last_pagination,
@@ -2487,6 +2491,56 @@ def requests_bulk_status_client(request):
                                                                         "bulk_list": row_list_bulk})
 
 @login_required(login_url="/login/")
+def requests_sentiment_analytics_client(request):
+
+    try:
+        insert_user_log_db (request.user, 'requests_sentiment_analytics')
+        
+        if request.method == "POST": # just in confirm new bulk data buttton clicked
+
+            bulk_title = request.POST.get('input_bulk_title').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            business_names_raw = request.POST.get('input_business_names').strip()
+            business_names_list = business_names_raw.strip().split(SPLIT_TOKEN)
+            business_names_list = clean_data_input(business_names_list)
+            # insert bulk request sqlite
+            # gevent.spawn(insert_bulk_request_db(request, bulk_title, request_type, business_names_list))
+            # insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+            insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+
+        current_pagination = 1   
+        try:
+            current_pagination = int (request.path.split('/P')[-1])
+        except Exception as e:
+            pass
+
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user)
+
+        last_pagination = 1
+        if (total_count_bulk == 0):
+            last_pagination = 1
+        elif (total_count_bulk % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(colored(str(e), 'red'))
+        pass
+
+    return render(request, "home/requests-sentiment_analytics_client.html", {"msg": 'SUCCESS',
+                                                                        "segment": 'sentiment-analytics',
+                                                                        "current_pagination": current_pagination,
+                                                                        "last_pagination": last_pagination,
+                                                                        "page_limit": len(row_list_bulk),
+                                                                        "total_items": total_count_bulk,
+                                                                        "bulk_list": row_list_bulk})
+
+@login_required(login_url="/login/")
 def update_bulk_status_ajax_client(request):
     current_pagination = 1   
     try:
@@ -2498,6 +2552,19 @@ def update_bulk_status_ajax_client(request):
 
     if request.is_ajax and request.method == "GET":
         return render(request, 'includes/bulk_status_table_client.html', {'bulk_list':row_list_bulk})
+
+@login_required(login_url="/login/")
+def update_bulk_sentiment_analytics_ajax_client(request):
+    current_pagination = 1   
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user)
+
+    if request.is_ajax and request.method == "GET":
+        return render(request, 'includes/bulk_sentiment_analytics_table_client.html', {'bulk_list':row_list_bulk})
 
 @login_required(login_url="/login/")
 def plans_preview_client(request):

@@ -1,0 +1,11 @@
+ <!-- Request_Status Label -->
+{% if row.result == 'Negative' %}
+    <span style="color:rgb(247, 18, 18); background-color:#f3ddd9;"> {{ row.result }} </span>
+
+{% elif row.result == 'Positive' %}
+    <span style="color:rgb(20, 168, 0); background-color:#d6f0d9;"> {{ row.result }} </span>
+
+{% elif row.result == 'Neutral' %}
+    <span style="color:rgb(180, 153, 0); background-color:#f1f0d8;"> {{ row.result }} </span>
+
+{% endif %}

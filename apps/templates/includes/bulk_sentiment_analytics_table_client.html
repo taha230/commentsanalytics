@@ -1,0 +1,69 @@
+<table id ='table_bulk' class="table table-centered table-nowrap mb-0 rounded">
+    <thead class="thead-light">
+        <tr>
+            <th class="border-0 rounded-start">#</th>
+            <th class="border-0">title</th>
+            <th class="border-0">type</th>
+            <th class="border-0">start time</th>
+            <th class="border-0">end time</th>
+            <th class="border-0">passed</th>
+            <th class="border-0">total</th>
+            <th class="border-0">status</th>
+            <th class="border-0 ">progress</th>
+            <th class="border-0 rounded-end">Analytic Report</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+      {% for row in bulk_list %}
+          <tr>
+            <td>
+              <a  class="text-primary fw-bold">
+                 {{ row.index }}
+              </a>
+            </td>
+            <td>
+              {{ row.title }}
+            </td>
+            <td class="fw-bold align-items-center">
+              {% include "includes/request_type_logo.html" %}
+            </td>
+            <td>
+              {{ row.start_time }}
+            </td>
+            <td>
+              {% if row.end_time != None %}
+                  {{ row.end_time }}
+              {% endif %}
+            </td>
+            <td>
+              {{ row.passed_count }}
+            </td>
+            <td>
+              {{ row.total_count }}
+            </td>
+            <td class="">
+              {% include "includes/bulk_status_label.html" %}                            
+            </td>
+            <td>
+              {% include "includes/progress_bar_percent.html" %}
+            </td>
+            <!-- Export Excel -->
+            <td class="">
+              {% if row.status == 'Completed' %}
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_csv('{{row.bulk_id}}')" >
+                  .csv
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button>
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_xlsx('{{row.bulk_id}}')" >
+                  .xlsx
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button> 
+              {% endif %}
+            </td>
+          </tr>
+      {% endfor %}
+
+        
+    </tbody>
+</table>

@@ -1,0 +1,98 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="py-4">
+
+      <div class="d-flex justify-content-between w-100 flex-wrap">
+          <div class="mb-3 mb-lg-0">
+              <h1 id='bulk_title' class="h4">Bulks Status</h1>
+          </div>
+         
+      </div>
+  </div>
+
+  <form method= "POST" id="myform">
+
+    {% csrf_token %}
+
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                {% include "includes/bulk_sentiment_analytics_table_client.html" %}
+
+                {% if total_items != 0 %}
+                  {% include "includes/pagination_GET.html" %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+  </form>
+
+  
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+
+  function bulk_download_xlsx(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_xlsx/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_csv(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_csv/P1/bulk" + bulk_id;
+
+  }
+  // =================================================================================================================================
+
+  function bulk_download_redirect(bulk_id) {
+
+    var $currentLocation = String(window.location);
+    
+    var $page = '1'
+    if ($currentLocation.includes("/P")) {
+      $page = $currentLocation.split('/P')[1].split('/')[0];
+    }
+
+    var $download_button = document.getElementById("download_button");
+    $download_button.type ='submit';
+    document.getElementById('myform').action = "/bulk_export/P" + $page + "/bulk" + bulk_id;
+  }
+ // ========================================= Ajax Calling for updating the bulk list status ==========================================
+  setInterval("update_bulk_field()",5000);
+  function update_bulk_field(){
+
+    var $currentLocation = String(window.location);
+    var $page = '1'
+    if ($currentLocation.includes("/P")) {
+      $page = $currentLocation.split('/P')[1].split('/')[0];
+    }
+    // calling ajax to update the table of bulk status accordint to /P
+    $.ajax({
+        url: '/update_bulk_sentiment_analytics_ajax_client/P'+$page,
+        type : "GET", 
+        data : {}, 
+        success : function(response) {
+            $('#table_bulk').html(response);
+        },
+        error: function (response) {
+                console.log(response)
+            }
+    });
+  }
+
+  
+  </script>
+{% endblock javascripts %}
