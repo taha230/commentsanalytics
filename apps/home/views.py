@@ -538,10 +538,9 @@ def get_bulk_list_page(request, start, limit, user):
         print(e)
         return [], 0
 
-def get_bulk_list_page_mongodb(request, start, limit, user, status=None):
+def get_bulk_list_page_mongodb(request, start, limit, user, status=None , request_type= None):
     try:
         ################################ Select from home_Bulk Table #################################
-
         row_list = []
         total_count = 0
         # sorted by bulk_start_time_slot
@@ -549,6 +548,8 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None):
             query_bulk = {}
             if (status != None):
                 query_bulk['status'] = status.name
+            if (request_type != None):
+                query_bulk['request_type'] = request_type.value
             row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
             total_count = collection_Bulks.find(query_bulk).count()
 
@@ -556,6 +557,8 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None):
             query_bulk = {'user': str(request.user.id)}
             if (status != None):
                 query_bulk['status'] = status.name
+            if (request_type != None):
+                query_bulk['request_type'] = request_type.value
             row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
             total_count = collection_Bulks.find(query_bulk).count()
 
@@ -582,7 +585,35 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None):
                 row_json['status'] = row['status']
                 row_json['percent'] = int(calculated_passed_count / row['total_count'] * 100)
                 
-            
+                # calculate Positive/Neutral/Negetive count from 'Sentiment Analysis' Bulks
+                if (row_json['request_type'] == Request_Type.SENTIMENT_ANALYSIS.value):
+                    query_positive = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Positive'}
+                    query_neutral = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Neutral'}
+                    query_negative = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Negative'}
+                    positive_count = collection_Requests.find(query_positive).count()
+                    neutral_count = collection_Requests.find(query_neutral).count()
+                    negative_count = collection_Requests.find(query_negative).count()
+                    try:
+                        row_json['positive_count'] = positive_count
+                        row_json['neutral_count'] = neutral_count
+                        row_json['negative_count'] = negative_count
+
+                        row_json['positive_percent'] = int(positive_count / row['total_count'] * 100)
+                        row_json['neutral_percent'] = int(neutral_count / row['total_count'] * 100)
+                        row_json['negative_percent'] = int(negative_count / row['total_count'] * 100)
+
+                    except Exception as e:
+                        print(e)
+                        row_json['positive_count'] = 0
+                        row_json['neutral_count'] = 0
+                        row_json['negative_count'] = 0
+
+                        row_json['positive_percent'] = 0
+                        row_json['neutral_percent'] = 0
+                        row_json['negative_percent'] = 0
+
+
+                
                 row_list.append(row_json)
 
             except Exception as e:
@@ -2518,7 +2549,21 @@ def requests_sentiment_analytics_client(request):
             pass
 
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
-        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user)
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.SENTIMENT_ANALYSIS)
+        
+        sentiment_bulk_list_chart = { 
+            "data_positive" :[],
+            "data_neutral" :[],
+            "data_negative" :[], 
+            "labels": []
+        }
+
+        for bulk in row_list_bulk :
+            sentiment_bulk_list_chart["data_positive"].append(bulk["positive_percent"])
+            sentiment_bulk_list_chart["data_neutral"].append(bulk["neutral_percent"])
+            sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
+            sentiment_bulk_list_chart["labels"].append(bulk["title"])
+
 
         last_pagination = 1
         if (total_count_bulk == 0):
@@ -2538,6 +2583,7 @@ def requests_sentiment_analytics_client(request):
                                                                         "last_pagination": last_pagination,
                                                                         "page_limit": len(row_list_bulk),
                                                                         "total_items": total_count_bulk,
+                                                                        "sentiment_bulk_list_chart": sentiment_bulk_list_chart,
                                                                         "bulk_list": row_list_bulk})
 
 @login_required(login_url="/login/")
@@ -2561,7 +2607,7 @@ def update_bulk_sentiment_analytics_ajax_client(request):
     except Exception as e:
         pass
     start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
-    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user)
+    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.SENTIMENT_ANALYSIS)
 
     if request.is_ajax and request.method == "GET":
         return render(request, 'includes/bulk_sentiment_analytics_table_client.html', {'bulk_list':row_list_bulk})

@@ -281,6 +281,82 @@ d.addEventListener("DOMContentLoaded", function(event) {
         });
     }
 
+    if(d.querySelector('.line-chart-bulk-sentiment')) {
+        //Chart sentiment bulk
+
+        var $string_list_cleaned = d.getElementById('sentiment_chart').innerText.replace(/\'/g,"\"");
+
+        var $data_input_positive = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_positive"] + "]");
+        var $data_input_neutral = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_neutral"] + "]");
+        var $data_input_negative = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_negative"] + "]");
+        
+        var $label_input = JSON.parse($string_list_cleaned)["labels"];
+        
+        var chart = new Chartist.Line('.line-chart-bulk-sentiment', {
+                labels: $label_input,
+
+                series: [
+                    {
+                        name: 'positive',
+                        data: $data_input_positive
+                    },
+                    {
+                        name: 'neutral',
+                        data: $data_input_neutral
+                    },
+                    {
+                        name: 'negative',
+                        data: $data_input_negative
+                    }
+                ]
+                }, {
+                fullWidth: true,
+                chartPadding: {
+                    right: 40
+                },
+                plugins: [
+                    Chartist.plugins.tooltip()
+                ],
+                low: 0,
+                high: 100,
+                axisY: {
+                    // Lets offset the chart a bit from the labels
+                    offset: 60,
+                    labelInterpolationFnc: function(value) {
+                      return value + ' %';
+                    }
+                  },
+                  series: {
+                    'positive': {
+                    },
+                    'neutral': {
+                        showArea: true
+                    },
+                    'negative': {
+                        showPoint: false
+
+                    }
+                  }
+                // showPoint: false,
+                
+        });
+
+        // chart.on('draw', function(context) {
+
+
+        //     if(context.type === 'point') {
+        //           context.element.attr({
+        //           style: 'stroke:  blue'
+        //       });
+        //     }else if(context.type === 'line') {
+        //         context.element.attr({
+        //           style: 'stroke:  green'
+        //       });
+        //     }
+        //   });
+        
+    }
+
     if(d.querySelector('.ct-chart-ranking')) {
         var chart = new Chartist.Bar('.ct-chart-ranking', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -435,3 +511,5 @@ d.addEventListener("DOMContentLoaded", function(event) {
     }
 
 });
+
+

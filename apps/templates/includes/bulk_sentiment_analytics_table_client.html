@@ -3,14 +3,15 @@
         <tr>
             <th class="border-0 rounded-start">#</th>
             <th class="border-0">title</th>
-            <th class="border-0">type</th>
+            <th class="border-0" width="2%">type</th>
             <th class="border-0">start time</th>
             <th class="border-0">end time</th>
             <th class="border-0">passed</th>
             <th class="border-0">total</th>
             <th class="border-0">status</th>
-            <th class="border-0 ">progress</th>
-            <th class="border-0 rounded-end">Analytic Report</th>
+            <th class="border-0" width="15%">progress / sentiment</th>
+
+            <th class="border-0 rounded-end">Export</th>
         </tr>
     </thead>
     <tbody>
@@ -37,7 +38,30 @@
               {% endif %}
             </td>
             <td>
-              {{ row.passed_count }}
+              {% if row.status == 'Completed' %}
+                <div class="row">
+                  <div class="col-8 col-lg-12">
+                      <div class="row d-block d-xl-flex align-items-center">
+                                  
+                        <div class="">
+                            
+                            <small class="text-gray-500">
+                              <div style="color:rgb(20, 168, 0); background-color:#d6f0d9;">Pos : {{ row.positive_count }} </div>
+                            </small> 
+                            <small class="text-gray-500">
+                              <div style="color:rgb(180, 153, 0); background-color:#f1f0d8;">Neu : {{ row.neutral_count }} </div>
+                            </small> 
+                            <small class="text-gray-500">
+                              <div style="color:rgb(247, 18, 18); background-color:#f3ddd9;">Neg : {{ row.negative_count }} </div>
+                            </small> 
+                            
+                        </div>
+                      </div>
+                  </div>
+              
+              {% else %}
+                {{ row.passed_count }}
+              {% endif %}
             </td>
             <td>
               {{ row.total_count }}
@@ -46,7 +70,17 @@
               {% include "includes/bulk_status_label.html" %}                            
             </td>
             <td>
-              {% include "includes/progress_bar_percent.html" %}
+              {% if row.status == 'Completed' %}
+                <div class="bar-clipper">
+                    <div class="bar-wrapper">
+                        <span class="bar1" style="width:{{ row.positive_percent }}%" data-toggle="tooltip" data-placement="top" title="Pos : {{ row.positive_percent }} %"></span>
+                        <span class="bar2" style="width:{{ row.neutral_percent }}%" data-toggle="tooltip" data-placement="top" title="Neu : {{ row.neutral_percent }} %"></span>
+                        <span class="bar3" style="width:{{ row.negative_percent }}%" data-toggle="tooltip" data-placement="top" title="Neg : {{ row.negative_percent }} %"></span>
+                    </div>
+                </div>
+              {% else %}
+                {% include "includes/progress_bar_percent.html" %}
+              {% endif %}
             </td>
             <!-- Export Excel -->
             <td class="">
