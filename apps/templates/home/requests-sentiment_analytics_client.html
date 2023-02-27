@@ -98,6 +98,56 @@
     });
   }
 
+
+  setInterval("update_bulk_chart()",5000);
+  function update_bulk_chart(){
+
+    var $currentLocation = String(window.location);
+    var $page = '1'
+    if ($currentLocation.includes("/P")) {
+      $page = $currentLocation.split('/P')[1].split('/')[0];
+    }
+    // calling ajax to update the chart of bulk status accordint to /P
+    $.ajax({
+        url: '/update_bulk_sentiment_analytics_ajax_chart_client/P'+$page,
+        type : "GET", 
+        data : {}, 
+        success : function(response) {
+
+          console.log(response["data_positive"]);
+          // updateChartSeries();
+          
+        },
+        error: function (response) {
+                console.log(response)
+            }
+    });
+  }
+
+  function randData() {
+    var arr = [];
+    for (var i = 0; i < 3; i++) {
+      arr.push(Math.floor(Math.random() * 100) + 1);
+    }
+
+    var str = [];
+    for (var i = 0; i < 3; i++) {
+      str[i] = arr[i];
+    }
+    return str;
+  }
+
+  function updateChartSeries() {
+    var data = randData();
+    // Replace data to existing Chart
+    var chart = new ApexCharts(document.querySelector("#chart_bulk_sentiment"), options);
+    chart.updateSeries([
+      {
+        name: "positive",
+        data: data
+      }
+    ]);
+  }
   
   </script>
 {% endblock javascripts %}

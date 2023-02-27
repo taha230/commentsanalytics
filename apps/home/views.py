@@ -2558,7 +2558,8 @@ def requests_sentiment_analytics_client(request):
             "labels": []
         }
 
-        for bulk in row_list_bulk :
+        # reversed to have recent values in right side of chart
+        for bulk in reversed(row_list_bulk) :
             sentiment_bulk_list_chart["data_positive"].append(bulk["positive_percent"])
             sentiment_bulk_list_chart["data_neutral"].append(bulk["neutral_percent"])
             sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
@@ -2611,6 +2612,36 @@ def update_bulk_sentiment_analytics_ajax_client(request):
 
     if request.is_ajax and request.method == "GET":
         return render(request, 'includes/bulk_sentiment_analytics_table_client.html', {'bulk_list':row_list_bulk})
+
+@login_required(login_url="/login/")
+def update_bulk_sentiment_analytics_ajax_chart_client(request):
+    current_pagination = 1   
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.SENTIMENT_ANALYSIS)
+        
+    sentiment_bulk_list_chart = { 
+        "data_positive" :[],
+        "data_neutral" :[],
+        "data_negative" :[], 
+        "labels": []
+    }
+
+    # reversed to have recent values in right side of chart
+    for bulk in reversed(row_list_bulk) :
+        sentiment_bulk_list_chart["data_positive"].append(bulk["positive_percent"])
+        sentiment_bulk_list_chart["data_neutral"].append(bulk["neutral_percent"])
+        sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
+        sentiment_bulk_list_chart["labels"].append(bulk["title"])
+
+    if request.is_ajax and request.method == "GET":
+        return HttpResponse(json.dumps(sentiment_bulk_list_chart),
+        content_type="application/json"
+    )
+        # return render(request, 'includes/bulk_sentiment_analytics_chart_client.html', { "sentiment_bulk_list_chart" : sentiment_bulk_list_chart })
 
 @login_required(login_url="/login/")
 def plans_preview_client(request):

@@ -19847,5 +19847,28 @@ blink {
   background-color: #e02d27;
 }
 
+.line-chart-bulk-sentiment{
+
+  font-family: Lato, Helvetica-Neue, monospace;
+}
+.ct-series-a .ct-line{
+stroke: #2eeb15;
+}
+.ct-series-b .ct-line{
+stroke: #e0b72e;
+}
+.ct-series-c .ct-line{
+stroke: #da2f11;
+}
+.ct-series-a .ct-point {
+  stroke: #2eeb15;
+}
+.ct-series-b .ct-point {
+  stroke: #e0b72e;
+}
+.ct-series-c .ct-point {
+  stroke: #da2f11;
+}
+
 
 

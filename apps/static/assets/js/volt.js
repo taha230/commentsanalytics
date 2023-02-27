@@ -291,7 +291,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
         var $data_input_negative = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_negative"] + "]");
         
         var $label_input = JSON.parse($string_list_cleaned)["labels"];
-        
+
         var chart = new Chartist.Line('.line-chart-bulk-sentiment', {
                 labels: $label_input,
 
@@ -317,6 +317,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
                 plugins: [
                     Chartist.plugins.tooltip()
                 ],
+
                 low: 0,
                 high: 100,
                 axisY: {
@@ -330,31 +331,28 @@ d.addEventListener("DOMContentLoaded", function(event) {
                     'positive': {
                     },
                     'neutral': {
-                        showArea: true
                     },
                     'negative': {
-                        showPoint: false
-
                     }
                   }
-                // showPoint: false,
                 
+                  
         });
 
-        // chart.on('draw', function(context) {
+        chart.on('draw', function(data) {
+            if(data.type === 'line' || data.type === 'area') {
+              data.element.animate({
+                d: {
+                  begin: 2000 * data.index,
+                  dur: 2000,
+                  from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                  to: data.path.clone().stringify(),
+                  easing: Chartist.Svg.Easing.easeOutQuint
+                }
+              });
+            }
+          });
 
-
-        //     if(context.type === 'point') {
-        //           context.element.attr({
-        //           style: 'stroke:  blue'
-        //       });
-        //     }else if(context.type === 'line') {
-        //         context.element.attr({
-        //           style: 'stroke:  green'
-        //       });
-        //     }
-        //   });
-        
     }
 
     if(d.querySelector('.ct-chart-ranking')) {

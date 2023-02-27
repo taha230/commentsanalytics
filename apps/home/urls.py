@@ -42,6 +42,7 @@ urlpatterns = [
     re_path(r'^requests_sentiment_analytics_client/', views.requests_sentiment_analytics_client, name="requests_sentiment_analytics_client"), # use regular expression for handle all pages /P*
     re_path(r'^update_bulk_status_ajax_client/', views.update_bulk_status_ajax_client, name="update_bulk_status_ajax_client"), # use regular expression for handle all pages /P*
     re_path(r'^update_bulk_sentiment_analytics_ajax_client/', views.update_bulk_sentiment_analytics_ajax_client, name="update_bulk_sentiment_analytics_ajax_client"), # use regular expression for handle all pages /P*
+    re_path(r'^update_bulk_sentiment_analytics_ajax_chart_client/', views.update_bulk_sentiment_analytics_ajax_chart_client, name="update_bulk_sentiment_analytics_ajax_chart_client"), # use regular expression for handle all pages /P*
     re_path(r'^requests_single_client/', views.requests_single_client, name="requests_single_client"), # use regular expression for handle all pages /P*
     re_path(r'^requests_bulk_client/', views.requests_bulk_client, name="requests_bulk_client"), # use regular expression for handle all pages /P*
     path('plans_preview_client/', views.plans_preview_client, name="plans_preview_client"),
