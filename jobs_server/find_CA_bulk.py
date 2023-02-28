@@ -22,6 +22,7 @@ import uuid
 import datetime
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
+import spacy
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
@@ -62,7 +63,7 @@ manager = Manager()
 counter = manager.list()
 
 
-def get_from_mongo_url():
+def get_from_mongo():
     random_sleep_time = random.random()
     time.sleep(random_sleep_time)
 
@@ -75,6 +76,12 @@ def get_from_mongo_url():
 
 def update_mongo_url(id, result):
     collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result}})
+
+def update_mongo_ner(id, result, result_sentiment):
+    collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
+
+def update_mongo_keyword(id, result, result_sentiment):
+    collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
 
 def get_sentiment_result (input_text):
     return 'Neutral'
@@ -105,7 +112,7 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
     sentiment_value = 'Neutral'
     try:
         request_type = 'Sentiment Analysis'
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single_sentiment?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
@@ -120,9 +127,26 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
 
     return sentiment_value
 
+def detect_ner(text):
+    # Load the spaCy English language model
+    nlp = spacy.load('en_core_web_sm')
+
+    # Process the text with the model to generate a Doc object
+    doc = nlp(text)
+
+    # Extract named entities from the Doc object
+    entities = []
+    ignored_entities = ['CARDINAL']
+
+    for ent in doc.ents:
+        if ent.label_ not in ignored_entities:
+            entities.append((ent.text, ent.label_))
+
+    return entities
+
 def find_CA(index):
 
-    item = get_from_mongo_url()
+    item = get_from_mongo()
 
     while True:
 
@@ -135,19 +159,47 @@ def find_CA(index):
             break
         try:
 
-            if (len(item['query']) <= 2 ):
+            if (len(item['query']) <= 2 and request_type == 'Sentiment Analysis' ):
 
                 print(item['query'])
-                update_mongo_url(item['_id'], 'Neutral')
+                update_mongo_sentiment(item['_id'], 'Neutral')
 
                 counter.append('ok')
-                print(colored(f'{len(counter)} === company website added to mongo', 'green'))
+                print(colored(f'{len(counter)} === sentiment added to mongo', 'green'))
 
-                item = get_from_mongo_url()
+                item = get_from_mongo()
 
                 if item is None:
                     break
-                
+            
+            if (len(item['query']) <= 2 and request_type == 'Named-Entity Recognition' ):
+
+                print(item['query'])
+                update_mongo_ner(item['_id'], str([]), 'Neutral')
+
+                counter.append('ok')
+                print(colored(f'{len(counter)} === NER added to mongo', 'green'))
+
+                item = get_from_mongo()
+
+                if item is None:
+                    break
+
+            if (len(item['query']) <= 2 and request_type == 'Keyword Extraction' ):
+
+                print(item['query'])
+                update_mongo_keyword(item['_id'], str([]), 'Neutral')
+
+                counter.append('ok')
+                print(colored(f'{len(counter)} === Keyword added to mongo', 'green'))
+
+                item = get_from_mongo()
+
+                if item is None:
+                    break
+        
+            
+
             cname = item['query']
             request_type = item['request_type']
 
@@ -158,21 +210,24 @@ def find_CA(index):
             if (request_type == 'Sentiment Analysis'):
                 sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
                 result = sentiment_result
-
-            if (request_type == 'Keyword Extraction'):
-                keyword_result = str([])
-                result = keyword_result
+                update_mongo_sentiment(item['_id'], result)
 
             if (request_type == 'Named-Entity Recognition'):
-                ner_result = str([])
-                result = ner_result
-                
-            update_mongo_url(item['_id'], result)
+                ner_result = detect_ner(cname)
+                sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
+                update_mongo_ner(item['_id'], ner_result, sentiment_result)
 
+             if (request_type == 'Keyword Extraction'):
+                keyword_result = str([])
+                result = keyword_result
+                update_mongo_sentiment(item['_id'], result)
+
+            
+           
             counter.append('ok')
             print(colored(f'{len(counter)} === company website added to mongo', 'green'))
 
-            item = get_from_mongo_url()
+            item = get_from_mongo()
 
             if item is None:
                 break

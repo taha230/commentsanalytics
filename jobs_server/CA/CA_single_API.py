@@ -21,6 +21,7 @@ import yarl
 import bson
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
+import spacy
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
@@ -75,12 +76,29 @@ def sentiment_analysis_twitter_roberta_base_sentiment(input_text):
 
     return sentiment_value
 
+def detect_ner(text):
+    # Load the spaCy English language model
+    nlp = spacy.load('en_core_web_sm')
+
+    # Process the text with the model to generate a Doc object
+    doc = nlp(text)
+
+    # Extract named entities from the Doc object
+    entities = []
+    ignored_entities = ['CARDINAL']
+
+    for ent in doc.ents:
+        if ent.label_ not in ignored_entities:
+            entities.append((ent.text, ent.label_))
+
+    return entities
+
 ##########################################################
 
 
 
-@application.route('/CA_single',methods=['GET','POST'])
-def start_CA_single():
+@application.route('/CA_single_sentiment',methods=['GET','POST'])
+def start_CA_single_sentiment():
 
     request_type = flask.request.args.get('request_type', default='', type=str)
     text = flask.request.args.get('text', default='', type=str)
@@ -109,6 +127,42 @@ def start_CA_single():
     if (request_type == 'Sentiment Analysis'):
         sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment(text)
         json_out['result'] = sentiment_result
+
+   
+    return json_out
+
+
+
+@application.route('/CA_single_ner',methods=['GET','POST'])
+def start_CA_single_sentiment():
+
+    request_type = flask.request.args.get('request_type', default='', type=str)
+    text = flask.request.args.get('text', default='', type=str)
+
+
+    if (request_type =='' or request_type == None):
+        print('Invalid request_type !!!')
+        json_out = {}
+        json_out['query'] = text
+        json_out['result'] = str([])
+        return json_out
+
+    if (text =='' or text == None):
+        print('Invalid text !!!')
+        json_out = {}
+        json_out['query'] = text
+        json_out['result'] = str([])
+        return json_out
+
+
+    json_out = {}
+    json_out['query'] = text
+
+    ner_result =  str([])
+
+    if (request_type == 'Named-Entity Recognition'):
+        ner_result = detect_ner(text)
+        json_out['result'] = ner_result
 
    
     return json_out

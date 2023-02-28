@@ -1706,7 +1706,7 @@ def get_API_response(input_text, request_type):
 
     try:
 
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single_sentiment?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
