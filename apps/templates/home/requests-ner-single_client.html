@@ -19,7 +19,7 @@
                     <path fill-rule="evenodd" d="M6.364 13.5a.5.5 0 0 0 .5.5H13.5a1.5 1.5 0 0 0 1.5-1.5v-10A1.5 1.5 0 0 0 13.5 1h-10A1.5 1.5 0 0 0 2 2.5v6.636a.5.5 0 1 0 1 0V2.5a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v10a.5.5 0 0 1-.5.5H6.864a.5.5 0 0 0-.5.5z"/>
                     <path fill-rule="evenodd" d="M11 5.5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793l-8.147 8.146a.5.5 0 0 0 .708.708L10 6.707V10.5a.5.5 0 0 0 1 0v-5z"/>
                 </svg>
-                 Single Requests Docs
+                 NER Requests Doc
               </a>
           </div>
       </div>
@@ -31,10 +31,10 @@
                         <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
                         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
-                    <B style="color:rgb(255, 145, 0)">Single Request Run</B>
+                    <B style="color:rgb(255, 145, 0)">Single NER Request Run</B>
                 </h1>
             </div>
-            <form action="/requests_single_client/" method= "POST">
+            <form action="/requests_ner_single_client/" method= "POST">
 
                 <div class="card-body">
                     {% csrf_token %}
@@ -51,9 +51,7 @@
                                 <label for="type">Type (<B style="color:red">*</B>)</label>
                                 <select class="form-select mb-0 " id="request_type" name="input_request_type" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
                                     <option value="" selected disabled hidden>Choose ...</option>
-                                    {% for row in requests_types %}
-                                        <option value="{{ row }}" >{{ row }}</option>
-                                    {% endfor %}
+                                    <option value="Named-Entity Recognition" >Named-Entity Recognition</option>
 
                                 </select>
                             </div>
@@ -101,7 +99,7 @@
                     <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
                     <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
                 </svg>
-                Single Requests History
+                Single NER Requests History
             </h1>
         </div>
         
@@ -128,7 +126,7 @@
                       <tr>
                           <td><a href="#" class="text-primary fw-bold">{{ row.index }}</a> </td>
                           <td class="fw-bold align-items-center">
-                            {% include "includes/request_single_text.html" %}
+                            {{ row.text_query }}
                           </td>
                           <td>
                             {{ row.request_time }}
@@ -138,7 +136,7 @@
                           </td>
                           <td>
                             {% if row.result != None %}
-                                {% include "includes/request_single_result.html" %}
+                                {{ row.result }}
                             {% endif %}
                           </td>
                           <td>

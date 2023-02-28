@@ -687,7 +687,7 @@ def get_request_list_page(request, start, limit, user, run_type):
         print(e)
         return [], 0
 
-def get_request_list_page_mongodb(request, start, limit, user, run_type):
+def get_request_list_page_mongodb(request, start, limit, user, run_type, request_type= None):
 
     try:
         ################################ Select from home_Request Table #################################
@@ -698,10 +698,14 @@ def get_request_list_page_mongodb(request, start, limit, user, run_type):
         # sorted by request_time_slot
         if (user == None): # return all bulks (Admin)
             query_request = {'run_type': run_type.value}
+            if (request_type != None):
+                query_request['request_type'] = request_type
             row_list_all = collection_Requests.find(query_request).sort([("request_time_slot", -1)])[start : start + limit]
             total_count = collection_Requests.find(query_request).count()
         else: # filtered by user (Client)
             query_request = {'user': str(request.user.id), 'run_type': run_type.value}
+            if (request_type != None):
+                query_request['request_type'] = request_type
             row_list_all = collection_Requests.find(query_request).sort([("request_time_slot", -1)])[start : start + limit]
             total_count = collection_Requests.find(query_request).count()
 
@@ -1706,7 +1710,7 @@ def get_API_response(input_text, request_type):
 
     try:
 
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single_sentiment?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
@@ -2120,12 +2124,12 @@ def requests_new_bulk(request):
     return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'requests-new', "requests_types": requests_types})
 
 @login_required(login_url="/login/")
-def requests_single_client(request):
+def requests_sentiment_single_client(request):
 
     valid_to_submit = True
     remain_count = 0
 
-    insert_user_log_db (request.user, 'Single_Requests')
+    insert_user_log_db (request.user, 'Single_Sentiment_Requests')
 
     current_pagination = 1    
     try:
@@ -2141,10 +2145,9 @@ def requests_single_client(request):
             text_query = request.POST.get('input_text_query').strip()
             request_type = request.POST.get('input_request_type').strip()
 
-            # insert single request sqlite
+            # insert single request mongo
             valid_to_submit, remain_count = check_remain_count_user(request, 1)
             if (valid_to_submit):
-                # request_result = insert_single_request_db(request, text_query, request_type)
                 request_result = insert_single_request_db_mongodb(request, text_query, request_type)
         else:
             valid_to_submit, remain_count = check_remain_count_user(request, 1)
@@ -2153,7 +2156,7 @@ def requests_single_client(request):
         
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
 
-        row_list_request, total_count_request = get_request_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE)
+        row_list_request, total_count_request = get_request_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE, Request_Type.SENTIMENT_ANALYSIS.value)
 
         last_pagination = 1
         if (total_count_request == 0):
@@ -2167,10 +2170,69 @@ def requests_single_client(request):
         print(e)
         pass
 
-    return render(request, "home/requests-single_client.html", {"msg": 'SUCCESS',
+    return render(request, "home/requests-sentiment-single_client.html", {"msg": 'SUCCESS',
                                                                 "valid_to_submit" : valid_to_submit,
                                                                 "remain_count" : remain_count,
                                                                 "segment": 'sentiment-single', 
+                                                                "requests_types": requests_types,
+                                                                "current_pagination": current_pagination,
+                                                                "last_pagination": last_pagination,
+                                                                "page_limit": len(row_list_request),
+                                                                "total_items": total_count_request,
+                                                                "request_list": row_list_request,
+                                                                "request_result": request_result})
+
+@login_required(login_url="/login/")
+def requests_ner_single_client(request):
+
+    valid_to_submit = True
+    remain_count = 0
+
+    insert_user_log_db (request.user, 'Single_NER_Requests')
+
+    current_pagination = 1    
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    
+    requests_types_tuple = list(Request_Type.choices())
+    requests_types = list((i[1]) for i in requests_types_tuple)
+    request_result = ''
+    try:
+        if request.method == "POST": 
+            text_query = request.POST.get('input_text_query').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            # insert single request mongo
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+            if (valid_to_submit):
+                request_result = insert_single_request_db_mongodb(request, text_query, request_type)
+        else:
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+
+ 
+        
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+
+        row_list_request, total_count_request = get_request_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE, Request_Type.NAMED_ENTITY_RECOGNITION.value)
+
+        last_pagination = 1
+        if (total_count_request == 0):
+            last_pagination = 1
+        elif (total_count_request % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(e)
+        pass
+
+    return render(request, "home/requests-ner-single_client.html", {"msg": 'SUCCESS',
+                                                                "valid_to_submit" : valid_to_submit,
+                                                                "remain_count" : remain_count,
+                                                                "segment": 'ner-single', 
                                                                 "requests_types": requests_types,
                                                                 "current_pagination": current_pagination,
                                                                 "last_pagination": last_pagination,
@@ -2580,6 +2642,72 @@ def requests_sentiment_analytics_client(request):
 
     return render(request, "home/requests-sentiment_analytics_client.html", {"msg": 'SUCCESS',
                                                                         "segment": 'sentiment-analytics',
+                                                                        "current_pagination": current_pagination,
+                                                                        "last_pagination": last_pagination,
+                                                                        "page_limit": len(row_list_bulk),
+                                                                        "total_items": total_count_bulk,
+                                                                        "sentiment_bulk_list_chart": sentiment_bulk_list_chart,
+                                                                        "bulk_list": row_list_bulk})
+
+@login_required(login_url="/login/")
+def requests_ner_analytics_client(request):
+
+    try:
+        insert_user_log_db (request.user, 'requests_sentiment_analytics')
+        
+        if request.method == "POST": # just in confirm new bulk data buttton clicked
+
+            bulk_title = request.POST.get('input_bulk_title').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            business_names_raw = request.POST.get('input_business_names').strip()
+            business_names_list = business_names_raw.strip().split(SPLIT_TOKEN)
+            business_names_list = clean_data_input(business_names_list)
+            # insert bulk request sqlite
+            # gevent.spawn(insert_bulk_request_db(request, bulk_title, request_type, business_names_list))
+            # insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+            insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+
+        current_pagination = 1   
+        try:
+            current_pagination = int (request.path.split('/P')[-1])
+        except Exception as e:
+            pass
+
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.SENTIMENT_ANALYSIS)
+        
+        sentiment_bulk_list_chart = { 
+            "data_positive" :[],
+            "data_neutral" :[],
+            "data_negative" :[], 
+            "labels": []
+        }
+
+        # reversed to have recent values in right side of chart
+        for bulk in reversed(row_list_bulk) :
+            sentiment_bulk_list_chart["data_positive"].append(bulk["positive_percent"])
+            sentiment_bulk_list_chart["data_neutral"].append(bulk["neutral_percent"])
+            sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
+            sentiment_bulk_list_chart["labels"].append(bulk["title"])
+
+
+        last_pagination = 1
+        if (total_count_bulk == 0):
+            last_pagination = 1
+        elif (total_count_bulk % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(colored(str(e), 'red'))
+        pass
+
+    return render(request, "home/requests-sentiment_analytics_client.html", {"msg": 'SUCCESS',
+                                                                        "segment": 'ner-analytics',
                                                                         "current_pagination": current_pagination,
                                                                         "last_pagination": last_pagination,
                                                                         "page_limit": len(row_list_bulk),

@@ -21,8 +21,8 @@ class Payment_Type(Enum):
 class Request_Type(Enum):
 
     SENTIMENT_ANALYSIS = "Sentiment Analysis"
-    # KEYWORD_EXTRACTION = "Keyword Extraction"
-    # NAMED_ENTITY_RECOGNITION = "Named-Entity Recognition"
+    KEYWORD_EXTRACTION = "Keyword Extraction"
+    NAMED_ENTITY_RECOGNITION = "Named-Entity Recognition"
 
 
 

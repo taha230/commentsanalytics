@@ -97,8 +97,8 @@ def detect_ner(text):
 
 
 
-@application.route('/CA_single_sentiment',methods=['GET','POST'])
-def start_CA_single_sentiment():
+@application.route('/CA_single',methods=['GET','POST'])
+def start_CA_single():
 
     request_type = flask.request.args.get('request_type', default='', type=str)
     text = flask.request.args.get('text', default='', type=str)
@@ -108,14 +108,22 @@ def start_CA_single_sentiment():
         print('Invalid request_type !!!')
         json_out = {}
         json_out['query'] = text
-        json_out['result'] = 'Neutral'
+        if (request_type == 'Sentiment Analysis'):
+            json_out['result'] = 'Neutral'
+        else:
+            json_out['result'] = str([])
+
         return json_out
 
     if (text =='' or text == None):
         print('Invalid text !!!')
         json_out = {}
         json_out['query'] = text
-        json_out['result'] = 'Neutral'
+        if (request_type == 'Sentiment Analysis'):
+            json_out['result'] = 'Neutral'
+        else:
+            json_out['result'] = str([])
+
         return json_out
 
 
@@ -128,44 +136,14 @@ def start_CA_single_sentiment():
         sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment(text)
         json_out['result'] = sentiment_result
 
-   
-    return json_out
-
-
-
-@application.route('/CA_single_ner',methods=['GET','POST'])
-def start_CA_single_sentiment():
-
-    request_type = flask.request.args.get('request_type', default='', type=str)
-    text = flask.request.args.get('text', default='', type=str)
-
-
-    if (request_type =='' or request_type == None):
-        print('Invalid request_type !!!')
-        json_out = {}
-        json_out['query'] = text
-        json_out['result'] = str([])
-        return json_out
-
-    if (text =='' or text == None):
-        print('Invalid text !!!')
-        json_out = {}
-        json_out['query'] = text
-        json_out['result'] = str([])
-        return json_out
-
-
-    json_out = {}
-    json_out['query'] = text
-
-    ner_result =  str([])
-
     if (request_type == 'Named-Entity Recognition'):
         ner_result = detect_ner(text)
         json_out['result'] = ner_result
-
    
     return json_out
+
+
+
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0')

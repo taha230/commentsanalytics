@@ -112,7 +112,7 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
     sentiment_value = 'Neutral'
     try:
         request_type = 'Sentiment Analysis'
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single_sentiment?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
@@ -217,7 +217,7 @@ def find_CA(index):
                 sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
                 update_mongo_ner(item['_id'], ner_result, sentiment_result)
 
-             if (request_type == 'Keyword Extraction'):
+            if (request_type == 'Keyword Extraction'):
                 keyword_result = str([])
                 result = keyword_result
                 update_mongo_sentiment(item['_id'], result)
