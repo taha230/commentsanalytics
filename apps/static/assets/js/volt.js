@@ -310,9 +310,11 @@ d.addEventListener("DOMContentLoaded", function(event) {
                     }
                 ]
                 }, {
+                    
                 fullWidth: true,
                 chartPadding: {
-                    right: 40
+                    right: 90,
+                    left: 10
                 },
                 plugins: [
                     Chartist.plugins.tooltip()

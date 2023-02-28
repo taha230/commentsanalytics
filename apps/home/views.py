@@ -47,7 +47,7 @@ import multiprocessing
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from .forms import FileForm
-
+import datetime
 
 
 ########################################### Global Variables #################################################
@@ -2637,6 +2637,7 @@ def update_bulk_sentiment_analytics_ajax_chart_client(request):
         sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
         sentiment_bulk_list_chart["labels"].append(bulk["title"])
 
+    # print(colored(sentiment_bulk_list_chart, 'yellow'))
     if request.is_ajax and request.method == "GET":
         return HttpResponse(json.dumps(sentiment_bulk_list_chart),
         content_type="application/json"
@@ -2809,7 +2810,7 @@ def transactions_client(request):
                                                                 "transaction_list": row_list_transaction})
 
 @login_required(login_url="/login/")
-def export_bulk_xlsx(request):
+def export_bulk_sentiment_xlsx(request):
 
     bulk_id = 0
     bulk_id_string = '0'
@@ -2846,13 +2847,47 @@ def export_bulk_xlsx(request):
     sheet.write(0,0, 'text')
     sheet.write(0,1, 'request_type')
     sheet.write(0,2, 'result')
+    sheet.write(0,3, 'time')
 
+    export_time = str(datetime.datetime.now()).split('.')[0]
     row =1
     for request in all_requests:
         sheet.write(row, 0, request['business_name'])
         sheet.write(row, 1, request['request_type'])
         sheet.write(row, 2, request['result'])
+        sheet.write(row, 3, export_time)
         row += 1
+
+    # add total_count, positive_sentiment, neutral_sentiment, negative_sentiment
+    sheet.write(row, 0, '')
+    sheet.write(row + 1, 0, '')
+    sheet.write(row + 2, 0, '')
+
+    query_positive = {'bulk': bulk_id, 'result': 'Positive'}
+    query_neutral = {'bulk': bulk_id, 'result': 'Neutral'}
+    query_negative = {'bulk': bulk_id, 'result': 'Negative'}
+    
+    positive_count = collection_Requests.find(query_positive).count()
+    neutral_count = collection_Requests.find(query_neutral).count()
+    negative_count = collection_Requests.find(query_negative).count()
+    
+    positive_percent = 0
+    neutral_percent = 0
+    negative_percent = 0
+    
+    try:
+        
+        positive_percent = int(positive_count / bulk_selected['total_count'] * 100)
+        neutral_percent = int(neutral_count / bulk_selected['total_count'] * 100)
+        negative_percent = int(negative_count / bulk_selected['total_count'] * 100)
+    except Exception as e:
+        print(e)
+
+
+    sheet.write(row + 3, 0,'positive_sentiment : ' + str(positive_count) + ' ( ' + str(positive_percent) + ' % )')
+    sheet.write(row + 4, 0,'neutral_sentiment : ' + str(neutral_count) + ' ( ' + str(neutral_percent) + ' % )')
+    sheet.write(row + 5, 0,'negative_sentiment : ' + str(negative_count) + ' ( ' + str(negative_percent) + ' % )')
+    sheet.write(row + 6, 0,'total_count : ' + str(bulk_selected['total_count']))
 
     book.close()
 
@@ -2861,7 +2896,7 @@ def export_bulk_xlsx(request):
     # return redirect('/requests_bulk_status_client/P' + page_string)
     
 @login_required(login_url="/login/")
-def export_bulk_csv(request):
+def export_bulk_sentiment_csv(request):
 
     bulk_id = 0
     bulk_id_string = '0'
@@ -2879,8 +2914,9 @@ def export_bulk_csv(request):
     query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
     records_bulks = collection_Bulks.find(query_bulk_id)
     bulk_id = bulk_id_string
+    bulk_count = records_bulks.count()
 
-    if (records_bulks.count() == 0):
+    if (bulk_count == 0):
         return
 
     bulk_selected = records_bulks[0]
@@ -2892,11 +2928,44 @@ def export_bulk_csv(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="' + excel_file_name + '.csv"' 
     writer = csv.writer(response)
-    writer.writerow(['text','request_type', 'result'])
+    writer.writerow(['text','request_type', 'result', 'time'])
 
+    export_time = str(datetime.datetime.now()).split('.')[0]
     for request in all_requests:
-        writer.writerow([request['business_name'], request['request_type'], request['result']])
+        writer.writerow([request['business_name'], request['request_type'], request['result'], export_time])
     
+
+    # add total_count, positive_sentiment, neutral_sentiment, negative_sentiment
+    writer.writerow([''])
+    writer.writerow([''])
+    writer.writerow([''])
+
+    query_positive = {'bulk': bulk_id, 'result': 'Positive'}
+    query_neutral = {'bulk': bulk_id, 'result': 'Neutral'}
+    query_negative = {'bulk': bulk_id, 'result': 'Negative'}
+    
+    positive_count = collection_Requests.find(query_positive).count()
+    neutral_count = collection_Requests.find(query_neutral).count()
+    negative_count = collection_Requests.find(query_negative).count()
+    
+    positive_percent = 0
+    neutral_percent = 0
+    negative_percent = 0
+    
+    try:
+        
+        positive_percent = int(positive_count / bulk_selected['total_count'] * 100)
+        neutral_percent = int(neutral_count / bulk_selected['total_count'] * 100)
+        negative_percent = int(negative_count / bulk_selected['total_count'] * 100)
+    except Exception as e:
+        print(e)
+
+
+    writer.writerow(['positive_sentiment : ' + str(positive_count) + ' ( ' + str(positive_percent) + ' % )'])
+    writer.writerow(['neutral_sentiment : ' + str(neutral_count) + ' ( ' + str(neutral_percent) + ' % )'])
+    writer.writerow(['negative_sentiment : ' + str(negative_count) + ' ( ' + str(negative_percent) + ' % )'])
+    writer.writerow(['total_count : ' + str(bulk_selected['total_count'])])
+
     return response
     # return redirect('/requests_bulk_status_client/P' + page_string)
         

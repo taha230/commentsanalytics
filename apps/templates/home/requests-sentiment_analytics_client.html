@@ -50,14 +50,14 @@
   function bulk_download_xlsx(bulk_id) {
     
     var $download_button = document.getElementById("download_button");
-    document.getElementById('myform').action = "/bulk_export_xlsx/P1/bulk" + bulk_id;
+    document.getElementById('myform').action = "/bulk_export_sentiment_xlsx/P1/bulk" + bulk_id;
 
   }
 
   function bulk_download_csv(bulk_id) {
     
     var $download_button = document.getElementById("download_button");
-    document.getElementById('myform').action = "/bulk_export_csv/P1/bulk" + bulk_id;
+    document.getElementById('myform').action = "/bulk_export_sentiment_csv/P1/bulk" + bulk_id;
 
   }
   // =================================================================================================================================
@@ -113,10 +113,8 @@
         type : "GET", 
         data : {}, 
         success : function(response) {
-
-          console.log(response["data_positive"]);
-          // updateChartSeries();
-          
+          // $('#chart_bulk_sentiment').html(response);
+          updateChartSeries(response)
         },
         error: function (response) {
                 console.log(response)
@@ -124,29 +122,66 @@
     });
   }
 
-  function randData() {
-    var arr = [];
-    for (var i = 0; i < 3; i++) {
-      arr.push(Math.floor(Math.random() * 100) + 1);
-    }
+  
+  function updateChartSeries(response) {
 
-    var str = [];
-    for (var i = 0; i < 3; i++) {
-      str[i] = arr[i];
-    }
-    return str;
-  }
+    var $data_input_positive = response['data_positive'];
+    var $data_input_neutral = response['data_neutral'];
+    var $data_input_negative = response['data_negative'];
+    var $label_input = response['labels']
 
-  function updateChartSeries() {
-    var data = randData();
-    // Replace data to existing Chart
-    var chart = new ApexCharts(document.querySelector("#chart_bulk_sentiment"), options);
-    chart.updateSeries([
-      {
-        name: "positive",
-        data: data
-      }
-    ]);
+    // console.log($data_input_positive);
+    // console.log($data_input_neutral);
+    // console.log($data_input_negative);
+    // console.log($label_input);
+
+    var chart = new Chartist.Line('.line-chart-bulk-sentiment', {
+          labels: $label_input,
+
+          series: [
+              {
+                  name: 'positive',
+                  data: $data_input_positive
+              },
+              {
+                  name: 'neutral',
+                  data: $data_input_neutral
+              },
+              {
+                  name: 'negative',
+                  data: $data_input_negative
+              }
+          ]
+          }, {
+            
+          fullWidth: true,
+          chartPadding: {
+              right: 90,
+              left: 10
+          },
+          plugins: [
+              Chartist.plugins.tooltip()
+          ],
+
+          low: 0,
+          high: 100,
+          axisY: {
+              // Lets offset the chart a bit from the labels
+              offset: 60,
+              labelInterpolationFnc: function(value) {
+                return value + ' %';
+              }
+            },
+            series: {
+              'positive': {
+              },
+              'neutral': {
+              },
+              'negative': {
+              }
+          }          
+        });
+
   }
   
   </script>
