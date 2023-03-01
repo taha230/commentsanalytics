@@ -821,6 +821,28 @@
   --bs-body-line-height: 1.5;
   --bs-body-color: #374151;
   --bg-plan-1: 176, 247, 45;
+
+  --bg-ner-person: #045ff1;
+  --bg-ner-gpe: #f8bf01;
+  --bg-ner-org: #f82601;
+  --bg-ner-fac: #ffe262;
+  --bg-ner-loc: #6937f3;
+  --bg-ner-product: #0af531de;
+
+  --bg-ner-norp: #f104d1;
+  --bg-ner-event: #01f0f8;
+  --bg-ner-work-of-art: #72089c;
+  --bg-ner-law: #ad900b;
+  --bg-ner-language: #e65699;
+  --bg-ner-date: #111042de;
+
+  --bg-ner-time: #04f1b6;
+  --bg-ner-percent: #b6f801;
+  --bg-ner-money: #e401f8;
+  --bg-ner-quantity: #3f3405;
+  --bg-ner-ordinal: #413b52;
+  --bg-ner-cardinal: #3a4d3dde;
+
   --bg-plan-2: 78, 248, 234; 
   --bg-plan-3: 154, 143, 248; 
   --bg-plan-4: 247, 236, 88; 
@@ -4275,7 +4297,7 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 
     background-color: transparent; }
 
 .btn-outline-warning {
-  color: #f3c78e;
+  color: #fd8f00;
   border-color: #f3c78e; }
   .btn-outline-warning:hover {
     color: #1F2937;
@@ -9719,7 +9741,71 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 
 .bg-plan-10 {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bg-plan-10), var(--bs-bg-opacity)) !important; }
-                      
+
+.bg-ner-person {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-person) !important; } 
+
+.bg-ner-gpe {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-gpe) !important; } 
+
+.bg-ner-org {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-org) !important; } 
+
+.bg-ner-fac {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-fac) !important; } 
+
+.bg-ner-loc {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-loc) !important; } 
+
+.bg-ner-product {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-product) !important; } 
+
+
+.bg-ner-norp {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-norp) !important; } 
+.bg-ner-event {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-event) !important; } 
+.bg-ner-work-of-art {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-work-of-art) !important; } 
+.bg-ner-law {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-law) !important; } 
+.bg-ner-language {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-language) !important; } 
+.bg-ner-date {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-date) !important; } 
+
+.bg-ner-time {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-time) !important; } 
+.bg-ner-percent {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-percent) !important; } 
+.bg-ner-money {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-money) !important; }
+.bg-ner-quantity {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-quantity) !important; }  
+.bg-ner-ordinal {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-ordinal) !important; } 
+.bg-ner-cardinal {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-cardinal) !important; } 
+
+
 .bg-message-text {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bg-message-text), var(--bs-bg-opacity)) !important; }

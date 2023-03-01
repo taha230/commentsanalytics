@@ -269,6 +269,17 @@ def update_request_mongodb(id, url):
         except Exception as e:
             print(e)
 
+def update_request_sentiment_mongodb(id, sentiment):
+
+    while True:
+
+        try:
+
+            collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"result_sentiment": sentiment}})
+            return
+
+        except Exception as e:
+            print(e)
 
 
 def update_passed_count ():
@@ -338,6 +349,8 @@ def update_passed_count_mongodb():
                     # update request fields in sqlite
                     if ('request_id' in update_request and 'result' in update_request):
                         update_request_mongodb(update_request['request_id'], update_request['result'])
+                    if ('request_id' in update_request and 'result_sentiment' in update_request):
+                        update_request_sentiment_mongodb(update_request['request_id'], update_request['result_sentiment'])
 
             # update bulk_end_time_slot and status on complete level
             if (passed_count >= total_count):

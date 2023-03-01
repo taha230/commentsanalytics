@@ -823,6 +823,48 @@ def get_request_list_bulk_export_mongodb(request, bulk_id):
         print(e)
         return [], 0
 
+
+def get_request_list_bulk_mongodb(request, bulk_id):
+
+    try:
+        ################################ Select from Request Table Mongo #################################
+
+        row_list = []
+        total_count = 0
+
+        query_bulk_id = {'bulk' : bulk_id}
+        row_list_all = collection_Requests.find(query_bulk_id)
+
+
+        for index, row in enumerate(list(row_list_all)):
+            try:
+                row_json = {}
+                row_json['index'] = index + 1
+                row_json['text_query'] = row['query']
+                row_json['request_type'] = row['request_type']
+                row_json['request_time'] = row['request_time_slot']
+                row_json['result_time'] = row['result_time_slot']
+                row_json['result'] = row['result']
+                if ('result_sentiment' in row):
+                    row_json['sentiment'] = row['result_sentiment']
+                
+            
+                row_list.append(row_json)
+
+            except Exception as e:
+                print(e)
+                continue
+
+
+        print(colored('Request Bulk for Download select successfully from client user !!!', 'green'))
+
+        return row_list
+
+    except Exception as e:
+        print(colored('Unsuccessful Request Bulk for Download selection !!!', 'red'))
+        print(e)
+        return [], 0
+
 def get_user_log_list_page(request, start, limit, user):
 
     try:
@@ -2653,7 +2695,7 @@ def requests_sentiment_analytics_client(request):
 def requests_ner_analytics_client(request):
 
     try:
-        insert_user_log_db (request.user, 'requests_sentiment_analytics')
+        insert_user_log_db (request.user, 'requests_NER_analytics')
         
         if request.method == "POST": # just in confirm new bulk data buttton clicked
 
@@ -2677,23 +2719,9 @@ def requests_ner_analytics_client(request):
             pass
 
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
-        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.SENTIMENT_ANALYSIS)
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.NAMED_ENTITY_RECOGNITION)
         
-        sentiment_bulk_list_chart = { 
-            "data_positive" :[],
-            "data_neutral" :[],
-            "data_negative" :[], 
-            "labels": []
-        }
-
-        # reversed to have recent values in right side of chart
-        for bulk in reversed(row_list_bulk) :
-            sentiment_bulk_list_chart["data_positive"].append(bulk["positive_percent"])
-            sentiment_bulk_list_chart["data_neutral"].append(bulk["neutral_percent"])
-            sentiment_bulk_list_chart["data_negative"].append(bulk["negative_percent"])
-            sentiment_bulk_list_chart["labels"].append(bulk["title"])
-
-
+        
         last_pagination = 1
         if (total_count_bulk == 0):
             last_pagination = 1
@@ -2706,13 +2734,12 @@ def requests_ner_analytics_client(request):
         print(colored(str(e), 'red'))
         pass
 
-    return render(request, "home/requests-sentiment_analytics_client.html", {"msg": 'SUCCESS',
+    return render(request, "home/requests-ner_analytics_client.html", {"msg": 'SUCCESS',
                                                                         "segment": 'ner-analytics',
                                                                         "current_pagination": current_pagination,
                                                                         "last_pagination": last_pagination,
                                                                         "page_limit": len(row_list_bulk),
                                                                         "total_items": total_count_bulk,
-                                                                        "sentiment_bulk_list_chart": sentiment_bulk_list_chart,
                                                                         "bulk_list": row_list_bulk})
 
 @login_required(login_url="/login/")
@@ -2740,6 +2767,48 @@ def update_bulk_sentiment_analytics_ajax_client(request):
 
     if request.is_ajax and request.method == "GET":
         return render(request, 'includes/bulk_sentiment_analytics_table_client.html', {'bulk_list':row_list_bulk})
+
+@login_required(login_url="/login/")
+def requests_ner_analytics_bulk(request):
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk_')[-1]
+    except Exception as e:
+        pass
+
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+
+    if (records_bulks.count() == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+
+
+    return render(request, 'home/requests_ner_analytics_report.html', {"msg": 'SUCCESS',
+                                                            "segment": 'ner-analytics',
+                                                            "request_list": all_requests})
+
+
+@login_required(login_url="/login/")
+def update_bulk_ner_analytics_ajax_client(request):
+    current_pagination = 1   
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.NAMED_ENTITY_RECOGNITION)
+
+    if request.is_ajax and request.method == "GET":
+        return render(request, 'includes/bulk_ner_analytics_table_client.html', {'bulk_list':row_list_bulk})
 
 @login_required(login_url="/login/")
 def update_bulk_sentiment_analytics_ajax_chart_client(request):

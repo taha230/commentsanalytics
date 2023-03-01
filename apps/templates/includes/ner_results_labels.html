@@ -1,0 +1,52 @@
+ <!-- Post_Status Label -->
+
+
+{% for name_entity in row.result %}
+
+    {% if name_entity.1 == 'ORG' %}
+        <button class="btn btn-outline-danger mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-org">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'FAC' %}
+        <button class="btn btn-outline-warning mt-1 " type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-fac text-gray-800">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'GPE' %}
+        <button class="btn btn-outline-secondary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-gpe">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'PERSON' %}
+        <button class="btn btn-outline-info mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-person">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'LOC' %}
+        <button class="btn btn-outline-tertiary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-loc">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'PRODUCT' %}
+        <button class="btn btn-outline-success mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-product  text-gray-800">{{ name_entity.1 }}</span></button>
+    
+    
+    {% elif name_entity.1 == 'NORP' %}
+        <button class="btn btn-outline-danger mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-norp">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'EVENT' %}
+        <button class="btn btn-outline-info mt-1 " type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-event text-gray-800">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'WORK_OF_ART' %}
+        <button class="btn btn-outline-danger mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-work-of-art">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'LAW' %}
+    <button class="btn btn-outline-warning mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-law">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'LANGUAGE' %}
+        <button class="btn btn-outline-tertiary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-language">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'DATE' %}
+        <button class="btn btn-outline-gray-900 mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-date">{{ name_entity.1 }}</span></button>
+    
+
+    {% elif name_entity.1 == 'TIME' %}
+        <button class="btn btn-outline-gray-700 mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-time  text-gray-800">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'PERCENT' %}
+        <button class="btn btn-outline-success mt-1 " type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-percent text-gray-800">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'MONEY' %}
+        <button class="btn btn-outline-danger mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-money">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'QUANTITY' %}
+        <button class="btn btn-outline-primary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-quantity">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'ORDINAL' %}
+        <button class="btn btn-outline-tertiary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-ordinal">{{ name_entity.1 }}</span></button>
+    {% elif name_entity.1 == 'CARDINAL' %}
+        <button class="btn btn-outline-primary mt-1" type="button"> {{ name_entity.0 }}  <span class="badge bg-ner-cardinal  text-gray-800">{{ name_entity.1 }}</span></button>
+    
+
+    {% endif %}
+
+
+
+{% endfor %}
