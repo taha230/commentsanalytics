@@ -2790,11 +2790,117 @@ def requests_ner_analytics_bulk(request):
     bulk_selected = records_bulks[0]
 
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+    
+    top_ten_requests = []
+    if len(all_requests) > 10 :
+        top_ten_requests = all_requests[0:10]
+    else:
+        top_ten_requests= all_requests
 
+    entities_count = {}
+    entities_positive_sentiment_count = {}
+    entities_neutral_sentiment_count = {}
+    entities_negative_sentiment_count = {}
 
-    return render(request, 'home/requests_ner_analytics_report.html', {"msg": 'SUCCESS',
+    for request_item in all_requests:
+        try:
+            
+            sentiment_result = request_item['sentiment']
+            for entity in request_item['result']:
+                
+                entity_string = entity[0] + ' (' + entity[1] + ')'
+
+                try:
+                    if entity_string in entities_count:
+                        entities_count[entity_string] = entities_count[entity_string] + 1 
+                    else:
+                        entities_count[entity_string] = 1
+                except Exception as e:
+                    print(e)
+                    
+                if (sentiment_result == 'Positive'):
+                    try:
+                        if entity_string in entities_positive_sentiment_count:
+                            entities_positive_sentiment_count[entity_string] = entities_positive_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_positive_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                
+                elif (sentiment_result == 'Neutral'):
+                    try:
+                        if entity_string in entities_neutral_sentiment_count:
+                            entities_neutral_sentiment_count[entity_string] = entities_neutral_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_neutral_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                elif (sentiment_result == 'Negative'):
+                    try:
+                        if entity_string in entities_negative_sentiment_count:
+                            entities_negative_sentiment_count[entity_string] = entities_negative_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_negative_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                    
+        except Exception as e:
+            print(e)
+            continue
+
+    # print(colored(str(entities_count) , 'green'))
+    # print(colored(str(entities_positive_sentiment_count) , 'green'))
+    # print(colored(str(entities_neutral_sentiment_count) , 'green'))
+    # print(colored(str(entities_negative_sentiment_count) , 'green'))
+
+    sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
+
+    if len(sortedDict_count) > 10:
+        sortedDict_count = sortedDict_count[0:10]
+
+    data_out_count = []
+    data_out_label = []
+    data_out_sentiment_positive = []
+    data_out_sentiment_neutral = []
+    data_out_sentiment_negative = []
+
+    for sorted_item in sortedDict_count:
+        data_out_count.append(entities_count[sorted_item[0]])
+        data_out_label.append(sorted_item[0])
+        
+        # Positive
+        if (sorted_item[0] in entities_positive_sentiment_count):
+            data_out_sentiment_positive.append(entities_positive_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_positive.append(0)
+        
+        # Neutral
+        if (sorted_item[0] in entities_neutral_sentiment_count):
+            data_out_sentiment_neutral.append(entities_neutral_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_neutral.append(0)
+        
+        # Negative
+        if (sorted_item[0] in entities_negative_sentiment_count):
+            data_out_sentiment_negative.append(entities_negative_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_negative.append(0)
+        
+
+    ner_bulk_list_chart_top_count = { 
+            "data_positive" :data_out_sentiment_positive,
+            "data_neutral" :data_out_sentiment_neutral,
+            "data_negative" :data_out_sentiment_negative, 
+            "data_count" : data_out_count,
+            "labels": data_out_label
+        }
+    ner_bulk_list_chart_top_sentiment = {}
+
+    return render(request, 'home/requests-ner_analytics_report.html', {"msg": 'SUCCESS',
                                                             "segment": 'ner-analytics',
-                                                            "request_list": all_requests})
+                                                            "ner_bulk_list_chart_top_count" : ner_bulk_list_chart_top_count,
+                                                            "ner_bulk_list_chart_top_sentiment" : ner_bulk_list_chart_top_sentiment,
+                                                            "request_list": top_ten_requests})
 
 
 @login_required(login_url="/login/")

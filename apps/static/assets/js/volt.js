@@ -357,6 +357,122 @@ d.addEventListener("DOMContentLoaded", function(event) {
 
     }
 
+    if(d.querySelector('.bar-chart-horizontal-bulk-ner-top-count')) {
+        //Chart sentiment bulk
+
+        var $string_list_cleaned = d.getElementById('bar_chart_top_count').innerText.replace(/\'/g,"\"");
+        var $data_input_ner_count = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_count"] + "]");
+
+        
+        var $label_input = JSON.parse($string_list_cleaned)["labels"];
+        
+        // alert($string_list_cleaned);
+
+        var options_ner_bar_chart_count = {
+            series: [{
+            name : 'count',
+            data: $data_input_ner_count
+          }],
+            chart: {
+            type: 'bar',
+            height: 350,
+            width: '100%',
+            float: 'left'
+          },
+          legend: {
+            show: false
+          },
+          plotOptions: {
+            bar: {
+              borderRadius: 8,
+              horizontal: true,
+              distributed: true,
+        
+            }
+          },
+          colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
+                  '#f48024', '#69d2e7'
+                ],
+          
+          
+          xaxis: {
+            categories: $label_input,
+          }
+          };
+        
+        var barchart_ner_count = new ApexCharts(d.querySelector(".bar-chart-horizontal-bulk-ner-top-count"), options_ner_bar_chart_count);
+        barchart_ner_count.render();
+        
+    }
+
+    if(d.querySelector('.bar-chart-horizontal-bulk-ner-top-sentiment')) {
+        //Chart sentiment bulk
+
+        var $string_list_cleaned = d.getElementById('bar_chart_top_count').innerText.replace(/\'/g,"\"");
+        var $data_input_ner_count = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_count"] + "]");
+
+        
+        var $label_input = JSON.parse($string_list_cleaned)["labels"];
+        var $positive_input = JSON.parse($string_list_cleaned)["data_positive"];
+        var $neutral_input = JSON.parse($string_list_cleaned)["data_neutral"];
+        var $negative_input = JSON.parse($string_list_cleaned)["data_negative"];
+        
+        // alert($string_list_cleaned);
+
+        var options_ner_bar_chart_sentiment = {
+            series: [{
+                name: 'Postivie',
+                data: $positive_input
+              }, {
+                name: 'Neutral',
+                data: $neutral_input
+              }, {
+                name: 'Negative',
+                data: $negative_input
+              }],
+                chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                stackType: '100%'
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: true,
+                },
+              },
+              stroke: {
+                width: 1,
+                colors: ['#fff']
+              },
+              title: {
+                text: 'Sentiment By Entities'
+              },
+              xaxis: {
+                categories: $label_input,
+              },
+              tooltip: {
+                y: {
+                  formatter: function (val) {
+                    return val + ""
+                  }
+                }
+              },
+              fill: {
+                opacity: 1
+              
+              },
+              legend: {
+                position: 'top',
+                horizontalAlign: 'left',
+                offsetX: 40
+              }
+              };
+        
+        var barchart_ner_sentiment = new ApexCharts(d.querySelector(".bar-chart-horizontal-bulk-ner-top-sentiment"), options_ner_bar_chart_sentiment);
+        barchart_ner_sentiment.render();
+        
+    }
     if(d.querySelector('.ct-chart-ranking')) {
         var chart = new Chartist.Bar('.ct-chart-ranking', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -511,5 +627,36 @@ d.addEventListener("DOMContentLoaded", function(event) {
     }
 
 });
+
+// Line chart
+var optionsLineChart = {
+    series: [{
+        name: 'Clients',
+        data: [120, 160, 200, 470, 420, 150, 470, 750, 650, 190, 140]
+    }],
+    labels: ['01 Feb', '02 Feb', '03 Feb', '04 Feb', '05 Feb', '06 Feb', '07 Feb', '08 Feb', '09 Feb', '10 Feb', '11 Feb'],
+    chart: {
+        type: 'area',
+        width: "100%",
+        height: 360
+    },
+    theme: {
+        monochrome: {
+            enabled: true,
+            color: '#31316A',
+        }
+    },
+    tooltip: {
+        fillSeriesColor: false,
+        onDatasetHover: {
+            highlightDataSeries: false,
+        },
+        theme: 'light',
+        style: {
+            fontSize: '12px',
+            fontFamily: 'Inter',
+        },
+    },
+};
 
 
