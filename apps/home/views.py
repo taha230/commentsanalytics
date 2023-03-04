@@ -2131,6 +2131,12 @@ def dashboard_client_weekly(request):
                                                         })
 
 @login_required(login_url="/login/")
+def ner_description_doc(request):
+     return render(request, "home/ner_description_doc.html", {"msg": 'SUCCESS',
+                                                          "segment": 'ner-doc'
+                                                        })
+
+@login_required(login_url="/login/")
 def dashboard_client(request):
 
     insert_user_log_db (request.user, 'Dashboard')
@@ -2802,12 +2808,15 @@ def requests_ner_analytics_bulk(request):
     entities_neutral_sentiment_count = {}
     entities_negative_sentiment_count = {}
 
+    counter = 1
     for request_item in all_requests:
         try:
-            
+            counter = counter + 1
             sentiment_result = request_item['sentiment']
-            for entity in request_item['result']:
-                
+            for entity in list(request_item['result']):
+                if (len(entity[0]) < 2):
+                    continue
+
                 entity_string = entity[0] + ' (' + entity[1] + ')'
 
                 try:
@@ -2835,6 +2844,7 @@ def requests_ner_analytics_bulk(request):
                             entities_neutral_sentiment_count[entity_string] = 1
                     except Exception as e:
                         print(e)
+
                 elif (sentiment_result == 'Negative'):
                     try:
                         if entity_string in entities_negative_sentiment_count:
@@ -2845,6 +2855,7 @@ def requests_ner_analytics_bulk(request):
                         print(e)
                     
         except Exception as e:
+
             print(e)
             continue
 
@@ -2855,8 +2866,8 @@ def requests_ner_analytics_bulk(request):
 
     sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
 
-    if len(sortedDict_count) > 10:
-        sortedDict_count = sortedDict_count[0:10]
+    # if len(sortedDict_count) > 10:
+    #     sortedDict_count = sortedDict_count[0:10]
 
     data_out_count = []
     data_out_label = []
@@ -2864,9 +2875,13 @@ def requests_ner_analytics_bulk(request):
     data_out_sentiment_neutral = []
     data_out_sentiment_negative = []
 
+    
     for sorted_item in sortedDict_count:
         data_out_count.append(entities_count[sorted_item[0]])
         data_out_label.append(sorted_item[0])
+        
+        if (len(data_out_label) == 10):
+            break
         
         # Positive
         if (sorted_item[0] in entities_positive_sentiment_count):
@@ -2887,19 +2902,19 @@ def requests_ner_analytics_bulk(request):
             data_out_sentiment_negative.append(0)
         
 
-    ner_bulk_list_chart_top_count = { 
-            "data_positive" :data_out_sentiment_positive,
-            "data_neutral" :data_out_sentiment_neutral,
-            "data_negative" :data_out_sentiment_negative, 
-            "data_count" : data_out_count,
-            "labels": data_out_label
-        }
-    ner_bulk_list_chart_top_sentiment = {}
+    ner_bulk_list_chart_top_count = {
+        "data_positive" :data_out_sentiment_positive,
+        "data_neutral" :data_out_sentiment_neutral,
+        "data_negative" :data_out_sentiment_negative, 
+        "data_count" : data_out_count,
+        "labels": data_out_label
+    }
 
+        
     return render(request, 'home/requests-ner_analytics_report.html', {"msg": 'SUCCESS',
                                                             "segment": 'ner-analytics',
                                                             "ner_bulk_list_chart_top_count" : ner_bulk_list_chart_top_count,
-                                                            "ner_bulk_list_chart_top_sentiment" : ner_bulk_list_chart_top_sentiment,
+                                                            "bulk_id" : bulk_id,
                                                             "request_list": top_ten_requests})
 
 
@@ -3197,7 +3212,159 @@ def export_bulk_sentiment_xlsx(request):
     
     return response
     # return redirect('/requests_bulk_status_client/P' + page_string)
+
+@login_required(login_url="/login/")
+def export_bulk_ner_xlsx(request):
+
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk')[-1]
+        page_string = request.path.split('/P')[-1].split('/')[0]
+    except Exception as e:
+        pass
     
+    # bulk_id = uuid.UUID(bulk_id_string)
+    # bulk_selected = Bulk.objects.get(id= bulk_id)
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+
+    if (records_bulks.count() == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
+
+    # create .xlsx file in response
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = "attachment; filename=" + excel_file_name + ".xlsx"
+
+    book = Workbook(response, {'in_memory': True})
+    sheet = book.add_worksheet('Sheet1')
+
+    sheet.write(0,0, 'named_entity')
+    sheet.write(0,1, 'count')
+    sheet.write(0,2, 'positive_sentiment in Entity')
+    sheet.write(0,3, 'neutral_sentiment in Entity')
+    sheet.write(0,3, 'negative_sentiment in Entity')
+    sheet.write(0,3, 'time')
+
+    export_time = str(datetime.datetime.now()).split('.')[0]
+    row =1
+
+    all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+    
+    entities_count = {}
+    entities_positive_sentiment_count = {}
+    entities_neutral_sentiment_count = {}
+    entities_negative_sentiment_count = {}
+
+    counter = 1
+    for request_item in all_requests:
+        try:
+            counter = counter + 1
+            sentiment_result = request_item['sentiment']
+            for entity in list(request_item['result']):
+                if (len(entity[0]) < 2):
+                    continue
+
+                entity_string = entity[0] + ' (' + entity[1] + ')'
+
+                try:
+                    if entity_string in entities_count:
+                        entities_count[entity_string] = entities_count[entity_string] + 1 
+                    else:
+                        entities_count[entity_string] = 1
+                except Exception as e:
+                    print(e)
+                    
+                if (sentiment_result == 'Positive'):
+                    try:
+                        if entity_string in entities_positive_sentiment_count:
+                            entities_positive_sentiment_count[entity_string] = entities_positive_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_positive_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                
+                elif (sentiment_result == 'Neutral'):
+                    try:
+                        if entity_string in entities_neutral_sentiment_count:
+                            entities_neutral_sentiment_count[entity_string] = entities_neutral_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_neutral_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+
+                elif (sentiment_result == 'Negative'):
+                    try:
+                        if entity_string in entities_negative_sentiment_count:
+                            entities_negative_sentiment_count[entity_string] = entities_negative_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_negative_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                    
+        except Exception as e:
+
+            print(e)
+            continue
+    sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
+
+    data_out_count = []
+    data_out_label = []
+    data_out_sentiment_positive = []
+    data_out_sentiment_neutral = []
+    data_out_sentiment_negative = []
+
+    
+    for sorted_item in sortedDict_count:
+        data_out_count.append(entities_count[sorted_item[0]])
+        data_out_label.append(sorted_item[0])
+
+        # Positive
+        if (sorted_item[0] in entities_positive_sentiment_count):
+            data_out_sentiment_positive.append(entities_positive_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_positive.append(0)
+        
+        # Neutral
+        if (sorted_item[0] in entities_neutral_sentiment_count):
+            data_out_sentiment_neutral.append(entities_neutral_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_neutral.append(0)
+        
+        # Negative
+        if (sorted_item[0] in entities_negative_sentiment_count):
+            data_out_sentiment_negative.append(entities_negative_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_negative.append(0)
+        
+
+    export_time = str(datetime.datetime.now()).split('.')[0]
+
+
+    for index_entity, entity in enumerate(data_out_label):
+        sheet.write(row, 0, data_out_label[index_entity])
+        sheet.write(row, 1, data_out_count[index_entity])
+        sheet.write(row, 2, str(data_out_sentiment_positive[index_entity]) + ' (' + str(int(data_out_sentiment_positive[index_entity] / data_out_count[index_entity]* 100)) + ' % )')
+        sheet.write(row, 3, str(data_out_sentiment_neutral[index_entity]) + ' (' + str(int(data_out_sentiment_neutral[index_entity] / data_out_count[index_entity]* 100)) + ' % )')
+        sheet.write(row, 4, str(data_out_sentiment_negative[index_entity]) + ' (' + str(int(data_out_sentiment_negative[index_entity] / data_out_count[index_entity] * 100)) + ' % )')
+        sheet.write(row, 5, export_time)
+        row += 1
+
+    book.close()
+
+    
+    return response
+    # return redirect('/requests_bulk_status_client/P' + page_string)
+        
 @login_required(login_url="/login/")
 def export_bulk_sentiment_csv(request):
 
@@ -3271,7 +3438,142 @@ def export_bulk_sentiment_csv(request):
 
     return response
     # return redirect('/requests_bulk_status_client/P' + page_string)
+
+@login_required(login_url="/login/")
+def export_bulk_ner_csv(request):
+
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk')[-1]
+        page_string = request.path.split('/P')[-1].split('/')[0]
+    except Exception as e:
+        pass
+    
+    # bulk_id = uuid.UUID(bulk_id_string)
+    # bulk_selected = Bulk.objects.get(id= bulk_id)
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+    bulk_count = records_bulks.count()
+
+    if (bulk_count == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+    
+    entities_count = {}
+    entities_positive_sentiment_count = {}
+    entities_neutral_sentiment_count = {}
+    entities_negative_sentiment_count = {}
+
+    counter = 1
+    for request_item in all_requests:
+        try:
+            counter = counter + 1
+            sentiment_result = request_item['sentiment']
+            for entity in list(request_item['result']):
+                if (len(entity[0]) < 2):
+                    continue
+
+                entity_string = entity[0] + ' (' + entity[1] + ')'
+
+                try:
+                    if entity_string in entities_count:
+                        entities_count[entity_string] = entities_count[entity_string] + 1 
+                    else:
+                        entities_count[entity_string] = 1
+                except Exception as e:
+                    print(e)
+                    
+                if (sentiment_result == 'Positive'):
+                    try:
+                        if entity_string in entities_positive_sentiment_count:
+                            entities_positive_sentiment_count[entity_string] = entities_positive_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_positive_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                
+                elif (sentiment_result == 'Neutral'):
+                    try:
+                        if entity_string in entities_neutral_sentiment_count:
+                            entities_neutral_sentiment_count[entity_string] = entities_neutral_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_neutral_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+
+                elif (sentiment_result == 'Negative'):
+                    try:
+                        if entity_string in entities_negative_sentiment_count:
+                            entities_negative_sentiment_count[entity_string] = entities_negative_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_negative_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                    
+        except Exception as e:
+
+            print(e)
+            continue
+    sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
+
+    data_out_count = []
+    data_out_label = []
+    data_out_sentiment_positive = []
+    data_out_sentiment_neutral = []
+    data_out_sentiment_negative = []
+
+    
+    for sorted_item in sortedDict_count:
+        data_out_count.append(entities_count[sorted_item[0]])
+        data_out_label.append(sorted_item[0])
+
+        # Positive
+        if (sorted_item[0] in entities_positive_sentiment_count):
+            data_out_sentiment_positive.append(entities_positive_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_positive.append(0)
         
+        # Neutral
+        if (sorted_item[0] in entities_neutral_sentiment_count):
+            data_out_sentiment_neutral.append(entities_neutral_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_neutral.append(0)
+        
+        # Negative
+        if (sorted_item[0] in entities_negative_sentiment_count):
+            data_out_sentiment_negative.append(entities_negative_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_negative.append(0)
+        
+
+    # create .csv file in response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="' + excel_file_name + '.csv"' 
+    writer = csv.writer(response)
+    writer.writerow(['named_entity','count', 'positive_sentiment in Entity', 'neutral_sentiment in Entity', 'negative_sentiment in Entity', 'time'])
+
+    export_time = str(datetime.datetime.now()).split('.')[0]
+    for index_entity, entity in enumerate(data_out_label):
+        writer.writerow([data_out_label[index_entity], data_out_count[index_entity], 
+        str(data_out_sentiment_positive[index_entity]) + ' (' + str(int(data_out_sentiment_positive[index_entity] / data_out_count[index_entity]* 100)) + ' % )',
+        str(data_out_sentiment_neutral[index_entity]) + ' (' + str(int(data_out_sentiment_neutral[index_entity] / data_out_count[index_entity]* 100)) + ' % )',
+        str(data_out_sentiment_negative[index_entity]) + ' (' + str(int(data_out_sentiment_negative[index_entity] / data_out_count[index_entity] * 100)) + ' % )'
+        , export_time])
+    
+
+    
+    return response
+    # return redirect('/requests_bulk_status_client/P' + page_string)
+            
 @login_required(login_url="/login/")
 def invoice(request):
 

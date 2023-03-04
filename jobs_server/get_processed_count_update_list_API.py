@@ -54,7 +54,7 @@ def get_update_json(bulk_id):
                 update_json['time_slot'] = item_update['time_slot']
                 update_json['request_type'] = item_update['request_type']
                 update_json['query'] = item_update['query']
-                if ('result_sentiment' in update_json):
+                if ('result_sentiment' in item_update):
                     update_json['result_sentiment'] = item_update['result_sentiment']
 
                 update_list.append(update_json)

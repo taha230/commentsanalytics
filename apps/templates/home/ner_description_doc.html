@@ -1,0 +1,52 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<h1 class="mt-4 display-4">Entity Categories Description</h1>
+
+<p class="mt-4">
+    <mark>Named Entity Recognition (NER)</mark> is a task in Natural Language Processing (NLP) that involves identifying and classifying named entities in text, such as people, organizations, locations, dates, and other types of entities. NER is a crucial component in many NLP applications, including information extraction, question answering, and text classification.  
+</p> 
+<p>
+    The goal of NER is to automatically identify and label the entities in text, making it easier to analyze and extract meaningful information from large volumes of unstructured text data.
+</p>
+<p>
+    NER systems typically use machine learning algorithms and statistical models to analyze text and make predictions about which words or phrases are likely to represent named entities. NER can be challenging due to the ambiguity and variability of natural language, as well as the need to handle a wide range of entity types and variations in spelling, capitalization, and other factors. However, advances in machine learning and NLP techniques have led to significant improvements in NER accuracy and efficiency in recent years, making it an increasingly valuable tool for analyzing and understanding large-scale text data.
+</p>
+
+<h1 class="mt-6 display-4">Entity Description Table</h1>
+
+<div class="col-12 mb-4">
+
+<div class="col-12 py-4">
+    <table class="table table-flush" id="datatable">
+        <thead class="thead-light">
+        <tr>
+            <th>Entity Label	</th>
+            <th>Description</th>
+            <th>Examples</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>PERSON</td>
+            <td>People, including fictional characters</td>
+            <td>"John Smith", "Mickey Mouse"</td>
+        </tr>
+        
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

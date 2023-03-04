@@ -375,23 +375,26 @@ d.addEventListener("DOMContentLoaded", function(event) {
           }],
             chart: {
             type: 'bar',
-            height: 350,
+            height: 320,
             width: '100%',
-            float: 'left'
+            float: 'right'
           },
           legend: {
             show: false
           },
+          title: {
+            text: 'Entities Count   '
+          },
           plotOptions: {
             bar: {
-              borderRadius: 8,
+              borderRadius: 10,
               horizontal: true,
               distributed: true,
         
             }
           },
-          colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e',
-                  '#f48024', '#69d2e7'
+          colors: ['#058fff', '#ff058a', '#05ff37', '#ebf211', '#f50505', '#8366e3', '#05f2d3', '#97fa34',
+                  '#f48024', '#3c02fa'
                 ],
           
           
@@ -433,6 +436,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
                 chart: {
                 type: 'bar',
                 height: 350,
+                width: '100%',
                 stacked: true,
                 stackType: '100%'
               },
@@ -440,13 +444,16 @@ d.addEventListener("DOMContentLoaded", function(event) {
                 bar: {
                   horizontal: true,
                 },
+                
               },
+              colors: ['#2de004', '#d6d604', '#d60424'],
+
               stroke: {
                 width: 1,
                 colors: ['#fff']
               },
               title: {
-                text: 'Sentiment By Entities'
+                text: 'Sentiment Per Named-Entities'
               },
               xaxis: {
                 categories: $label_input,
@@ -463,7 +470,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
               
               },
               legend: {
-                position: 'top',
+                position: 'bottom',
                 horizontalAlign: 'left',
                 offsetX: 40
               }
