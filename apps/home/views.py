@@ -3252,8 +3252,8 @@ def export_bulk_ner_xlsx(request):
     sheet.write(0,1, 'count')
     sheet.write(0,2, 'positive_sentiment in Entity')
     sheet.write(0,3, 'neutral_sentiment in Entity')
-    sheet.write(0,3, 'negative_sentiment in Entity')
-    sheet.write(0,3, 'time')
+    sheet.write(0,4, 'negative_sentiment in Entity')
+    sheet.write(0,5, 'time')
 
     export_time = str(datetime.datetime.now()).split('.')[0]
     row =1

@@ -22,27 +22,239 @@
 
 <h1 class="mt-6 display-4">Entity Description Table</h1>
 
-<div class="col-12 mb-4">
+<div class="col-12 mb-4" style="text-align:center;">
 
+
+    <div class=" col-8 col-xxl-6 mb-1" style="margin-left:auto;margin-right:auto;">
+        <div class="card_orange border-5">
+            <table class="table table-flush" id="datatable" >
+                <thead class="thead-light">
+                <tr>
+                    <th>Entity Label	</th>
+                    <th>Description</th>
+                    <th>Examples</th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-person">PERSON</span>
+                    </td>
+                    <td>People, including fictional characters</td>
+                    <td>
+                        <button class="btn btn-outline-info mt-1" type="button"> John Smith <span class="badge bg-ner-person">PERSON</span></button>
+                        <button class="btn btn-outline-info mt-1" type="button"> Mickey Mouse <span class="badge bg-ner-person">PERSON</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-norp">NORP</span>
+                    </td>
+                    <td>Nationalities or religious or political groups</td>
+                    <td>
+                        <button class="btn btn-outline-danger mt-1" type="button"> American <span class="badge bg-ner-norp">NORP</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> Christian <span class="badge bg-ner-norp">NORP</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> Republican <span class="badge bg-ner-norp">NORP</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-fac text-gray-800">FAC</span>
+                    </td>
+                    <td>Buildings, airports, highways, bridges, etc.</td>
+                    <td>
+                        <button class="btn btn-outline-warning mt-1 " type="button"> Empire State Building <span class="badge bg-ner-fac text-gray-800">FAC</span></button>
+                        <button class="btn btn-outline-warning mt-1" type="button"> Golden Gate Bridge <span class="badge bg-ner-fac text-gray-800">FAC</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-org">ORG</span>
+                    </td>
+                    <td>Companies, agencies, institutions, etc.	</td>
+                    <td>
+                        <button class="btn btn-outline-danger mt-1 " type="button"> Google <span class="badge bg-ner-org">ORG</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> FBI <span class="badge bg-ner-org">ORG</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> Harvard University <span class="badge bg-ner-org">ORG</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-gpe">GPE</span>
+                    </td>
+                    <td>Countries, cities, states		</td>
+                    <td>
+                        <button class="btn btn-outline-secondary mt-1 " type="button"> France <span class="badge bg-ner-gpe">GPE</span></button>
+                        <button class="btn btn-outline-secondary mt-1" type="button"> New York City <span class="badge bg-ner-gpe">GPE</span></button>
+                        <button class="btn btn-outline-secondary mt-1" type="button"> Texas <span class="badge bg-ner-gpe">GPE</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-loc">LOC</span>
+                    </td>
+                    <td>Non-GPE locations, mountain ranges, bodies of water		</td>
+                    <td>
+                        <button class="btn btn-outline-tertiary mt-1 " type="button"> Mount Everest <span class="badge bg-ner-loc">LOC</span></button>
+                        <button class="btn btn-outline-tertiary mt-1" type="button"> Pacific Ocean <span class="badge bg-ner-loc">LOC</span></button>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-product text-gray-800">PRODUCT</span>
+                    </td>
+                    <td>Objects, vehicles, foods, etc. (not services)		</td>
+                    <td>
+                        <button class="btn btn-outline-success mt-1 " type="button"> iPhone <span class="badge bg-ner-product text-gray-800">PRODUCT</span></button>
+                        <button class="btn btn-outline-success mt-1" type="button"> Tesla Model S <span class="badge bg-ner-product text-gray-800">PRODUCT</span></button>
+                        <button class="btn btn-outline-success mt-1" type="button"> Pizza <span class="badge bg-ner-product text-gray-800">PRODUCT</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-event text-gray-800">EVENT</span>
+                    </td>
+                    <td>Named hurricanes, battles, wars, sports events, etc.			</td>
+                    <td>
+                        <button class="btn btn-outline-info mt-1 " type="button"> Hurricane Katrina <span class="badge bg-ner-event text-gray-800">EVENT</span></button>
+                        <button class="btn btn-outline-info mt-1" type="button"> World War II <span class="badge bg-ner-event text-gray-800">EVENT</span></button>
+                        <button class="btn btn-outline-info mt-1" type="button"> Super Bowl <span class="badge bg-ner-event text-gray-800">EVENT</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-work-of-art">WORK_OF_ART</span>
+                    </td>
+                    <td>Titles of books, songs, etc.			</td>
+                    <td>
+                        <button class="btn btn-outline-danger mt-1 " type="button"> Hamlet <span class="badge bg-ner-work-of-art">WORK_OF_ART</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> Thriller <span class="badge bg-ner-work-of-art">WORK_OF_ART</span></button>
+                        <button class="btn btn-outline-danger mt-1" type="button"> Starry Night <span class="badge bg-ner-work-of-art">WORK_OF_ART</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-law">LAW</span>
+                    </td>
+                    <td>Named documents made into laws, etc.				</td>
+                    <td>
+                        <button class="btn btn-outline-warning mt-1 " type="button"> Constitution <span class="badge bg-ner-law">LAW</span></button>
+                        <button class="btn btn-outline-warning mt-1" type="button"> Civil Rights Act <span class="badge bg-ner-law">LAW</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-language">LANGUAGE</span>
+                    </td>
+                    <td>Any named language			</td>
+                    <td>
+                        <button class="btn btn-outline-tertiary mt-1 " type="button"> English <span class="badge bg-ner-language">LANGUAGE</span></button>
+                        <button class="btn btn-outline-tertiary mt-1" type="button"> Spanish <span class="badge bg-ner-language">LANGUAGE</span></button>
+                        <button class="btn btn-outline-tertiary mt-1" type="button"> Chinese <span class="badge bg-ner-language">LANGUAGE</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-date">DATE</span>
+                    </td>
+                    <td>Absolute or relative dates or periods				</td>
+                    <td>
+                        <button class="btn btn-outline-gray-900 mt-1 " type="button"> July 4, 1776 <span class="badge bg-ner-date">DATE</span></button>
+                        <button class="btn btn-outline-gray-900 mt-1" type="button"> next year <span class="badge bg-ner-date">DATE</span></button>
+                        <button class="btn btn-outline-gray-900 mt-1" type="button"> the 20th century <span class="badge bg-ner-date">DATE</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-time  text-gray-800">TIME</span>
+                    </td>
+                    <td>Times of day				</td>
+                    <td>
+                        <button class="btn btn-outline-gray-700 mt-1 " type="button"> 6:30pm <span class="badge bg-ner-time  text-gray-800">TIME</span></button>
+                        <button class="btn btn-outline-gray-700 mt-1" type="button"> noon <span class="badge bg-ner-time  text-gray-800">TIME</span></button>
+                        <button class="btn btn-outline-gray-700 mt-1" type="button"> midnight <span class="badge bg-ner-time  text-gray-800">TIME</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-percent text-gray-800">PERCENT</span>
+                    </td>
+                    <td>Percentage, including "%" symbol					</td>
+                    <td>
+                        <button class="btn btn-outline-success mt-1 " type="button"> 20% <span class="badge bg-ner-percent text-gray-800">PERCENT</span></button>
+                        <button class="btn btn-outline-success mt-1" type="button"> half <span class="badge bg-ner-percent text-gray-800">PERCENT</span></button>
+                        <button class="btn btn-outline-success mt-1" type="button"> two-thirds <span class="badge bg-ner-percent text-gray-800">PERCENT</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-money  text-gray-800">MONEY</span>
+                    </td>
+                    <td>Monetary values, including unit					</td>
+                    <td>
+                        <button class="btn btn-outline-danger " type="button"> $1 million <span class="badge bg-ner-money">MONEY</span></button>
+                        <button class="btn btn-outline-danger" type="button"> 5 euros <span class="badge bg-ner-money">MONEY</span></button>
+                        <button class="btn btn-outline-danger" type="button"> 50p <span class="badge bg-ner-money">MONEY</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-quantity">QUANTITY</span>
+                    </td>
+                    <td>Measurements, as of weight or distance						</td>
+                    <td>
+                        <button class="btn btn-outline-primary mt-1 " type="button"> 10 kilograms <span class="badge bg-ner-quantity">QUANTITY</span></button>
+                        <button class="btn btn-outline-primary mt-1" type="button"> 100 miles <span class="badge bg-ner-quantity">QUANTITY</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-ordinal">ORDINAL</span>
+                    </td>
+                    <td>"first", "second", etc.				</td>
+                    <td>
+                        <button class="btn btn-outline-tertiary " type="button"> 3rd <span class="badge bg-ner-ordinal">ORDINAL</span></button>
+                        <button class="btn btn-outline-tertiary" type="button"> 15th <span class="badge bg-ner-ordinal">ORDINAL</span></button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span class="badge bg-ner-cardinal">CARDINAL</span>
+                    </td>
+                    <td>Numerals that do not fall under another type						</td>
+                    <td>
+                        <button class="btn btn-outline-primary mt-1 " type="button"> one <span class="badge bg-ner-cardinal">CARDINAL</span></button>
+                        <button class="btn btn-outline-primary mt-1" type="button"> three <span class="badge bg-ner-cardinal">CARDINAL</span></button>
+                        <button class="btn btn-outline-primary mt-1" type="button"> 100 <span class="badge bg-ner-cardinal">CARDINAL</span></button>
+                    </td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
 <div class="col-12 py-4">
-    <table class="table table-flush" id="datatable">
-        <thead class="thead-light">
-        <tr>
-            <th>Entity Label	</th>
-            <th>Description</th>
-            <th>Examples</th>
-            
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>PERSON</td>
-            <td>People, including fictional characters</td>
-            <td>"John Smith", "Mickey Mouse"</td>
-        </tr>
-        
-        </tbody>
-    </table>
+    
 </div>
 
 
