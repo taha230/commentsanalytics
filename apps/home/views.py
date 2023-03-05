@@ -2289,6 +2289,66 @@ def requests_ner_single_client(request):
                                                                 "request_list": row_list_request,
                                                                 "request_result": request_result})
 
+
+@login_required(login_url="/login/")
+def requests_keyword_single_client(request):
+
+    valid_to_submit = True
+    remain_count = 0
+
+    insert_user_log_db (request.user, 'Single_Keyword_Requests')
+
+    current_pagination = 1    
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    
+    requests_types_tuple = list(Request_Type.choices())
+    requests_types = list((i[1]) for i in requests_types_tuple)
+    request_result = ''
+    try:
+        if request.method == "POST": 
+            text_query = request.POST.get('input_text_query').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            # insert single request mongo
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+            if (valid_to_submit):
+                request_result = insert_single_request_db_mongodb(request, text_query, request_type)
+        else:
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+
+ 
+        
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+
+        row_list_request, total_count_request = get_request_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE, Request_Type.NAMED_ENTITY_RECOGNITION.value)
+
+        last_pagination = 1
+        if (total_count_request == 0):
+            last_pagination = 1
+        elif (total_count_request % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(e)
+        pass
+
+    return render(request, "home/requests-ner-single_client.html", {"msg": 'SUCCESS',
+                                                                "valid_to_submit" : valid_to_submit,
+                                                                "remain_count" : remain_count,
+                                                                "segment": 'keyword-single', 
+                                                                "requests_types": requests_types,
+                                                                "current_pagination": current_pagination,
+                                                                "last_pagination": last_pagination,
+                                                                "page_limit": len(row_list_request),
+                                                                "total_items": total_count_request,
+                                                                "request_list": row_list_request,
+                                                                "request_result": request_result})
+
 @login_required(login_url="/login/")
 def requests_bulk_client(request):
 
@@ -2748,6 +2808,58 @@ def requests_ner_analytics_client(request):
                                                                         "total_items": total_count_bulk,
                                                                         "bulk_list": row_list_bulk})
 
+
+@login_required(login_url="/login/")
+def requests_keyword_analytics_client(request):
+
+    try:
+        insert_user_log_db (request.user, 'requests_Keyword_analytics')
+        
+        if request.method == "POST": # just in confirm new bulk data buttton clicked
+
+            bulk_title = request.POST.get('input_bulk_title').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            business_names_raw = request.POST.get('input_business_names').strip()
+            business_names_list = business_names_raw.strip().split(SPLIT_TOKEN)
+            business_names_list = clean_data_input(business_names_list)
+            # insert bulk request sqlite
+            # gevent.spawn(insert_bulk_request_db(request, bulk_title, request_type, business_names_list))
+            # insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+            insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+
+        current_pagination = 1   
+        try:
+            current_pagination = int (request.path.split('/P')[-1])
+        except Exception as e:
+            pass
+
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.NAMED_ENTITY_RECOGNITION)
+        
+        
+        last_pagination = 1
+        if (total_count_bulk == 0):
+            last_pagination = 1
+        elif (total_count_bulk % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(colored(str(e), 'red'))
+        pass
+
+    return render(request, "home/requests-ner_analytics_client.html", {"msg": 'SUCCESS',
+                                                                        "segment": 'keyword-analytics',
+                                                                        "current_pagination": current_pagination,
+                                                                        "last_pagination": last_pagination,
+                                                                        "page_limit": len(row_list_bulk),
+                                                                        "total_items": total_count_bulk,
+                                                                        "bulk_list": row_list_bulk})
+
 @login_required(login_url="/login/")
 def update_bulk_status_ajax_client(request):
     current_pagination = 1   
@@ -2913,6 +3025,150 @@ def requests_ner_analytics_bulk(request):
         
     return render(request, 'home/requests-ner_analytics_report.html', {"msg": 'SUCCESS',
                                                             "segment": 'ner-analytics',
+                                                            "ner_bulk_list_chart_top_count" : ner_bulk_list_chart_top_count,
+                                                            "bulk_id" : bulk_id,
+                                                            "request_list": top_ten_requests})
+
+
+@login_required(login_url="/login/")
+def requests_keyword_analytics_bulk(request):
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk_')[-1]
+    except Exception as e:
+        pass
+
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+
+    if (records_bulks.count() == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+    
+    top_ten_requests = []
+    if len(all_requests) > 10 :
+        top_ten_requests = all_requests[0:10]
+    else:
+        top_ten_requests= all_requests
+
+    entities_count = {}
+    entities_positive_sentiment_count = {}
+    entities_neutral_sentiment_count = {}
+    entities_negative_sentiment_count = {}
+
+    counter = 1
+    for request_item in all_requests:
+        try:
+            counter = counter + 1
+            sentiment_result = request_item['sentiment']
+            for entity in list(request_item['result']):
+                if (len(entity[0]) < 2):
+                    continue
+
+                entity_string = entity[0] + ' (' + entity[1] + ')'
+
+                try:
+                    if entity_string in entities_count:
+                        entities_count[entity_string] = entities_count[entity_string] + 1 
+                    else:
+                        entities_count[entity_string] = 1
+                except Exception as e:
+                    print(e)
+                    
+                if (sentiment_result == 'Positive'):
+                    try:
+                        if entity_string in entities_positive_sentiment_count:
+                            entities_positive_sentiment_count[entity_string] = entities_positive_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_positive_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                
+                elif (sentiment_result == 'Neutral'):
+                    try:
+                        if entity_string in entities_neutral_sentiment_count:
+                            entities_neutral_sentiment_count[entity_string] = entities_neutral_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_neutral_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+
+                elif (sentiment_result == 'Negative'):
+                    try:
+                        if entity_string in entities_negative_sentiment_count:
+                            entities_negative_sentiment_count[entity_string] = entities_negative_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_negative_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                    
+        except Exception as e:
+
+            print(e)
+            continue
+
+    # print(colored(str(entities_count) , 'green'))
+    # print(colored(str(entities_positive_sentiment_count) , 'green'))
+    # print(colored(str(entities_neutral_sentiment_count) , 'green'))
+    # print(colored(str(entities_negative_sentiment_count) , 'green'))
+
+    sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
+
+    # if len(sortedDict_count) > 10:
+    #     sortedDict_count = sortedDict_count[0:10]
+
+    data_out_count = []
+    data_out_label = []
+    data_out_sentiment_positive = []
+    data_out_sentiment_neutral = []
+    data_out_sentiment_negative = []
+
+    
+    for sorted_item in sortedDict_count:
+        data_out_count.append(entities_count[sorted_item[0]])
+        data_out_label.append(sorted_item[0])
+        
+        if (len(data_out_label) == 10):
+            break
+        
+        # Positive
+        if (sorted_item[0] in entities_positive_sentiment_count):
+            data_out_sentiment_positive.append(entities_positive_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_positive.append(0)
+        
+        # Neutral
+        if (sorted_item[0] in entities_neutral_sentiment_count):
+            data_out_sentiment_neutral.append(entities_neutral_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_neutral.append(0)
+        
+        # Negative
+        if (sorted_item[0] in entities_negative_sentiment_count):
+            data_out_sentiment_negative.append(entities_negative_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_negative.append(0)
+        
+
+    ner_bulk_list_chart_top_count = {
+        "data_positive" :data_out_sentiment_positive,
+        "data_neutral" :data_out_sentiment_neutral,
+        "data_negative" :data_out_sentiment_negative, 
+        "data_count" : data_out_count,
+        "labels": data_out_label
+    }
+
+        
+    return render(request, 'home/requests-ner_analytics_report.html', {"msg": 'SUCCESS',
+                                                            "segment": 'keyword-analytics',
                                                             "ner_bulk_list_chart_top_count" : ner_bulk_list_chart_top_count,
                                                             "bulk_id" : bulk_id,
                                                             "request_list": top_ten_requests})
