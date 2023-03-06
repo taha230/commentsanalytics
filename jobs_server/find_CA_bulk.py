@@ -23,6 +23,7 @@ import datetime
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
 import spacy
+from keybert import KeyBERT
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
@@ -74,13 +75,10 @@ def get_from_mongo():
         category = collection_Requests.find_and_modify(query={'status': False}, update={'$set': {"status": 'process'}})
     return category
 
-def update_mongo_url(id, result):
+def update_mongo_sentiment(id, result):
     collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result}})
 
-def update_mongo_ner(id, result, result_sentiment):
-    collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
-
-def update_mongo_keyword(id, result, result_sentiment):
+def update_mongo_result_sentiment(id, result, result_sentiment):
     collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
 
 def get_sentiment_result (input_text):
@@ -144,6 +142,17 @@ def detect_ner(text):
 
     return entities
 
+def extract_keywords(text):
+    # Initialize the KeyBERT model with the 'distilbert-base-nli-mean-tokens' pre-trained model
+    model = KeyBERT('distilbert-base-nli-mean-tokens')
+
+    # Extract keywords with the model
+    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=3)
+    # keywords = model.extract_keywords(text, top_n=5)
+    keywords_out = [keyword[0] for keyword in keywords]
+
+    return keywords_out
+
 def find_CA(index):
 
     item = get_from_mongo()
@@ -175,7 +184,7 @@ def find_CA(index):
             if (len(item['query']) <= 2 and request_type == 'Named-Entity Recognition' ):
 
                 print(item['query'])
-                update_mongo_ner(item['_id'], str([]), 'Neutral')
+                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
 
                 counter.append('ok')
                 print(colored(f'{len(counter)} === NER added to mongo', 'green'))
@@ -188,7 +197,7 @@ def find_CA(index):
             if (len(item['query']) <= 2 and request_type == 'Keyword Extraction' ):
 
                 print(item['query'])
-                update_mongo_keyword(item['_id'], str([]), 'Neutral')
+                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
 
                 counter.append('ok')
                 print(colored(f'{len(counter)} === Keyword added to mongo', 'green'))
@@ -215,12 +224,12 @@ def find_CA(index):
             if (request_type == 'Named-Entity Recognition'):
                 ner_result = detect_ner(cname)
                 sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
-                update_mongo_ner(item['_id'], ner_result, sentiment_result)
+                update_mongo_result_sentiment(item['_id'], ner_result, sentiment_result)
 
             if (request_type == 'Keyword Extraction'):
-                keyword_result = str([])
-                result = keyword_result
-                update_mongo_sentiment(item['_id'], result)
+                keyword_result = extract_keywords(cname)
+                sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
+                update_mongo_result_sentiment(item['_id'], keyword_result, sentiment_result)
 
             
            

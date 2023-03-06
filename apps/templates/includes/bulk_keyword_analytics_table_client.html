@@ -1,0 +1,69 @@
+<table id ='table_bulk' class="table table-centered table-nowrap mb-0 rounded">
+    <thead class="thead-light">
+        <tr>
+            <th class="border-0 rounded-start">#</th>
+            <th class="border-0">title</th>
+            <th class="border-0" width="2%">type</th>
+            <th class="border-0">start time</th>
+            <th class="border-0">end time</th>
+            <th class="border-0">passed</th>
+            <th class="border-0">total</th>
+            <th class="border-0">status</th>
+            <th class="border-0" width="15%">progress</th>
+
+            <th class="border-0 rounded-end">Keyword analytics report</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+      {% for row in bulk_list %}
+          <tr>
+            <td>
+              <a  class="text-primary fw-bold">
+                 {{ row.index }}
+              </a>
+            </td>
+            <td>
+              {{ row.title }}
+            </td>
+            <td class="fw-bold align-items-center">
+              {% include "includes/request_type_logo.html" %}
+            </td>
+            <td>
+              {{ row.start_time }}
+            </td>
+            <td>
+              {% if row.end_time != None %}
+                  {{ row.end_time }}
+              {% endif %}
+            </td>
+            <td>
+              {{ row.passed_count }}
+            </td>
+            <td>
+              {{ row.total_count }}
+            </td>
+            <td class="">
+              {% include "includes/bulk_status_label.html" %}                            
+            </td>
+            <td>
+              {% include "includes/progress_bar_percent.html" %}
+            </td>
+            <!-- Export Excel -->
+            <td class="fw-bold align-items-center">
+              {% if row.status == 'Completed' %}
+              
+                <a class="btn btn-secondary" type="submit" id='download_button' href="/requests_keyword_analytics_bulk/bulk_{{row.bulk_id}}" >
+                  View Report
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="ms-2 bi bi-pie-chart-fill" viewBox="0 0 16 16">
+                    <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+                  </svg>
+                </a>
+              {% endif %}
+            </td>
+          </tr>
+      {% endfor %}
+
+        
+    </tbody>
+</table>

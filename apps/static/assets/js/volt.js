@@ -407,7 +407,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
         barchart_ner_count.render();
         
     }
-
+    
     if(d.querySelector('.bar-chart-horizontal-bulk-ner-top-sentiment')) {
         //Chart sentiment bulk
 
@@ -480,6 +480,131 @@ d.addEventListener("DOMContentLoaded", function(event) {
         barchart_ner_sentiment.render();
         
     }
+
+    if(d.querySelector('.bar-chart-horizontal-bulk-keyword-top-sentiment')) {
+      //Chart sentiment bulk
+
+      var $string_list_cleaned = d.getElementById('bar_chart_top_count').innerText.replace(/\'/g,"\"");
+      var $data_input_keyword_count = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_count"] + "]");
+
+      
+      var $label_input = JSON.parse($string_list_cleaned)["labels"];
+      var $positive_input = JSON.parse($string_list_cleaned)["data_positive"];
+      var $neutral_input = JSON.parse($string_list_cleaned)["data_neutral"];
+      var $negative_input = JSON.parse($string_list_cleaned)["data_negative"];
+      
+      // alert($string_list_cleaned);
+
+      var options_keyword_bar_chart_sentiment = {
+          series: [{
+              name: 'Postivie',
+              data: $positive_input
+            }, {
+              name: 'Neutral',
+              data: $neutral_input
+            }, {
+              name: 'Negative',
+              data: $negative_input
+            }],
+              chart: {
+              type: 'bar',
+              height: 350,
+              width: '100%',
+              stacked: true,
+              stackType: '100%'
+            },
+            plotOptions: {
+              bar: {
+                horizontal: true,
+              },
+              
+            },
+            colors: ['#2de004', '#d6d604', '#d60424'],
+
+            stroke: {
+              width: 1,
+              colors: ['#fff']
+            },
+            title: {
+              text: 'Sentiment Per Keyword'
+            },
+            xaxis: {
+              categories: $label_input,
+            },
+            tooltip: {
+              y: {
+                formatter: function (val) {
+                  return val + ""
+                }
+              }
+            },
+            fill: {
+              opacity: 1
+            
+            },
+            legend: {
+              position: 'bottom',
+              horizontalAlign: 'left',
+              offsetX: 40
+            }
+            };
+      
+      var barchart_keyword_sentiment = new ApexCharts(d.querySelector(".bar-chart-horizontal-bulk-keyword-top-sentiment"), options_keyword_bar_chart_sentiment);
+      barchart_keyword_sentiment.render();
+      
+  }
+
+    if(d.querySelector('.bar-chart-horizontal-bulk-keyword-top-count')) {
+      //Chart sentiment bulk
+
+      var $string_list_cleaned = d.getElementById('bar_chart_top_count').innerText.replace(/\'/g,"\"");
+      var $data_input_keyword_count = JSON.parse("[" + JSON.parse($string_list_cleaned)["data_count"] + "]");
+
+      
+      var $label_input = JSON.parse($string_list_cleaned)["labels"];
+      
+      // alert($string_list_cleaned);
+
+      var options_keyword_bar_chart_count = {
+          series: [{
+          name : 'count',
+          data: $data_input_keyword_count
+        }],
+          chart: {
+          type: 'bar',
+          height: 320,
+          width: '100%',
+          float: 'right'
+        },
+        legend: {
+          show: false
+        },
+        title: {
+          text: 'Keyword Count   '
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            horizontal: true,
+            distributed: true,
+      
+          }
+        },
+        colors: ['#058fff', '#ff058a', '#05ff37', '#ebf211', '#f50505', '#8366e3', '#05f2d3', '#97fa34',
+                '#f48024', '#3c02fa'
+              ],
+        
+        
+        xaxis: {
+          categories: $label_input,
+        }
+        };
+      
+      var barchart_keyword_count = new ApexCharts(d.querySelector(".bar-chart-horizontal-bulk-keyword-top-count"), options_keyword_bar_chart_count);
+      barchart_keyword_count.render();
+      
+  }
+
     if(d.querySelector('.ct-chart-ranking')) {
         var chart = new Chartist.Bar('.ct-chart-ranking', {
             labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],

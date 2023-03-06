@@ -22,6 +22,7 @@ import bson
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from transformers import pipeline
 import spacy
+from keybert import KeyBERT
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
@@ -93,6 +94,17 @@ def detect_ner(text):
 
     return entities
 
+def extract_keywords(text):
+    # Initialize the KeyBERT model with the 'distilbert-base-nli-mean-tokens' pre-trained model
+    model = KeyBERT('distilbert-base-nli-mean-tokens')
+
+    # Extract keywords with the model
+    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=3)
+    # keywords = model.extract_keywords(text, top_n=5)
+    keywords_out = [keyword[0] for keyword in keywords]
+
+    return keywords_out
+
 ##########################################################
 
 
@@ -138,6 +150,10 @@ def start_CA_single():
 
     if (request_type == 'Named-Entity Recognition'):
         ner_result = detect_ner(text)
+        json_out['result'] = ner_result
+    
+    if (request_type == 'Keyword Extraction'):
+        ner_result = extract_keywords(text)
         json_out['result'] = ner_result
    
     return json_out

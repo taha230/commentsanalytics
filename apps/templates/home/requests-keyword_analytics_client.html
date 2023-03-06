@@ -11,7 +11,7 @@
 
       <div class="d-flex justify-content-between w-100 flex-wrap">
           <div class="mb-3 mb-lg-0">
-              <h1 id='bulk_title' class="h4">NER Bulks Status</h1>
+              <h1 id='bulk_title' class="h4">Keyword Bulks Status</h1>
           </div>
          
       </div>
@@ -24,7 +24,7 @@
     <div class="card border-0 shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                {% include "includes/bulk_ner_analytics_table_client.html" %}
+                {% include "includes/bulk_keyword_analytics_table_client.html" %}
 
                 {% if total_items != 0 %}
                   {% include "includes/pagination_GET.html" %}
@@ -44,6 +44,8 @@
 
 <script>
 
+  // =================================================================================================================================
+
  // ========================================= Ajax Calling for updating the bulk list status ==========================================
   setInterval("update_bulk_field()",5000);
   function update_bulk_field(){
@@ -55,7 +57,7 @@
     }
     // calling ajax to update the table of bulk status accordint to /P
     $.ajax({
-        url: '/update_bulk_ner_analytics_ajax_client/P'+$page,
+        url: '/update_bulk_keyword_analytics_ajax_client/P'+$page,
         type : "GET", 
         data : {}, 
         success : function(response) {
