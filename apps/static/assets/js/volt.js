@@ -552,7 +552,40 @@ d.addEventListener("DOMContentLoaded", function(event) {
       var barchart_keyword_sentiment = new ApexCharts(d.querySelector(".bar-chart-horizontal-bulk-keyword-top-sentiment"), options_keyword_bar_chart_sentiment);
       barchart_keyword_sentiment.render();
       
-  }
+    }
+
+    if(d.querySelector('.myChart_wordcloud')) {
+
+      // wordcloud 
+      var $string_list_cleaned = d.getElementById('wordcloud_chart').innerText.replace(/\'/g,"\"");
+      var $data_input_wordcloud = JSON.parse($string_list_cleaned);
+
+      
+      // alert(JSON.parse($string_list_cleaned)[0]['text']);
+      var myConfig = {
+        "graphset":[
+        {
+        "type":"wordcloud",
+        "options":{
+          "style":{
+            "tooltip":{
+              visible: true,
+              text: '%text: %hits'
+            }
+          },
+        "words": $data_input_wordcloud,
+            }
+          }
+          ]
+        };
+        
+        zingchart.render({ 
+          id: 'myChart_wordcloud', 
+          data: myConfig, 
+          height: '50%', 
+          width: '50%' 
+        });      
+    }
 
     if(d.querySelector('.bar-chart-horizontal-bulk-keyword-top-count')) {
       //Chart sentiment bulk
@@ -790,5 +823,7 @@ var optionsLineChart = {
         },
     },
 };
+
+
 
 

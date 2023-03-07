@@ -3164,10 +3164,21 @@ def requests_keyword_analytics_bulk(request):
         "labels": data_out_label
     }
 
-        
+    # wordcloud data
+
+    data_out_wordcloud = []
+ 
+    for sorted_item in sortedDict_count:
+        if (keywords_count[sorted_item[0]] > 1):
+            data_out_wordcloud.append({'text': sorted_item[0] , 'count': keywords_count[sorted_item[0]]})
+            # data_out_wordcloud.append(keywords_count[sorted_item[0]])
+            # data_out_label_wordcloud.append(sorted_item[0])
+
+
     return render(request, 'home/requests-keyword_analytics_report.html', {"msg": 'SUCCESS',
                                                             "segment": 'keyword-analytics',
                                                             "keyword_bulk_list_chart_top_count" : keyword_bulk_list_chart_top_count,
+                                                            "keyword_bulk_list_wordcloud" : data_out_wordcloud,
                                                             "bulk_id" : bulk_id,
                                                             "request_list": top_ten_requests})
 
