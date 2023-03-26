@@ -383,7 +383,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
             show: false
           },
           title: {
-            text: 'Entities Count   '
+            text: 'Items Count   '
           },
           plotOptions: {
             bar: {
@@ -453,7 +453,7 @@ d.addEventListener("DOMContentLoaded", function(event) {
                 colors: ['#fff']
               },
               title: {
-                text: 'Sentiment Per Named-Entities'
+                text: 'Sentiment Per Items'
               },
               xaxis: {
                 categories: $label_input,

@@ -1,0 +1,40 @@
+
+<div id="chart_bulk_sentiment" class="row mt-5">
+
+    <div class="d-flex justify-content-between w-100 mb-4 flex-wrap">
+        <div class="mb-3 mb-lg-0">
+            <h1 class="h5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-sliders2" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10.5 1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4H1.5a.5.5 0 0 1 0-1H10V1.5a.5.5 0 0 1 .5-.5ZM12 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Zm-6.5 2A.5.5 0 0 1 6 6v1.5h8.5a.5.5 0 0 1 0 1H6V10a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5ZM1 8a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2A.5.5 0 0 1 1 8Zm9.5 2a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V13H1.5a.5.5 0 0 1 0-1H10v-1.5a.5.5 0 0 1 .5-.5Zm1.5 2.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5Z"/>
+                  </svg>
+                Top Categories by count
+            </h1>
+        </div>
+        
+    </div>
+
+  <div class="col-12 mb-4">
+      <div class="card bg-yellow-100 border-0 shadow">
+         
+          <div class="card-body p-2">
+            <div class="row">
+
+                <div class="col">
+                    <div class="bar-chart-horizontal-bulk-ner-top-count" ></div>
+                </div> 
+                <div class="col">
+                    <div class="bar-chart-horizontal-bulk-ner-top-sentiment"></div>
+                </div>   
+
+            </div>
+            <div id = "bar_chart_top_count" hidden> {{ category_bulk_list_chart_top_count }} </div>
+            
+            </div>
+      </div>
+  </div>
+
+
+</div>
+
+
+</div>

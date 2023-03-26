@@ -23,6 +23,7 @@ class Request_Type(Enum):
     SENTIMENT_ANALYSIS = "Sentiment Analysis"
     KEYWORD_EXTRACTION = "Keyword Extraction"
     NAMED_ENTITY_RECOGNITION = "Named-Entity Recognition"
+    YOUTUBE_CATEGORY_EXTRACTION = "Youtube-Category Extraction"
 
 
 

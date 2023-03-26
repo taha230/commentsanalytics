@@ -24,10 +24,11 @@ from transformers import pipeline
 import spacy
 from keybert import KeyBERT
 
+
+
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
 sentiment_pipeline = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
-
 
 application = flask.Flask(__name__)
 
@@ -105,6 +106,7 @@ def extract_keywords(text):
 
     return keywords_out
 
+
 ##########################################################
 
 
@@ -155,7 +157,8 @@ def start_CA_single():
     if (request_type == 'Keyword Extraction'):
         ner_result = extract_keywords(text)
         json_out['result'] = ner_result
-   
+
+    
     return json_out
 
 

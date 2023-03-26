@@ -45,6 +45,7 @@ CUF_WEBSITE_FIELD_NAME = 'result'
 sleep_time = 10
 # IP_SINGLE_API = '95.217.33.222'
 IP_SINGLE_API = '138.201.111.134'
+IP_SINGLE_API_CATEGORY = '167.235.207.111'
 
 ##############################################################################################
 
@@ -153,6 +154,26 @@ def extract_keywords(text):
 
     return keywords_out
 
+def extract_category_youtube(input_text):
+
+    category_list = []
+    try:
+        request_type = 'Youtube-Category Extraction'
+        url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
+
+        payload = ""
+        headers = {
+            'content-type': "application/json"
+        }
+
+        response = requests.request("GET", url, data=payload, headers=headers)
+        if ('result' in response.json()):
+            return response.json()['result']
+    except Exception as e:
+        print(e)
+
+    return sentiment_value
+
 def find_CA(index):
 
     item = get_from_mongo()
@@ -206,6 +227,19 @@ def find_CA(index):
 
                 if item is None:
                     break
+            
+            if (len(item['query']) <= 2 and request_type == 'Youtube-Category Extraction'):
+
+                print(item['query'])
+                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
+
+                counter.append('ok')
+                print(colored(f'{len(counter)} === Keyword added to mongo', 'green'))
+
+                item = get_from_mongo()
+
+                if item is None:
+                    break
         
             
 
@@ -230,6 +264,12 @@ def find_CA(index):
                 keyword_result = extract_keywords(cname)
                 sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
                 update_mongo_result_sentiment(item['_id'], keyword_result, sentiment_result)
+            
+            if (request_type == 'Youtube-Category Extraction'):
+                category_result = extract_category_youtube(cname)
+                sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
+                update_mongo_result_sentiment(item['_id'], category_result, sentiment_result)
+
 
             
            

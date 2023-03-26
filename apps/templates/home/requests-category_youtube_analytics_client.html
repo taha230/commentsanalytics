@@ -1,0 +1,72 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Tables {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  <div class="py-3">
+
+      <div class="d-flex justify-content-between w-100 flex-wrap">
+          <div class="mb-3 mb-lg-0">
+              <h1 id='bulk_title' class="h4">Youtube Category Bulks Status</h1>
+          </div>
+         
+      </div>
+  </div>
+
+  <form method= "POST" id="myform">
+
+    {% csrf_token %}
+
+    <div class="card border-0 shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                {% include "includes/bulk_category_youtube_analytics_table_client.html" %}
+
+                {% if total_items != 0 %}
+                  {% include "includes/pagination_GET.html" %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+  </form>
+
+  
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+
+<script>
+
+ // ========================================= Ajax Calling for updating the bulk list status ==========================================
+  setInterval("update_bulk_field()",5000);
+  function update_bulk_field(){
+
+    var $currentLocation = String(window.location);
+    var $page = '1'
+    if ($currentLocation.includes("/P")) {
+      $page = $currentLocation.split('/P')[1].split('/')[0];
+    }
+    // calling ajax to update the table of bulk status accordint to /P
+    $.ajax({
+        url: '/update_bulk_category_youtube_analytics_ajax_client/P'+$page,
+        type : "GET", 
+        data : {}, 
+        success : function(response) {
+            $('#table_bulk').html(response);
+        },
+        error: function (response) {
+                console.log(response)
+            }
+    });
+  }
+
+  
+  </script>
+{% endblock javascripts %}

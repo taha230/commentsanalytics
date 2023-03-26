@@ -61,6 +61,7 @@ BULK_SIZE_LIMIT = 15000
 SPLIT_TOKEN = '###COMMENTSANALYTICS###'
 # IP_SINGLE_API = '95.217.33.222'
 IP_SINGLE_API = '138.201.111.134'
+IP_SINGLE_API_CATEGORY = '167.235.207.111'
 
 ########################################### MongoDB Init ####################################################
 
@@ -805,8 +806,9 @@ def get_request_list_bulk_export_mongodb(request, bulk_id):
                 row_json['request_time'] = row['request_time_slot']
                 row_json['result_time'] = row['result_time_slot']
                 row_json['result'] = row['result']
-                
-            
+                if ('result_sentiment' in row):
+                    row_json['result_sentiment'] = row['result_sentiment']
+
                 row_list.append(row_json)
 
             except Exception as e:
@@ -1752,20 +1754,33 @@ def get_API_response(input_text, request_type):
 
     try:
 
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+        if request_type == 'Youtube-Category Extraction':
 
-        payload = ""
-        headers = {
-            'content-type': "application/json"
-        }
+            url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
 
-        response = requests.request("GET", url, data=payload, headers=headers)
-        if ('result' in response.json()):
-            return response.json()['result'], Request_Status.SUCCESS
-        
+            payload = ""
+            headers = {
+                'content-type': "application/json"
+            }
+
+            response = requests.request("GET", url, data=payload, headers=headers)
+            if ('result' in response.json()):
+                return response.json()['result'], Request_Status.SUCCESS
+        else:
+            url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+
+            payload = ""
+            headers = {
+                'content-type': "application/json"
+            }
+
+            response = requests.request("GET", url, data=payload, headers=headers)
+            if ('result' in response.json()):
+                return response.json()['result'], Request_Status.SUCCESS
+                
     except Exception as e:
         print(e)
-        return 'not exists', Request_Status.FAILED
+        return 'not found', Request_Status.FAILED
 
 def get_google_spreadsheet_response(column_name, google_spreadsheet_url):
 
@@ -2289,7 +2304,6 @@ def requests_ner_single_client(request):
                                                                 "request_list": row_list_request,
                                                                 "request_result": request_result})
 
-
 @login_required(login_url="/login/")
 def requests_keyword_single_client(request):
 
@@ -2341,6 +2355,64 @@ def requests_keyword_single_client(request):
                                                                 "valid_to_submit" : valid_to_submit,
                                                                 "remain_count" : remain_count,
                                                                 "segment": 'keyword-single', 
+                                                                "requests_types": requests_types,
+                                                                "current_pagination": current_pagination,
+                                                                "last_pagination": last_pagination,
+                                                                "page_limit": len(row_list_request),
+                                                                "total_items": total_count_request,
+                                                                "request_list": row_list_request,
+                                                                "request_result": request_result})
+
+@login_required(login_url="/login/")
+def requests_category_single_client(request):
+
+    valid_to_submit = True
+    remain_count = 0
+
+    insert_user_log_db (request.user, 'Single_Category_Requests')
+
+    current_pagination = 1    
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    
+    requests_types_tuple = list(Request_Type.choices())
+    requests_types = list((i[1]) for i in requests_types_tuple)
+    request_result = ''
+    try:
+        if request.method == "POST": 
+            text_query = request.POST.get('input_text_query').strip()
+            request_type = request.POST.get('input_request_type').strip()
+            # insert single request mongo
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+            if (valid_to_submit):
+                request_result = insert_single_request_db_mongodb(request, text_query, request_type)
+        else:
+            valid_to_submit, remain_count = check_remain_count_user(request, 1)
+
+ 
+        
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+
+        row_list_request, total_count_request = get_request_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE, Request_Type.YOUTUBE_CATEGORY_EXTRACTION.value)
+
+        last_pagination = 1
+        if (total_count_request == 0):
+            last_pagination = 1
+        elif (total_count_request % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_request / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(e)
+        pass
+
+    return render(request, "home/requests-category-single_client.html", {"msg": 'SUCCESS',
+                                                                "valid_to_submit" : valid_to_submit,
+                                                                "remain_count" : remain_count,
+                                                                "segment": 'category-single', 
                                                                 "requests_types": requests_types,
                                                                 "current_pagination": current_pagination,
                                                                 "last_pagination": last_pagination,
@@ -2808,7 +2880,6 @@ def requests_ner_analytics_client(request):
                                                                         "total_items": total_count_bulk,
                                                                         "bulk_list": row_list_bulk})
 
-
 @login_required(login_url="/login/")
 def requests_keyword_analytics_client(request):
 
@@ -2854,6 +2925,57 @@ def requests_keyword_analytics_client(request):
 
     return render(request, "home/requests-keyword_analytics_client.html", {"msg": 'SUCCESS',
                                                                         "segment": 'keyword-analytics',
+                                                                        "current_pagination": current_pagination,
+                                                                        "last_pagination": last_pagination,
+                                                                        "page_limit": len(row_list_bulk),
+                                                                        "total_items": total_count_bulk,
+                                                                        "bulk_list": row_list_bulk})
+
+@login_required(login_url="/login/")
+def requests_category_youtube_analytics_client(request):
+
+    try:
+        insert_user_log_db (request.user, 'requests_category_youtube_analytics')
+        
+        if request.method == "POST": # just in confirm new bulk data buttton clicked
+
+            bulk_title = request.POST.get('input_bulk_title').strip()
+            request_type = request.POST.get('input_request_type').strip()
+
+            business_names_raw = request.POST.get('input_business_names').strip()
+            business_names_list = business_names_raw.strip().split(SPLIT_TOKEN)
+            business_names_list = clean_data_input(business_names_list)
+            # insert bulk request sqlite
+            # gevent.spawn(insert_bulk_request_db(request, bulk_title, request_type, business_names_list))
+            # insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+            insert_bulk_request_db_mongodb(request, bulk_title, request_type, business_names_list)
+
+
+        current_pagination = 1   
+        try:
+            current_pagination = int (request.path.split('/P')[-1])
+        except Exception as e:
+            pass
+
+        start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+        row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.YOUTUBE_CATEGORY_EXTRACTION)
+        
+        
+        last_pagination = 1
+        if (total_count_bulk == 0):
+            last_pagination = 1
+        elif (total_count_bulk % ROW_LIST_SHOW_COUNT == 0):
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT)
+        else:
+            last_pagination = int (total_count_bulk / ROW_LIST_SHOW_COUNT) + 1
+
+    except Exception as e:
+        print(colored(str(e), 'red'))
+        pass
+
+    return render(request, "home/requests-category_youtube_analytics_client.html", {"msg": 'SUCCESS',
+                                                                        "segment": 'category-youtube-analytics',
                                                                         "current_pagination": current_pagination,
                                                                         "last_pagination": last_pagination,
                                                                         "page_limit": len(row_list_bulk),
@@ -3029,6 +3151,152 @@ def requests_ner_analytics_bulk(request):
                                                             "bulk_id" : bulk_id,
                                                             "request_list": top_ten_requests})
 
+@login_required(login_url="/login/")
+def requests_category_youtube_analytics_bulk(request):
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk_')[-1]
+    except Exception as e:
+        pass
+
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+
+    if (records_bulks.count() == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    all_requests = get_request_list_bulk_mongodb(request, bulk_id)
+    
+    top_ten_requests = []
+    if len(all_requests) > 10 :
+        top_ten_requests = all_requests[0:10]
+    else:
+        top_ten_requests= all_requests
+
+    entities_count = {}
+    entities_positive_sentiment_count = {}
+    entities_neutral_sentiment_count = {}
+    entities_negative_sentiment_count = {}
+
+    counter = 1
+    for request_item in all_requests:
+        try:
+            counter = counter + 1
+            sentiment_result = request_item['sentiment']
+            for entity in list(request_item['result']):
+                
+                entity_string = entity
+
+                try:
+                    if entity_string in entities_count:
+                        entities_count[entity_string] = entities_count[entity_string] + 1 
+                    else:
+                        entities_count[entity_string] = 1
+                except Exception as e:
+                    print(e)
+                    
+                if (sentiment_result == 'Positive'):
+                    try:
+                        if entity_string in entities_positive_sentiment_count:
+                            entities_positive_sentiment_count[entity_string] = entities_positive_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_positive_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                
+                elif (sentiment_result == 'Neutral'):
+                    try:
+                        if entity_string in entities_neutral_sentiment_count:
+                            entities_neutral_sentiment_count[entity_string] = entities_neutral_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_neutral_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+
+                elif (sentiment_result == 'Negative'):
+                    try:
+                        if entity_string in entities_negative_sentiment_count:
+                            entities_negative_sentiment_count[entity_string] = entities_negative_sentiment_count[entity_string] + 1 
+                        else:
+                            entities_negative_sentiment_count[entity_string] = 1
+                    except Exception as e:
+                        print(e)
+                    
+        except Exception as e:
+
+            print(e)
+            continue
+
+    # print(colored(str(entities_count) , 'green'))
+    # print(colored(str(entities_positive_sentiment_count) , 'green'))
+    # print(colored(str(entities_neutral_sentiment_count) , 'green'))
+    # print(colored(str(entities_negative_sentiment_count) , 'green'))
+
+    sortedDict_count = sorted(entities_count.items(), key=lambda x:x[1], reverse=True)
+
+    # if len(sortedDict_count) > 10:
+    #     sortedDict_count = sortedDict_count[0:10]
+
+    data_out_count = []
+    data_out_label = []
+    data_out_sentiment_positive = []
+    data_out_sentiment_neutral = []
+    data_out_sentiment_negative = []
+
+    
+    for sorted_item in sortedDict_count:
+        if (len(sorted_item[0]) < 2):
+            continue
+
+        data_out_count.append(entities_count[sorted_item[0]])
+        data_out_label.append(sorted_item[0])
+        
+        # if (len(data_out_label) == 10):
+        #     break
+
+        
+        
+        # Positive
+        if (sorted_item[0] in entities_positive_sentiment_count):
+            data_out_sentiment_positive.append(entities_positive_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_positive.append(0)
+        
+        # Neutral
+        if (sorted_item[0] in entities_neutral_sentiment_count):
+            data_out_sentiment_neutral.append(entities_neutral_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_neutral.append(0)
+        
+        # Negative
+        if (sorted_item[0] in entities_negative_sentiment_count):
+            data_out_sentiment_negative.append(entities_negative_sentiment_count[sorted_item[0]])
+        else:
+            data_out_sentiment_negative.append(0)
+        
+    
+    category_bulk_list_chart_top_count = {
+        "data_positive" :data_out_sentiment_positive,
+        "data_neutral" :data_out_sentiment_neutral,
+        "data_negative" :data_out_sentiment_negative, 
+        "data_count" : data_out_count,
+        "labels": data_out_label
+    }
+
+    print(colored(category_bulk_list_chart_top_count, 'green'))
+
+    return render(request, 'home/requests-category_youtube_analytics_report.html', {"msg": 'SUCCESS',
+                                                            "segment": 'category-youtube-analytics',
+                                                            "category_bulk_list_chart_top_count" : category_bulk_list_chart_top_count,
+                                                            "bulk_id" : bulk_id,
+                                                            "request_list": top_ten_requests})
 
 @login_required(login_url="/login/")
 def requests_keyword_analytics_bulk(request):
@@ -3182,7 +3450,6 @@ def requests_keyword_analytics_bulk(request):
                                                             "bulk_id" : bulk_id,
                                                             "request_list": top_ten_requests})
 
-
 @login_required(login_url="/login/")
 def update_bulk_ner_analytics_ajax_client(request):
     current_pagination = 1   
@@ -3195,6 +3462,19 @@ def update_bulk_ner_analytics_ajax_client(request):
 
     if request.is_ajax and request.method == "GET":
         return render(request, 'includes/bulk_ner_analytics_table_client.html', {'bulk_list':row_list_bulk})
+
+@login_required(login_url="/login/")
+def update_bulk_category_youtube_analytics_ajax_client(request):
+    current_pagination = 1   
+    try:
+        current_pagination = int (request.path.split('/P')[-1])
+    except Exception as e:
+        pass
+    start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+    row_list_bulk, total_count_bulk = get_bulk_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, request.user, None, Request_Type.YOUTUBE_CATEGORY_EXTRACTION)
+
+    if request.is_ajax and request.method == "GET":
+        return render(request, 'includes/bulk_category_youtube_analytics_table_client.html', {'bulk_list':row_list_bulk})
 
 @login_required(login_url="/login/")
 def update_bulk_keyword_analytics_ajax_client(request):
@@ -3485,6 +3765,73 @@ def export_bulk_sentiment_xlsx(request):
     sheet.write(row + 5, 0,'negative_sentiment : ' + str(negative_count) + ' ( ' + str(negative_percent) + ' % )')
     sheet.write(row + 6, 0,'total_count : ' + str(bulk_selected['total_count']))
 
+    book.close()
+
+    
+    return response
+    # return redirect('/requests_bulk_status_client/P' + page_string)
+
+@login_required(login_url="/login/")
+def export_bulk_category_xlsx(request):
+
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk')[-1]
+        page_string = request.path.split('/P')[-1].split('/')[0]
+    except Exception as e:
+        pass
+    
+    # bulk_id = uuid.UUID(bulk_id_string)
+    # bulk_selected = Bulk.objects.get(id= bulk_id)
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+
+    if (records_bulks.count() == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    excel_file_name = bulk_selected['name'] + '_Result_category-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
+
+    # create .xlsx file in response
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = "attachment; filename=" + excel_file_name + ".xlsx"
+
+    book = Workbook(response, {'in_memory': True})
+    sheet = book.add_worksheet('Sheet1')
+
+    sheet.write(0,0, 'text')
+    sheet.write(0,1, 'request_type')
+    sheet.write(0,2, 'result')
+    sheet.write(0,3, 'sentiment')
+    sheet.write(0,4, 'time')
+
+    export_time = str(datetime.datetime.now()).split('.')[0]
+    row =1
+    for request in all_requests:
+        result_sentiment = ''
+        if ('result_sentiment' in request):
+            result_sentiment = request['result_sentiment']
+        result = str(request['result'])
+        if ('[\'' in result):
+            result = result.replace('[\'', '')
+        if ('\']' in result):
+            result = result.replace('\']', '')
+
+        sheet.write(row, 0, request['business_name'])
+        sheet.write(row, 1, request['request_type'])
+        sheet.write(row, 2, result)
+        sheet.write(row, 3, result_sentiment)
+        sheet.write(row, 4, export_time)
+        row += 1
+
+  
     book.close()
 
     
@@ -3821,7 +4168,7 @@ def export_bulk_sentiment_csv(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Sentiment-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .csv file in response
@@ -3870,6 +4217,58 @@ def export_bulk_sentiment_csv(request):
     # return redirect('/requests_bulk_status_client/P' + page_string)
 
 @login_required(login_url="/login/")
+def export_bulk_category_csv(request):
+
+    bulk_id = 0
+    bulk_id_string = '0'
+    page_string = '1'
+
+    try:
+        bulk_id_string = request.path.split('/bulk')[-1]
+        page_string = request.path.split('/P')[-1].split('/')[0]
+    except Exception as e:
+        pass
+    
+    # bulk_id = uuid.UUID(bulk_id_string)
+    # bulk_selected = Bulk.objects.get(id= bulk_id)
+
+    query_bulk_id = {'_id' : ObjectId(bulk_id_string)}
+    records_bulks = collection_Bulks.find(query_bulk_id)
+    bulk_id = bulk_id_string
+    bulk_count = records_bulks.count()
+
+    if (bulk_count == 0):
+        return
+
+    bulk_selected = records_bulks[0]
+
+    excel_file_name = bulk_selected['name'] + '_Result_categories-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
+
+    # create .csv file in response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="' + excel_file_name + '.csv"' 
+    writer = csv.writer(response)
+    writer.writerow(['text','request_type', 'category', 'sentiment', 'time'])
+
+    export_time = str(datetime.datetime.now()).split('.')[0]
+    for request in all_requests:
+        result_sentiment = ''
+        if ('result_sentiment' in request):
+            result_sentiment = request['result_sentiment']
+        result = str(request['result'])
+        if ('[\'' in result):
+            result = result.replace('[\'', '')
+        if ('\']' in result):
+            result = result.replace('\']', '')
+        writer.writerow([request['business_name'], request['request_type'], result, result_sentiment, export_time])
+    
+
+    
+    return response
+    # return redirect('/requests_bulk_status_client/P' + page_string)
+
+@login_required(login_url="/login/")
 def export_bulk_ner_csv(request):
 
     bulk_id = 0
@@ -3895,7 +4294,7 @@ def export_bulk_ner_csv(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_NER-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
     
     entities_count = {}
@@ -4030,7 +4429,7 @@ def export_bulk_keyword_csv(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Keyword-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
 
     entities_count = {}
