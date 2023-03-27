@@ -19,7 +19,7 @@ python3 update_passed_count_bulk.py
 (CA_single_API_category) -- >> single category request from CA Dashboard
 cd /home/services_files/CA
 sudo kill -9 $(sudo lsof -t -i:8943)
-uwsgi --socket 0.0.0.0:8943 --plugin python3 --protocol=http -w wsgi_CA_single_category --enable-thread --workers 1
+uwsgi --socket 0.0.0.0:8943 --plugin python3 --protocol=http -w wsgi_CA_single_category -b 32768 --enable-thread --workers 1
 
 ######################################### server Bulk (138) ################################################
 (google_spreadsheet)
@@ -32,7 +32,7 @@ uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-t
 
 (CA_single_API) -- >> single request from CA Dashboard
 cd /home/services_files/CA
-uwsgi --socket 0.0.0.0:8942 --plugin python3 --protocol=http -w wsgi_CA_single --enable-thread --workers 1
+uwsgi --socket 0.0.0.0:8942 --plugin python3 --protocol=http -w wsgi_CA_single -b 32768 --enable-thread --workers 1
 
 (insert_requests_bulk_CA)
 cd /home/services_files/CA

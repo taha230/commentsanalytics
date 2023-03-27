@@ -3709,7 +3709,7 @@ def export_bulk_sentiment_xlsx(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Sentiment-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .xlsx file in response
@@ -3795,7 +3795,7 @@ def export_bulk_category_xlsx(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result_category-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Category-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .xlsx file in response
@@ -3862,7 +3862,7 @@ def export_bulk_ner_xlsx(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_NER-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .xlsx file in response
@@ -4014,7 +4014,7 @@ def export_bulk_keyword_xlsx(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Keyword-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .xlsx file in response
@@ -4241,7 +4241,7 @@ def export_bulk_category_csv(request):
 
     bulk_selected = records_bulks[0]
 
-    excel_file_name = bulk_selected['name'] + '_Result_categories-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
+    excel_file_name = bulk_selected['name'] + '_Result_Category-{date:%Y-%m-%d}'.format( date=datetime.datetime.now() )
     all_requests = get_request_list_bulk_export_mongodb(request, bulk_id)
 
     # create .csv file in response
