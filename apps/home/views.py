@@ -2151,6 +2151,12 @@ def ner_description_doc(request):
                                                         })
 
 @login_required(login_url="/login/")
+def category_description_doc(request):
+     return render(request, "home/category_description_doc.html", {"msg": 'SUCCESS',
+                                                          "segment": 'category-doc'
+                                                        })
+
+@login_required(login_url="/login/")
 def dashboard_client(request):
 
     insert_user_log_db (request.user, 'Dashboard')

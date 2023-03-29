@@ -1,0 +1,127 @@
+{% extends "layouts/base_client.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+
+<h1 class="mt-4 display-4">Categories Description</h1>
+
+<p class="mt-4">
+    In comments analytics, <mark>comments category extraction</mark> is a method used to sort user comments into various categories according to their topics. To achieve this, a machine learning model is trained on extensive amounts of comments and then fine-tuned for the specific platform being analyzed. By categorizing comments, companies can gain a better understanding of customer feedback, recognize patterns and trends, and use this information to make informed decisions.
+</p> 
+<p>
+    There are several benefits to using comments category extraction in business. Firstly, it allows businesses to gain insights into customer sentiment and identify areas for improvement. For example, a business can quickly identify common complaints or issues that customers are experiencing, and take steps to address these problems. Secondly, comments category extraction can help businesses to identify areas where they are performing well, and use this information to promote positive customer experiences. By understanding what customers appreciate about their products or services, businesses can focus on building on these strengths to improve customer loyalty and retention. 
+</p>
+
+<h1 class="mt-6 mb-4 display-4">
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+      </svg>
+    Youtube Comments Categories
+</h1>
+
+<div class="col-12 mb-6 mt-4" style="text-align:center;">
+
+
+    <div class=" col-8 col-xxl-6 mb-1" style="margin-left:auto;margin-right:auto;">
+        <div class="card_orange border-5">
+            <table class="table table-flush" id="datatable" >
+                <thead class="thead-light">
+                <tr>
+                    <th>Category Label	</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-info" type="button">Suggestion</button>
+                    </td>
+                    <td>Comments that provide suggestions for improving the product or service</td>
+                    <td>
+                        "It would be great if you added a search function to make finding videos easier."
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-success" type="button">Feedback</button>
+
+                    </td>
+                    <td>Comments that provide general feedback on the product or service</td>
+                    <td>
+                        "I really enjoyed this video, the content was very informative."
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-tertiary" type="button">Question</button>
+                    </td>
+                    <td>Comments that ask questions about the product or service</td>
+                    <td>
+                        "Does this video have subtitles available?"
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-secondary" type="button">Pricing</button>
+                    </td>
+                    <td>Comments that discuss the price or cost of the product or service</td>
+                    <td>
+                        "I'm always hesitant to try new products because of the pricing. but this one looks promising."
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-gray-700" type="button">Personal Experience</button>
+                    </td>
+                    <td>Comments that share the commenter's personal experience with the product</td>
+                    <td>
+                        "I've been using this product for a few months now and it's made a big difference in my life."
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-danger" type="button">Functionality</button>
+                    </td>
+                    <td>Comments that discuss the functionality or features of the product or service</td>
+                    <td>
+                        "I love the new feature that allows you to save videos for offline viewing."
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <button class="btn btn-outline-primary" type="button">Others</button>
+                    </td>
+                    <td>Comments that do not fit into any of the above categories</td>
+                    <td>
+                        "I don't know why I'm watching this"
+                    </td>
+                </tr>
+
+                                </tbody>
+            </table>
+        </div>
+    </div>
+    
+<div class="col-12 py-4">
+    
+</div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

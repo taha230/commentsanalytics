@@ -59,6 +59,7 @@ urlpatterns = [
     re_path(r'^requests_bulk_client/', views.requests_bulk_client, name="requests_bulk_client"), # use regular expression for handle all pages /P*
     path('plans_preview_client/', views.plans_preview_client, name="plans_preview_client"),
     path('ner_description_doc/', views.ner_description_doc, name="ner_description_doc"),
+    path('category_description_doc/', views.category_description_doc, name="category_description_doc"),
     re_path(r'transaction_submit/', views.transaction_submit, name="transaction_submit"),
     re_path(r'transaction_success/', views.transaction_success, name="transaction_success"),
     re_path(r'transaction_fail/', views.transaction_fail, name="transaction_fail"),
