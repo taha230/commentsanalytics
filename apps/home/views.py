@@ -396,6 +396,15 @@ def get_user_list_page(request, start, limit):
                 row_json = {}
                 row_json['index'] = index + 1 + start
                 row_json['id'] = row.id
+                row_json['remain_count'] = 0
+                row_json['user_key'] = '-1'
+                try:
+                    user_other_fields_obj = User_Other_Fields.objects.filter(user_id=row.id)[0]
+                    row_json['remain_count'] =  user_other_fields_obj.remain_count
+                    row_json['user_key'] = user_other_fields_obj.user_key
+                except Exception as e:
+                    pass
+
                 row_json['last_login'] = row.last_login
                 row_json['date_joined'] = row.date_joined
                 row_json['is_superuser'] = row.is_superuser
@@ -5037,8 +5046,9 @@ def userslist_admin(request):
         current_pagination = int (request.path.split('/P')[-1])
     except Exception as e:
         pass
-
+    
     start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
+
     row_list_users, total_count_users = get_user_list_page(request, start, ROW_LIST_SHOW_COUNT)
 
     total_users, monthly_avg_users, montly_users_list = get_users_statistics()

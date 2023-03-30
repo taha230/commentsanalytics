@@ -18,7 +18,7 @@ import ssl
 from django.contrib.auth import logout as auth_logout
 import requests
 from smtp2go.core import Smtp2goClient
-
+# from apps.home.views import update_remain_count_user
 
 
 sender = 'taha.hamedani8@gmail.com'
@@ -417,6 +417,14 @@ def logout(request):
     auth_logout(request)
     return redirect ('/login/')
 
+def update_remain_count_user(user_id, value):
+    try:
+        user_other_fields_obj = User_Other_Fields.objects.filter(user_id=user_id)[0]
+        user_other_fields_obj.remain_count = user_other_fields_obj.remain_count + value
+        user_other_fields_obj.save()
+    except Exception as e:
+        print(colored(str(e), 'red'))
+
 def resend_email_user_admin(request):
     user_id = 0
     try:
@@ -439,7 +447,35 @@ def resend_email_user_admin(request):
         send_status = send_activation_user_email(user_selected, user_key)
     
     except Exception as e:
-        print(colored('Exception in sendin verification email ' + str(e), 'red'))
+        print(colored('Exception in sending verification email ' + str(e), 'red'))
 
     return redirect ('/userslist_admin/')
 
+def udpate_remain_count_user_admin(request):
+    user_id = 0
+    try:
+
+        user_id = 0
+        user_id_string = '0'
+        try:
+            user_id_string = request.path.split('/user_')[-1]
+        except Exception as e:
+            pass
+
+        user_id = int(user_id_string)
+        user_selected = User.objects.get(id= user_id)
+
+
+        input_update_count = request.POST.get('input_update_count').strip()
+
+        try:
+            update_count_int = int(input_update_count)
+            # update remain in User_Other_Fields in db
+            update_remain_count_user(user_id, update_count_int)
+        except Exception as e:
+            print(e)
+            
+    except Exception as e:
+        print(colored('Exception in updating user remain count ' + str(e), 'red'))
+
+    return redirect ('/userslist_admin/')

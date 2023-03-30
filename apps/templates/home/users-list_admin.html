@@ -70,7 +70,7 @@
               <tr>
                   <th class="border-gray-200">#</th>
                   <th class="border-gray-200">Email</th>						
-                  <th class="border-gray-200">Username</th>
+                  <th class="border-gray-200">Remain Count</th>
                   <th class="border-gray-200">Date Joined</th>
                   <th class="border-gray-200">Last Login</th>
                   <th class="border-gray-200">Verify</th>                  
@@ -88,7 +88,7 @@
                     <td>
                         <span class="fw-bold">{{ row.email }} </span>
                     </td>
-                    <td><span class="fw-normal">{{ row.username }}</span></td>                        
+                    <td><span class="fw-normal">{{ row.remain_count }}</span></td>                        
                     <td><span class="fw-normal">{{ row.date_joined }}</span></td>
 
 
@@ -132,6 +132,12 @@
                         </div> -->
                         
                         
+                                <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-default-update_{{row.id}}" type="submit" onclick="update_button_clicked('{{ row.id }}')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-slash-minus" viewBox="0 0 16 16">
+                                        <path d="m1.854 14.854 13-13a.5.5 0 0 0-.708-.708l-13 13a.5.5 0 0 0 .708.708ZM4 1a.5.5 0 0 1 .5.5v2h2a.5.5 0 0 1 0 1h-2v2a.5.5 0 0 1-1 0v-2h-2a.5.5 0 0 1 0-1h2v-2A.5.5 0 0 1 4 1Zm5 11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5A.5.5 0 0 1 9 12Z"/>
+                                    </svg>
+                                </button>
+
                                 <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-default-details" type="submit" onclick="">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-2 bi bi-person-bounding-box" viewBox="0 0 16 16">
                                         <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/>
@@ -139,7 +145,6 @@
                                     </svg>
                                 </button>
 
-                            
                                 <button class="btn" data-bs-toggle="modal" data-bs-target="#modal-default-resend" type="submit" onclick="resend_button_clicked('{{ row.id }}')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" me-2 bi bi-send-check" viewBox="0 0 16 16">
                                         <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855a.75.75 0 0 0-.124 1.329l4.995 3.178 1.531 2.406a.5.5 0 0 0 .844-.536L6.637 10.07l7.494-7.494-1.895 4.738a.5.5 0 1 0 .928.372l2.8-7Zm-2.54 1.183L5.93 9.363 1.591 6.602l11.833-4.733Z"/>
@@ -160,23 +165,52 @@
                                     </svg>
                                 </button>
 
-                            <!-- Modal Content Delete -->
-                            <div class="modal fade" id="modal-default-delete" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p name="modal_title", id="modal_title">Are you sure to remove this user?</p>
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <a name = 'modal_a' id = 'modal_a' class="btn btn-secondary"  >Yes</a>
-                                        <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Close</button>
+                            
+                            <!-- Modal Content update -->
+                            <div class="modal fade" id="modal-default-update_{{row.id}}" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form action="/udpate_remain_count_user_admin/user_{{ row.id }}" method= "POST">
+                                            {% csrf_token %}
+
+                                            <div class="modal-header">
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p name="modal_title", id="modal_title">Are you sure to update creadit remain of this user?</p>
+                                                                                                
+                                                <label>User : {{ row.email }}</label>
+                                                <div class="form-group">
+                                                    <label for="address">Count (<B style="color:red">*</B>)</label>
+                                                    <input class="form-control" name="input_update_count" type="text" placeholder="Enter Update Count of User here ..." value="{{ user_update_count_selected }}" required> <!-- required -->
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-green-800" type="submit">Yes</button>
+                                                <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Modal Content Delete -->
+                            <div class="modal fade" id="modal-default-delete" tabindex="-1" role="dialog" aria-labelledby="modal-default" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p name="modal_title", id="modal_title">Are you sure to remove this user?</p>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a name = 'modal_a' id = 'modal_a' class="btn btn-secondary"  >Yes</a>
+                                            <button type="button" class="btn btn-link text-gray ms-auto" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Modal Content Resend -->
@@ -196,7 +230,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                            </div>
     
                     </td>
                 </tr>
@@ -224,7 +258,7 @@
     function resend_button_clicked(user_id_input) {
       document.getElementById('modal_resend').href="/resend_email_user_admin/user_" + user_id_input;
     }
-  
+    
 </script>
 
 {% endblock javascripts %}
