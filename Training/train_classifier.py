@@ -105,7 +105,7 @@ print(colored('===========================================', 'blue'))
 # Make predictions on the test set
 predictions, raw_outputs = model.predict(['what is the functionality of this video in marketing'])
 
-# print(colored('===========================================', 'blue'))
-# print(colored('model predicted', 'blue'))
-# print(colored('test result : ' + str(predictions), 'blue'))
-# print(colored('===========================================', 'blue'))
+print(colored('===========================================', 'blue'))
+print(colored('model predicted', 'blue'))
+print(colored('test result : ' + str(predictions), 'blue'))
+print(colored('===========================================', 'blue'))
