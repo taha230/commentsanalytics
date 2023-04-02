@@ -1,5 +1,5 @@
 ssh root@138.201.111.134
 
-scp root@server_cloud:/home/ComentsAnalytics/commentsanalytics/db.sqlite3 .
-scp db.sqlite3 root@server_cloud:/home/ComentsAnalytics/commentsanalytics
+scp root@server_cloud:/home/CommentsAnalytics/commentsanalytics/db.sqlite3 .
+scp db.sqlite3 root@server_cloud:/home/CommentsAnalytics/commentsanalytics
 

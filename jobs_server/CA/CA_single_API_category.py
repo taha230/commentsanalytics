@@ -77,7 +77,9 @@ youtube_categories_json = {
     'Personal Experience' : 2,
     'Pricing' : 3,
     'Question' : 4,
-    'Suggestion' : 5
+    'Suggestion' : 5,
+    'Others' : 6
+
 }
 
 application = flask.Flask(__name__)

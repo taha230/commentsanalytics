@@ -326,18 +326,22 @@ def change_password_admin(request):
             new_password_1 = request.POST.get('new_password_1').strip()
             new_password_2 = request.POST.get('new_password_2').strip()
 
+            print(email + '\n')
+            print(new_password_1 + '\n')
+            print(new_password_2 + '\n')
+
             if (new_password_1 != new_password_2):
                 msg = 'new passwords are not the same !'
-                return render(request, "home/profile_client.html", {"msg": msg, "success": success})
+                return redirect ('/userslist_admin/')
 
             try:
                 password_validation.validate_password(new_password_1)
             except Exception as e:
                 msg = str(e)
-                return render(request, "home/profile_client.html", {"msg": msg, "success": success})
+                return redirect ('/userslist_admin/')
 
-            request.user.set_password(new_password_1)
-            request.user.save()
+            # request.user.set_password(new_password_1)
+            # request.user.save()
 
             msg = 'user password changed successfully ! '
             success = True
@@ -347,7 +351,7 @@ def change_password_admin(request):
             msg= str(e)
             success = False
 
-    return render(request, "home/profile_admin.html", {"msg": msg, "success": success})
+    return redirect ('/userslist_admin/')
 
 def activate_user(request):
     msg = 'your user is activated. You can sing in !!!'
@@ -425,6 +429,7 @@ def update_remain_count_user(user_id, value):
     except Exception as e:
         print(colored(str(e), 'red'))
 
+
 def resend_email_user_admin(request):
     user_id = 0
     try:
@@ -477,5 +482,43 @@ def udpate_remain_count_user_admin(request):
             
     except Exception as e:
         print(colored('Exception in updating user remain count ' + str(e), 'red'))
+
+    return redirect ('/userslist_admin/')
+
+def change_password_user_admin(request):
+    user_id = 0
+    try:
+
+        user_id = 0
+        user_id_string = '0'
+        try:
+            user_id_string = request.path.split('/user_')[-1]
+        except Exception as e:
+            pass
+
+        user_id = int(user_id_string)
+        user_selected = User.objects.get(id= user_id)
+
+
+        input_new_password_1 = request.POST.get('new_password_1').strip()
+        input_new_password_2 = request.POST.get('new_password_2').strip()
+        
+        if (input_new_password_1 != input_new_password_1):
+            msg = 'passwords does not match'
+            print(colored('Passwords does not match','red'))
+            return redirect ('/userslist_admin/')
+        else:
+            try:
+                # update remain in User_Other_Fields in db
+                user_selected.set_password(input_new_password_1)
+                user_selected.save()
+                print(colored('passwords updated successfully', 'green'))
+
+                msg= 'passwords updated successfully'
+            except Exception as e:
+                print(e)
+                
+    except Exception as e:
+        print(colored('Exception in changing user password ' + str(e), 'red'))
 
     return redirect ('/userslist_admin/')
