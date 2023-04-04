@@ -17,7 +17,10 @@ import smtplib
 import ssl
 from django.contrib.auth import logout as auth_logout
 import requests
+import datetime
 from smtp2go.core import Smtp2goClient
+from datetime import date, timedelta
+
 # from apps.home.views import update_remain_count_user
 
 
@@ -247,9 +250,10 @@ def register_user(request):
 
             # add user_key to user_other_fields table
             user_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
+            expired_date = datetime.datetime.now() + datetime.timedelta(days=31) # to expire the remain_count within one month
             free_plan = Plan.objects.all().filter(price= 0)[0]
 
-            user_other_fields_obj = User_Other_Fields(user = user_created, user_key = user_key, plan = free_plan)
+            user_other_fields_obj = User_Other_Fields(user = user_created, remain_count=free_plan.count, user_key = user_key, plan = free_plan, expired_date = expired_date)
             user_other_fields_obj.save()
 
             # send activation email to user
