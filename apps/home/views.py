@@ -400,13 +400,40 @@ def get_user_list_page(request, start, limit):
                 row_json['user_key'] = '-1'
                 try:
                     user_other_fields_obj = User_Other_Fields.objects.filter(user_id=row.id)[0]
+
+                    expired_date_short = user_other_fields_obj.expired_date
+                    try:
+                        expired_date_short = user_other_fields_obj.expired_date.strftime("%b %d, %Y")
+                    except Exception as e:
+                        print(e)
+                    row_json['expired_date'] = expired_date_short
+                    row_json['is_expired'] = True
+                    
+                    try:
+                        if (user_other_fields_obj.expired_date.replace(tzinfo=None) > datetime.datetime.now().replace(tzinfo=None)):
+                            row_json['is_expired'] = False
+                    except Exception as e:
+                        print(e)
+                    
                     row_json['remain_count'] =  user_other_fields_obj.remain_count
                     row_json['user_key'] = user_other_fields_obj.user_key
                 except Exception as e:
                     pass
 
-                row_json['last_login'] = row.last_login
-                row_json['date_joined'] = row.date_joined
+                last_login_short = row.last_login
+                try:
+                    last_login_short = row.last_login.strftime("%b %d, %Y %H:%M")
+                except Exception as e:
+                    print(e)
+                row_json['last_login'] = last_login_short
+
+                date_joined_short = row.date_joined
+                try:
+                    date_joined_short = row.date_joined.strftime("%b %d, %Y")
+                except Exception as e:
+                    print(e)
+                row_json['date_joined'] = date_joined_short
+
                 row_json['is_superuser'] = row.is_superuser
                 row_json['username'] = row.username
                 row_json['password'] = row.password
