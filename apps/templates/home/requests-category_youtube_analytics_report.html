@@ -90,7 +90,7 @@
                                 </td>
                                 <td>
                                 {% if row.sentiment != None %}
-                                        {{ row.sentiment }}
+                                    {% include "includes/request_single_result.html" %}
                                 {% endif %}
                                 </td>
                             </tr>
