@@ -1918,10 +1918,12 @@ def update_remain_count_user(request, value):
     except Exception as e:
         print(colored(str(e), 'red'))
 
-def update_plan_user(request, plan_obj):
+def update_plan_user(request, plan_obj, promotion_code_used):
     try:
         user_other_fields_obj = User_Other_Fields.objects.filter(user_id=request.user.id)[0]
         user_other_fields_obj.plan = plan_obj
+        if (promotion_code_used):
+            user_other_fields_obj.promotion_code_used = promotion_code_used
         user_other_fields_obj.save()
     except Exception as e:
         print(colored(str(e), 'red'))
@@ -3602,6 +3604,7 @@ def transaction_submit(request):
 
             plan_title_selected = plan_selected.name
             plan_discount_selected = plan_selected.discount
+            
             plan_price_selected = str(float (plan_selected.price) * float(100.0 - plan_discount_selected)/100.0) # price * discount
             # return_url = 'http://127.0.0.1:8000/transaction_success/?plan=' + plan_id_string
             return_url = 'https://commentsanalytics.com/transaction_success/?plan=' + plan_id_string
@@ -3614,6 +3617,31 @@ def transaction_submit(request):
                 print(colored('input discount value : ' + str(discount_value), 'magenta'))
 
                 if (discount_value != 0):
+
+                    # apply discount_code FEEDBACK100 to update remained_count to Starter Plan
+                    if (plan_title_selected == 'Starter' and discount_value == 100):
+
+                        try:
+                            user_other_fields_obj = User_Other_Fields.objects.filter(user_id=request.user.id)[0]
+                            
+                            # check use promotion code just once
+                            if user_other_fields_obj.promotion_code_used == False :
+                                # update remain in User_Other_Fields in db
+                                update_remain_count_user(request, int(plan_selected.count))
+                                # update plan in User_Other_Fields in db
+                                update_plan_user(request, plan_selected, True)
+                                return redirect('/dashboard_client/')
+                            else:
+                                discount_value = 0
+                        except Exception as e:
+                            print(colored(str(e), 'red'))
+                            discount_value = 0
+                        
+                    elif (plan_title_selected != 'Starter' and discount_value == 100):
+                        # Do not apply discount code 100 Percent for other plans
+                        discount_value = 0
+
+
                     # apply discount code value input 
                     plan_price_selected = str(float (plan_price_selected) * float(100.0 - discount_value)/100.0) # price * discount_value
 
@@ -3666,7 +3694,7 @@ def transaction_success(request):
                 # update remain in User_Other_Fields in db
                 update_remain_count_user(request, int(plan_selected.count))
                 # update plan in User_Other_Fields in db
-                update_plan_user(request, plan_selected)
+                update_plan_user(request, plan_selected, False)
 
             except Exception as e:
                 print(e)
