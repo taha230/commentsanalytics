@@ -21,8 +21,6 @@ import datetime
 from smtp2go.core import Smtp2goClient
 from datetime import date, timedelta
 
-# from apps.home.views import update_remain_count_user
-
 
 sender = 'taha.hamedani8@gmail.com'
 password = '61416867'
@@ -279,43 +277,6 @@ def register_user(request):
 
     return render(request, "home/page-sign-up.html", {"form": form, "msg": msg, "success": success})
 
-def change_password_client(request):
-    msg = None
-    success = False
-    
-    if request.method == "POST": # just in confirm new bulk data buttton clicked
-
-        try:
-            # current_password = request.POST.get('current_password').strip()
-            email = request.POST.get('email').strip()
-        
-
-            new_password_1 = request.POST.get('new_password_1').strip()
-            new_password_2 = request.POST.get('new_password_2').strip()
-
-            if (new_password_1 != new_password_2):
-                msg = 'new passwords are not the same !'
-                return render(request, "home/profile_client.html", {"msg": msg, "success": success})
-
-            try:
-                password_validation.validate_password(new_password_1)
-            except Exception as e:
-                msg = str(e)
-                return render(request, "home/profile_client.html", {"msg": msg, "success": success})
-
-            request.user.set_password(new_password_1)
-            request.user.save()
-
-            msg = 'user password changed successfully ! '
-            success = True
-
-        except Exception as e:
-            print(e)
-            msg= str(e)
-            success = False
-
-    return render(request, "home/profile_client.html", {"msg": msg, "success": success})
-
 def change_password_admin(request):
     msg = None
     success = False
@@ -432,7 +393,6 @@ def update_remain_count_user(user_id, value):
         user_other_fields_obj.save()
     except Exception as e:
         print(colored(str(e), 'red'))
-
 
 def resend_email_user_admin(request):
     user_id = 0

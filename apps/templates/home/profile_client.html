@@ -25,19 +25,16 @@
 
                     {% endif %}
                 </div>
+                
+                <h2 class="h5 my-4">API KEY</h2>
+                <textarea class="form-control" id="textarea" rows="1" readonly> {{ user_key }}</textarea>
+
 
                 <form action="{% url 'change_password_client' %}" method="POST">
 
-
-                    
-                   
                     {% csrf_token %}
 
-
-                    <h2 class="h5 my-4">Change Password</h2>
-                  
-                    
-
+                    <h2 class="h5 my-4 mt-7">Change Password</h2>
                     <div class="row">
                         <div class="col-sm-9 mb-3">
                             <div class="form-group">
@@ -49,7 +46,7 @@
                     </div>
                     
                     <!-- hidden email variable passed to view -->
-                    <input class="form-control" name="email" type="text" value = "{{ request.user.email }}" hidden>
+                    <input class="form-control" name="email" type="text" value = "{{ email }}" hidden>
 
                     <div class="row">
                         <div class="col-sm-9 mb-3">
@@ -78,10 +75,10 @@
                             <img src="/static/assets/img/team/profile-picture-7.png" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
               
                             <h5 class="fw-normal ">
-                                {{ request.user.username }}
+                                {{ username }}
                             </h5>
                             <p class="text-gray mb-4">
-                                {{ request.user.email }}
+                                {{ email }}
                             </p>
                             
                         </div>

@@ -43,17 +43,59 @@
 {% block javascripts %}
 <script>
 
-  function bulk_download_xlsx(bulk_id) {
+  function bulk_download_category_xlsx(bulk_id) {
     
     var $download_button = document.getElementById("download_button");
-    document.getElementById('myform').action = "/bulk_export_xlsx/P1/bulk" + bulk_id;
+    document.getElementById('myform').action = "/bulk_export_category_xlsx/P1/bulk" + bulk_id;
 
   }
 
-  function bulk_download_csv(bulk_id) {
+  function bulk_download_category_csv(bulk_id) {
     
     var $download_button = document.getElementById("download_button");
-    document.getElementById('myform').action = "/bulk_export_csv/P1/bulk" + bulk_id;
+    document.getElementById('myform').action = "/bulk_export_category_csv/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_keyword_xlsx(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_keyword_xlsx/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_keyword_csv(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_keyword_csv/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_ner_xlsx(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_ner_xlsx/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_ner_csv(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_ner_csv/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_sentiment_xlsx(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_sentiment_xlsx/P1/bulk" + bulk_id;
+
+  }
+
+  function bulk_download_sentiment_csv(bulk_id) {
+    
+    var $download_button = document.getElementById("download_button");
+    document.getElementById('myform').action = "/bulk_export_sentiment_csv/P1/bulk" + bulk_id;
 
   }
   // ==================================================================================

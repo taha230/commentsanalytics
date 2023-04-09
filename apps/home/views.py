@@ -12,6 +12,7 @@ from django.urls import reverse
 from django.shortcuts import render, redirect
 from termcolor import colored
 from django.contrib.auth.models import User
+from django.contrib.auth import password_validation
 # from authentication import CustomUser
 from .models import Request_Type, Bulk, Bulk_Status, Request_Type, Request_Run_Type, Request_Status, Request, Plan, Plan_Status, Payment_Status, Payment_Type, Payment, User_Log, User_Other_Fields, Seen_Status, Ticket, Ticket_Message, Ticket_Status, Empty_Status, User_Type, Post, Post_Paragraph, Post_Status, Request_Process_Status, Discount_Code
 from apps.authentication.views import send_email_from_admin_to_client, send_email_from_client_to_admin
@@ -2217,6 +2218,138 @@ def dashboard_client(request):
                                                           "monthly_request" : monthly_request,
                                                           "report_period" : "month",
                                                           "plan": plan_name
+                                                        })
+
+@login_required(login_url="/login/")
+def profile_client(request):
+
+    msg = ''
+    insert_user_log_db (request.user, 'Profile')
+    valid_to_submit, remain_count = check_remain_count_user(request, 1)
+    row_list_request_single, total_count_request_single = get_request_list_page_mongodb(request, 0, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE)
+    row_list_request_bulk, total_count_request_bulk = get_request_list_page_mongodb(request, 0, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.BULK)
+
+    row_list_ticket, total_count_ticket, unread_count_ticket = get_ticket_list_page(request, 0, ROW_LIST_SHOW_COUNT, request.user)
+
+    plan_name = get_user_plan_name(request.user.id)
+
+    user_key= ''
+    try:
+        user_other_fields_obj = User_Other_Fields.objects.filter(user_id=request.user.id)[0]
+        user_key = user_other_fields_obj.user_key
+    except Exception as e:
+        print(colored(str(e), 'red'))
+    
+
+    return render(request, "home/profile_client.html", {"msg": msg,
+                                                          "remain_count" : remain_count,
+                                                          "total_count_request_single" : total_count_request_single,
+                                                          "total_count_request_bulk" : total_count_request_bulk,
+                                                          "total_count_ticket" : total_count_ticket,
+                                                          "unread_count_ticket" : unread_count_ticket,
+                                                          "email" : request.user.email,
+                                                          "user_key" : user_key,
+                                                          "username" : request.user.username,
+                                                          "plan": plan_name
+                                                        })
+
+@login_required(login_url="/login/")
+def change_password_client(request):
+    msg = None
+    success = False
+
+
+    valid_to_submit, remain_count = check_remain_count_user(request, 1)
+    row_list_request_single, total_count_request_single = get_request_list_page_mongodb(request, 0, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.SINGLE)
+    row_list_request_bulk, total_count_request_bulk = get_request_list_page_mongodb(request, 0, ROW_LIST_SHOW_COUNT, request.user, Request_Run_Type.BULK)
+
+    row_list_ticket, total_count_ticket, unread_count_ticket = get_ticket_list_page(request, 0, ROW_LIST_SHOW_COUNT, request.user)
+
+    plan_name = get_user_plan_name(request.user.id)
+
+    user_key= ''
+    try:
+        user_other_fields_obj = User_Other_Fields.objects.filter(user_id=request.user.id)[0]
+        user_key = user_other_fields_obj.user_key
+    except Exception as e:
+        print(colored(str(e), 'red'))
+        
+    if request.method == "POST": # just in confirm new bulk data buttton clicked
+
+        ############################################ Changing Password #########################################
+        try:
+            # current_password = request.POST.get('current_password').strip()
+            email = request.POST.get('email').strip()
+        
+
+            new_password_1 = request.POST.get('new_password_1').strip()
+            new_password_2 = request.POST.get('new_password_2').strip()
+
+            if (new_password_1 != new_password_2):
+                msg = 'new passwords are not the same !'
+                return render(request, "home/profile_client.html", {"msg": msg,
+                                                                    "remain_count" : remain_count,
+                                                                    "total_count_request_single" : total_count_request_single,
+                                                                    "total_count_request_bulk" : total_count_request_bulk,
+                                                                    "total_count_ticket" : total_count_ticket,
+                                                                    "unread_count_ticket" : unread_count_ticket,
+                                                                    "email" : request.user.email,
+                                                                    "user_key" : user_key,
+                                                                    "username" : request.user.username,
+                                                                    "plan": plan_name
+                                                                    })
+
+            try:
+                password_validation.validate_password(new_password_1)
+            except Exception as e:
+                msg = str(e)
+                return render(request, "home/profile_client.html", {"msg": msg,
+                                                                    "remain_count" : remain_count,
+                                                                    "total_count_request_single" : total_count_request_single,
+                                                                    "total_count_request_bulk" : total_count_request_bulk,
+                                                                    "total_count_ticket" : total_count_ticket,
+                                                                    "unread_count_ticket" : unread_count_ticket,
+                                                                    "email" : request.user.email,
+                                                                    "user_key" : user_key,
+                                                                    "username" : request.user.username,
+                                                                    "plan": plan_name
+                                                                    })
+
+            request.user.set_password(new_password_1)
+            request.user.save()
+
+            msg = 'user password changed successfully ! '
+            success = True
+
+            return render(request, "home/profile_client.html", {"msg": msg,
+                                                        "remain_count" : remain_count,
+                                                        "total_count_request_single" : total_count_request_single,
+                                                        "total_count_request_bulk" : total_count_request_bulk,
+                                                        "total_count_ticket" : total_count_ticket,
+                                                        "unread_count_ticket" : unread_count_ticket,
+                                                        "email" : request.user.email,
+                                                        "user_key" : user_key,
+                                                        "username" : request.user.username,
+                                                        "plan": plan_name
+                                                    })
+
+
+        except Exception as e:
+            print(e)
+            msg= str(e)
+            success = False
+
+            
+    return render(request, "home/profile_client.html", {"msg": msg, "success": success,
+                                                        "remain_count" : remain_count,
+                                                        "total_count_request_single" : total_count_request_single,
+                                                        "total_count_request_bulk" : total_count_request_bulk,
+                                                        "total_count_ticket" : total_count_ticket,
+                                                        "unread_count_ticket" : unread_count_ticket,
+                                                        "email" : request.user.email,
+                                                        "user_key" : user_key,
+                                                        "username" : request.user.username,
+                                                        "plan": plan_name
                                                         })
 
 @login_required(login_url="/login/")

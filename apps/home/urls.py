@@ -35,8 +35,10 @@ urlpatterns = [
 
     ############################################## Client ################################################
     path('dashboard_client/', views.dashboard_client, name="dashboard_client"),
+    path('profile_client/', views.profile_client, name="profile_client"),
     path('dashboard_client_weekly/', views.dashboard_client_weekly, name="dashboard_client_weekly"),
     path('requests_new_bulk/', views.requests_new_bulk, name="requests_new_bulk"),
+    path('change_password_client/', views.change_password_client, name="change_password_client"),
     re_path(r'^requests_new_bulk_data_confirm/', views.requests_new_bulk_data_confirm, name="requests_new_bulk_data_confirm"), # use regular expression for handle all pages /P*
     re_path(r'^requests_bulk_status_client/', views.requests_bulk_status_client, name="requests_bulk_status_client"), # use regular expression for handle all pages /P*
     re_path(r'^requests_sentiment_analytics_client/', views.requests_sentiment_analytics_client, name="requests_sentiment_analytics_client"), # use regular expression for handle all pages /P*

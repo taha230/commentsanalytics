@@ -51,15 +51,55 @@
             
             <!-- Export Excel -->
             <td class="">
-              {% if row.status == 'Completed' %}
-                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_csv('{{row.bulk_id}}')" >
+
+              <!-- Category Extraction -->
+              {% if row.status == 'Completed' and row.request_type == 'Youtube-Category Extraction' %}
+               
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_category_csv('{{row.bulk_id}}')" >
                   .csv
                   <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
                 </button>
-                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_xlsx('{{row.bulk_id}}')" >
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_category_xlsx('{{row.bulk_id}}')" >
                   .xlsx
                   <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
                 </button> 
+                
+              <!-- Keyword Extraction -->
+              {% elif row.status == 'Completed' and row.request_type == 'Keyword Extraction' %}
+               
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_keyword_csv('{{row.bulk_id}}')" >
+                  .csv
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button>
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_keyword_xlsx('{{row.bulk_id}}')" >
+                  .xlsx
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button> 
+
+              <!-- Named Entity Recognition -->
+              {% elif row.status == 'Completed' and row.request_type == 'Named-Entity Recognition' %}
+               
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_ner_csv('{{row.bulk_id}}')" >
+                  .csv
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button>
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_ner_xlsx('{{row.bulk_id}}')" >
+                  .xlsx
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button> 
+              
+            <!-- Named Entity Recognition -->
+              {% elif row.status == 'Completed' and row.request_type == 'Sentiment Analysis' %}
+               
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_sentiment_csv('{{row.bulk_id}}')" >
+                  .csv
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button>
+                <button class="btn btn-sm-2x btn-warning" type="submit" id='download_button' onclick="bulk_download_sentiment_xlsx('{{row.bulk_id}}')" >
+                  .xlsx
+                  <svg class="icon icon-xs ms-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clip-rule="evenodd" /></svg>
+                </button> 
+
               {% endif %}
             </td>
           </tr>
