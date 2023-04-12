@@ -825,5 +825,11 @@ var optionsLineChart = {
 };
 
 
+// DataTables
+var dataTableEl = d.getElementById('datatable-searchable');
+if (dataTableEl) {
+    const dataTable = new simpleDatatables.DataTable(dataTableEl);
+}
+
 
 

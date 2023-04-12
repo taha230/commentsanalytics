@@ -3350,11 +3350,14 @@ def requests_category_youtube_analytics_bulk(request):
 
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
     
-    top_ten_requests = []
-    if len(all_requests) > 10 :
-        top_ten_requests = all_requests[0:10]
-    else:
-        top_ten_requests= all_requests
+    
+    top_ten_requests= all_requests
+
+    # top_ten_requests = []
+    # if len(all_requests) > 10 :
+    #     top_ten_requests = all_requests[0:10]
+    # else:
+    #     top_ten_requests= all_requests
 
     entities_count = {}
     entities_positive_sentiment_count = {}

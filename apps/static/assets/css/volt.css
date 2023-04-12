@@ -19969,4 +19969,27 @@ stroke: #da2f11;
 	max-height:800px;
 }
 
+.dot-rectangle-blue {
+  width: 100%;
+  height: 100%;
+  border: 2px dotted blue;
+  border-radius: 5px;
+}
+
+.dot-rectangle-green {
+  width: 100%;
+  height: 70%;
+  border: 2px dotted green;
+  border-radius: 5px;
+}
+
+.dot-rectangle-purple {
+  width: 100%;
+  height: 70%;
+  border: 2px dotted purple;
+  border-radius: 5px;
+}
+
+
+
 
