@@ -3207,11 +3207,11 @@ def requests_ner_analytics_bulk(request):
 
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
     
-    top_ten_requests = []
-    if len(all_requests) > 10 :
-        top_ten_requests = all_requests[0:10]
-    else:
-        top_ten_requests= all_requests
+    top_ten_requests = all_requests
+    # if len(all_requests) > 10 :
+    #     top_ten_requests = all_requests[0:10]
+    # else:
+    #     top_ten_requests= all_requests
 
     entities_count = {}
     entities_positive_sentiment_count = {}
@@ -3469,7 +3469,7 @@ def requests_category_youtube_analytics_bulk(request):
         "labels": data_out_label
     }
 
-    print(colored(category_bulk_list_chart_top_count, 'green'))
+    # print(colored(category_bulk_list_chart_top_count, 'green'))
 
     return render(request, 'home/requests-category_youtube_analytics_report.html', {"msg": 'SUCCESS',
                                                             "segment": 'category-youtube-analytics',
@@ -3500,11 +3500,11 @@ def requests_keyword_analytics_bulk(request):
 
     all_requests = get_request_list_bulk_mongodb(request, bulk_id)
     
-    top_ten_requests = []
-    if len(all_requests) > 10 :
-        top_ten_requests = all_requests[0:10]
-    else:
-        top_ten_requests= all_requests
+    top_ten_requests = all_requests
+    # if len(all_requests) > 10 :
+    #     top_ten_requests = all_requests[0:10]
+    # else:
+    #     top_ten_requests= all_requests
 
     keywords_count = {}
     keywords_positive_sentiment_count = {}

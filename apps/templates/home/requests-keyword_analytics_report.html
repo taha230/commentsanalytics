@@ -42,7 +42,7 @@
                         <path d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
                         <path d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
                     </svg>
-                    Keyword Sample Requests
+                    Keyword Requests
                 </h1>
             </div>
             
@@ -52,7 +52,7 @@
         <div class="card border-0 shadow mb-4">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-centered table-nowrap mb-0 rounded">
+                    <table class="table table-flush table-centered table-nowrap mb-0 rounded" id="datatable-searchable">
                         <thead class="thead-light">
                             <tr>
                                 <th class="border-0 rounded-start">#</th>
@@ -76,7 +76,7 @@
                                 </td>
                                 <td>
                                 {% if row.sentiment != None %}
-                                        {{ row.sentiment }}
+                                    {% include "includes/request_single_result.html" %}
                                 {% endif %}
                                 </td>
                             </tr>
