@@ -41,10 +41,21 @@
 
                             <div class="col-sm-2 mb-1">
                                 <label for="type">Type (<B style="color:red">*</B>)</label>
-                                <select class="form-select mb-0 " id="request_type" name="input_request_type" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
-                                    <option value="" selected disabled hidden>Choose ...</option>
-                                    <option value="Youtube-Category Extraction" >Youtube-Category Extraction</option>
-                                </select>
+                                {% if requests_types|length == 1 %}
+                                    <select class="form-select mb-0 " name="input_request_type" aria-label="Request Type" placeholder="Request Type" disabled>
+                                        <option value="{{ row }}" selected> {{ requests_types.0 }}</option>
+                                    </select>
+                                    <textarea name="input_request_type" hidden> {{ requests_types.0 }}</textarea>
+
+                                {% else %}
+                                    <select class="form-select mb-0 " name="input_request_type" aria-label="Request Type" placeholder="Request Type" required> <!-- required -->
+                                        <option value="" selected disabled hidden>Choose ...</option>
+                                        {% for row in requests_types %}
+                                            <option value="{{ row }}" >{{ row }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

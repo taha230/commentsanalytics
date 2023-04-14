@@ -38,6 +38,11 @@ urlpatterns = [
     path('profile_client/', views.profile_client, name="profile_client"),
     path('dashboard_client_weekly/', views.dashboard_client_weekly, name="dashboard_client_weekly"),
     path('requests_new_bulk/', views.requests_new_bulk, name="requests_new_bulk"),
+    path('requests_new_bulk_sentiment/', views.requests_new_bulk_sentiment, name="requests_new_bulk_sentiment"),
+    path('requests_new_bulk_ner/', views.requests_new_bulk_ner, name="requests_new_bulk_ner"),
+    path('requests_new_bulk_keyword/', views.requests_new_bulk_keyword, name="requests_new_bulk_keyword"),
+    path('requests_new_bulk_category/', views.requests_new_bulk_category, name="requests_new_bulk_category"),
+
     path('change_password_client/', views.change_password_client, name="change_password_client"),
     re_path(r'^requests_new_bulk_data_confirm/', views.requests_new_bulk_data_confirm, name="requests_new_bulk_data_confirm"), # use regular expression for handle all pages /P*
     re_path(r'^requests_bulk_status_client/', views.requests_bulk_status_client, name="requests_bulk_status_client"), # use regular expression for handle all pages /P*

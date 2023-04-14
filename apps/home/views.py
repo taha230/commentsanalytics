@@ -2363,6 +2363,50 @@ def requests_new_bulk(request):
     return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'requests-new', "requests_types": requests_types})
 
 @login_required(login_url="/login/")
+def requests_new_bulk_sentiment(request):
+
+    insert_user_log_db (request.user, 'New_Bulk_Sentiment')
+
+    requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple) 
+    requests_types = [Request_Type.SENTIMENT_ANALYSIS.value]
+
+    return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'sentiment-new', "requests_types": requests_types})
+
+@login_required(login_url="/login/")
+def requests_new_bulk_ner(request):
+
+    insert_user_log_db (request.user, 'New_Bulk_NER')
+
+    requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple) 
+    requests_types = [Request_Type.NAMED_ENTITY_RECOGNITION.value]
+
+    return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'ner-new', "requests_types": requests_types})
+
+@login_required(login_url="/login/")
+def requests_new_bulk_keyword(request):
+
+    insert_user_log_db (request.user, 'New_Bulk_Keyword')
+
+    requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple) 
+    requests_types = [Request_Type.KEYWORD_EXTRACTION.value]
+
+    return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'keyword-new', "requests_types": requests_types})
+
+@login_required(login_url="/login/")
+def requests_new_bulk_category(request):
+
+    insert_user_log_db (request.user, 'New_Bulk_Category')
+
+    requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple) 
+    requests_types = [Request_Type.YOUTUBE_CATEGORY_EXTRACTION.value]
+
+    return render(request, "home/requests-new_bulk.html", {"msg": 'SUCCESS' , "segment": 'category-new', "requests_types": requests_types})
+
+@login_required(login_url="/login/")
 def requests_sentiment_single_client(request):
 
     valid_to_submit = True
@@ -2376,8 +2420,11 @@ def requests_sentiment_single_client(request):
     except Exception as e:
         pass
     
-    requests_types_tuple = list(Request_Type.choices())
-    requests_types = list((i[1]) for i in requests_types_tuple)
+    # requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple)
+    requests_types = [Request_Type.SENTIMENT_ANALYSIS.value]
+
+
     request_result = ''
     try:
         if request.method == "POST": 
@@ -2435,8 +2482,10 @@ def requests_ner_single_client(request):
     except Exception as e:
         pass
     
-    requests_types_tuple = list(Request_Type.choices())
-    requests_types = list((i[1]) for i in requests_types_tuple)
+    # requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple)
+    requests_types = [Request_Type.NAMED_ENTITY_RECOGNITION.value]
+
     request_result = ''
     try:
         if request.method == "POST": 
@@ -2494,8 +2543,10 @@ def requests_keyword_single_client(request):
     except Exception as e:
         pass
     
-    requests_types_tuple = list(Request_Type.choices())
-    requests_types = list((i[1]) for i in requests_types_tuple)
+    # requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple)
+    requests_types = [Request_Type.KEYWORD_EXTRACTION.value]
+
     request_result = ''
     try:
         if request.method == "POST": 
@@ -2553,8 +2604,9 @@ def requests_category_single_client(request):
     except Exception as e:
         pass
     
-    requests_types_tuple = list(Request_Type.choices())
-    requests_types = list((i[1]) for i in requests_types_tuple)
+    # requests_types_tuple = list(Request_Type.choices())
+    # requests_types = list((i[1]) for i in requests_types_tuple)
+    requests_types = [Request_Type.YOUTUBE_CATEGORY_EXTRACTION.value]
     request_result = ''
     try:
         if request.method == "POST": 
