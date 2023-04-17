@@ -370,7 +370,9 @@ def login_with_google(request):
             # add user_key to user_other_fields table
             user_key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
             free_plan = Plan.objects.all().filter(price= 0)[0]
-            user_other_fields_obj = User_Other_Fields(user = request.user, user_key = user_key, plan = free_plan)
+            expired_date = datetime.datetime.now() + datetime.timedelta(days=31) # to expire the remain_count within one month
+
+            user_other_fields_obj = User_Other_Fields(user = request.user, remain_count=free_plan.count, user_key = user_key, plan = free_plan, expired_date = expired_date)
             user_other_fields_obj.save()
 
             # send new user sign up notification to admin
