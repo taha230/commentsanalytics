@@ -5714,6 +5714,7 @@ def user_log_admin(request):
                                                                 "last_pagination": last_pagination,
                                                                 "page_limit": len(row_list_user_log),
                                                                 "total_items": total_count_user_log,
+                                                                "current_time": datetime.datetime.now(),
                                                                 "user_log_list": row_list_user_log})
 
 @staff_member_required(login_url="/login/")
