@@ -468,6 +468,7 @@ def get_user_list_page(request, start, limit):
 @login_required(login_url="/login/")
 def get_user_list_all(request):
     
+    start = 0
     try:
         ################################ Select from auth_user Table #################################
 
@@ -1113,6 +1114,7 @@ def get_user_log_list_page_mongodb(request, start, limit, user):
 
 def get_user_log_list_all_mongodb(request, user):
 
+    start = 0
     try:
         ################################ Select from user_log Table Mongodb #################################
 
