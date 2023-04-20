@@ -465,6 +465,96 @@ def get_user_list_page(request, start, limit):
         print(e)
         return [], 0
 
+@login_required(login_url="/login/")
+def get_user_list_all(request):
+    
+    try:
+        ################################ Select from auth_user Table #################################
+
+        row_list = []
+
+        # sorted by date_joined
+        row_list_all = sorted(User.objects.all(), key = lambda x: x.date_joined, reverse = True)
+        total_count = User.objects.all().count()
+
+        for index, row in enumerate(list(row_list_all)):
+            try:
+                # if (index < start):
+                #     continue
+                # if (index >= (start+limit)):
+                #     break
+
+                row_json = {}
+                row_json['index'] = index + 1 + start
+                row_json['id'] = row.id
+                row_json['remain_count'] = 0
+                row_json['user_key'] = '-1'
+                try:
+                    user_other_fields_obj = User_Other_Fields.objects.filter(user_id=row.id)[0]
+
+                    expired_date_short = user_other_fields_obj.expired_date
+                    try:
+                        expired_date_short = user_other_fields_obj.expired_date.strftime("%b %d, %Y")
+                    except Exception as e:
+                        print(e)
+                    row_json['expired_date'] = expired_date_short
+                    row_json['is_expired'] = True
+                    
+                    try:
+                        if (user_other_fields_obj.expired_date.replace(tzinfo=None) > datetime.datetime.now().replace(tzinfo=None)):
+                            row_json['is_expired'] = False
+                    except Exception as e:
+                        print(e)
+                    
+                    row_json['remain_count'] =  user_other_fields_obj.remain_count
+                    row_json['user_key'] = user_other_fields_obj.user_key
+                except Exception as e:
+                    pass
+
+                last_login_short = row.last_login
+                try:
+                    last_login_short = row.last_login.strftime("%b %d, %Y %H:%M")
+                except Exception as e:
+                    print(e)
+                row_json['last_login'] = last_login_short
+
+                date_joined_short = row.date_joined
+                try:
+                    date_joined_short = row.date_joined.strftime("%b %d, %Y")
+                except Exception as e:
+                    print(e)
+                row_json['date_joined'] = date_joined_short
+
+                row_json['is_superuser'] = row.is_superuser
+                row_json['username'] = row.username
+                row_json['password'] = row.password
+                row_json['first_name'] = row.first_name
+                row_json['last_name'] = row.last_name
+                row_json['email'] = row.email
+                row_json['is_active'] = row.is_active
+                row_json['is_staff'] = row.is_staff
+
+                user_plan_name = 'Admin'
+                if (row.is_superuser == 0):
+                    user_plan_name = get_user_plan_name(row.id)
+
+                row_json['plan'] = user_plan_name
+
+                row_list.append(row_json)
+
+            except Exception as e:
+                print(e)
+                continue
+
+        print(colored('User select successfully from admin user !!!', 'green'))
+
+        return row_list, total_count
+
+    except Exception as e:
+        print(colored('Unsuccessful User selection !!!', 'red'))
+        print(e)
+        return [], 0
+
 def get_user_plan_name(user_id):
     plan_name = 'Admin'
     try:
@@ -978,6 +1068,65 @@ def get_user_log_list_page_mongodb(request, start, limit, user):
         else: # filtered by user (Client)
             query_log = {'user': request.user.id}
             row_list_all = collection_User_Log.find(query_log).sort([("time_slot", -1)])[start : start + limit]
+            total_count = collection_User_Log.find(query_log).count()
+
+
+        for index, row in enumerate(list(row_list_all)):
+            try:
+
+        
+                row_json = {}
+                row_json['index'] = index + 1 + start
+                row_json['user'] = ''
+                row_json['user_name'] = ''
+                try:
+                    row_json['user'] = User.objects.all().filter(id=row['user'])[0].email
+                    row_json['username'] = User.objects.all().filter(id=row['user'])[0].username
+                except Exception as e:
+                    pass
+                
+                row_json['activity'] = row['activity']
+                row_json['time_slot'] = row['time_slot']
+
+                user_plan_name = 'Admin'
+                if (row['user'] != "18"): # admin user id = 18
+                    user_plan_name = get_user_plan_name(row['user'])
+
+                row_json['plan'] = user_plan_name
+                
+            
+                row_list.append(row_json)
+
+            except Exception as e:
+                print(e)
+                continue
+
+
+        print(colored('User_Log select successfully from client user !!!', 'green'))
+
+        return row_list, total_count
+
+    except Exception as e:
+        print(colored('Unsuccessful User_Log selection !!!', 'red'))
+        print(e)
+        return [], 0
+
+def get_user_log_list_all_mongodb(request, user):
+
+    try:
+        ################################ Select from user_log Table Mongodb #################################
+
+        row_list = []
+
+        # sorted by request_time_slot
+        if (user == None): # return all bulks (Admin)
+            query_log = {}
+            row_list_all = collection_User_Log.find(query_log).sort([("time_slot", -1)])
+            total_count = collection_User_Log.find(query_log).count()
+
+        else: # filtered by user (Client)
+            query_log = {'user': request.user.id}
+            row_list_all = collection_User_Log.find(query_log).sort([("time_slot", -1)])
             total_count = collection_User_Log.find(query_log).count()
 
 
@@ -5292,7 +5441,8 @@ def userslist_admin(request):
     
     start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
 
-    row_list_users, total_count_users = get_user_list_page(request, start, ROW_LIST_SHOW_COUNT)
+    # row_list_users, total_count_users = get_user_list_page(request, start, ROW_LIST_SHOW_COUNT)
+    row_list_users, total_count_users = get_user_list_all(request)
 
     total_users, monthly_avg_users, montly_users_list = get_users_statistics()
 
@@ -5694,7 +5844,8 @@ def user_log_admin(request):
         
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
 
-        row_list_user_log, total_count_user_log = get_user_log_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, None)
+        # row_list_user_log, total_count_user_log = get_user_log_list_page_mongodb(request, start, ROW_LIST_SHOW_COUNT, None)
+        row_list_user_log, total_count_user_log = get_user_log_list_all_mongodb(request, None) # to show in dynamic researchable table
         
         last_pagination = 1
         if (total_count_user_log == 0):
