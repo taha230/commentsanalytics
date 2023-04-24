@@ -11,3 +11,25 @@ Best regards,
 Taha Hamedani
 
 CommentAnalytics CEO
+
+
+[Analyzing Your YouTube Video with CommentAnalytics]
+
+Dear Brian,
+
+I hope this email finds you in good health. My name is Taha, an AI software engineer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities, and keywords.
+
+I analyzed your recent video "7 Tools I Use as a Developer | Day in the Life of a Software Engineer" (https://www.youtube.com/watch?v=hBk8Y4NOa4I) and extracted insightful findings to share with you.
+
+Here's a summary of my analysis:
+
+* Sentiment Analysis: Positive - 60%, Neutral - 37%, Negative - 1% (Great!)
+* The most frequent keywords in comments were "Video, Videso, Love, Bike, ..." which occurred 24, 20, 10, and 9 times with 75%, 90%, 100%, and 56% positive sentiment! (keyword cloud is attached)
+* The question was the most dominant category, with 61 comments and 31% positive sentiment.
+I have attached detailed charts and Excel sheets with my analysis for your reference.
+
+I invite you to visit commentsanalytics.com and sign up for CommentAnalytics to experience the tool yourself. As I am new to comment analysis, I would greatly appreciate your valuable feedback on my analysis and any suggestions you may have for further improvement. Thank you for your time and consideration, and I look forward to hearing from you soon.
+
+Best regards,
+Taha
+Comments Analytics
