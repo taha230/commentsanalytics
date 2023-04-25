@@ -606,6 +606,35 @@ def get_business_names_list_page(input_list, start, limit):
         print(e)
         return [], 0
 
+def get_business_names_list_all(input_list):
+
+    try:
+        ################################ Select from input Business Names #################################
+
+        row_list = []
+        total_count = len(input_list)
+
+        for index, row in enumerate(input_list):
+            try:    
+                row_json = {}
+                row_json['index'] = index + 1
+                row_json['name'] = row
+                
+                row_list.append(row_json) 
+
+            except Exception as e:
+                print(e)
+                continue
+
+        print(colored('business_names select successfully from user !!!', 'green'))
+
+        return row_list, total_count
+
+    except Exception as e:
+        print(colored('Unsuccessful User selection !!!', 'red'))
+        print(e)
+        return [], 0
+
 def get_bulk_list_page(request, start, limit, user):
     try:
         ################################ Select from home_Bulk Table #################################
@@ -3043,7 +3072,8 @@ def requests_new_bulk_data_confirm(request):
         
         start = (current_pagination-1) * ROW_LIST_SHOW_COUNT
 
-        row_list_bulk, total_count_names = get_business_names_list_page(business_names_list, start, ROW_LIST_SHOW_COUNT)
+        # row_list_bulk, total_count_names = get_business_names_list_page(business_names_list, start, ROW_LIST_SHOW_COUNT)
+        row_list_bulk, total_count_names = get_business_names_list_all(business_names_list)
 
         
 
@@ -3514,7 +3544,7 @@ def requests_ner_analytics_bulk(request):
         
         if (len(data_out_label) == 10):
             break
-        
+
     ner_bulk_list_chart_top_count = {
         "data_positive" :data_out_sentiment_positive,
         "data_neutral" :data_out_sentiment_neutral,
