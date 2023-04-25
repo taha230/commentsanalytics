@@ -3493,8 +3493,6 @@ def requests_ner_analytics_bulk(request):
         data_out_count.append(entities_count[sorted_item[0]])
         data_out_label.append(sorted_item[0])
         
-        if (len(data_out_label) == 10):
-            break
         
         # Positive
         if (sorted_item[0] in entities_positive_sentiment_count):
@@ -3514,7 +3512,9 @@ def requests_ner_analytics_bulk(request):
         else:
             data_out_sentiment_negative.append(0)
         
-
+        if (len(data_out_label) == 10):
+            break
+        
     ner_bulk_list_chart_top_count = {
         "data_positive" :data_out_sentiment_positive,
         "data_neutral" :data_out_sentiment_neutral,
@@ -3784,8 +3784,6 @@ def requests_keyword_analytics_bulk(request):
         data_out_count.append(keywords_count[sorted_item[0]])
         data_out_label.append(sorted_item[0])
         
-        if (len(data_out_label) == 10):
-            break
         
         # Positive
         if (sorted_item[0] in keywords_positive_sentiment_count):
@@ -3804,7 +3802,9 @@ def requests_keyword_analytics_bulk(request):
             data_out_sentiment_negative.append(keywords_negative_sentiment_count[sorted_item[0]])
         else:
             data_out_sentiment_negative.append(0)
-        
+
+        if (len(data_out_label) == 10):
+            break    
 
     keyword_bulk_list_chart_top_count = {
         "data_positive" :data_out_sentiment_positive,
