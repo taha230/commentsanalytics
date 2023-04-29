@@ -63,6 +63,9 @@ def sentiment_analysis_vader(input_text):
 def sentiment_analysis_twitter_roberta_base_sentiment(input_text):
 
     sentiment_value = 'Neutral'
+
+    if len(input_text) > 300:
+        input_text = input_text[0:300]
     try:
         sentiment_list = sentiment_pipeline([input_text])
         print(colored(sentiment_list, 'green'))
