@@ -6,12 +6,12 @@
             <th class="border-0" width="2%">type</th>
             <th class="border-0">start time</th>
             <th class="border-0">end time</th>
-            <th class="border-0">passed</th>
+            <th class="border-0" width="9%" >passed</th>
             <th class="border-0">total</th>
             <th class="border-0">status</th>
             <th class="border-0" width="15%">progress / sentiment</th>
 
-            <th class="border-0 rounded-end">Export</th>
+            <th class="border-0 rounded-end" width="14%">Export</th>
         </tr>
     </thead>
     <tbody>
@@ -46,13 +46,13 @@
                         <div class="">
                             
                             <small class="text-gray-500">
-                              <div style="color:rgb(20, 168, 0); background-color:#d6f0d9;">Pos : {{ row.positive_count }} </div>
+                              <div style="color:rgb(20, 168, 0); background-color:#d6f0d9;">Pos : {{ row.positive_count }} ({{ row.positive_percent }}%)</div>
                             </small> 
                             <small class="text-gray-500">
-                              <div style="color:rgb(180, 153, 0); background-color:#f1f0d8;">Neu : {{ row.neutral_count }} </div>
+                              <div style="color:rgb(180, 153, 0); background-color:#f1f0d8;">Neu : {{ row.neutral_count }} ({{ row.neutral_percent }}%)</div>
                             </small> 
                             <small class="text-gray-500">
-                              <div style="color:rgb(247, 18, 18); background-color:#f3ddd9;">Neg : {{ row.negative_count }} </div>
+                              <div style="color:rgb(247, 18, 18); background-color:#f3ddd9;">Neg : {{ row.negative_count }} ({{ row.negative_percent }}%)</div>
                             </small> 
                             
                         </div>
