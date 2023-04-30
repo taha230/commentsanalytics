@@ -111,7 +111,7 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
     sentiment_value = 'Neutral'
     try:
         request_type = 'Sentiment Analysis'
-        url = "http://" + str(IP_SINGLE_API) + ":8942/CA_single?request_type=" + request_type +"&text=" + input_text
+        url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
 
         payload = ""
         headers = {
@@ -126,37 +126,53 @@ def sentiment_analysis_twitter_roberta_base_sentiment_API(input_text):
 
     return sentiment_value
 
-def detect_ner(text):
-    # Load the spaCy English language model
-    nlp = spacy.load('en_core_web_sm')
-
-    # Process the text with the model to generate a Doc object
-    doc = nlp(text)
-
-    # Extract named entities from the Doc object
+def detect_ner(input_text):
+    
     entities = []
-    ignored_entities = ['CARDINAL']
 
-    for ent in doc.ents:
-        if ent.label_ not in ignored_entities:
-            entities.append((ent.text, ent.label_))
+    try:
+        request_type = 'Named-Entity Recognition'
+        url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
 
+        payload = ""
+        headers = {
+            'content-type': "application/json"
+        }
+
+        response = requests.request("GET", url, data=payload, headers=headers)
+        if ('result' in response.json()):
+            return response.json()['result']
+    except Exception as e:
+        print(e)
+
+    
     return entities
 
-def extract_keywords(text):
-    # Initialize the KeyBERT model with the 'distilbert-base-nli-mean-tokens' pre-trained model
-    model = KeyBERT('distilbert-base-nli-mean-tokens')
+def extract_keywords(input_text):
+    keywords_out = []
 
-    # Extract keywords with the model
-    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=3)
-    # keywords = model.extract_keywords(text, top_n=5)
-    keywords_out = [keyword[0] for keyword in keywords]
+    try:
+        request_type = 'Keyword Extraction'
+        url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
 
+        payload = ""
+        headers = {
+            'content-type': "application/json"
+        }
+
+        response = requests.request("GET", url, data=payload, headers=headers)
+        if ('result' in response.json()):
+            return response.json()['result']
+    except Exception as e:
+        print(e)
+
+    
     return keywords_out
 
 def extract_category_youtube(input_text):
 
-    category_list = []
+    category_list = ['Others']
+
     try:
         request_type = 'Youtube-Category Extraction'
         url = "http://" + str(IP_SINGLE_API_CATEGORY) + ":8943/CA_single?request_type=" + request_type +"&text=" + input_text
@@ -172,7 +188,7 @@ def extract_category_youtube(input_text):
     except Exception as e:
         print(e)
 
-    return sentiment_value
+    return category_list
 
 def find_CA(index):
 

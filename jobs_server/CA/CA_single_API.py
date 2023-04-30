@@ -28,6 +28,7 @@ from keybert import KeyBERT
 
 # sentiment_pipeline = pipeline("sentiment-analysis")
 # sentiment_pipeline = pipeline(model="finiteautomata/bertweet-base-sentiment-analysis")
+
 sentiment_pipeline = pipeline(model="cardiffnlp/twitter-roberta-base-sentiment")
 
 application = flask.Flask(__name__)
