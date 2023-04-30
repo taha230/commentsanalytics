@@ -12,20 +12,22 @@ Taha Hamedani
 
 CommentAnalytics CEO
 
-admin@nilered.ca
+#################################################################################################################
+dawiddoestechstuff@gmail.com
+
 [Analyzing Your YouTube Video Comments with CommentAnalytics] 
 
-Dear NileBlue YouTube Channel Admin,
+Dear Dawid Does Tech Stuff YouTube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software engineer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
 
-I analyzed your recent video "Making food that lasts forever" (https://www.youtube.com/watch?v=HBz9pOZOS4k) and extracted insightful findings to share with you.
+I analyzed your recent video "I Use ONLY "Amazon's Choice" Crap To Upgrade My Gaming PC..." (https://www.youtube.com/watch?v=vCcr5cBjG48) and extracted insightful findings to share with you.
 
 Here's a summary of my analysis:
 
-* Sentiment Analysis: Positive - 35%, Neutral - 43%, Negative - 20% (Good!)
-* The most frequent keywords in comments were "concrete, video, cement, love , ..." which occurred 214, 63, 55, and 36 times with 39%, 54%, 24%, and 92% positive sentiment! (keyword cloud is attached)
-* 'Personal Experience' was the most dominant category, with 261 comments and 48% positive sentiment.(Good!)
+* Sentiment Analysis: Positive - 36%, Neutral - 39%, Negative - 23% (Good!)
+* The most frequent keywords in comments were "amazon, taco, cooler, pc, ..." which occurred 50, 37, 33, and 33 times with 30%, 41%, 52%, and 36% positive sentiment! (keyword cloud is attached)
+* 'Pricing' was the most dominant category, with 151 comments and 46% positive sentiment.(Great!)
 I have attached detailed charts and Excel sheets with my analysis for your reference.
 
 Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purpose, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
