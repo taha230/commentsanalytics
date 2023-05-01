@@ -30,7 +30,7 @@ from bson.objectid import ObjectId
 
 #################################### Variables ##############################################
 
-PASSED_DAYS = 10
+PASSED_DAYS = 3
 
 mongo_address = 'localhost'
 DB_NAME = 'CommentsAnalytics'
