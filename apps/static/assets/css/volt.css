@@ -19835,7 +19835,7 @@ article .h1, article .h2, article .h3, article .h4, article .h5, article .h6 {
   z-index: 9999; }
 
   /* # Blink */
-blink {
+.blink {
   -webkit-animation: 2s linear infinite condemned_blink_effect; /* for Safari 4.0 - 8.0 */
   animation: 2s linear infinite condemned_blink_effect;
 }
