@@ -497,7 +497,8 @@ def get_user_list_all(request):
                     try:
                         expired_date_short = user_other_fields_obj.expired_date.strftime("%b %d, %Y")
                     except Exception as e:
-                        print(e)
+                        # print(e)
+                        pass
                     row_json['expired_date'] = expired_date_short
                     row_json['is_expired'] = True
                     
@@ -505,7 +506,8 @@ def get_user_list_all(request):
                         if (user_other_fields_obj.expired_date.replace(tzinfo=None) > datetime.datetime.now().replace(tzinfo=None)):
                             row_json['is_expired'] = False
                     except Exception as e:
-                        print(e)
+                        # print(e)
+                        pass
                     
                     row_json['remain_count'] =  user_other_fields_obj.remain_count
                     row_json['user_key'] = user_other_fields_obj.user_key
@@ -516,14 +518,16 @@ def get_user_list_all(request):
                 try:
                     last_login_short = row.last_login.strftime("%b %d, %Y %H:%M")
                 except Exception as e:
-                    print(e)
+                    # print(e)
+                    pass
                 row_json['last_login'] = last_login_short
 
                 date_joined_short = row.date_joined
                 try:
                     date_joined_short = row.date_joined.strftime("%b %d, %Y")
                 except Exception as e:
-                    print(e)
+                    # print(e)
+                    pass
                 row_json['date_joined'] = date_joined_short
 
                 row_json['is_superuser'] = row.is_superuser
@@ -544,7 +548,7 @@ def get_user_list_all(request):
                 row_list.append(row_json)
 
             except Exception as e:
-                print(e)
+                # print(e)
                 continue
 
         print(colored('User select successfully from admin user !!!', 'green'))
