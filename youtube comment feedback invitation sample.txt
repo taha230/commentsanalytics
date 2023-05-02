@@ -13,21 +13,22 @@ Taha Hamedani
 CommentAnalytics CEO
 
 #################################################################################################################
-dawiddoestechstuff@gmail.com
 
-[Analyzing Your YouTube Video Comments with CommentAnalytics] 
+safiya@night.co
 
-Dear Dawid Does Tech Stuff YouTube Channel Admin,
+[Analyzing Your recent YouTube Video Comments with CommentAnalytics] 
+
+Dear Safiya Nygaard Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software engineer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
 
-I analyzed your recent video "I Use ONLY "Amazon's Choice" Crap To Upgrade My Gaming PC..." (https://www.youtube.com/watch?v=vCcr5cBjG48) and extracted insightful findings to share with you.
+I analyzed your recent video "I Went To An Icelandic Geothermal Spa" (https://www.youtube.com/watch?v=3hyBe3b1sS8) and extracted insightful findings to share with you.
 
 Here's a summary of my analysis:
 
-* Sentiment Analysis: Positive - 36%, Neutral - 39%, Negative - 23% (Good!)
-* The most frequent keywords in comments were "amazon, taco, cooler, pc, ..." which occurred 50, 37, 33, and 33 times with 30%, 41%, 52%, and 36% positive sentiment! (keyword cloud is attached)
-* 'Pricing' was the most dominant category, with 151 comments and 46% positive sentiment.(Great!)
+* Sentiment Analysis: Positive - 29%, Neutral - 42%, Negative - 28% (Good!)
+* The most frequent keywords in comments were "tank, tanks, video, ukraine, ..." which occurred 71, 68, 60, and 42 times with 27%, 24%, 63%, and 10% positive sentiment! (keyword cloud is attached)
+* 'Feedback' was the most dominant category, with 246 comments and 50% positive sentiment.(Great!)
 I have attached detailed charts and Excel sheets with my analysis for your reference.
 
 Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purpose, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
