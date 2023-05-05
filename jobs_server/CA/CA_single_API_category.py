@@ -134,7 +134,7 @@ def extract_keywords(text):
     for keyword in keywords:
         try:
             if keyword[0] not in ignore_keywords:
-                keywords_out.append[keyword[0]]
+                keywords_out.append(keyword[0])
         except Exception as e:
             print(e)
 
