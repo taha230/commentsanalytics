@@ -14,24 +14,24 @@ CommentAnalytics CEO
 
 #################################################################################################################
 
-safiya@night.co
+mail@sidsnb.com
 
 [Analyzing Your recent YouTube Video Comments with CommentAnalytics] 
 
-Dear Tamer Shaheen Youtube Channel Admin,
+Dear SIDDHARTH BHANUSHALI Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software engineer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
 
-I analyzed your recent video "I Went To An Icelandic Geothermal Spa" (https://www.youtube.com/watch?v=3hyBe3b1sS8) and extracted insightful findings to share with you.
+I analyzed your recent video "Options Trading करते हो तो WATCH THIS NOW | Siddharth Bhanushali" (https://www.youtube.com/watch?v=G40hb8O_qkg) and extracted insightful findings to share with you.
 
 Here's a summary of my analysis:
 
-* Sentiment Analysis: Positive - 50%, Neutral - 30%, Negative - 19% (Great!)
-* The most frequent keywords in comments were "interviews, raw, interview, videos, ..." which occurred 38, 25, 23, and 17 times with 61%, 56%, 65%, and 76% positive sentiment! (keyword cloud is attached)
-* 'Feedback' was the most dominant category, with 71 comments and 66% positive sentiment.(Great!)
+* Sentiment Analysis: Positive - 29%, Neutral - 68%, Negative - 1% (Good!)
+* The most frequent keywords in comments were "sir, playlist, video, trading, ..." which occurred 108, 69, 58, and 46 times with 21%, 22%, 22%, and 17% positive sentiment! (keyword cloud is attached)
+* 'Feedback' was the most dominant category, with 140 comments and 51% positive sentiment.(Great!)
 I have attached detailed charts and Excel sheets with my analysis for your reference.
 
-Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purpose, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
+Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purposes, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
 
 I invite you to visit commentsanalytics.com and sign up for CommentAnalytics to experience the tool yourself.
 I provided a 100 percent discount code "FEEDBACK100" for the starter plan to test it. You only need to export every single video with the Chrome extension link on top of the website.

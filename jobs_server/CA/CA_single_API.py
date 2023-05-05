@@ -103,10 +103,19 @@ def extract_keywords(text):
     # Initialize the KeyBERT model with the 'distilbert-base-nli-mean-tokens' pre-trained model
     model = KeyBERT('distilbert-base-nli-mean-tokens')
 
+
+    ignore_keywords = ['video', 'videos', 'love', 'loves', 'like', 'likes', '[', ']', 'good', 'new', 'bro']
     # Extract keywords with the model
-    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=3)
+    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=5)
     # keywords = model.extract_keywords(text, top_n=5)
-    keywords_out = [keyword[0] for keyword in keywords]
+    keywords_out = []
+
+    for keyword in keywords:
+        try:
+            if keyword[0] not in ignore_keywords:
+                keywords_out.append[keyword[0]]
+        except Exception as e:
+            print(e)
 
     return keywords_out
 
