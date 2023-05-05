@@ -106,7 +106,7 @@ def extract_keywords(text):
 
     ignore_keywords = ['video', 'videos', 'love', 'loves', 'like', 'likes', '[', ']', 'good', 'new', 'bro']
     # Extract keywords with the model
-    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=5)
+    keywords = model.extract_keywords(text, keyphrase_ngram_range=(1, 1), stop_words='english', use_maxsum=True, nr_candidates=20, top_n=3)
     # keywords = model.extract_keywords(text, top_n=5)
     keywords_out = []
 
