@@ -199,7 +199,7 @@ def find_CA(index):
         false_count = get_false_count()
         progress_count = get_process_count()
 
-
+        print(colored(item, 'blue'))
 
         if item is None or (false_count == 0 and progress_count == 0):
             break
@@ -346,8 +346,8 @@ while True:
     false_count = get_false_count()
     process_count = get_process_count()
 
-    print(false_count)
-    print(process_count)
+    print('false count : ' + str(false_count))
+    print('processed count : ' + str(process_count))
 
 
     if (false_count !=0 or process_count != 0):

@@ -137,6 +137,12 @@ def start_CA_single():
         json_out['query'] = text
         if (request_type == 'Sentiment Analysis'):
             json_out['result'] = 'Neutral'
+        elif (request_type == 'Keyword Extraction'):
+            json_out['result'] = []
+
+        elif (request_type == 'Named-Entity Recognition'):
+            json_out['result'] = []
+        
         else:
             json_out['result'] = str([])
 
@@ -148,6 +154,11 @@ def start_CA_single():
         json_out['query'] = text
         if (request_type == 'Sentiment Analysis'):
             json_out['result'] = 'Neutral'
+        elif (request_type == 'Keyword Extraction'):
+            json_out['result'] = []
+
+        elif (request_type == 'Named-Entity Recognition'):
+            json_out['result'] = []
         else:
             json_out['result'] = str([])
 

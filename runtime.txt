@@ -53,3 +53,9 @@ cd /home/CommentsAnalytics/commentsanalytics
 sudo kill -9 $(sudo lsof -t -i:80)
 gunicorn --bind=0.0.0.0:80 core.wsgi:application --workers=4 --worker-class gevent --timeout 1000
   
+
+####################################### Delete Bulk From Mongo ##################################
+mongo
+use CommentsAnalytics
+db.Requests.remove({'bulk' : '6455f1868ce75823f4411e96'}, {multi: true})
+db.Bulks.remove({'_id' : ObjectId('6455f1868ce75823f4411e96')}, {multi: true})
