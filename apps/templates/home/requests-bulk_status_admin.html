@@ -115,26 +115,26 @@
   }
 
    // ========================================= Ajax Calling for updating the bulk list status ==========================================
-   setInterval("update_bulk_field()",5000);
-  function update_bulk_field(){
+  //  setInterval("update_bulk_field()",20000); // Call Ajax every 20 seconds
+  // function update_bulk_field(){
 
-    var $currentLocation = String(window.location);
-    var $page = '1'
-    if ($currentLocation.includes("/P")) {
-      $page = $currentLocation.split('/P')[1].split('/')[0];
-    }
-    // calling ajax to update the table of bulk status accordint to /P
-    $.ajax({
-        url: '/update_bulk_status_ajax_admin/P'+$page,
-        type : "GET", 
-        data : {}, 
-        success : function(response) {
-            $('#table_bulk').html(response);
-        },
-        error: function (response) {
-                console.log(response)
-            }
-    });
-  }
+  //   var $currentLocation = String(window.location);
+  //   var $page = '1'
+  //   if ($currentLocation.includes("/P")) {
+  //     $page = $currentLocation.split('/P')[1].split('/')[0];
+  //   }
+  //   // calling ajax to update the table of bulk status accordint to /P
+  //   $.ajax({
+  //       url: '/update_bulk_status_ajax_admin/P'+$page,
+  //       type : "GET", 
+  //       data : {}, 
+  //       success : function(response) {
+  //           $('#table_bulk').html(response);
+  //       },
+  //       error: function (response) {
+  //               console.log(response)
+  //           }
+  //   });
+  // }
   </script>
 {% endblock javascripts %}

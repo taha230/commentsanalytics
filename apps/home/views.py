@@ -485,6 +485,9 @@ def get_user_list_all(request):
                 # if (index >= (start+limit)):
                 #     break
 
+                if (row.is_superuser):
+                    continue
+
                 row_json = {}
                 row_json['index'] = index + 1 + start
                 row_json['id'] = row.id
