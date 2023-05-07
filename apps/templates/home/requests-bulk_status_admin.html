@@ -98,6 +98,10 @@
     document.getElementById('myform').action = "/bulk_export_sentiment_csv/P1/bulk" + bulk_id;
 
   }
+
+  function delete_button_clicked(bulk_id_input) {
+      document.getElementById('modal_a').href="/delete_bulk_admin/bulk_" + bulk_id_input;
+    }
   // ==================================================================================
 
   function bulk_download_redirect(bulk_id) {

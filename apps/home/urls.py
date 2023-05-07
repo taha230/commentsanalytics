@@ -124,6 +124,7 @@ urlpatterns = [
     re_path(r'^delete_discount/', views.delete_discount, name="delete_discount"), # use regular expression for handle all pages /discount_*
     path('new_discount_admin/', views.new_discount_admin, name="new_discount_admin"),
     re_path(r'^delete_user_admin/user_', views.delete_user_admin, name="delete_user_admin"), # use regular expression for handle all pages /user_*
+    re_path(r'^delete_bulk_admin/bulk_', views.delete_bulk_admin, name="delete_bulk_admin"), # use regular expression for handle all pages /bulk_*
 
 
     ############################################## Match any html files ###################################

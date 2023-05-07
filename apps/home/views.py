@@ -6749,3 +6749,47 @@ def delete_user_admin(request):
         pass
 
     return redirect ('/userslist_admin/')
+
+
+@staff_member_required(login_url="/login/")
+@login_required(login_url="/login/")
+def delete_bulk_admin(request):
+
+    bulk_id = 0
+    try:
+
+
+        bulk_id = 0
+        bulk_id_string = '0'
+        try:
+            bulk_id_string = request.path.split('/bulk_')[-1]
+        except Exception as e:
+            pass
+
+        bulk_id = str(bulk_id_string)
+
+        print(colored('delete from admin bulk:' + str(bulk_id), 'blue'))
+    
+        # deleting bulk from Requests mongo
+        try:
+            query_request = {'bulk': bulk_id_string}
+            collection_Requests.delete_many(query_request)
+
+
+        except Exception as e:
+            print(colored('Exception in Bulk and Requests mongo : ' + str(e), 'red'))
+
+        # Finally deleting bulk from Bulk
+        try:
+            query_bulk = {'_id': ObjectId(bulk_id_string)}
+            collection_Bulks.delete_many(query_bulk)
+
+        except Exception as e:
+            print(colored('Exception in deleting Bulk : ' + str(e), 'red'))
+
+
+    except Exception as e:
+        print(e)
+        pass
+
+    return redirect ('/requests_bulk_status_admin/')

@@ -221,7 +221,7 @@ def find_CA(index):
             if (len(item['query']) <= 2 and request_type == 'Named-Entity Recognition' ):
 
                 print(item['query'])
-                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
+                update_mongo_result_sentiment(item['_id'], [], 'Neutral')
 
                 counter.append('ok')
                 print(colored(f'{len(counter)} === NER added to mongo', 'green'))
@@ -234,7 +234,7 @@ def find_CA(index):
             if (len(item['query']) <= 2 and request_type == 'Keyword Extraction' ):
 
                 print(item['query'])
-                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
+                update_mongo_result_sentiment(item['_id'], [], 'Neutral')
 
                 counter.append('ok')
                 print(colored(f'{len(counter)} === Keyword added to mongo', 'green'))
@@ -247,7 +247,7 @@ def find_CA(index):
             if (len(item['query']) <= 2 and request_type == 'Youtube-Category Extraction'):
 
                 print(item['query'])
-                update_mongo_result_sentiment(item['_id'], str([]), 'Neutral')
+                update_mongo_result_sentiment(item['_id'], [], 'Neutral')
 
                 counter.append('ok')
                 print(colored(f'{len(counter)} === Keyword added to mongo', 'green'))
