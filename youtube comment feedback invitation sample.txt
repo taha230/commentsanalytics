@@ -15,22 +15,6 @@ CommentsAnalytics CEO
 #################################################################################################################
 
 
-RealLifeLore
-thereallifelore@gmail.com
-Why Every Country Has Military Bases in Djibouti
-https://www.youtube.com/watch?v=1S3PhfNHclU
-
-
-Wendover Productions
-wendover@standard.tv
-How Mexico is Becoming the New China
-https://www.youtube.com/watch?v=GXT46osICdY
-
-Simone Giertz
-lukegirgis@belikechildren.com
-What ever happened to Truckla?
-https://www.youtube.com/watch?v=bmUW0dzQPmY
-
 Two Minute Papers
 karoly@twominutepapers.com
 AutoGPT: This Is ChatGPT Supercharged!
@@ -38,17 +22,17 @@ https://www.youtube.com/watch?v=LqjVMy2qhRY
 
 [Analyzing Your recent YouTube Video Comments with CommentsAnalytics] 
 
-Dear Vsauce2 Youtube Channel Admin,
+Dear Two Minute Papers Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software developer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentsAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
 
-I analyzed your recent video "The Line Between Smart and Crazy" (https://www.youtube.com/watch?v=_oa-1ZBG3Ao) and extracted insightful findings to share with you.
+I analyzed your recent video "AutoGPT: This Is ChatGPT Supercharged!" (https://www.youtube.com/watch?v=LqjVMy2qhRY) and extracted insightful findings to share with you.
 
 Here's a summary of my analysis:
 
-* Sentiment Analysis: Positive - 13%, Neutral - 63%, Negative - 23% (Not Bad!)
-* The most frequent keywords in comments were "beans, jelly, jellybeans, jar, ..." which occurred 86, 56, 21, and 18 times with 3%, 2%, 0%, and 6% positive sentiment! (keyword cloud is attached)
-* 'Feedback' was the most dominant category, with 220 comments and 16% positive sentiment.(Not Bad!)
+* Sentiment Analysis: Positive - 38%, Neutral - 34%, Negative - 27% (Great!)
+* The most frequent keywords in comments were "autogpt, run, ai, future, ..." which occurred 14, 10, 8, and 7 times with 14%, 40%, 13%, and 29% positive sentiment! (keyword cloud is attached)
+* 'Feedback' was the most dominant category, with 76 comments and 55% positive sentiment.(Good !!!)
 I have attached detailed charts and Excel sheets with my analysis for your reference.
 
 Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purposes, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
