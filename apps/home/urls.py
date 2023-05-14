@@ -13,24 +13,24 @@ from django.views.generic import TemplateView
 urlpatterns = [
 
     ############################################## Homepage ##############################################
-    path('', views.homepage, name='homepage'),
+    re_path(r'/?$', views.homepage, name='homepage'),
     path('requests_demo/', views.requests_demo, name='requests_demo'),
-    re_path(r'^blog/', views.homepage_blog, name="blog"), # use regular expression for handle all pages /P*
+    re_path(r'^blog/?$', views.homepage_blog, name="blog"), # use regular expression for handle all pages /P*
     re_path(r'^Post_', views.homepage_blog_post_id, name="blog_post_id"), # use regular expression for handle all posts /Post_*
     re_path(r'^Post/', views.homepage_blog_post_name, name="blog_post_name"), # use regular expression for handle all posts /Post_*
-    path('services/', views.homepage_services, name='services'),
-    path('pricing/', views.homepage_pricing, name='pricing'),
-    path('contact/', views.homepage_contact, name='contact'),
-    path('overview/', views.homepage_overview, name='overview'),
-    path('terms/', views.homepage_terms, name='terms'),
-    path('privacy/', views.homepage_privacy, name='privacy'),
-    path('chrome_extension/', views.homepage_chrome_extension, name='chrome_extension'),
+    re_path(r'services/?$', views.homepage_services, name='services'),
+    re_path(r'pricing/?$', views.homepage_pricing, name='pricing'),
+    re_path(r'contact/?$', views.homepage_contact, name='contact'),
+    re_path(r'overview/?$', views.homepage_overview, name='overview'),
+    re_path(r'terms/?$', views.homepage_terms, name='terms'),
+    re_path(r'privacy/?$', views.homepage_privacy, name='privacy'),
+    re_path(r'chrome_extension/?$', views.homepage_chrome_extension, name='chrome_extension'),
 
 
     
     # sitemap and robots
-    path('sitemap.xml', views.sitemap, name='sitemap'),
-    path('robots.txt', views.robots),
+    re_path(r'sitemap.xml/?$', views.sitemap, name='sitemap'),
+    re_path(r'robots.txt/?$', views.robots),
 
 
     ############################################## Client ################################################
@@ -42,7 +42,6 @@ urlpatterns = [
     path('requests_new_bulk_ner/', views.requests_new_bulk_ner, name="requests_new_bulk_ner"),
     path('requests_new_bulk_keyword/', views.requests_new_bulk_keyword, name="requests_new_bulk_keyword"),
     path('requests_new_bulk_category/', views.requests_new_bulk_category, name="requests_new_bulk_category"),
-
     path('change_password_client/', views.change_password_client, name="change_password_client"),
     re_path(r'^requests_new_bulk_data_confirm/', views.requests_new_bulk_data_confirm, name="requests_new_bulk_data_confirm"), # use regular expression for handle all pages /P*
     re_path(r'^requests_bulk_status_client/', views.requests_bulk_status_client, name="requests_bulk_status_client"), # use regular expression for handle all pages /P*
@@ -124,7 +123,6 @@ urlpatterns = [
     re_path(r'^delete_discount/', views.delete_discount, name="delete_discount"), # use regular expression for handle all pages /discount_*
     path('new_discount_admin/', views.new_discount_admin, name="new_discount_admin"),
     re_path(r'^delete_user_admin/user_', views.delete_user_admin, name="delete_user_admin"), # use regular expression for handle all pages /user_*
-    re_path(r'^delete_bulk_admin/bulk_', views.delete_bulk_admin, name="delete_bulk_admin"), # use regular expression for handle all pages /bulk_*
 
 
     ############################################## Match any html files ###################################
