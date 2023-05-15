@@ -14,25 +14,26 @@ CommentsAnalytics CEO
 
 #################################################################################################################
 
-Nexpo
-nexpo@ballenstudios.com
-A SPECIAL PRESENTATION
-https://www.youtube.com/watch?v=x28js5ikQR4
+
+Austin Evans
+austin@overclockmedia.com
+I bought EVERYTHING Amazon recommended
+https://www.youtube.com/watch?v=SkEibYkY1nQ
 
 
 [Analyzing Your recent YouTube Video Comments with CommentsAnalytics] 
 
-Dear Nexpo Youtube Channel Admin,
+Dear Austin Evans Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software developer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentsAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
 
-I analyzed your recent video "A SPECIAL PRESENTATION" (https://www.youtube.com/watch?v=x28js5ikQR4) and extracted insightful findings to share with you.
+I analyzed your recent video "I bought EVERYTHING Amazon recommended" (https://www.youtube.com/watch?v=SkEibYkY1nQ) and extracted insightful findings to share with you.
 
 Here's a summary of my analysis:
 
-* Sentiment Analysis: Positive - 52%, Neutral - 30%, Negative - 16% (Great!)
-* The most frequent keywords in comments were "nexpo, petscop, runscape, excited, ..." which occurred 86, 72, 49, and 34 times with 58%, 57%, 63%, and 100% positive sentiment! (keyword cloud is attached)
-* 'Feedback' was the most dominant category, with 382 comments and 66% positive sentiment.(Fantastic !!!)
+* Sentiment Analysis: Positive - 24%, Neutral - 49%, Negative - 26% (Good!)
+* The most frequent keywords in comments were "austin, projector, book, amazon, ..." which occurred 44, 13, 11, and 11 times with 23%, 0%, 36%, and 36% positive sentiment! (keyword cloud is attached)
+* 'Feedback' was the most dominant category, with 88 comments and 18% positive sentiment.(Not Bad !!!)
 I have attached detailed charts and Excel sheets with my analysis for your reference.
 
 Our comment analysis tool offers a comprehensive solution for understanding the sentiment of your audience through advanced keyword extraction and named entity recognition. By categorizing comments based on their purposes, such as questions or feedback, you can respond faster and more efficiently. This provides you with valuable insights that will help you improve your content and build a loyal community. Our tool is easy to use and provides accurate results, allowing you to focus on creating engaging content while we take care of the analysis.
