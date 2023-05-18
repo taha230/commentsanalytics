@@ -15,14 +15,6 @@ CommentsAnalytics CEO
 #################################################################################################################
 
 
-Austin Evans
-austin@overclockmedia.com
-I bought EVERYTHING Amazon recommended
-https://www.youtube.com/watch?v=SkEibYkY1nQ
-
-
-[Analyzing Your recent YouTube Video Comments with CommentsAnalytics] 
-
 Dear Austin Evans Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software developer, and an avid viewer of your YouTube channel. I am writing to share my recent analysis of your YouTube video using CommentsAnalytics - an AI tool that provides an in-depth analysis of YouTube comments, including sentiment analysis, comment categories (which include seven classes like Feedback, Question, Personal Experience, etc.), named entities recognition, and keywords extraction.
@@ -41,6 +33,50 @@ Our comment analysis tool offers a comprehensive solution for understanding the 
 I invite you to visit commentsanalytics.com and sign up for CommentsAnalytics to experience the tool yourself.
 I provided a 100 percent discount code "FEEDBACK100" for the starter plan to test it. You only need to export every single video with the Chrome extension link on top of the website.
 As I am new to comment analysis, I would greatly appreciate your valuable feedback on my analysis and any suggestions you may have for further improvement. Thank you for your time and consideration.
+
+Best regards,
+Taha
+Comments Analytics
+
+###############################################################################################################################
+
+Kurzgesagt
+business@kurzgesagt.org
+https://www.youtube.com/watch?v=zFhYJRqz_xk
+Your Body Killed Cancer 5 Minutes Ago
+
+
+
+[Exciting Opportunity to Enhance Your YouTube Channel with CommentsAnalytics!] 
+
+
+Dear Kurzgesagt Youtube Channel Admin,
+
+I hope this email finds you in good health. My name is Taha, an AI software developer. I am reaching out to you to share the results of my recent analysis of your YouTube video using commentsanalytics.com - an AI tool that provides comprehensive insights into YouTube comments.
+
+After analyzing your recent video "Your Body Killed Cancer 5 Minutes Ago" (https://www.youtube.com/watch?v=zFhYJRqz_xk) using CommentsAnalytics, I have gathered some valuable findings that I would like to share with you.
+
+Here is a summary of the analysis:
+
+Sentiment Analysis: The sentiment breakdown of the comments is as follows:
+
+Positive: 41%
+Neutral: 31%
+Negative: 26%
+It's encouraging to see that the majority of comments are neutral or positive.
+Keyword Extraction: The most frequent keywords mentioned in the comments include "cancer, killer, body, cells" and more. These keywords provide insights into the topics that resonated with your audience.
+
+Comment Categories: The most dominant comment category was "Feedback," with 353 comments. These comments had an overall positive sentiment of 51%. This feedback can be invaluable for understanding your audience's preferences and improving your content.
+
+I have attached detailed charts and Excel sheets with the complete analysis for your reference.
+
+CommentsAnalytics offers a comprehensive solution for understanding audience sentiment through advanced keyword extraction and named-entity recognition. By categorizing comments based on their purposes, such as questions or feedback, you can respond more efficiently and effectively. The tool is user-friendly, providing accurate results and allowing you to focus on creating engaging content while we handle the analysis.
+
+I invite you to visit commentsanalytics.com and sign up for CommentsAnalytics to experience the power of our tool yourself. As a gesture of appreciation for your partnership, I have provided a 100% discount code "FEEDBACK100" for the starter plan. You can simply export each video using the Chrome extension available on our website.
+
+As a newcomer in the field of comment analysis, I value your feedback on the analysis and any suggestions you may have for further improvements. Your insights will be instrumental in refining our services.
+
+Thank you for your time and consideration.
 
 Best regards,
 Taha
