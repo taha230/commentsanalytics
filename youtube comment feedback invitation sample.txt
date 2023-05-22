@@ -69,23 +69,23 @@ https://www.youtube.com/watch?v=4m79hDvXeSw
 [Exciting Opportunity to Enhance Your YouTube Channel with CommentsAnalytics!] 
 
 
-Dear Kurzgesagt Youtube Channel Admin,
+Dear The Food Theorists Youtube Channel Admin,
 
 I hope this email finds you in good health. My name is Taha, an AI software developer. I am reaching out to you to share the results of my recent analysis of your YouTube video using commentsanalytics.com - an AI tool that provides comprehensive insights into YouTube comments.
 
-After analyzing your recent video "Your Body Killed Cancer 5 Minutes Ago" (https://www.youtube.com/watch?v=zFhYJRqz_xk) using CommentsAnalytics, I have gathered some valuable findings that I would like to share with you.
+After analyzing your recent video "Food Theory: The SECRET to McDonald’s Sprite!" (https://www.youtube.com/watch?v=4m79hDvXeSw) using CommentsAnalytics, I have gathered some valuable findings that I would like to share with you.
 
 Here is a summary of the analysis:
 
 Sentiment Analysis: The sentiment breakdown of the comments is as follows:
 
-Positive: 41%
-Neutral: 31%
+Positive: 24%
+Neutral: 49%
 Negative: 26%
-It's encouraging to see that the majority of comments are neutral or positive.
-Keyword Extraction: The most frequent keywords mentioned in the comments include "cancer, killer, body, cells" and more. These keywords provide insights into the topics that resonated with your audience.
+It's encouraging to see that the majority of comments are neutral.
+Keyword Extraction: The most frequent keywords mentioned in the comments include "mcdonald, sprite, mcdonalds, ice" and more. These keywords provide insights into the topics that resonated with your audience.
 
-Comment Categories: The most dominant comment category was "Feedback," with 353 comments. These comments had an overall positive sentiment of 51%. This feedback can be invaluable for understanding your audience's preferences and improving your content.
+Comment Categories: The most dominant comment category was "Suggestion" with 271 comments. These comments had an overall positive sentiment of 18%. This categories can prioritize and address comments efficiently for improved customer satisfaction.
 
 I have attached detailed charts and Excel sheets with the complete analysis for your reference.
 
