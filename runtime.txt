@@ -28,7 +28,7 @@ uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-t
 # uwsgi --http-socket :8887 --plugin python3 --wsgi-file wsgi_googleSpreadSheet.py --enable-thread --workers 10
 
 
-####################################### server GPU (95.217.33.222) ##########################################
+####################################### server GPU (95.217.33.222) - > server 138 ##########################################
 
 (screen name : CA_single_API) -- >> single request from CA Dashboard
 cd /home/services_files/CA
