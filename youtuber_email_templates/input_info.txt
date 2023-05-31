@@ -1,0 +1,12 @@
+techmoan@yahoo.com
+Techmoan
+Modern, connected, Micro Hi Fi : Fade to grey - DENON CEOL-N11
+https://www.youtube.com/watch?v=GWTUmwOo088
+100
+200
+30
+a, 500, 50
+b, 400 , 40
+c, 300 , 30
+d, 200, 20
+Feedback, 522,22
