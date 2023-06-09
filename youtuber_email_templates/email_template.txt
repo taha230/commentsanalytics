@@ -1,26 +1,26 @@
  
-Dear Wendover Productions Youtube Channel Admin,
+Dear Matty Matheson Youtube Channel Admin,
 
 I hope you're doing well. My name is Taha, an AI software developer. I am reaching out to you to share the results of my recent analysis of your YouTube video using commentsanalytics.com - an AI tool that provides comprehensive insights into YouTube comments 💬.
 
-After analyzing your recent video "Too Many People Are Going Outside" (https://www.youtube.com/watch?v=37Hmd-VkMIM) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
+After analyzing your recent video "Crunchy Nachos That F@*K! | Cookin' Somethin'" (https://www.youtube.com/watch?v=4X5GLNbABco) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
 
 Here is a summary of the analysis:
 
 Sentiment Analysis: The sentiment breakdown of the comments is as follows:
 
-Positive 🤩: 20%
-Neutral 😐: 35%
-Negative 🥴: 44%
-It's encouraging to see that the majority of comments are Negative. (Not Bad !!! 😐)
+Positive 🤩: 40%
+Neutral 😐: 33%
+Negative 🥴: 26%
+It's encouraging to see that the majority of comments are Positive. (Great !!! 🎉)
 Keyword Extraction: The most frequent keywords mentioned in the comments include "
-parks(107 - 31% Positive),
-tourists(41 - 17% Positive),
-park(40 - 20% Positive),
-media(31 - 3% Positive)
+nachos(62 - 32% Positive),
+matty(35 - 63% Positive),
+cheese(23 - 13% Positive),
+cooking(13 - 23% Positive)
  and more. These keywords provide insights into the topics that resonated with your audience.
 
-Comment Categories: The most dominant comment category was "Personal Experience" with 363 comments. These comments had an overall positive sentiment of 28% (Not Bad !!! 😐). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
+Comment Categories: The most dominant comment category was "Feedback" with 235 comments. These comments had an overall positive sentiment of 45% (Good !!! 💪). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
 
 I have attached detailed charts and Excel sheets with the complete analysis for your reference . 💥📊
 
