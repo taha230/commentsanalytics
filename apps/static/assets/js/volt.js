@@ -582,8 +582,8 @@ d.addEventListener("DOMContentLoaded", function(event) {
         zingchart.render({ 
           id: 'myChart_wordcloud', 
           data: myConfig, 
-          height: '50%', 
-          width: '50%' 
+          height: '50%', // Set to 100% to fully scale to parent container
+          width: '55%', 
         });      
     }
 
