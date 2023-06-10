@@ -572,18 +572,26 @@ d.addEventListener("DOMContentLoaded", function(event) {
               visible: true,
               text: '%text: %hits'
             }
+            
           },
         "words": $data_input_wordcloud,
             }
           }
           ]
         };
+
+        // options: {
+        //   rotate: true // false
+        // };
         
         zingchart.render({ 
           id: 'myChart_wordcloud', 
           data: myConfig, 
-          height: '50%', // Set to 100% to fully scale to parent container
-          width: '55%', 
+          height: 358,
+  width: '100%', 
+          bgcolor: 'yellow',
+          output: 'svg', // Default
+
         });      
     }
 
