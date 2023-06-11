@@ -587,9 +587,9 @@ d.addEventListener("DOMContentLoaded", function(event) {
         zingchart.render({ 
           id: 'myChart_wordcloud', 
           data: myConfig, 
-          height: '45%',
-          width: '55%', 
-          output: 'svg', // Default
+          height: '50%',
+          width: '50%', 
+          // output: 'svg', // Default
 
         });      
     }
