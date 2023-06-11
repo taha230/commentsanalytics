@@ -19960,13 +19960,13 @@ stroke: #da2f11;
 #myChart_wordcloud {
   height:100%;
   width:100%;
-  margin-top: 5rem !important;
+  margin-top: 2rem !important;
   /* margin-bottom: 12rem !important; */
-  margin-left: 25rem !important;
+  margin-left: 0rem !important;
   margin-right: 0rem !important;
   /* width:100%; */
   /* flex: 0 0 auto; */
-	max-height:800px;
+	max-height:700px;
 }
 
 .dot-rectangle-blue {
@@ -20045,6 +20045,3 @@ stroke: #da2f11;
   background-color: #fff;
   border-color: #D1D5DB
 }
-
-
-
