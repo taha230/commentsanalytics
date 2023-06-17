@@ -1,26 +1,26 @@
  
-Dear Sam The Cooking Guy Youtube Channel Admin,
+Dear Randy Santel Youtube Channel Admin,
 
 I hope you're doing well. My name is Taha, an AI software developer. I am reaching out to you to share the results of my recent analysis of your YouTube video using commentsanalytics.com - an AI tool that provides comprehensive insights into YouTube comments 💬.
 
-After analyzing your recent video "Chicken Tacos (Along With An Old Favorite) That You Are Going To Love! | Sam The Cooking Guy" (https://www.youtube.com/watch?v=Y0q4OxhPnzE) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
+After analyzing your recent video "Victoria'S Largest 3.5Kg Aussie Double Hamburger Challenge Has Had Only 2 Winners In 15 Years!!" (https://www.youtube.com/watch?v=A7HpwJpBBlU) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
 
 Here is a summary of the analysis:
 
 Sentiment Analysis: The sentiment breakdown of the comments is as follows:
 
-Positive 🤩: 39%
-Neutral 😐: 43%
-Negative 🥴: 17%
-It's encouraging to see that the majority of comments are Neutral. (Good !!! 💪)
+Positive 🤩: 45%
+Neutral 😐: 25%
+Negative 🥴: 29%
+It's encouraging to see that the majority of comments are Positive. (Great !!! 🎉)
 Keyword Extraction: The most frequent keywords mentioned in the comments include "
-lou(22 - 5% Positive),
-pineapple(18 - 44% Positive),
-tacos(13 - 62% Positive),
-white(13 - 8% Positive)
+randy(62 - 68% Positive),
+burger(46 - 35% Positive),
+burgers(15 - 40% Positive),
+job(11 - 91% Positive)
  and more. These keywords provide insights into the topics that resonated with your audience.
 
-Comment Categories: The most dominant comment category was "Feedback" with 79 comments. These comments had an overall positive sentiment of 44% (Good !!! 💪). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
+Comment Categories: The most dominant comment category was "Feedback" with 180 comments. These comments had an overall positive sentiment of 59% (Good !!! 💪). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
 
 I have attached detailed charts and Excel sheets with the complete analysis for your reference . 💥📊
 

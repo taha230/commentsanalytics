@@ -16,7 +16,7 @@
 <div class="row justify-content-center">
     <div class="col col-md-10 text-center">
         <h2 class="mb-3">Upvote and Comment: Be a Part of the Conversation</h2>
-        <p class="lead mb-5 px-5">Product Hunt is a vibrant community-driven platform that celebrates innovation and emerging technologies. It serves as a launchpad for entrepreneurs, developers, and creators to showcase their groundbreaking products and gain visibility among a passionate audience. With a global community of early adopters, influencers, and industry enthusiasts, Product Hunt offers the perfect stage to showcase our Comments Analytics service and connect with like-minded individuals who share our passion for data-driven insights.</p>
+        <p class="lead mb-5">Product Hunt is a vibrant community-driven platform that celebrates innovation and emerging technologies. It serves as a launchpad for entrepreneurs, developers, and creators to showcase their groundbreaking products and gain visibility among a passionate audience. With a global community of early adopters, influencers, and industry enthusiasts, Product Hunt offers the perfect stage to showcase our Comments Analytics service and connect with like-minded individuals who share our passion for data-driven insights.</p>
         
     </div>
 </div>
