@@ -1,26 +1,26 @@
  
-Dear Greatscott! Youtube Channel Admin,
+Dear Drew Gooden Youtube Channel Admin,
 
 I hope you're doing well. My name is Taha, an AI software developer. I am reaching out to you to share the results of my recent analysis of your YouTube video using commentsanalytics.com - an AI tool that provides comprehensive insights into YouTube comments 💬.
 
-After analyzing your recent video "I Tried Finding Hidden Gems On Aliexpress Again! (Part 5)" (https://www.youtube.com/watch?v=8hKpQvw1nNw) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
+After analyzing your recent video "The Future Of Tv Is Bleak" (https://www.youtube.com/watch?v=6HEheIozS5c) using CommentsAnalytics, I have gathered some valuable findings 🔍 that I would like to share with you. 💡
 
 Here is a summary of the analysis:
 
 Sentiment Analysis: The sentiment breakdown of the comments is as follows:
 
-Positive 🤩: 34%
-Neutral 😐: 43%
-Negative 🥴: 22%
-It's encouraging to see that the majority of comments are Neutral. (Good !!! 💪)
+Positive 🤩: 33%
+Neutral 😐: 29%
+Negative 🥴: 37%
+It's encouraging to see that the majority of comments are Negative. (Not Bad !!! 😐)
 Keyword Extraction: The most frequent keywords mentioned in the comments include "
-aliexpress(28 - 50% Positive),
-hot(28 - 32% Positive),
-usb(25 - 40% Positive),
-pen(22 - 14% Positive)
+writers(99 - 26% Positive),
+strike(52 - 37% Positive),
+dew(49 - 76% Positive),
+tv(35 - 43% Positive)
  and more. These keywords provide insights into the topics that resonated with your audience.
 
-Comment Categories: The most dominant comment category was "Suggestion" with 134 comments. These comments had an overall positive sentiment of 26% (Not Bad !!! 😐). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
+Comment Categories: The most dominant comment category was "Personal Experience" with 337 comments. These comments had an overall positive sentiment of 35% (Good !!! 💪). These categories can prioritize and address comments efficiently for reply and improved customer satisfaction 🎯 🚀.
 
 I have attached detailed charts and Excel sheets with the complete analysis for your reference . 💥📊
 
