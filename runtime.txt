@@ -30,7 +30,7 @@ uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-t
 
 ####################################### server GPU (95.217.33.222) - > server 138 ##########################################
 
-(screen name : CA_single_API) -- >> single request from CA Dashboard
+(screen name : ) -- >> single request from CA Dashboard
 cd /home/services_files/CA
 uwsgi --socket 0.0.0.0:8942 --plugin python3 --protocol=http -w wsgi_CA_single -b 32768 --enable-thread --workers 1
 
@@ -45,6 +45,31 @@ uwsgi --socket 0.0.0.0:8934 --protocol=http -w wsgi_processed_count_update_list 
 (screen name : CA_Bulk) (has ip server config)
 cd /home/services_files/CA
 python3 find_CA_bulk.py
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+(social_net_API) -- >> single request from google results
+cd /home/services_files/
+uwsgi --socket 0.0.0.0:8932 --protocol=http -w wsgi_social_net_finder --enable-thread --workers 10
+
+(google_spreadsheet)
+cd /home/services_files/
+uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
+
+(fetch_in_queue) -- (has ip server config)
+cd /home/Business_info_archive/BusinessInfo/jobs_server/
+python3 fetch_IN_QUEUE_.py
+
+(update_passed_count_bulk) (has ip server config)
+cd /home/Business_info_archive/BusinessInfo/jobs_server/
+python3 update_passed_count_bulk.py
+
+(django)
+cd /home/Business_info_archive/BusinessInfo/
+sudo kill -9 $(sudo lsof -t -i:80)
+sudo service mongod restart
+
+gunicorn --bind=0.0.0.0:80 core.wsgi:application --workers=4 --worker-class gevent --timeout 10000
 
 ######################################## Django Gunicorn #########################################
 (screen name : django)
