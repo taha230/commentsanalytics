@@ -1,3 +1,7 @@
+
+I would greatly appreciate any feedback you may have.
+
+
 Analyzing comments on YouTube can provide valuable insights for YouTubers, allowing them to understand the sentiments and opinions expressed by their viewers. While the specific interests may vary depending on individual YouTubers and their goals, here are some types of comments analysis that YouTubers might find interesting:
 
 1. Sentiment Analysis: YouTubers may be interested in determining the overall sentiment of the comments on their videos. This analysis helps them understand whether viewers' responses are positive, negative, or neutral. Tools like MonkeyLearn offer sentiment analysis for YouTube comments, allowing YouTubers to gather data and visualize the sentiment in their videos [1].
