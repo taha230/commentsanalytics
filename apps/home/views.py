@@ -365,6 +365,7 @@ def homepage_chrome_extension(request):
     html_template = loader.get_template('home/homepage-chrome-extension.html')
 
     context = {'segment': 'index'
+               ,'title' : 'Extracting Comments Insights'
                ,'related_links' : [
                ]
                ,'related_posts' : [
