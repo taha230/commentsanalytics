@@ -2405,7 +2405,8 @@ def dashboard_client(request):
                                                           "unread_count_ticket" : unread_count_ticket,
                                                           "monthly_request" : monthly_request,
                                                           "report_period" : "month",
-                                                          "plan": plan_name
+                                                          "plan": plan_name,
+                                                          "segment": 'sentiment-'
                                                         })
 
 @login_required(login_url="/login/")
