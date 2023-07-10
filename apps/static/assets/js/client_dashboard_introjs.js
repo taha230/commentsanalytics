@@ -6,22 +6,22 @@ const intro = introJs();
 intro.setOptions({
     steps: [
         {
-            intro: "Welcome to the tour of Comments Analytics! If you are already familiar with the dashboard, feel free to skip this introductory tour."
+            intro: "Hi 👋 Welcome to the tour of Comments Analytics! 📊 If you are already familiar with the dashboard, feel free to skip this introductory tour. ⏭️"
         },{
             element: "#first-step-introjs",
-            intro: "You can view your current credit and active plan here."
+            intro: "You can view your current credit and active plan here. 💡 👀"
         }
         ,{
             element: "#second-step-introjs",
-            intro: "Here, you can access the list of available services and click on the desired one."
+            intro: "Here, you can access the list of available services and click on the desired one.  😉👆"
         }
         ,{
             element: "#third-step-introjs",
-            intro: "You can test the service by making a Single comment request and verifying the result. For example; Sentiment Analysis Single comment request."
+            intro: "You can test the service by making a Single comment request and verifying the result. For example; Sentiment Analysis Single comment request. ✅ Try it now."
         }
         ,{
             element: "#forth-step-introjs",
-            intro: "Here, you can initiate your Bulk request by importing your Bulk file and launching the process. For example; Sentiment Analysis Bulk request for a list of commetns."
+            intro: "Here, you can initiate your Bulk request by importing your Bulk file and launching the process 💥. For example; Sentiment Analysis Bulk request for a list of commetns. 👌 Ready to try?"
         }
     ]
 });
