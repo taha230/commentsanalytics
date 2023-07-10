@@ -364,6 +364,10 @@ def homepage_privacy(request):
 def homepage_chrome_extension(request):
     html_template = loader.get_template('home/homepage-chrome-extension.html')
 
+    extension_id = "enafdhefaclokmhejcifkgiogmengdio"
+    client_id = "574282105016-snuhfn30017aj1j3rghgor9niq20mpei.apps.googleusercontent.com"
+    
+        
     context = {'segment': 'index'
                ,'title' : 'Extracting Comments Insights'
                ,'related_links' : [
