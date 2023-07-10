@@ -24,7 +24,7 @@
                         <div class="col-sm-3 mb-5">
                             <div class="form-group">
                                 <label for="address">Title (<B style="color:red">*</B>)</label>
-                                <input class="form-control" name="input_bulk_title" type="text" placeholder="Enter Title of Your Bulk here ..." required> <!-- required -->
+                                <input id="first-step-introjs-new-bulk" class="form-control" name="input_bulk_title" type="text" placeholder="Enter Title of Your Bulk here ..." required> <!-- required -->
                             </div>
                         </div>
 
@@ -60,10 +60,10 @@
                         <label >Choose one of our input data methods :</label>
                     </div>
                     
-                    <div class="row">
+                    <div id="second-step-introjs-new-bulk" class="row">
 
                         <!-- Json File -->
-                        <div class="col-8 col-xxl-6 mb-1">
+                        <div id="third-step-introjs-new-bulk" class="col-8 col-xxl-6 mb-1">
                             <div class="card_blue border-5">
                                 <div class="mt-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" fill="blue" class="bi bi-filetype-json" viewBox="0 0 16 16">
@@ -72,7 +72,7 @@
                                     <h2 class="fs-5 fw-bold mb-0" style="color:blue" data-bs-toggle="tooltip" data-bs-placement="top" title='It is recommended to Download our Chrome Extension to Export your comments as a .json file and upload it here. Your .json file should contain a list of dicts of comments that the text of comment is in the "Msg" field. E.g. [{"Author":"Joma Adams","Msg":"I like this product"}]'>JSON Upload (.json)</h2>
                                 </div>
                                 
-                                <div class="file-field col-sm-4 mb-1 mt-6  dot-rectangle-blue">
+                                <div id="forth-step-introjs-new-bulk" class="file-field col-sm-4 mb-1 mt-6  dot-rectangle-blue">
                             
                                     <div class="d-flex">
                                         <svg class="icon text-gray-500 me-2 mb-7 mt-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path></svg>
@@ -92,7 +92,7 @@
                                 </div>
   
                                 <div class="mt-1 mb-2 text-xxl-center">
-                                    <button class="btn btn-blue-800" type="submit" onclick="submit_upload_json()" >Preview the JSON data 
+                                    <button id="fifth-step-introjs-new-bulk" class="btn btn-blue-800" type="submit" onclick="submit_upload_json()" >Preview the JSON data 
                                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
                                         <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -341,4 +341,8 @@
   }
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/7.0.1/intro.min.js"></script>
+<script src="/static/assets/js/client_new_bulk_introjs.js"> </script>
+
 {% endblock javascripts %}
