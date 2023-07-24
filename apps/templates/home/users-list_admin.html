@@ -58,7 +58,7 @@
                   <th class="border-gray-200">#</th>
                   <th class="border-gray-200" width="30%">Email</th>						
                   <th class="border-gray-200">Remain Count</th>
-                  <th class="border-gray-200" width="15%">Date Joined</th>
+                  <th class="border-gray-200" width="17%">Date Joined</th>
                   <th class="border-gray-200">Last Login</th>
                   <th class="border-gray-200" width="8%">Verify</th>                  
                   <th class="border-gray-200">Plan</th>
@@ -88,7 +88,7 @@
                         {% if row.is_superuser == False %}
 
                             <div class="">
-                                <span class="fw-normal mr-6">1{{ row.date_joined }}</span>
+                                <span class="fw-normal mr-6">{{ row.date_joined }}</span>
                                 {% if row.expired_date != none %}
                                     {% if row.is_expired %}
                                         <span class="badge bg-ner-org"> {{ row.expired_date }} </span>
