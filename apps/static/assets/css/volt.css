@@ -828,6 +828,7 @@
   --bg-ner-fac: #ffe262;
   --bg-ner-loc: #6937f3;
   --bg-ner-product: #0af531de;
+  --bg-ner-product-green: #00fa2ae5;
 
   --bg-ner-norp: #f104d1;
   --bg-ner-event: #01f0f8;
@@ -9767,7 +9768,10 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(17, 24, 39, 
   --bs-bg-opacity: 1;
   background-color: var(--bg-ner-product) !important; } 
 
-
+.bg-ner-product-green {
+  --bs-bg-opacity: 1;
+  background-color: var(--bg-ner-product-green) !important; } 
+  
 .bg-ner-norp {
   --bs-bg-opacity: 1;
   background-color: var(--bg-ner-norp) !important; } 
