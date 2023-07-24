@@ -6003,7 +6003,7 @@ def ticket_messages_admin(request):
                                                                 "segment": 'tickets_client', 
                                                                 "title": ticket_title,
                                                                 "user_email": user_email,
-                                                                "user_username" : user_username
+                                                                "user_username" : user_username,
                                                                 "ticket_id" : ticket_id_string,
                                                                 "unread_count_ticket" : unread_count_ticket,
                                                                 "ticket_message_list": ticket_message_list})
