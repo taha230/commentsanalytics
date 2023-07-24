@@ -1,7 +1,7 @@
 python-3.9
 
 
-######################################### server Host (cloud) #############################################
+######################################### server Host (cloud) (167.235.207.111) #############################################
 (screen name : fetch_in_queue) -- (has ip server config)
 cd /home/CommentsAnalytics/commentsanalytics/jobs_server
 python3 fetch_IN_QUEUE_.py
@@ -16,16 +16,20 @@ python3 update_passed_count_bulk.py
 0 9 * * * /usr/bin/python3 /home/CommentsAnalytics/commentsanalytics/jobs_server/backup_db_sqlite3.py
  
 
-(screen name : CA_single_API_category) -- >> single category request from CA Dashboard
-cd /home/services_files/CA
-sudo kill -9 $(sudo lsof -t -i:8943)
-uwsgi --socket 0.0.0.0:8943 --plugin python3 --protocol=http -w wsgi_CA_single_category -b 32768 --enable-thread --workers 1
 
-######################################### server Bulk (138) ################################################
+######################################### server Bulk (138) (138.201.111.134) ################################################
 (screen name : google_spreadsheet)
 cd /home/services_files/
 uwsgi --socket 0.0.0.0:8887 --protocol=http -w wsgi_googleSpreadSheet --enable-thread --workers 10
 # uwsgi --http-socket :8887 --plugin python3 --wsgi-file wsgi_googleSpreadSheet.py --enable-thread --workers 10
+
+
+####################################### server cv (162.55.98.173) ###################################################
+
+(screen name : CA_single_API_category) -- >> single category request from CA Dashboard
+cd /home/services_files/CA
+sudo kill -9 $(sudo lsof -t -i:8943)
+uwsgi --socket 0.0.0.0:8943 --plugin python3 --protocol=http -w wsgi_CA_single_category -b 32768 --enable-thread --workers 1
 
 
 ####################################### server GPU (95.217.33.222) - > server 138 ##########################################
