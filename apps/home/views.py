@@ -5974,6 +5974,9 @@ def ticket_messages_admin(request):
         ticket_selected = Ticket.objects.get(id= ticket_id)
         ticket_title = ticket_selected.title
         
+        user_email = ticket_selected.user.email
+        user_username = ticket_selected.user.username
+
         # update seen status admin of ticket
         ticket_selected.admin_seen_status = Seen_Status.SEEN.value
         ticket_selected.save()
@@ -5999,6 +6002,8 @@ def ticket_messages_admin(request):
     return render(request, "home/ticket_messages_admin.html", {"msg": 'SUCCESS',
                                                                 "segment": 'tickets_client', 
                                                                 "title": ticket_title,
+                                                                "user_email": user_email,
+                                                                "user_username" : user_username
                                                                 "ticket_id" : ticket_id_string,
                                                                 "unread_count_ticket" : unread_count_ticket,
                                                                 "ticket_message_list": ticket_message_list})
