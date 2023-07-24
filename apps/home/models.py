@@ -226,7 +226,7 @@ class User_Log(models.Model):
 
 class User_Other_Fields(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    remain_count = models.IntegerField(blank=True, default=10)
+    remain_count = models.IntegerField(blank=True, default=50)
     expired_date = models.DateTimeField(blank=True, null=True)
     promotion_code_used = models.BooleanField(blank=True, null=True, default=False)
     user_key = models.CharField(max_length=50, null=True)
