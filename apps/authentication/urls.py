@@ -11,6 +11,7 @@ from django.contrib.auth import logout as auth_logout
 
 urlpatterns = [
     path('login/', login_view, name="login"),
+    # path('blog2/', login_view, name="login"),
     path('register/', register_user, name="register"),
     path('change_password_admin/', change_password_admin, name="change_password_admin"),
     # path("logout/", LogoutView.as_view(), name="logout"),

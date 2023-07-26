@@ -782,6 +782,33 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None , reques
                         row_json['negative_percent'] = 0
 
 
+                # calculate Positive/Neutral/Negetive count from 'KEYWORD_EXTRACTION' Bulks
+                elif (row_json['request_type'] == Request_Type.KEYWORD_EXTRACTION.value or row_json['request_type'] == Request_Type.NAMED_ENTITY_RECOGNITION.value or row_json['request_type'] == Request_Type.YOUTUBE_CATEGORY_EXTRACTION.value ):
+                    query_positive = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Positive'}
+                    query_neutral = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Neutral'}
+                    query_negative = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Negative'}
+                    positive_count = collection_Requests.find(query_positive).count()
+                    neutral_count = collection_Requests.find(query_neutral).count()
+                    negative_count = collection_Requests.find(query_negative).count()
+                    try:
+                        row_json['positive_count'] = positive_count
+                        row_json['neutral_count'] = neutral_count
+                        row_json['negative_count'] = negative_count
+
+                        row_json['positive_percent'] = int(positive_count / row['total_count'] * 100)
+                        row_json['neutral_percent'] = int(neutral_count / row['total_count'] * 100)
+                        row_json['negative_percent'] = int(negative_count / row['total_count'] * 100)
+
+                    except Exception as e:
+                        print(e)
+                        row_json['positive_count'] = 0
+                        row_json['neutral_count'] = 0
+                        row_json['negative_count'] = 0
+
+                        row_json['positive_percent'] = 0
+                        row_json['neutral_percent'] = 0
+                        row_json['negative_percent'] = 0
+
                 
                 row_list.append(row_json)
 

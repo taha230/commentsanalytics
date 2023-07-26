@@ -4,14 +4,14 @@
             <th class="border-0 rounded-start">#</th>
             <th class="border-0">user</th>
             <th class="border-0">title</th>
-            <th class="border-0">type</th>
-            <th class="border-0">start time</th>
-            <th class="border-0">end time</th>
+            <th class="border-0" width="50px">type</th>
+            <th class="border-0" width="180px">start time</th>
+            <th class="border-0" width="180px">end time</th>
             <th class="border-0">passed</th>
             <th class="border-0">total</th>
-            <th class="border-0">status</th>
-            <th class="border-0"  width="15%">Export</th>
-            <th class="border-0 rounded-end">Action</th>
+            <th class="border-0" width="260px" >status</th>
+            <th class="border-0"  width="300px" >Export</th>
+            <th class="border-0 rounded-end" width="10px">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -47,7 +47,18 @@
               {{ row.total_count }}
             </td>
             <td class="">
-              {% include "includes/bulk_status_label.html" %}                            
+              {% if row.status == 'Completed' %}
+                <div class="bar-clipper">
+                  <div class="bar-wrapper">
+                      <span class="bar1" style="width:{{ row.positive_percent }}%" data-toggle="tooltip" data-placement="top" title="Pos : {{ row.positive_percent }} %"></span>
+                      <span class="bar2" style="width:{{ row.neutral_percent }}%" data-toggle="tooltip" data-placement="top" title="Neu : {{ row.neutral_percent }} %"></span>
+                      <span class="bar3" style="width:{{ row.negative_percent }}%" data-toggle="tooltip" data-placement="top" title="Neg : {{ row.negative_percent }} %"></span>
+                  </div>
+                </div>
+              
+              {% else %}
+                {% include "includes/bulk_status_label.html" %}
+              {% endif %}                            
             </td>
             
             <!-- Export Excel -->

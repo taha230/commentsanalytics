@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'apps.home',  # Enable the inner home (home)
     'apps.authentication',
-    'apps.landing_pages',  
+    'apps.landing_pages', 
+    # 'apps.blog_wordpress', 
     'paypal.standard.ipn', # PayPal
     'allauth', 
     'allauth.account',
