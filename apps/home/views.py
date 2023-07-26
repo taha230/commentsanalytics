@@ -790,6 +790,7 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None , reques
                     positive_count = collection_Requests.find(query_positive).count()
                     neutral_count = collection_Requests.find(query_neutral).count()
                     negative_count = collection_Requests.find(query_negative).count()
+                    print(colored(positive_count, 'red'))
                     try:
                         row_json['positive_count'] = positive_count
                         row_json['neutral_count'] = neutral_count
