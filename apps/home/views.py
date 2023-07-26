@@ -707,7 +707,6 @@ def get_bulk_list_page(request, start, limit, user):
         print(e)
         return [], 0
 
-def get_bulk_list_page_mongodb(request, start, limit, user, status=None , request_type= None):
     try:
         ################################ Select from home_Bulk Table #################################
         row_list = []
@@ -782,15 +781,118 @@ def get_bulk_list_page_mongodb(request, start, limit, user, status=None , reques
                         row_json['negative_percent'] = 0
 
 
+                
+                
+                row_list.append(row_json)
+
+            except Exception as e:
+                print(e)
+                continue
+
+        print(colored('Bulk select successfully from client user !!!', 'green'))
+
+        return row_list, total_count
+
+    except Exception as e:
+        print(colored('Unsuccessful Bulk selection !!!', 'red'))
+        print(e)
+        return [], 0
+
+def get_bulk_list_page_mongodb(request, start, limit, user, status=None , request_type= None):
+    try:
+        ################################ Select from home_Bulk Table #################################
+        row_list = []
+        total_count = 0
+        # sorted by bulk_start_time_slot
+        if (user == None): # return all bulks (Admin)
+            query_bulk = {}
+            if (status != None):
+                query_bulk['status'] = status.name
+            if (request_type != None):
+                query_bulk['request_type'] = request_type.value
+            row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
+            total_count = collection_Bulks.find(query_bulk).count()
+
+        else: # filtered by user (Client)
+            query_bulk = {'user': str(request.user.id)}
+            if (status != None):
+                query_bulk['status'] = status.name
+            if (request_type != None):
+                query_bulk['request_type'] = request_type.value
+            row_list_all = collection_Bulks.find(query_bulk).sort([("bulk_start_time_slot", -1)])[start : start + limit]
+            total_count = collection_Bulks.find(query_bulk).count()
+
+
+        for index, row in enumerate(list(row_list_all)):
+            try:
+                row_json = {}
+                row_json['index'] = index + 1 + start
+                row_json['user'] = ''
+                try:
+                    row_json['user'] = User.objects.all().filter(id=row['user'])[0].email
+                except Exception as e:
+                    pass
+
+                calculated_passed_count = row['passed_count']
+                
+                row_json['title'] = row['name']
+                row_json['bulk_id'] = str(row['_id'])
+                row_json['request_type'] = row['request_type']
+                row_json['start_time'] = row['bulk_start_time_slot']
+                row_json['end_time'] = row['bulk_end_time_slot']
+                row_json['passed_count'] = calculated_passed_count
+                row_json['total_count'] = row['total_count']
+                row_json['status'] = row['status']
+                row_json['percent'] = int(calculated_passed_count / row['total_count'] * 100)
+                
+                # calculate Positive/Neutral/Negetive count from 'Sentiment Analysis' Bulks
+                if (row_json['request_type'] == Request_Type.SENTIMENT_ANALYSIS.value):
+                    query_positive = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Positive'}
+                    query_neutral = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Neutral'}
+                    query_negative = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result': 'Negative'}
+                    if user == None: # for admin usage
+                        query_positive = {'bulk': row_json['bulk_id'], 'result': 'Positive'}
+                        query_neutral = {'bulk': row_json['bulk_id'], 'result': 'Neutral'}
+                        query_negative = {'bulk': row_json['bulk_id'], 'result': 'Negative'}
+                        
+                    positive_count = collection_Requests.find(query_positive).count()
+                    neutral_count = collection_Requests.find(query_neutral).count()
+                    negative_count = collection_Requests.find(query_negative).count()
+                    try:
+                        row_json['positive_count'] = positive_count
+                        row_json['neutral_count'] = neutral_count
+                        row_json['negative_count'] = negative_count
+
+                        row_json['positive_percent'] = int(positive_count / row['total_count'] * 100)
+                        row_json['neutral_percent'] = int(neutral_count / row['total_count'] * 100)
+                        row_json['negative_percent'] = int(negative_count / row['total_count'] * 100)
+
+                    except Exception as e:
+                        print(e)
+                        row_json['positive_count'] = 0
+                        row_json['neutral_count'] = 0
+                        row_json['negative_count'] = 0
+
+                        row_json['positive_percent'] = 0
+                        row_json['neutral_percent'] = 0
+                        row_json['negative_percent'] = 0
+
+
                 # calculate Positive/Neutral/Negetive count from 'KEYWORD_EXTRACTION' Bulks
                 elif (row_json['request_type'] == Request_Type.KEYWORD_EXTRACTION.value or row_json['request_type'] == Request_Type.NAMED_ENTITY_RECOGNITION.value or row_json['request_type'] == Request_Type.YOUTUBE_CATEGORY_EXTRACTION.value ):
                     query_positive = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Positive'}
                     query_neutral = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Neutral'}
                     query_negative = {'bulk': row_json['bulk_id'], 'user': str(request.user.id), 'result_sentiment': 'Negative'}
+                    
+                    if user == None: # for admin usage
+                        query_positive = {'bulk': row_json['bulk_id'], 'result_sentiment': 'Positive'}
+                        query_neutral = {'bulk': row_json['bulk_id'], 'result_sentiment': 'Neutral'}
+                        query_negative = {'bulk': row_json['bulk_id'], 'result_sentiment': 'Negative'}
+                    
                     positive_count = collection_Requests.find(query_positive).count()
                     neutral_count = collection_Requests.find(query_neutral).count()
                     negative_count = collection_Requests.find(query_negative).count()
-                    print(colored(positive_count, 'red'))
+                    
                     try:
                         row_json['positive_count'] = positive_count
                         row_json['neutral_count'] = neutral_count
