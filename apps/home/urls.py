@@ -126,6 +126,6 @@ urlpatterns = [
 
 
     ############################################## Match any html files ###################################
-    re_path(r'^.*\.*', views.pages, name='pages'),
+    # re_path(r'^.*\.*', views.pages, name='pages'),
 
 ]
