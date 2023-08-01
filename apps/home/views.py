@@ -216,9 +216,9 @@ def homepage_overview(request):
 
     return HttpResponse(html_template.render(context, request))
 
-def homepage_blog(request):
+def homepage_blog_tutorial(request):
 
-    html_template = loader.get_template('home/homepage-blog.html')
+    html_template = loader.get_template('home/homepage-blog-tutorial.html')
     current_pagination = 1    
     last_pagination = 1 
     total_count_post = 0

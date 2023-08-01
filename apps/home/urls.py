@@ -14,7 +14,8 @@ urlpatterns = [
 
     ############################################## Homepage ##############################################
     path('', views.homepage, name='homepage'),
-    re_path(r'^blog/', views.homepage_blog, name="blog"), # use regular expression for handle all pages /P*
+    re_path('^blog/', views.homepage_blog_tutorial, name="blog"), # should redirect to blog admin wordpress
+    re_path(r'blog_tutorials/', views.homepage_blog_tutorial, name='blog_tutorials'),
     re_path(r'^Post_', views.homepage_blog_post_id, name="blog_post_id"), # use regular expression for handle all posts /Post_*
     re_path(r'^Post/', views.homepage_blog_post_name, name="blog_post_name"), # use regular expression for handle all posts /Post_*
     re_path(r'services/?$', views.homepage_services, name='services'),
