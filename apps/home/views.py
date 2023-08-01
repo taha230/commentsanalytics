@@ -430,14 +430,18 @@ def get_user_list_page(request, start, limit):
                 try:
                     last_login_short = row.last_login.strftime("%b %d, %Y %H:%M")
                 except Exception as e:
-                    print(e)
+                    # print(e)
+                    pass
+                
                 row_json['last_login'] = last_login_short
 
                 date_joined_short = row.date_joined
                 try:
                     date_joined_short = row.date_joined.strftime("%b %d, %Y")
                 except Exception as e:
-                    print(e)
+                    # print(e)
+                    pass
+
                 row_json['date_joined'] = date_joined_short
 
                 row_json['is_superuser'] = row.is_superuser
