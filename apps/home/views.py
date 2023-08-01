@@ -411,7 +411,8 @@ def get_user_list_page(request, start, limit):
                     try:
                         expired_date_short = user_other_fields_obj.expired_date.strftime("%b %d, %Y")
                     except Exception as e:
-                        print(e)
+                        # print(e)
+                        pass
                     row_json['expired_date'] = expired_date_short
                     row_json['is_expired'] = True
                     
@@ -419,7 +420,8 @@ def get_user_list_page(request, start, limit):
                         if (user_other_fields_obj.expired_date.replace(tzinfo=None) > datetime.datetime.now().replace(tzinfo=None)):
                             row_json['is_expired'] = False
                     except Exception as e:
-                        print(e)
+                        # print(e)
+                        pass
                     
                     row_json['remain_count'] =  user_other_fields_obj.remain_count
                     row_json['user_key'] = user_other_fields_obj.user_key
