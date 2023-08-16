@@ -1,0 +1,51 @@
+python-3.9
+
+cd /etc/nginx/sites-available
+######################################### server Host (cloud) your_project.conf #############################################
+
+server {
+    listen 80;
+    server_name commentsanalytics.com;
+
+    location /blog {
+        proxy_pass http://127.0.0.1:8080;  # WordPress Apache bind address
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;  # Gunicorn bind address
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+   #  Additional configuration for your Django project (e.g., static files, media, etc.)
+}
+
+############################################################################################################################
+sudo systemctl reload nginx
+
+
+######################################### server Host (cloud) apache scren #################################################
+cd /etc/apache2
+sudo systemctl restart apache2
+https://vexxhost.com/resources/tutorials/how-to-install-wordpress-with-ubuntu-20-04-and-a-lamp-stack/
+
+######################################## server wordpress ##################################################################
+cd /var/www/html/blog
+sudo chmod 644 .htaccess
+
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /blog/
+RewriteRule ^index\.php$ - [L]
+#RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /blog/index.php [L]
+</IfModule>
+
