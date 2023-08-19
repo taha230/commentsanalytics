@@ -49,3 +49,13 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /blog/index.php [L]
 </IfModule>
 
+
+
+############################## post attribute
+
+image size = 960*500
+color_border = #FF7200
+pixel_border = 15 px
+font_image = Encode Sans Sem
+
+
