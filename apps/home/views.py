@@ -6450,7 +6450,7 @@ def post_paragraph_admin(request):
         pass
 
     return render(request, "home/post_paragraph_admin.html", {"msg": 'SUCCESS',
-                                                                "segment": 'blog_admint', 
+                                                                "segment": 'blog_admin', 
                                                                 "title": post_title,
                                                                 "image_name": post_image_name,
                                                                 "post_id" : post_id_string,
