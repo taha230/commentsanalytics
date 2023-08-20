@@ -6267,7 +6267,7 @@ def new_ticket_admin(request):
 
 @staff_member_required(login_url="/login/")
 @login_required(login_url="/login/")
-def blog_admin(request):
+def admin_blog(request):
 
     try:
 
