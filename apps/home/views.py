@@ -6529,7 +6529,7 @@ def toggle_publish_status(request):
         print(e)
         pass
 
-    return redirect ('/blog_admin/')
+    return redirect ('/admin_blog/')
 
 @staff_member_required(login_url="/login/")
 @login_required(login_url="/login/")
