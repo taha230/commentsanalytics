@@ -41,4 +41,9 @@
     <changefreq>monthly</changefreq>
   </url>
 
+   <url>
+    <loc>https://commentsanalytics.com/tutorials/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
 </urlset>
