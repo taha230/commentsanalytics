@@ -59,3 +59,9 @@ pixel_border = 15 px
 font_image = Encode Sans Sem
 
 
+############################# chatgpt command post generator
+
+write a long article about 4000 words about "Text Analysis and NLP Techniques" as seo-marketing writer that contained the following h2 heading and two or three paragraphs describing each of following heading: 
+1.Text Analysis
+
+
