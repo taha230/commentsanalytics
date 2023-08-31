@@ -2,5 +2,7 @@ scp -r CA root@server_138:/home/services_files
 ========================================================================================================
 scp CA/CA_single_API.py root@server_138:/home/services_files/CA
 scp CA/CA_single_API_category.py CA/wsgi_CA_single_category.py root@server_cloud:/home/services_files/CA
-cscp wsgi_insert_request_bulk.py insert_request_bulk_API.py root@server_138:/home/services_files/CA
+scp wsgi_insert_request_bulk.py insert_request_bulk_API.py root@server_138:/home/services_files/CA
 scp wsgi_processed_count_update_list.py get_processed_count_update_list_API.py   root@server_138:/home/services_files/CA
+
+scp find_CA_bulk.py root@server_138:/home/services_files/CA
