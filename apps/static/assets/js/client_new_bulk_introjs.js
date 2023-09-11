@@ -28,10 +28,33 @@ intro.setOptions({
         }
     ]
 });
-// // Start the tour
-// // document.getElementById('startTour').addEventListener('click', function() {
-// //     intro.start();
-// // });
+
+document.getElementById('startTourButton').addEventListener('click', function() {
+    intro.start();
+});
 
 
-intro.start();
+
+if (!getCookie('tourShown_new_bulk')) {      
+    intro.start();
+    setCookie('tourShown_new_bulk', 'true', 365); // Cookie expires in 365 days
+}
+
+// Function to set a cookie
+function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = name + '=' + value + ';expires=' + expires.toUTCString();
+}
+
+// Function to get a cookie by name
+function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
+        }
+    }
+    return null;
+}
