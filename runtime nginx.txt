@@ -58,8 +58,10 @@ color_border = #FF7200
 pixel_border = 15 px
 font_image = Encode Sans Sem
 
+############################## post url utm parameters
 
-?utm_source=linkedin
+?utm_source=linkedin_post
+?utm_source=facebook_post
 
 ############################# chatgpt command post generator
 
