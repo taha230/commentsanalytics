@@ -60,9 +60,9 @@ font_image = Encode Sans Sem
 
 ############################## post url utm parameters
 
-?utm_source=linkedin_post
-?utm_source=facebook_post
-?utm_source=twitter_post
+?utm_source=linkedin_post&utm_medium=referral
+?utm_source=facebook_post&utm_medium=referral
+?utm_source=twitter_post&utm_medium=referral
 
 ############################# chatgpt command post generator
 
