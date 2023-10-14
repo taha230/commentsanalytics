@@ -41,8 +41,28 @@
     <changefreq>monthly</changefreq>
   </url>
 
-   <url>
+  <url>
     <loc>https://commentsanalytics.com/tutorials/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/sentiment-analysis/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/key-phrases-extraction/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/named-entity-recognition/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://commentsanalytics.com/predict-customers-needs/</loc>
     <changefreq>monthly</changefreq>
   </url>
 
