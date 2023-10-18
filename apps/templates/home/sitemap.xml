@@ -57,6 +57,11 @@
   </url>
 
   <url>
+    <loc>https://commentsanalytics.com/category-extraction/</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
     <loc>https://commentsanalytics.com/named-entity-recognition/</loc>
     <changefreq>monthly</changefreq>
   </url>
