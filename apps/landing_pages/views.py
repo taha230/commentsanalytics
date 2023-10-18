@@ -66,8 +66,13 @@ def sentiment_analysis(request):
                ]
                ,'related_posts' : 
                [
-                    {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'}
-                    ,{'url': '/Post/Sentiment%20Analysis%20on%20YouTube%20Comments%20With%20Comments%20Analytics/', 'text': 'Sentiment Analysis on YouTube Comments With Comments Analytics'}
+                    {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'},
+                    {'url': '/Post/Sentiment%20Analysis%20on%20YouTube%20Comments%20With%20Comments%20Analytics/', 'text': 'Sentiment Analysis on YouTube Comments With Comments Analytics'},
+                    {'url': '/blog/machine-learning-and-classification/', 'text': 'MACHINE LEARNING AND CLASSIFICATION'.title()},
+                    {'url': '/blog/text-processing-and-data-cleaning/', 'text': 'TEXT PROCESSING AND DATA CLEANING'.title()},
+                    {'url': '/blog/sentiment-analysis-and-feedback/', 'text': 'SENTIMENT ANALYSIS AND FEEDBACK'.title()},
+                    {'url': '/blog/text-analysis-and-nlp-techniques/', 'text': 'TEXT ANALYSIS AND NLP TECHNIQUES'.title()},
+                    {'url': '/blog/keyword-extraction-and-data-collection/', 'text': 'KEYWORD EXTRACTION AND DATA COLLECTION'.title()},
                ]
               }
 
@@ -83,7 +88,13 @@ def key_phrases_extraction(request):
                ]
                ,'related_posts' : 
                [
-                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'}
+                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'},
+                    {'url': '/blog/machine-learning-and-classification/', 'text': 'MACHINE LEARNING AND CLASSIFICATION'.title()},
+                    {'url': '/blog/text-processing-and-data-cleaning/', 'text': 'TEXT PROCESSING AND DATA CLEANING'.title()},
+                    {'url': '/blog/sentiment-analysis-and-feedback/', 'text': 'SENTIMENT ANALYSIS AND FEEDBACK'.title()},
+                    {'url': '/blog/text-analysis-and-nlp-techniques/', 'text': 'TEXT ANALYSIS AND NLP TECHNIQUES'.title()},
+                    {'url': '/blog/keyword-extraction-and-data-collection/', 'text': 'KEYWORD EXTRACTION AND DATA COLLECTION'.title()},
+                    {'url': '/blog/word-cloud-and-visualization/', 'text': 'WORD CLOUD AND VISUALIZATION'.title()},
                ]
               }
 
@@ -98,7 +109,11 @@ def named_entity_recognition(request):
                ]
                ,'related_posts' : 
                [
-                    {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'}
+                    {'url': '/Post/The%20value%20of%20sentiment%20analysis%20in%20growing%20your%20business/', 'text': 'The value of sentiment analysis in growing your business'},
+                    {'url': '/blog/machine-learning-and-classification/', 'text': 'MACHINE LEARNING AND CLASSIFICATION'.title()},
+                    {'url': '/blog/sentiment-analysis-and-feedback/', 'text': 'SENTIMENT ANALYSIS AND FEEDBACK'.title()},
+                    {'url': '/blog/text-analysis-and-nlp-techniques/', 'text': 'TEXT ANALYSIS AND NLP TECHNIQUES'.title()},
+
                    ]
               }
 
@@ -114,7 +129,31 @@ def predict_customers_needs(request):
                ]
                ,'related_posts' : 
                [
-                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'}
+                    {'url': '/Post/Keyword%20Extraction%20in%20Comments:%20Best%20Approach%20to%20Gain%20Insights%20from%20Your%20Customers/', 'text': 'Keyword Extraction in Comments: Best Approach to Gain Insights from Your Customers'},
+                    {'url': '/blog/customer-surveys-and-feedback-loops/', 'text': 'CUSTOMER SURVEYS AND FEEDBACK LOOPS'.title()},
+                    {'url': '/blog/text-analysis-and-nlp-techniques/', 'text': 'TEXT ANALYSIS AND NLP TECHNIQUES'.title()},
+
+               ]
+              }
+
+    return HttpResponse(html_template.render(context, request))
+
+def category_extraction(request):
+    html_template = loader.get_template('home/Landing_pages/category_extraction.html')
+
+    context = {'title' : 'Extract the Category of Comments', 'description': 'Extract comment categories to refine your reviews based on your preferences'
+              ,'related_links' : [
+                    {'url': '/key-phrases-extraction/', 'text': 'Use key phrase extraction to quickly identify the main concepts in text'},
+                    {'url': '/sentiment-analysis/', 'text': 'Sentiment analysis tools to explore the customers\' emotions within the texts'}
+               ]
+               ,'related_posts' : 
+               [
+                    {'url': '/Post/YouTube%20Comments%20Categorizations:%20Benefits%20for%20YouTubers%20in%20User%20Answering,%20Engagement,%20and%20Satisfaction/', 'text': 'YouTube Comments Categorizations: Benefits for YouTubers in User Answering, Engagement, and Satisfaction'},
+                    {'url': '/Post/Categorizing%20YouTube%20Comments:%20Unleashing%20the%20Power%20of%20Organization%20and%20Insight/', 'text': 'Categorizing YouTube Comments: Unleashing the Power of Organization and Insight'},
+                    {'url': '/blog/machine-learning-and-classification/', 'text': 'MACHINE LEARNING AND CLASSIFICATION'.title()},
+                    {'url': '/blog/text-processing-and-data-cleaning/', 'text': 'TEXT PROCESSING AND DATA CLEANING'.title()},
+                    {'url': '/blog/sentiment-analysis-and-feedback/', 'text': 'SENTIMENT ANALYSIS AND FEEDBACK'.title()},
+                    {'url': '/blog/text-analysis-and-nlp-techniques/', 'text': 'TEXT ANALYSIS AND NLP TECHNIQUES'.title()},
 
                ]
               }
