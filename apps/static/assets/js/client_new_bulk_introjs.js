@@ -7,7 +7,7 @@ intro.setOptions({
     steps: [
         {
             element: "#first-step-introjs-new-bulk",
-            intro: "📝 Please input the title for your bulk request Here. 📦"
+            intro: "📝 Please input a title for your bulk request Here. 📦"
 
         }
         ,{

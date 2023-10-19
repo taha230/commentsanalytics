@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-12 col-md-5 order-1 order-lg-2">
                           <h1 class="display-2 mb-5">Tools to analyze customer's comments</h1>
-                          <p class="lead">Valuable, clear, considerable, and remarkable insights from videos, social posts, product pages, and more – to help you better understand the thoughts, feelings, motivations, and decision-making processes of your customers.</p>
+                          <p class="lead">Valuable, clear, considerable, and remarkable insights from video comments, social post comments, product page reviews, and more – to help you better understand the thoughts, feelings, motivations, and decision-making processes of your customers text.</p>
                     </div>
                 </div>
             </div>
@@ -36,12 +36,14 @@
                         <p class="lead">AI-powered technology to analyze the feedbacks of customers to present clean insights. Improve your customer experience and analyze sentiment easily.</p>
                     </div>
                 </div>
+
+                <!-- Sentiment Analysis -->
                 <div class="row row-grid align-items-center md-7">
                     <div class="col-12 col-md-5">
                         <h2 class="font-weight-bolder mb-4">Sentiment Analysis</h2>
                         <p class="lead">Sentiment analysis is contextual mining of text that extracts subjective information in the source materials and helps businesses to understand the social sentiment of their brand, product or content while monitoring online comments.</p>
                         <p class="lead">Sentiment analysis looks at the emotion encoded in a text. It is widly used to analyze customer feedback, survey responses, and video comments. Social media monitoring, reputation management, and customer experience are just a few areas that can benefit from sentiment analysis.</p>
-                        <a href="{% url 'login' %}" class="btn btn-primary mt-3 animate-up-2">
+                        <a href="{% url 'sentiment_analysis' %}" class="btn btn-primary mt-3 animate-up-2">
                             Learn More
                             <span class="icon icon-xs ml-2">
                                 <i class="fas fa-external-link-alt"></i>
@@ -52,12 +54,14 @@
                         <img src="/static/assets/img/illustrations/sentiment_4.png" alt="sentiment analysis">
                     </div>
                 </div>
+
+                <!-- Keyword Extraction -->
                 <div class="row row-grid align-items-center md-7">
                     <div class="col-12 col-md-5 order-md-2">
-                        <h2 class="font-weight-bolder mb-4">Key Phrases Extraction</h2>
-                        <p class="lead">Keyword phrase extraction is commonly used to extract key information from a series of comments. It is a text analysis method that involves Natual Language Processing (NLP) methods to extract the most important words and expressions from the text.</p>
+                        <h2 class="font-weight-bolder mb-4">Keywords Extraction</h2>
+                        <p class="lead">Keywords extraction is commonly used to extract key information from a series of comments. It is a text analysis method that involves Natual Language Processing (NLP) methods to extract the most important words and expressions from the text.</p>
                         <p class="lead">You’ll be able to see what topics are causing the most discussion among your consumers in comments, and automating the process will save your customer service unit time. Word clouds or tag clouds are another examples of keyword extraction. They show visualizations of a text’s most frequently used words in word clusters.</p>
-                        <a href="{% url 'login' %}" class="btn btn-primary mt-3 animate-up-2">
+                        <a href="{% url 'key_phrases_extraction' %}" class="btn btn-primary mt-3 animate-up-2">
                             Learn More
                             <span class="icon icon-xs ml-2">
                                 <i class="fas fa-external-link-alt"></i>
@@ -68,6 +72,24 @@
                         <img src="/static/assets/img/illustrations/word_cloud4.png" alt="word cloud">
                     </div>
                 </div>
+
+                <!-- Category Extraction  -->
+                <div class="row row-grid align-items-center md-7">
+                  <div class="col-12 col-md-5">
+                      <h2 class="font-weight-bolder mb-4">Category Extraction</h2>
+                      <p class="lead">Category extraction in comments analytics involves automatically identifying and classifying comments or feedback into predefined categories or topics. This process utilizes natural language processing (NLP) and machine learning techniques to understand the content of comments and assign them to relevant categories.</p>
+                      <p class="lead">For businesses, category extraction offers a range of benefits. Including streamlines the analysis of large volumes of customer feedback, making it easier to pinpoint the most discussed topics or issues. Additionally, it provides valuable insights for product development, customer service enhancements, and marketing strategies. </p>
+                      <a href="{% url 'category_extraction' %}" class="btn btn-primary mt-3 animate-up-2">
+                          Learn More
+                          <span class="icon icon-xs ml-2">
+                              <i class="fas fa-external-link-alt"></i>
+                          </span>
+                      </a>
+                  </div>
+                  <div class="col-12 col-md-6 ml-md-auto">
+                      <img src="/static/assets/img/illustrations/category_extraction_homepage.jpg" alt="category extraction">
+                  </div>
+              </div>
 
             </div>
         </section>
@@ -104,7 +126,7 @@
                                 <div class="card-body text-center bg-primary py-4">
                                     <!-- Heading -->
                                     <h2 class="font-weight-bold">
-                                        <span class="h1 mr-2">23</span>
+                                        <span class="h1 mr-2">Only One</span>
                                     </h2>
                                     <!-- Text -->
                                     <span class="h5 font-weight-normal">languages supported in analytics insights</span>
@@ -126,14 +148,14 @@
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle icon-secondary mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="font-weight-bolder">5</h3>
+                        <h3 class="font-weight-bolder">English</h3>
                         <p class="text-gray">Language Supports</p>
                     </div>
                     <div class="col-6 col-md-3 text-center mb-4">
                         <div class="icon icon-shape icon-lg bg-white shadow-lg border-light rounded-circle icon-secondary mb-4">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
                         </div>
-                        <h3 class="font-weight-bolder">10</h3>
+                        <h3 class="font-weight-bolder">4</h3>
                         <p class="text-gray">Analytics Services</p>
                     </div>
                     <div class="col-6 col-md-3 text-center">
@@ -209,13 +231,13 @@
                           <div class="icon icon-sm icon-success mr-4">
                             <i class="far fa-check-circle"></i>
                           </div>
-                          <div>Input your comments with copy/past option</div>
+                          <div>Input your comments with Google Spreadsheet option</div>
                         </li>
                         <li class="list-group-item d-flex px-0 pb-1">
                           <div class="icon icon-sm icon-success mr-4">
                             <i class="far fa-check-circle"></i>
                           </div>
-                          <div>Using Google Chorome extention to extract comments of your website</div>
+                          <div>Using Google Chorome extention to extract comments from platforms like Youtube</div>
                         </li>
                         <li class="list-group-item d-flex px-0 pb-1">
                           <div class="icon icon-sm icon-success mr-4">
