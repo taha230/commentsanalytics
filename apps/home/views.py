@@ -3118,6 +3118,9 @@ def requests_new_bulk_data_confirm(request):
                         # getting a particular sheet by name out of many sheets
                         worksheet = wb["Sheet1"]
 
+
+                        print(colored(column_name, 'yellow'))
+                            
                         # iterating over the rows and
                         # getting value from each cell in row
                         row_index = 0
@@ -3128,11 +3131,18 @@ def requests_new_bulk_data_confirm(request):
                                 row_index += 1
                                 column = 0
                                 for item in row:
-                                    if (item.value == column_name):
-                                        selected_column = column
+                                    # print(item)
+                                    try:
+                                        if (item.value.strip().lower() == column_name.lower()):
+                                            selected_column = column
+                                    except Exception as e:
+                                        print(e)
+                                        
                                     column += 1 
                                 continue
                             
+                            # print(colored(selected_column, 'yellow'))
+
                             # column_name input not found
                             if selected_column == -1:
                                 break
