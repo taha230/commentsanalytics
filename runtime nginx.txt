@@ -66,9 +66,21 @@ font_image = Encode Sans Sem
 
 ############################# chatgpt command post generator
 
-write a long article about 4000 words about "Text Processing and Data Cleaning
-" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
+write a long article about 4000 words about "TF-IDF and Text Classification" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
 example for some heading topics.
-Data Preprocessing Steps
+
+TF Meaning
+TF-IDF
+TF-IDF Matrix
+Term Frequency
+Document Classification
+Text Classification Techniques
+Text Classifier
+Machine Learning Algorithms Explained
+Text Analysis Free Online
+Text Classifier Tool
+Text Categorization
+Text ML
+Vectorize Text
 
 
