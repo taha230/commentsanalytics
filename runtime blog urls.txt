@@ -1,0 +1,48 @@
+=========================================================================
+Chrome Extension and data gathering:
+https://commentsanalytics.com/chrome_extension
+
+=========================================================================
+Sentiment analysis : 
+https://commentsanalytics.com/blog/sentiment-analysis-and-feedback/
+https://commentsanalytics.com/sentiment-analysis/
+
+=========================================================================
+keyowrd extraction:
+https://commentsanalytics.com/key-phrases-extraction/
+https://commentsanalytics.com/blog/keyword-extraction-and-data-collection/
+https://commentsanalytics.com/blog/word-cloud-and-visualization/
+
+=========================================================================
+named entity recognition:
+https://commentsanalytics.com/named-entity-recognition/
+
+=========================================================================
+predict customer needs:
+https://commentsanalytics.com/predict-customers-needs/
+
+=========================================================================
+category extraction:
+https://commentsanalytics.com/category-extraction/
+https://commentsanalytics.com/blog/machine-learning-and-classification/
+https://commentsanalytics.com/blog/tf-idf-and-text-classification/
+
+=========================================================================
+text analysis and NLP:
+https://commentsanalytics.com/blog/text-analysis-and-nlp-techniques/
+
+=========================================================================
+custumer surveys and feedback loops:
+https://commentsanalytics.com/blog/customer-surveys-and-feedback-loops/
+
+=========================================================================
+Text Processing and Data Cleaning:
+https://commentsanalytics.com/blog/text-processing-and-data-cleaning/
+
+=========================================================================
+Qualitative and Open-Ended Questions:
+https://commentsanalytics.com/blog/qualitative-and-open-ended-questions/
+
+=========================================================================
+Topic Modeling and Semantic Analysis:
+https://commentsanalytics.com/blog/topic-modeling-and-semantic-analysis/
