@@ -58,6 +58,7 @@ color_border = #FF7200
 pixel_border = 15 px
 font_image = Encode Sans Sem
 
+
 ############################## post url utm parameters
 
 https://commentsanalytics.com/blog/topic-modeling-and-semantic-analysis/?utm_source=linkedin_post&utm_medium=referral
@@ -72,6 +73,7 @@ example for some heading topics.
 Data Preprocessing Steps
 
 
-as a SEO specialist, give me a meta description for this text : 
+as a SEO specialist, give me a meta description for this text between 110 and 160 characters : 
+
 
 
