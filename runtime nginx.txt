@@ -61,7 +61,7 @@ font_image = Encode Sans Sem
 
 ############################## post url utm parameters
 
-https://commentsanalytics.com/blog/topic-modeling-and-semantic-analysis/?utm_source=linkedin_post&utm_medium=referral
+https://commentsanalytics.com/blog/text-analysis/?utm_source=linkedin_post&utm_medium=referral
 ?utm_source=facebook_post&utm_medium=referral
 ?utm_source=twitter_post&utm_medium=referral
 
