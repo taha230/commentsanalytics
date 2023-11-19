@@ -6,6 +6,9 @@ https://commentsanalytics.com/chrome_extension
 Sentiment analysis : 
 https://commentsanalytics.com/blog/sentiment-analysis-and-feedback/
 https://commentsanalytics.com/sentiment-analysis/
+###
+https://commentsanalytics.com/blog/sentiment/
+https://commentsanalytics.com/blog/sentiment-analysis/
 
 =========================================================================
 keyowrd extraction:
@@ -30,9 +33,11 @@ https://commentsanalytics.com/blog/tf-idf-and-text-classification/
 =========================================================================
 text analysis and NLP:
 https://commentsanalytics.com/blog/text-analysis-and-nlp-techniques/
+###
+https://commentsanalytics.com/blog/text-analysis/
 
 =========================================================================
-custumer surveys and feedback loops:
+customer surveys and feedback loops:
 https://commentsanalytics.com/blog/customer-surveys-and-feedback-loops/
 
 =========================================================================
