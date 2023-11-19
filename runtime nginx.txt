@@ -67,18 +67,17 @@ https://commentsanalytics.com/blog/sentiment/?utm_source=linkedin_post&utm_mediu
 
 ############################# chatgpt command post generator
 
-write a long article about 2000 words about "Sentiments" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
-example for some heading topics.
-What does sentiments exactly mean?
-Sentiments meaning
-sentiments synonym
-What are examples of sentiments?
-sentiment in a sentence
-What is the meaning of expression of sentiments?
-What does those are my sentiments mean?
-Does sentiments mean feelings?
-How do I use my sentiments exactly?
-What is the difference between emotion feeling and sentiment?
+write a long article about 2000 words about "Sentiment Analysis" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
+What do you mean by sentiment analysis?
+What is an example of sentiment analysis?
+How is NLP used in sentiment analysis?
+Can ChatGPT do sentiment analysis?
+What is the main purpose of sentiment analysis?
+sentiment analysis python
+sentiment analysis tool
+Sentiment analysis in machine learning
+sentiment analysis example
+sentiment analysis online
 
 
 as a SEO specialist, give me a meta description for this text between 110 and 160 characters : 
