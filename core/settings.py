@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', # Google Login
-    'django.contrib.sitemaps'
+    'django.contrib.sitemaps',
+    'django_recaptcha', # sign-up captcha
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,9 @@ LOGIN_REDIRECT_URL = "/"  # Route defined in home/urls.py
 LOGOUT_REDIRECT_URL = "/"  # Route defined in home/urls.py
 TEMPLATE_DIR = os.path.join(CORE_DIR, "apps/templates")  # ROOT dir for templates
 # AUTH_USER_MODEL = "authentication.CustomUser"
+
+RECAPTCHA_PUBLIC_KEY = '6LdIbR4pAAAAAF3q-uGB4W1RJNc_BUqsARj_pHXi'
+RECAPTCHA_PRIVATE_KEY = '6LdIbR4pAAAAAHcWWzDYpwg_kllb5DNnSVitOl1q'
 
 
 TEMPLATES = [

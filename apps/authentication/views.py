@@ -20,6 +20,8 @@ import requests
 import datetime
 from smtp2go.core import Smtp2goClient
 from datetime import date, timedelta
+from django.contrib import messages
+
 
 
 sender = 'taha.hamedani8@gmail.com'
@@ -229,6 +231,12 @@ def register_user(request):
     
         form = SignUpForm(request.POST)
         if form.is_valid():
+
+
+            if not request.POST.get('g-recaptcha-response'):
+                msg = 'Please complete the reCAPTCHA.'
+                return render(request, "home/page-sign-up.html", {"form": form, "msg": msg, "success": success})
+
 
             email = form.cleaned_data.get("email")
 

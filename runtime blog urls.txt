@@ -9,6 +9,7 @@ https://commentsanalytics.com/sentiment-analysis/
 ###
 https://commentsanalytics.com/blog/sentiment/
 https://commentsanalytics.com/blog/sentiment-analysis/
+https://commentsanalytics.com/blog/sentiment-analysis-tools/
 
 =========================================================================
 keyowrd extraction:
