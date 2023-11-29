@@ -75,7 +75,6 @@ TEMPLATE_DIR = os.path.join(CORE_DIR, "apps/templates")  # ROOT dir for template
 RECAPTCHA_PUBLIC_KEY = '6LdIbR4pAAAAAF3q-uGB4W1RJNc_BUqsARj_pHXi'
 RECAPTCHA_PRIVATE_KEY = '6LdIbR4pAAAAAHcWWzDYpwg_kllb5DNnSVitOl1q'
 
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
