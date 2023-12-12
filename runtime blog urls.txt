@@ -11,6 +11,7 @@ https://commentsanalytics.com/blog/sentiment/
 https://commentsanalytics.com/blog/sentiment-analysis/
 https://commentsanalytics.com/blog/sentiment-analysis-tools/
 https://commentsanalytics.com/blog/sentiment-analysis-and-machine-learning/
+https://commentsanalytics.com/blog/sentiment-analysis-and-natural-language-processing/
 
 =========================================================================
 keyowrd extraction:
