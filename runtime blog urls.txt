@@ -13,6 +13,7 @@ https://commentsanalytics.com/blog/sentiment-analysis-tools/
 https://commentsanalytics.com/blog/sentiment-analysis-and-machine-learning/
 https://commentsanalytics.com/blog/sentiment-analysis-and-natural-language-processing/
 https://commentsanalytics.com/blog/positive-and-negative-feedback-examples/
+https://commentsanalytics.com/blog/customer-feedback-examples/
 
 =========================================================================
 keyowrd extraction:
