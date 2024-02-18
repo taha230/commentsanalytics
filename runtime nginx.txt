@@ -61,23 +61,24 @@ font_image = Encode Sans Sem
 
 ############################## post url utm parameters
 
-https://commentsanalytics.com/blog/product-feedback/?utm_source=linkedin_post&utm_medium=referral
+https://commentsanalytics.com/blog/brand-sentiment/?utm_source=linkedin_post&utm_medium=referral
 ?utm_source=facebook_post&utm_medium=referral
 ?utm_source=twitter_post&utm_medium=referral
 
 ############################# chatgpt command post generator
 
-write a long article about 2000-word 100% Unique, SEO-optimized, Human-Written article about "Brand Sentiment" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
+write a long article about 2000-word 100% Unique, SEO-optimized, Human-Written article about "Opinion Mining" as  writer that contained the following h2 heading and two or three paragraphs describing each of following heading. add some popular quotes from famous people and real world 
 
-What is a brand feeling?
-How to do sentiment analysis for a brand?
-What is sentiment in digital marketing?
-What is an example of sentiment analysis?
-Brand sentiment example
-how to measure brand sentiment
-Types of brand sentiment
-brand sentiment metrics
-brand sentiment tool
+What is opinion mining with example?
+What is the difference between sentiment analysis and opinion mining?
+opinion mining vs sentiment analysis
+What is also referred to as opinion mining?
+Why is opinion mining important in data science?
+Opinion mining in python
+Opinion mining machine learning
+opinion mining techniques
+Opinion mining software
+opinion mining azure
 ##################
 
 as a SEO specialist, give me a meta description for this text between 110 and 160 characters : 
