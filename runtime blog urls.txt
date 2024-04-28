@@ -20,6 +20,7 @@ https://commentsanalytics.com/blog/opinion-mining/
 https://commentsanalytics.com/blog/customer-sentiment-software/
 https://commentsanalytics.com/blog/customer-satisfaction-report/
 https://commentsanalytics.com/blog/customer-questions/
+https://commentsanalytics.com/blog/customer-survey-types/
 
 =========================================================================
 keyowrd extraction:
