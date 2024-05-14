@@ -44,7 +44,7 @@ COLLECTION_Linkedin = 'Linkedin'
 CUF_WEBSITE_FIELD_NAME = 'result'
 sleep_time = 10
 # IP_SINGLE_API = '95.217.33.222'
-IP_SINGLE_API = '138.201.111.134'
+IP_SINGLE_API = '95.217.33.222'  #'138.201.111.134'
 IP_SINGLE_API_CATEGORY = '162.55.98.173' #'136.243.77.239' # '167.235.207.111'
 
 ##############################################################################################
