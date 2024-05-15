@@ -346,6 +346,7 @@ def update_passed_count_mongodb():
             if (passed_count >= 0):
                 update_bulk_passed_count_mongodb (bulk_id, passed_count)
                 for update_request in update_list:
+                    print(update_request)
                     # update request fields in sqlite
                     if ('request_id' in update_request and 'result' in update_request):
                         update_request_mongodb(update_request['request_id'], update_request['result'])

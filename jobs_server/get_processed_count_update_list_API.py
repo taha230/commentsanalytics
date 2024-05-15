@@ -47,6 +47,8 @@ def get_update_json(bulk_id):
             try:
                 item_update = collection.find_and_modify(query={'_id': ObjectId(item['_id'])}, update={'$set': {"update": False}})
 
+
+                print(colored(item_update, 'magenta'))
                 update_json = {}
                 update_json['bulk_id'] = item_update['bulk_id']
                 update_json['request_id'] = item_update['request_id']

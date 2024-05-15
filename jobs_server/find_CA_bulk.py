@@ -69,18 +69,23 @@ def get_from_mongo():
     random_sleep_time = random.random()
     time.sleep(random_sleep_time)
 
-    false_count = collection_Requests.find({'status': False}).count()
+    false_count = collection_Requests.count_documents({'status': False})
     if (false_count == 0):
-        category = collection_Requests.find_and_modify(query={'status': 'process'}, update={'$set': {"status": 'process'}})
+        # category = collection_Requests.find_and_modify(query={'status': 'process'}, update={'$set': {"status": 'process'}})
+        category = collection_Requests.find_one({'status': 'process'})
     else:
-        category = collection_Requests.find_and_modify(query={'status': False}, update={'$set': {"status": 'process'}})
+        # category = collection_Requests.find_and_modify(query={'status': False}, update={'$set': {"status": 'process'}})
+        category = collection_Requests.find_one({'status': False})
+    if category != None:
+        collection_Requests.update_one({'_id': category['_id']}, {'$set': {'status': 'process'}})
+    
     return category
 
 def update_mongo_sentiment(id, result):
-    collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result}})
+    collection_Requests.update_one({'_id': ObjectId(id)}, {'$set': {"status": True, 'result': result}})
 
 def update_mongo_result_sentiment(id, result, result_sentiment):
-    collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
+    collection_Requests.update_one({'_id': ObjectId(id)}, {'$set': {"status": True, 'result': result, 'result_sentiment': result_sentiment}})
 
 def get_sentiment_result (input_text):
     return 'Neutral'
@@ -325,7 +330,7 @@ def run_():
 
 def get_false_count():
     try:
-        return collection_Requests.find({'status': False}).count()
+        return collection_Requests.count_documents({'status': False})
 
     except Exception as e:
         print(e)
@@ -333,7 +338,7 @@ def get_false_count():
 
 def get_process_count():
     try:
-        return collection_Requests.find({'status': 'process'}).count()
+        return collection_Requests.count_documents({'status': 'process'})
 
     except Exception as e:
         print(e)
