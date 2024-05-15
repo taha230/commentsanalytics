@@ -274,7 +274,7 @@ def update_request_sentiment_mongodb(id, sentiment):
     while True:
 
         try:
-
+            print(colored(sentiment, 'blue'))
             collection_Requests.find_and_modify(query={'_id': ObjectId(id)}, update={'$set': {"result_sentiment": sentiment}})
             return
 
