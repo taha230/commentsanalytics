@@ -15,7 +15,7 @@ python3 update_passed_count_bulk.py
 0 8 * * * /usr/bin/python3 /home/CommentsAnalytics/commentsanalytics/jobs_server/delete_user_log.py
 0 9 * * * /usr/bin/python3 /home/CommentsAnalytics/commentsanalytics/jobs_server/backup_db_sqlite3.py
  
-
+ 
 
 ####################################### server cv (162.55.98.173) ###################################################
 
