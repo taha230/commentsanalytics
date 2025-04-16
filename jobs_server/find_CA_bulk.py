@@ -45,7 +45,7 @@ CUF_WEBSITE_FIELD_NAME = 'result'
 sleep_time = 10
 # IP_SINGLE_API = '95.217.33.222'
 IP_SINGLE_API = '162.55.94.6'  #'138.201.111.134'
-IP_SINGLE_API_CATEGORY = '162.55.98.173' #'136.243.77.239' # '167.235.207.111'
+IP_SINGLE_API_CATEGORY = '162.55.94.6' #'136.243.77.239' # '167.235.207.111'
 
 ##############################################################################################
 
@@ -270,10 +270,11 @@ def find_CA(index):
             result = ''           
 
             print(cname)
-
+            print('1')
             if (request_type == 'Sentiment Analysis'):
                 sentiment_result = sentiment_analysis_twitter_roberta_base_sentiment_API(cname)
                 result = sentiment_result
+                print(result)
                 update_mongo_sentiment(item['_id'], result)
 
             if (request_type == 'Named-Entity Recognition'):
