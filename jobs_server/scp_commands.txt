@@ -1,4 +1,4 @@
-scp -r CA root@gpu:/home/services_files
+scp -r CA root@services:/home/services_files
 ========================================================================================================
 scp CA/CA_single_API.py root@services:/home/services_files/CA
 scp CA/CA_single_API_category.py CA/wsgi_CA_single_category.py root@server_cloud:/home/services_files/CA
