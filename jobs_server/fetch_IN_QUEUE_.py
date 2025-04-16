@@ -247,6 +247,8 @@ def run_fetch_in_queue_mongodb ():
         records_In_Progress = collection_Bulks.find(query_bulk_in_progress).sort([("bulk_start_time_slot", 1)])
         records_In_Queue = collection_Bulks.find(query_bulk_in_queue).sort([("bulk_start_time_slot", 1)])
 
+        print('records_In_Progress : ' + str(records_In_Progress))
+        print('records_In_Queue : ' + str(records_In_Queue))
 
         if (records_In_Progress.count() == 0 and records_In_Queue.count() > 0):
             oldest_in_queue_record = records_In_Queue[0]
