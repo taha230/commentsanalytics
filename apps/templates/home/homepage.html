@@ -25,13 +25,74 @@
                     </div>
                 </div>
             </div>
-            <div class="pattern bottom"></div>
         </section>
-        <section class="section section-lg">
-
+        <section class="section section-lg pt-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <style>
+                            .g2-badges-carousel {
+                                overflow: hidden;
+                                position: relative;
+                                width: 100%;
+                            }
+                            .g2-badges-track {
+                                display: flex;
+                                animation: scroll 20s linear infinite;
+                                width: calc(200px * 8); /* Adjust based on number of images */
+                            }
+                            .g2-badges-track:hover {
+                                animation-play-state: paused;
+                            }
+                            .g2-badge-item {
+                                flex: 0 0 200px;
+                                padding: 0 10px;
+                            }
+                            @keyframes scroll {
+                                0% {
+                                    transform: translateX(0);
+                                }
+                                100% {
+                                    transform: translateX(calc(-200px * 3)); /* Half of total width */
+                                }
+                            }
+                        </style>
+                        <div class="g2-badges-carousel">
+                            <div class="g2-badges-track">
+                                <!-- First set of images -->
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-1.jpg" alt="G2 Badge 1" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-2.jpg" alt="G2 Badge 2" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-3.jpg" alt="G2 Badge 3" style="max-height: 200px;">
+                                </div>
+                                <!-- Duplicate set for seamless loop -->
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-4.jpg" alt="G2 Badge 1" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-5.jpg" alt="G2 Badge 2" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-6.jpg" alt="G2 Badge 3" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-7.jpg" alt="G2 Badge 3" style="max-height: 200px;">
+                                </div>
+                                <div class="g2-badge-item">
+                                    <img src="/static/assets/img/g2-badges/g2-badge-8.jpg" alt="G2 Badge 3" style="max-height: 200px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="section section-lg pt-6">
+        <section class="section section-lg pt-4">
             <div class="container">
                 <div class="row justify-content-center md-7 mb-8">
                     <div class="col-12 col-md-8 text-center">
@@ -63,7 +124,7 @@
                     <div class="col-12 col-md-5 order-md-2">
                         <h2 class="font-weight-bolder mb-4">Keywords Extraction</h2>
                         <p class="lead">Keywords extraction is commonly used to extract key information from a series of comments. It is a text analysis method that involves Natual Language Processing (NLP) methods to extract the most important words and expressions from the text.</p>
-                        <p class="lead">You’ll be able to see what topics are causing the most discussion among your consumers in comments, and automating the process will save your customer service unit time. Word clouds or tag clouds are another examples of keyword extraction. They show visualizations of a text’s most frequently used words in word clusters.</p>
+                        <p class="lead">You'll be able to see what topics are causing the most discussion among your consumers in comments, and automating the process will save your customer service unit time. Word clouds or tag clouds are another examples of keyword extraction. They show visualizations of a text's most frequently used words in word clusters.</p>
                         <a href="{% url 'key_phrases_extraction' %}" class="btn btn-primary mt-3 animate-up-2">
                             Learn More
                             <span class="icon icon-xs ml-2">
