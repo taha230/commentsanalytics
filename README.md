@@ -6,7 +6,7 @@
 
 
 
-# 📊 Comments Analytics
+# Comments Analytics
 
 Analyze and understand comments from YouTube, social media, and other platforms with **Comments Analytics**.  
 This project provides tools for **sentiment analysis, keyword extraction, named entity recognition (NER), and comment categorization**, helping creators, businesses, and researchers gain insights from user feedback at scale.
