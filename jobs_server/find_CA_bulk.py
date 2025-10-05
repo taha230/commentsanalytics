@@ -43,16 +43,16 @@ COLLECTION_Linkedin = 'Linkedin'
 
 CUF_WEBSITE_FIELD_NAME = 'result'
 sleep_time = 10
-# IP_SINGLE_API = '95.217.33.222'
-IP_SINGLE_API = '162.55.94.6'  #'138.201.111.134'
-IP_SINGLE_API_CATEGORY = '162.55.94.6' #'136.243.77.239' # '167.235.207.111'
+# IP_SINGLE_API = '******************'
+IP_SINGLE_API = '******************'
+IP_SINGLE_API_CATEGORY = '******************'
 
 ##############################################################################################
 
 
 #no change_proxy
 mongo_address = 'localhost'
-# mongo_address = '192.168.1.64'
+# mongo_address = '******************'
 client = MongoClient(mongo_address, 27017)
 db = client[DB_NAME]
 db_Requests = client[DB_NAME_REQUESTS]
