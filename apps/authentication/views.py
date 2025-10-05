@@ -24,13 +24,13 @@ from django.contrib import messages
 
 
 
-sender = 'taha.hamedani8@gmail.com'
-password = '61416867'
+sender = ''******************'
+password = '******************'
 
-mailgun_API_key = '9e8c72a90aa54ca4871cda665cfbcd57-054ba6b6-7986a744'
-smtp2go_API_key = 'api-82F480AA71A711ED821AF23C91BBF4A0'
+mailgun_API_key = '******************'
+smtp2go_API_key = '******************'
 
-mailgun_domain = 'profilebrowse.com'
+mailgun_domain = '******************'
 
 ############################################# Emails ##########################################################
 
@@ -50,7 +50,7 @@ def send_email_from_admin_to_client(user, message_ticket):
 
             smtp2go_client = Smtp2goClient(api_key=smtp2go_API_key)
             payload = {
-                    "sender": "info@commentsanalytics.com",
+                    "sender": '******************',
                     "recipients": [receiver],
                     "template_id": "2229340",
                     "template_data": {
@@ -77,10 +77,10 @@ def send_email_from_admin_to_client(user, message_ticket):
 
 def send_email_from_client_to_admin(user, message_ticket):
     
-    receiver = 'taha_hamedani@yahoo.com'
+    receiver = '******************'
     user_name = user.username
     user_email = user.email
-    sender = 'taha.hamedani8@gmail.com'
+    sender = '******************'
 
     try_count = 1
 
@@ -159,7 +159,7 @@ def send_activation_user_email(user, usre_key):
 
 def send_new_user_notification_email(user_email):
 
-    receiver = 'taha_hamedani@yahoo.com'
+    receiver = '******************'
     
 
     try_count = 1
