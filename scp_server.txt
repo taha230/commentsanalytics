@@ -1,4 +1,4 @@
-ssh root@138.201.111.134
+ssh root@'******************'
 
 scp root@server_cloud:/home/CommentsAnalytics/commentsanalytics/db.sqlite3 .
 scp db.sqlite3 root@server_cloud:/home/CommentsAnalytics/commentsanalytics
