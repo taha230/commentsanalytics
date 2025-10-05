@@ -1,7 +1,7 @@
 python-3.9
 
 
-######################################### server Host (cloud_server) (167.235.207.111) #############################################
+######################################### server Host (cloud_server) ('******************') #############################################
 (screen name : fetch_in_queue) -- (has ip server config)
 cd /home/CommentsAnalytics/commentsanalytics/jobs_server
 python3 fetch_IN_QUEUE_.py
@@ -24,7 +24,7 @@ gunicorn --bind=0.0.0.0:8000 core.wsgi:application --workers=4 --worker-class ge
  
  
 
-####################################### server services (162.55.94.6) ###################################################
+####################################### server services ('******************') ###################################################
 
 (screen name : CA_single_API_category) -- >> single category request from CA Dashboard
 cd /home/services_files/CA
