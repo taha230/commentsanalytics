@@ -29,9 +29,9 @@ from bson.objectid import ObjectId
 
 sleep_time = 10
 
-# ip_server = '176.9.22.248'
-ip_server = '162.55.94.6' #'138.201.111.134'
-# ip_server= '95.217.33.222'
+# ip_server = '******************'
+ip_server = '******************'
+# ip_server= ''******************'
 
 port_insert = '8933'
 port_delete = '8933'
