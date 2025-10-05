@@ -1,2 +1,2 @@
-client ID : 605264265488-pune2vds53munlsjdl8o6ddi35vfvjks.apps.googleusercontent.com
-client Secrete : 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
+client ID :'******************'
+client Secrete : '******************'
