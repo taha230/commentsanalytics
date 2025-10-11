@@ -1,6 +1,6 @@
 
 <div align="center" style="margin-bottom:30px;">
-  <img width="150" alt="tor_plus_google_organic_results" src="https://github.com/user-attachments/assets/4a6980a1-582b-43a2-b197-e6c418dc53c9" />
+  <img width="150" alt="comments analytics logo" src="https://github.com/user-attachments/assets/4a6980a1-582b-43a2-b197-e6c418dc53c9" />
 </div>
 <br><br> <!-- add more <br> if you need more space -->
 
@@ -20,6 +20,7 @@ This project provides tools for **sentiment analysis, keyword extraction, named 
 - 📂 **Categorization** – Group comments into categories (e.g., feedback, questions, spam).  
 - 📊 **Analytics Dashboard** – Visualize engagement and sentiment distribution.  
 - ⚡ **Batch Processing** – Analyze thousands of comments at once.  
+
 
 ---
 
@@ -44,6 +45,12 @@ result = analyze_sentiment(comment)
 print(result)  # Output: {"label": "positive", "score": 0.92}
 ```
 
+
+<div align="center" style="margin-bottom:30px;">
+  <img width="1084" height="387" alt="sentiment" src="https://github.com/user-attachments/assets/a09a05d0-d261-447e-b20f-f55b40091ded" />
+</div>
+<br><br> <!-- add more <br> if you need more space -->
+
 ### Example: Keyword Extraction
 ```python
 from commentsanalytics import extract_keywords
@@ -59,6 +66,11 @@ print(keywords)
 # Output: ["tutorial", "Python", "web scraping", "video"]
 ```
 
+
+<div align="center" style="margin-bottom:30px;">
+  <img width="1079" height="517" alt="wordcloud" src="https://github.com/user-attachments/assets/a6986aa5-2154-431f-a4d8-d04b3f53c65b" />
+</div>
+<br><br> <!-- add more <br> if you need more space -->
 ---
 
 ## 🌐 Live Demo
